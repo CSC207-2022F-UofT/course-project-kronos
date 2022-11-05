@@ -1,4 +1,4 @@
-package TestEntities;
+package testentities;
 
 public class TaskTest {
 }

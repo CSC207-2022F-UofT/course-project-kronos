@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import java.lang.reflect.Array;
 import java.util.HashMap;
