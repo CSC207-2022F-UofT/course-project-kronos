@@ -1,4 +1,6 @@
-package entities;
+package Entities;
+
+import java.lang.reflect.Array;
 
 public class Category {
 

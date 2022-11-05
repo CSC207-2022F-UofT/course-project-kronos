@@ -1,4 +1,4 @@
-package testEntities;
+package TestEntities;
 
 public class HabitTest {
 }
