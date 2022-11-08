@@ -1,4 +1,5 @@
 package testentities;
 
-public class TaskTest {
+public class TestTask {
+
 }

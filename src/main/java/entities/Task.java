@@ -1,8 +1,9 @@
 package entities;
 
 import java.util.Date;
+import java.util.Iterator;
 
-public class Task {
+public class Task implements Iterable{
     public String name;
     private boolean complete;
     private boolean reminders;
@@ -15,4 +16,8 @@ public class Task {
 
     }
 
+    @Override
+    public Iterator iterator() {
+        return null;
+    }
 }
