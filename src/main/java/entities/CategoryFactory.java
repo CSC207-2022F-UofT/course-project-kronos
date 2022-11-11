@@ -1,10 +1,28 @@
 package entities;
 
 import java.util.HashMap;
+import java.util.List;
 
-public class CategoryFactory extends Factory{
+import entities.Category;
 
-    public CategoryFactory(){
+public class CategoryFactory extends Factory<Category> {
 
+    HashMap<Integer, Category> categories;
+
+
+    public CategoryFactory() {
+        super();
     }
+
+    @Override
+    public void addItem(Category category) {
+
+        categories.put(category.getId(), category);
+    }
+
+    @Override
+    public void removeItem(Category category) {
+        categories.remove(category.getId());
+    }
+
 }
