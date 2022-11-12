@@ -7,10 +7,17 @@ public class TaskFactory extends Factory<Task>{
 
     public TaskFactory(){
         super();
+        this.h_items = new HashMap<>();
     }
 
     @Override
     public void addItem(Task item) {
-
+        h_items.put(item.getId(), item);
     }
+
+    @Override
+    public void removeItem(Task item) {
+        h_items.remove(item.getId(), item);
+    }
+
 }

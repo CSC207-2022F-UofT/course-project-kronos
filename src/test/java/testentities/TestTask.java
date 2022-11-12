@@ -2,6 +2,7 @@ package testentities;
 
 import java.util.Calendar;
 
+import entities.Category;
 import entities.Task;
 import org.junit.After;
 import org.junit.Before;
@@ -71,7 +72,7 @@ public class TestTask {
         Task task = new Task("example", FALSE, deadline);
         task.markAsIncomplete();
 
-        assertTrue("The status of the task should be marked as incomplete (FALSE).", task.completeStatus);
+        assertFalse("The status of the task should be marked as incomplete (FALSE).", task.completeStatus);
     }
 
     @Test(timeout = 500)
@@ -96,17 +97,12 @@ public class TestTask {
 
     @Test(timeout = 500)
     public void testSetCategory() {
-        // Waiting for the implementation of Category Class.
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
         Task task = new Task("example", FALSE, deadline);
-        // Category csc207 = new Category("csc207", "000000", tasks, TRUE);
-        // assertEquals("The category of the task should be set to ...", csc207, task.category);
-    }
-
-    @Test(timeout = 500)
-    public void testSetColour() {
-        // Conflicting part
+        Category csc207 = new Category("csc207", "000000");
+        task.setTaskCategory(csc207);
+        assertEquals("The category of the task should be set to ...", csc207, task.taskCategory);
     }
 
     @Test(timeout = 500)
@@ -126,7 +122,7 @@ public class TestTask {
         Task task = new Task("example", FALSE, deadline);
         task.setVisibility(FALSE);
 
-        assertTrue("The visibility of the task is set to invisible (FALSE)", task.visibility);
+        assertFalse("The visibility of the task is set to invisible (FALSE)", task.visibility);
     }
 
     @Test(timeout = 500)
