@@ -6,7 +6,10 @@ public class HabitFactory extends Factory<Habit>{
 
     public HashMap<String, Habit> h_items;
 
-    public HabitFactory(){}
+    public HabitFactory(){
+        super();
+        this.h_items = new HashMap<String, Habit>();
+    }
 
     @Override
     public void addItem(Habit item) {
