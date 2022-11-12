@@ -1,4 +1,4 @@
 package testentities;
 
-public class TimerTest {
+public class TestTimer {
 }

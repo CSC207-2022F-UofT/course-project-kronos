@@ -2,7 +2,7 @@ package task_use_cases;
 
 import entities.Category;
 
-public class editCategoryVisibility {
+public class EditCategoryVisibility {
     // Acts like a filter.
 
     public void editCategoryVisibility(Category category, Boolean state) {

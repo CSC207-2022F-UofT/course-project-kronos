@@ -1,4 +1,4 @@
 package task_use_cases;
 
-public class createTask {
+public class DeleteTask {
 }
