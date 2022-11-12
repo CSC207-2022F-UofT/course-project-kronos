@@ -1,7 +1,6 @@
 package entities;
 
 import java.util.Calendar;
-import java.util.Iterator;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -13,15 +12,18 @@ public class Task{
     public boolean visibility;
     public Category taskCategory;
     public Calendar deadline;
+    private final int id;
+    private static int numberOfTasks = 0;
 
     public Task(String name, boolean reminders, Calendar deadline){
         // @param The name of the task.
         // @param Whether the reminder is turned on. (Remind the user 24h before the deadline)
         // @param The colour for the task. User can choose from 7 given colors. (Red, Orange, Yellow, Green, Blue, Purple, Pink)
         // @param The deadline of the task.
+        this.id = numberOfTasks;
+        numberOfTasks += 1;
 
         this.name = name;
-        this.completeStatus = FALSE;
         this.reminders = reminders;
         this.visibility = TRUE;
         this.deadline = deadline;
@@ -35,7 +37,9 @@ public class Task{
     public void markAsComplete(){
         this.completeStatus = TRUE;
     }
-    public void markAsIncomplete(){ this.completeStatus = FALSE;}
+    public void markAsIncomplete() {
+        this.completeStatus = FALSE;
+    }
 
     public void setReminders(boolean remindersStatus){
         // Set whether there will be reminders for the task.
@@ -55,5 +59,7 @@ public class Task{
     public void setDeadline(Calendar deadline) {
         this.deadline = deadline;
     }
+
+    public int getId(){return this.id;}
 
 }
