@@ -19,7 +19,6 @@ public class Habit {
         this.reminderTrue = value;
         this.frequency = 0;
         this.frequencyMap = new HashMap<>();
-        this.frequencyMap.put(LocalDate.now().toString(), frequency);
     }
 
     public void setName(String title) {this.name = title;}
