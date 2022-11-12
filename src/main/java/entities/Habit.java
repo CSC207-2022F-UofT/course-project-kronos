@@ -38,9 +38,13 @@ public class Habit {
 
     public HashMap<String, Integer> getFrequencyMap() { return this.frequencyMap;}
 
+    public boolean isFrequencyMapEmpty() {
+        return this.frequencyMap.isEmpty();
+    }
+
     public void markFrequency(){
         this.frequency += 1;
-        this.frequencyMap.put(this.name, this.frequency);
+        this.frequencyMap.put(LocalDate.now().toString(), this.frequency);
     }
 
 }
