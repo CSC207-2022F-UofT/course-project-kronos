@@ -11,7 +11,7 @@ import java.util.HashMap;
 import static org.junit.Assert.*;
 
 
-public class TestFactory {
+public class TestHabitFactory {
 
     @Before
     public void setUp() {
