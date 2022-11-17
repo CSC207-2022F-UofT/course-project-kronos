@@ -41,7 +41,7 @@ public class HabitPage {
         }
     }
 
-    private static void createAndShowHabitListGUI() {
+    public static void createAndShowHabitListGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("Habits Page");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
