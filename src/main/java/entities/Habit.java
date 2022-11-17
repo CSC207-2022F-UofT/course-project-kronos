@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class Habit {
 
+
     private String name;
     private String type;
     private boolean reminderTrue;
@@ -35,6 +36,8 @@ public class Habit {
 
 
     public int getFrequency() { return this.frequency;}
+
+    public String getFrequencyString() { return Integer.toString(this.getFrequency());}
 
     public HashMap<String, Integer> getFrequencyMap() { return this.frequencyMap;}
 

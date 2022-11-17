@@ -8,7 +8,7 @@ public class HabitFactory extends Factory<Habit>{
 
     public HabitFactory(){
         super();
-        this.h_items = new HashMap<String, Habit>();
+        this.h_items = new HashMap<>();
     }
 
     @Override
@@ -28,5 +28,7 @@ public class HabitFactory extends Factory<Habit>{
         addItem(value);
 
     }
+
+    public HashMap<String, Habit> getCollection(){return h_items;}
 }
 
