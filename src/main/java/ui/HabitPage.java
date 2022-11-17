@@ -21,7 +21,6 @@ public class HabitPage {
         for(String i :hFactory.h_items.keySet()){
 
             JLabel l = new JLabel( i + "  " , JLabel.CENTER);
-
             l.setPreferredSize(new Dimension(100, 30));
             l.setBorder(new LineBorder(Color.GRAY, 1));
             l.setLayout(new BorderLayout());
@@ -42,7 +41,7 @@ public class HabitPage {
         }
     }
 
-    private static void createAndShowGUI() {
+    private static void createAndShowHabitListGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("Habits Page");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,11 +66,7 @@ public class HabitPage {
     public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
+        javax.swing.SwingUtilities.invokeLater(HabitPage::createAndShowHabitListGUI);
     }
     }
 
