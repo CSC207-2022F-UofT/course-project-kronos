@@ -1,9 +1,21 @@
 package entities;
 
-public abstract class Factory<T>{
+import java.lang.reflect.Array;
+import java.util.HashMap;
+import java.util.Objects;
 
-    public void addItem(T item){}
+public abstract class Factory {
+    HashMap<String, Object> items;
 
-    public void removeItem(T item) {}
+    public Factory(){
+        this.items = new HashMap<String, Object>();
+    }
 
+    public void addItem(Object item){
+
+    }
+
+    public void addItems(){
+
+    }
 }
