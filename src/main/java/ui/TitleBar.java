@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TitleBar extends JPanel {
+    private JButton newTask;
+    private JButton newCategory;
 
     public TitleBar() {
         this.setPreferredSize(new Dimension(400, 80));
@@ -13,5 +15,9 @@ public class TitleBar extends JPanel {
         title.setFont(new Font("Serif", Font.BOLD, 20));
         title.setHorizontalAlignment(JLabel.CENTER);
         this.add(title);
+
+        // add buttons
+        this.add(newTask);
+        this.add(newCategory);
     }
 }
