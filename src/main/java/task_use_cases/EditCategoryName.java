@@ -4,7 +4,8 @@ import entities.Category;
 
 public class EditCategoryName {
 
-    public EditCategoryName(Category category, String newName){
+    public static Boolean editCategoryName(Category category, String newName){
         category.setCategoryName(newName);
+        return category.getCategoryName() == newName;
     }
 }

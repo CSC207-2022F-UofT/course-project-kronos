@@ -1,6 +1,5 @@
 package input_output;
 
-import entities.CategoryFactory;
 import entities.Category;
 import task_use_cases.CreateCategory;
 

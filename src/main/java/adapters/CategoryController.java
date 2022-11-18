@@ -3,7 +3,10 @@ package adapters;
 import entities.Category;
 import entities.CategoryFactory;
 import input_output.CreateCategoryInputBound;
+import input_output.EditCategoryInputBound;
 import task_use_cases.DeleteCategory;
+import task_use_cases.EditCategoryColour;
+import task_use_cases.EditCategoryVisibility;
 
 public class CategoryController {
 
@@ -22,7 +25,6 @@ public class CategoryController {
 
     /**
      * Delete a category given a Category object. Return whether category was successfully deleted.
-     *
      * @param category - the Category object to be deleted.
      * @return true if the Category object is no longer in the system, return false otherwise.
      */
@@ -30,16 +32,34 @@ public class CategoryController {
         return DeleteCategory.delete(category, factory);
     }
 
-    public void editCategoryVisibility(Category category, Boolean visiblity) {
-
+    /**
+     * Edit existing Category's visibility.
+     * @param category - the Category object that is to be edited.
+     * @param state - the visibility state of the category.
+     * @return true if the visibility of the Category object has been successfully updated.
+     */
+    public Boolean editCategoryVisibility(Category category, Boolean state) {
+        return EditCategoryVisibility.editCategoryVisibility(category, state);
     }
 
-    public void editCategoryVisibility(Category category, Boolean visiblity) {
-
+    /**
+     * Edit existing Category's visibility.
+     * @param category - the Category object that is to be edited.
+     * @param name - the new name of the category.
+     * @return true if the name of the Category object has been successfully updated.
+     */
+    public Boolean editCategoryName(Category category, String name) {
+        return EditCategoryInputBound.editNameInputBound(category, name);
     }
 
-    public void editCategoryVisibility(Category category, Boolean visiblity) {
-
+    /**
+     * Edit existing Category's visibility.
+     * @param category - the Category object that is to be edited.
+     * @param colour - the new name of the category.
+     * @return true if the name of the Category object has been successfully updated.
+     */
+    public Boolean editCategoryColour(Category category, String colour) {
+        return EditCategoryColour.editCategoryColour(category, colour);
     }
 
 }
