@@ -1,4 +1,4 @@
-package task_use_cases;
+package use_cases.tasks;
 
 public class EditCategoryVisibilityPresenter {
 }
