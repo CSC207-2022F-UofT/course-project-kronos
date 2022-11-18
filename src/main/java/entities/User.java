@@ -67,6 +67,11 @@ public class User {
         return this.habitCollection;
     }
 
+    public CategoryFactory getCategoryCollection(){
+        // returns the users tasks
+        return this.categoryCollection;
+    }
+
     public TaskFactory getTaskCollection(){
         // returns the users tasks
         return this.taskCollection;
