@@ -1,13 +1,14 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TaskFactory extends Factory<Task>{
-    HashMap<Integer, Task> h_items;
+    HashMap<Integer, Task> tasks;
 
     public TaskFactory(){
         super();
-        this.h_items = new HashMap<>();
+        this.tasks = new HashMap<>();
     }
 
     /**
@@ -16,7 +17,7 @@ public class TaskFactory extends Factory<Task>{
      */
     @Override
     public void addItem(Task item) {
-        h_items.put(item.getId(), item);
+        tasks.put(item.getId(), item);
     }
 
     /**
@@ -25,7 +26,29 @@ public class TaskFactory extends Factory<Task>{
      */
     @Override
     public void removeItem(Task item) {
-        h_items.remove(item.getId());
+        tasks.remove(item.getId());
+    }
+
+    /**
+     * Return tasks.
+     * @return the Hashmap attribute tasks of a TaskFactory.
+     */
+    public HashMap getTasks(){
+        return this.tasks;
+    }
+
+    /**
+     * Given the user, return an array list of that user's tasks.
+     * @return this TaskFactory object as an arraylist
+     */
+    public ArrayList<Task> convertToArray() {
+        ArrayList<Task> taskList = new ArrayList<>();
+        if (!this.tasks.isEmpty()) {
+            for (Integer key : this.tasks.keySet()) {
+                taskList.add(this.tasks.get(key));
+            }
+        } // else don't populate the list
+        return taskList;
     }
 
 }

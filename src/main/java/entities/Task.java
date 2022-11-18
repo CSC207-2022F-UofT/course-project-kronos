@@ -6,7 +6,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class Task{
-    public String name;
+    private String name;
     public boolean completeStatus;
     public boolean reminders;
     public boolean visibility;
@@ -94,5 +94,9 @@ public class Task{
      * @return returns the id (a private attribute) of the task.
      */
     public int getId(){return this.id;}
+
+    public String getName(){
+        return this.name;
+    }
 
 }

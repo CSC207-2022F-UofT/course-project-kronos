@@ -18,8 +18,12 @@ public class CreateTask {
     public void createTask(User userA,String name, boolean reminders, Calendar deadline){
         Task t = new Task(name, reminders, deadline);
         // Need User Class to be implemented.
-        //userA.taskCollection.addItem(t);
+        //userA.getTaskCollection.addItem(t);
     }
     // Database needs to be updated.
+
+    public void unfilledFailure(){}
+
+
 
 }
