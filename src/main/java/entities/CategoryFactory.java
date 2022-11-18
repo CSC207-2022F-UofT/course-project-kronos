@@ -24,10 +24,18 @@ public class CategoryFactory extends Factory<Category> {
         categories.remove(category.getId());
     }
 
-    public boolean contains(String name) {
+    /**
+     * Check if the factory contains the specified category name. Create a new factory if categories = null (factory
+     * hasn't been created yet)
+     * @param name - the name of the category that is to be checked.
+     * @return true if the name is in the factory hashmap, return false otherwise.
+     */
+    public boolean contains(String name, Boolean createNew) {
         if (categories == null) {
             // create a factory?
-            CategoryFactory factory = new CategoryFactory();
+            if (createNew) {
+                CategoryFactory factory = new CategoryFactory();
+            }
             return false;
         }else {
             return categories.values().contains(name); // categories hasn't been created so it's null - how to make it so
