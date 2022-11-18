@@ -14,23 +14,30 @@ public class User {
      *      - @param password (user password)
      *      - @param emailAddress(user's email address)
      *      - @param the user's first and last name(both String type)
-     *      - a HabitFactory named habitCollection(a data that has all the habits in it)
-     *      - a TaskFactory named taskCollection(a data that has all the to-do tasks in it)
-     *      - a CategoryFactory named categoryCollection(the categories to categorize the tasks)
-     *      - a Timer named tomato
+     *      - @param HabitFactory named habitCollection(a data that has all the habits in it)
+     *      - @param TaskFactory named taskCollection(a data that has all the to-do tasks in it)
+     *      - @param CategoryFactory named categoryCollection(the categories to categorize the tasks)
+     *      - @param Timer named tomato
      */
     private String emailAddress;
     private String password;
     private String firstName;
     private String lastName;
-    private final UserFactory userCollection;
+    private HabitFactory habitCollection;
+    private TaskFactory taskCollection;
+    private CategoryFactory categoryCollection;
+    private Timer tomato;
+
     public User(String email_id, String password, String first_name, String last_name,
-                UserFactory users){
+                HabitFactory habits, TaskFactory tasks, CategoryFactory categories, Timer timer){
         this.emailAddress = email_id;
         this.password = password;
         this.firstName = first_name;
         this.lastName = last_name;
-        this.userCollection = users;
+        this.habitCollection = habits;
+        this.taskCollection = tasks;
+        this.categoryCollection = categories;
+        this.tomato = timer;
     }
 
     // GETTER METHODS
@@ -55,11 +62,21 @@ public class User {
         return this.lastName;
     }
 
-
-    public HashMap<String, User> getUsers(){
-        // returns the user data
-        return this.userCollection.Users;
+    public HabitFactory getHabitCollection(){
+        // returns the users habits
+        return this.habitCollection;
     }
+
+    public TaskFactory getTaskCollection(){
+        // returns the users tasks
+        return this.taskCollection;
+    }
+
+    public Timer getTomato(){
+        // returns the users tasks
+        return this.tomato;
+    }
+
 
     // SETTER METHODS
 
