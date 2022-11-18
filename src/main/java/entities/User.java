@@ -1,6 +1,7 @@
 package entities;
 
-public class User {
+
+public class User implements {
     private String password;
     private String emailAddress;
     private String firstName;

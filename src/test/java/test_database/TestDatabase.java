@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 public class TestDatabase{
 
-    @Test
     public void Test1Database{
         Database users = new Database("test.json");
 
