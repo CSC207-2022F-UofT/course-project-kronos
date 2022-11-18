@@ -32,7 +32,7 @@ public class ToDoViewModel extends JFrame{
             // can size() be called on an empty hashmap or null?
             for (Task task: cat.getTasks().h_items){ // populating the categoryList object with the category's tasks
                 cat.getCategoryName().add(task.getName()); // ? need to make sure that Task entity has getters
-                cat.getCategoryName().add(new JToggleButton()); // should be a checkmark button
+                cat.getCategoryName().add(new JRadioButton());
             }
         }
         this.add(title, BorderLayout.NORTH);
