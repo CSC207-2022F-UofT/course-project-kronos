@@ -4,9 +4,9 @@ import entities.Category;
 import entities.CategoryFactory;
 import input_output.CreateCategoryInputBound;
 import input_output.EditCategoryInputBound;
-import task_use_cases.DeleteCategory;
-import task_use_cases.EditCategoryColour;
-import task_use_cases.EditCategoryVisibility;
+import use_cases.tasks.DeleteCategory;
+import use_cases.tasks.EditCategoryColour;
+import use_cases.tasks.EditCategoryVisibility;
 
 public class CategoryController {
 
