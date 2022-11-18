@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,11 +43,25 @@ public class CategoryFactory extends Factory<Category> {
             }
             return false;
         }else {
-            return categories.values().contains(name); // categories hasn't been created so it's null - how to make it so
+            return categories.values().contains(name); // categories hasn't been created, so it's null - how to make it so
             // the very first time the user create a category the constructor is called?
         }
 
 
+    }
+
+    /**
+     * Given the user, return an array list of that user's categories.
+     * @return this CategoryFactory object as an arraylist
+     */
+    public ArrayList<Category> convertToArray() {
+        ArrayList<Category> categoryList = new ArrayList<>();
+        if (this.categories.isEmpty() == false) {
+            for (Integer key : this.categories.keySet()) {
+                categoryList.add(this.categories.get(key));
+            }
+        } // else don't populate the list
+        return categoryList;
     }
 
 }
