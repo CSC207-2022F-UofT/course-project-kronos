@@ -1,14 +1,19 @@
-package adapters;
+package task_use_cases;
 
 import entities.Category; // breaks clean architecture
 import entities.User;
 
 import java.util.ArrayList;
 
-public class CreateCategoryPresenter {
+public class CategoryPresenter {
+
+    /**
+     * Isolate for the user's Category objects that are set to visible
+     * @param user - the user whose currently logged in
+     */
     private ArrayList<Category> visibleCategories = new ArrayList<>();
 
-    public CreateCategoryPresenter(User user) {
+    public CategoryPresenter(User user) {
         if (user.getCategoryCollection() != null) {
             // user has categories
             ArrayList<Category> categories = user.getCategoryCollection().categories;
