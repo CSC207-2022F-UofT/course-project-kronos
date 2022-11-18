@@ -1,7 +1,5 @@
 package entities;
 
-import java.lang.reflect.Array;
-
 public class Category {
 
     private static int numberOfCategories = 0;
@@ -11,6 +9,7 @@ public class Category {
     private TaskFactory tasks;
     private boolean visibility;
     private int id;
+    public static CategoryFactory categories = new CategoryFactory();
 
     public Category(String name, String colour){
         this.id = numberOfCategories;
@@ -19,6 +18,7 @@ public class Category {
         this.categoryName = name;
         this.colour = colour;
         this.visibility = true;
+        categories.addItem(this);
     }
 
 
@@ -46,6 +46,9 @@ public class Category {
     }
     public int getId() {
         return this.id;
+    }
+    public TaskFactory getTasks() {
+        return this.tasks;
     }
 
 

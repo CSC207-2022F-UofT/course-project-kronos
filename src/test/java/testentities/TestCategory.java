@@ -14,8 +14,7 @@ public class TestCategory {
         String colour = "RED";
         Category example = new Category(name, colour);
         // assertion
-        assertEquals(name, category.categoryName);
-        assertEquals(name, category.getCategoryName());
+        assertEquals(name, example.categoryName);
 
     }
     @Test(timeout = 500)

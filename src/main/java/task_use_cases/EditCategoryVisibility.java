@@ -5,7 +5,7 @@ import entities.Category;
 public class EditCategoryVisibility {
     // Acts like a filter.
 
-    public void editCategoryVisibility(Category category, Boolean state) {
+    public EditCategoryVisibility(Category category, Boolean state) {
         category.setVisibility(state);
     }
 }
