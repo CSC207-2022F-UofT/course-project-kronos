@@ -1,7 +1,7 @@
 package input_output;
 
 import entities.Category;
-import task_use_cases.EditCategoryName;
+import use_cases.tasks.EditCategoryName;
 
 public class EditCategoryInputBound {
 

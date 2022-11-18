@@ -1,7 +1,7 @@
 package input_output;
 
 import entities.Category;
-import task_use_cases.CreateCategory;
+import use_cases.tasks.CreateCategory;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,9 +2,6 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import entities.Category;
 
 public class CategoryFactory extends Factory<Category> {
 
@@ -43,7 +40,7 @@ public class CategoryFactory extends Factory<Category> {
             }
             return false;
         }else {
-            return categories.values().contains(name); // categories hasn't been created, so it's null - how to make it so
+            return categories.containsValue(name); // categories hasn't been created, so it's null - how to make it so
             // the very first time the user create a category the constructor is called?
         }
 

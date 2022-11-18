@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TitleBar extends JPanel {
-    private JButton newTask;
-    private JButton newCategory;
+    private JButton newTask = new JButton("New Task");
+    private JButton newCategory = new JButton("New Category");
 
     public TitleBar() {
         this.setPreferredSize(new Dimension(400, 80));
@@ -19,5 +19,7 @@ public class TitleBar extends JPanel {
         // add buttons
         this.add(newTask);
         this.add(newCategory);
+
+        newCategory.addActionListener(e -> CreateCategory.createCategory());
     }
 }

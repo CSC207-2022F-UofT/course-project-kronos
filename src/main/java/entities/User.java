@@ -28,6 +28,7 @@ public class User {
     private CategoryFactory categoryCollection;
     private Timer tomato;
 
+
     public User(String email_id, String password, String first_name, String last_name,
                 HabitFactory habits, TaskFactory tasks, CategoryFactory categories, Timer timer){
         this.emailAddress = email_id;

@@ -1,7 +1,7 @@
 package use_cases.tasks;
 
 import entities.Category; // breaks clean architecture
-import entities.User;
+import entities.User; // breaks clean architecture
 
 import java.util.ArrayList;
 
@@ -12,18 +12,30 @@ public class CategoryPresenter {
      * @param user - the user whose currently logged in
      */
     private ArrayList<Category> visibleCategories = new ArrayList<>();
+    private ArrayList<Category> allCategories = new ArrayList<>();
 
     public CategoryPresenter(User user) {
         if (user.getCategoryCollection() != null) {
             // user has categories
-            ArrayList<Category> categories = user.getCategoryCollection().categories;
-            for (Integer key: categories.keySet()) {
-                if (categories.get(key).getVisibility() == true) {
-                    visibleCategories.add(categories.get(key));
+            ArrayList<Category> categories = user.getCategoryCollection().convertToArray();
+            for (Category cat: categories) {
+                allCategories.add(cat);
+                if (cat.getVisibility() == true) {
+                    visibleCategories.add(cat);
                 }
             }
         }
 
+    }
+
+    // getters
+
+    public ArrayList<Category> getAllCategories() {
+        return this.allCategories;
+    }
+
+    public ArrayList<Category> getVisibleCategories() {
+        return this.visibleCategories;
     }
 
     // need to be able to reference the user's categories
