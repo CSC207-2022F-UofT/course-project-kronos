@@ -27,7 +27,7 @@ public class TestTask {
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
         Task task = new Task("example", FALSE, deadline);
 
-        assertEquals("The name of the task should be \"example\"!", "example", task.name);
+        assertEquals("The name of the task should be \"example\"!", "example", task.getName());
         assertFalse("The reminder status of the task should be \"FALSE\"!", task.reminders);
         assertTrue("The visibility of the task should be \"TRUE\"!", task.visibility);
         assertEquals("The deadline of the task should be \"FFFFFF\"!", deadline, task.deadline);
@@ -42,7 +42,7 @@ public class TestTask {
         Task task = new Task("example", FALSE, deadline);
         task.setName("testName");
 
-        assertEquals("The name of the task should be set to \"testName\"!", "testName", task.name);
+        assertEquals("The name of the task should be set to \"testName\"!", "testName", task.getName());
     }
 
     @Test(timeout = 500)
@@ -52,7 +52,7 @@ public class TestTask {
         Task task = new Task("example", FALSE, deadline);
         task.setName("");
 
-        assertEquals("The name of the task should be set to \" \"!", "", task.name);
+        assertEquals("The name of the task should be set to \" \"!", "", task.getName());
     }
 
     @Test(timeout = 500)

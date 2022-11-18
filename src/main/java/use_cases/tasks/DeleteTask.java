@@ -14,8 +14,8 @@ public class DeleteTask {
      */
     public void deleteTask(User userA, Task task){
         // Need User Class to be implemented.
-        //userA.taskCollection.removeItem(task);
-        //userA.categoryCollection.removeItem(task);
+        //userA.getTaskCollection.removeItem(task);
+        //userA.getCategoryCollection.removeItem(task);
     }
     // Database needs to be updated.
 

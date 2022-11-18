@@ -1,6 +1,7 @@
 package use_cases.tasks;
 
 import entities.Task;
+import entities.User;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -11,19 +12,22 @@ public class EditTask {
 
     /**
      * Edit the name of the task.
+     * @param userA - The target user.
      * @param t - Target task.
      * @param name - The name of the task.
      */
-    public void editName(Task t, String name){
+    public void editName(User userA, Task t, String name){
+        //userA.getTaskCollection.getItem().setName(name);
         t.setName(name);
     }
 
     /**
      * Edit the completion status of the task. If the task is currently completed, then it will be marked as incomplete.
      * If not, then the task will be marked as completed.
+     *
      * @param t - Target task.
      */
-    public void editStatus(Task t){
+    public void editStatus(User userA, Task t){
         if (t.completeStatus == TRUE){
             t.markAsIncomplete();
         }else {t.markAsComplete();}
@@ -49,6 +53,7 @@ public class EditTask {
     }
 
     public void editCategory(Task t, String category){
+
 
     }
 
