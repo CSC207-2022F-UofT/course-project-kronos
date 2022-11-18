@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class HabitsProfilePage {
 
+    // Need user object
+
     public static void HabitProfile () {
         //initialize button, panel, label, and text field
         JFrame frame = new JFrame("HABIT PROFILE PAGE");
@@ -22,7 +24,7 @@ public class HabitsProfilePage {
         l1.setLayout(new BorderLayout());
 
         JButton b1 = new JButton("Create"); //set label to button
-        b1.addActionListener(e -> ui.HabitEnter.enterHabit() );
+        b1.addActionListener(e -> HabitCreation.addHabit() );
 
 
         JPanel p2 = new JPanel();

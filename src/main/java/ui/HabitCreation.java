@@ -1,22 +1,12 @@
 package ui;
-import entities.Habit;
-import entities.HabitFactory;
 import javax.swing.*;
 import java.awt.*;
+import controller.CreateHabitController;
 
 
-public class HabitEnter {
+public class HabitCreation {
 
-    public static void setAll(String s, String t, String b){
-
-        boolean r = b.equals("ON");
-
-        Habit newObject = new Habit(s, t, r);
-        HabitFactory h = new HabitFactory();
-        h.addItem(newObject);
-    }
-
-    public static void enterHabit () {
+    public static void addHabit () {
         //initialize button, panel, label, and text field
         JFrame frame = new JFrame("HABIT CREATION PAGE");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +55,7 @@ public class HabitEnter {
 
         //create submit button
         JButton b1 = new JButton("SUBMIT"); //set label to button
-        b1.addActionListener(e -> setAll(s, t, b));
+        b1.addActionListener(e -> CreateHabitController.HabitCreation(s,t,b));
 
         frame.add(major);
         major.add(p);
@@ -91,7 +81,7 @@ public class HabitEnter {
     public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(HabitEnter::enterHabit);
+        javax.swing.SwingUtilities.invokeLater(HabitCreation::addHabit);
     }
 }
 

@@ -1,4 +1,5 @@
 package ui;
+import controller.EditHabitController;
 import entities.HabitFactory;
 import entities.Habit;
 import javax.swing.*;
@@ -6,27 +7,6 @@ import java.awt.*;
 
 public class EditHabit {
 
-    public static void editAll(String s, String a, String t, String b){
-
-        boolean r = b.equals("ON");
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        Habit h2 = new Habit("Read a book", "daily", true);
-        Habit h3 = new Habit("Drink Water", "daily", false);
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-        hFactory.addItem(h2);
-        hFactory.addItem(h3);
-
-        Habit z =  hFactory.h_items.get(s);
-        z.setName(a);
-        z.setType(t);
-        z.setReminder(r);
-        hFactory.updateKey(s, a);
-
-
-
-
-    }
     public static void editHabit () {
         //initialize button, panel, label, and text field
         JFrame frame = new JFrame("HABIT EDIT PAGE");
@@ -105,7 +85,7 @@ public class EditHabit {
 
         //create submit button
         JButton b1 = new JButton("EDIT"); //set label to button
-        b1.addActionListener(e -> editAll(s, a, t, b));
+        b1.addActionListener(e -> EditHabitController.HabitEdit(hFactory, s, a, t, b));
 
         frame.add(major);
         major.add(p);
