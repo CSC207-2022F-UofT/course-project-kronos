@@ -1,11 +1,12 @@
 package entities;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-public class UserFactory extends Factory{
+public class UserFactory extends Factory implements Serializable {
     public HashMap<String,User> Users;
 
 

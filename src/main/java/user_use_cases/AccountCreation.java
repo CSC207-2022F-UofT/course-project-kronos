@@ -1,10 +1,10 @@
 package user_use_cases;
-import entities.User;
-import entities.UserFactory;
+import entities.*;
 
 public class AccountCreation {
     public void CreateAccount(String email_id, String password, String first_name, String last_name,
-                                UserFactory users){
+                              UserFactory users, HabitFactory habits, TaskFactory tasks, CategoryFactory categories,
+                              Timer timer){
 
         // enter the user details that is the email address, firstname lastname and all
         // check whether the email address is in the user collection or not
@@ -16,8 +16,7 @@ public class AccountCreation {
         }else{
             StrengthPassword strength = new StrengthPassword();
             if(strength.passwordStrength(password) && first_name != null && last_name != null) {
-                User user = new User(email_id, password, first_name, last_name, users);
-                users.Users.put(email_id, user);
+                User user = new User(email_id, password, first_name, last_name, habits, tasks, categories, timer);
 
                 System.out.println("Account Successfully Created");
             }
