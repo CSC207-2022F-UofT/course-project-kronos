@@ -14,6 +14,10 @@ public class CategoryFactory extends Factory<Category> {
         super();
     }
 
+    /**
+     * Add item to the hashmap
+     * @param category - the Category object to be added
+     */
     @Override
     public void addItem(Category category) {
         categories.put(category.getId(), category); // categories = null, throws exception, but then how do I add pairs?
@@ -22,7 +26,7 @@ public class CategoryFactory extends Factory<Category> {
     @Override
     public void removeItem(Category category) {
         categories.remove(category.getId());
-    }
+    } // this should only be called when the category already exists in factory since user can only delete from dropdown
 
     /**
      * Check if the factory contains the specified category name. Create a new factory if categories = null (factory
@@ -41,7 +45,6 @@ public class CategoryFactory extends Factory<Category> {
             return categories.values().contains(name); // categories hasn't been created so it's null - how to make it so
             // the very first time the user create a category the constructor is called?
         }
-
 
 
     }

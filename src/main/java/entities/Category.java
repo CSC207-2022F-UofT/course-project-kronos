@@ -11,6 +11,12 @@ public class Category {
     private int id;
     public static CategoryFactory categories = new CategoryFactory();
 
+    /**
+     * The constructor of Category.
+     * @param name - the name of the category
+     * @param colour the colour of the category
+     */
+
     public Category(String name, String colour){
         this.id = numberOfCategories;
         numberOfCategories += 1;
@@ -22,8 +28,8 @@ public class Category {
     }
 
 
-    /*
-    setters and getters
+    /**
+     * setters and getters
      */
     public void setCategoryName(String name) {
         this.categoryName = name;
@@ -51,7 +57,9 @@ public class Category {
         return this.tasks;
     }
 
-
+    /**
+     * add a task to the category's Task Factory
+     */
     public void addTask(Task task) {
         tasks.addItem(task);
     }

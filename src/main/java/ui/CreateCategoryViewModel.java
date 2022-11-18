@@ -1,11 +1,9 @@
 package ui;
 
-import adapters.CreateCategoryPresenter;
 import entities.CategoryFactory;
 import input_output.CreateCategoryInputBound;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 // import controller?

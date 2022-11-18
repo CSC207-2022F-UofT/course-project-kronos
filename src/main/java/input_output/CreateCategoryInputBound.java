@@ -12,12 +12,19 @@ public class CreateCategoryInputBound {
     private Boolean successful;
 
 
+    /**
+     * Check whether the input fields are correct.
+     * @param name - The name of the category
+     * @param colour - The colour of the category
+     * successful is true if createCategory returns true
+     */
     public CreateCategoryInputBound(String name, String colour) {
         if (Category.categories.contains(name, true) == false && name != "") {
             this.successful = CreateCategory.createCategory(name, colour);
         }
     }
 
+    // getters
     public Boolean getSuccessful() {
         return this.successful;
     }

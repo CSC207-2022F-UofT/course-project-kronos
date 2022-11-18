@@ -1,16 +1,12 @@
 package ui;
 
-import adapters.CreateCategoryPresenter;
 import entities.Category;
 import entities.CategoryFactory;
 import entities.Task;
 import entities.User;
-import input_output.CreateCategoryInputBound;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ToDoViewModel extends JFrame{

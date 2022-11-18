@@ -5,6 +5,13 @@ import task_use_cases.EditCategoryName;
 
 public class EditCategoryInputBound {
 
+    /**
+     * Checks whether the edited category name is valid.
+     * @param category - the category that is to be changed
+     * @param name - the new name of the category
+     * @return true if the category's name has been successfully updated, return false if it has not updated or if the
+     * input is not valid
+     */
     public static Boolean editNameInputBound(Category category, String name) {
         if (Category.categories.contains(name, true) == false && name != "") {
             return EditCategoryName.editCategoryName(category, name);
