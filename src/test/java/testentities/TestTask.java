@@ -25,10 +25,9 @@ public class TestTask {
     public void testTaskConstructor() {
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
 
         assertEquals("The name of the task should be \"example\"!", "example", task.getName());
-        assertFalse("The reminder status of the task should be \"FALSE\"!", task.reminders);
         assertTrue("The visibility of the task should be \"TRUE\"!", task.visibility);
         assertEquals("The deadline of the task should be \"FFFFFF\"!", deadline, task.deadline);
         assertNull("The task should not be assigned to any category", task.taskCategory);
@@ -39,7 +38,7 @@ public class TestTask {
     public void testSetNameRename() {
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
         task.setName("testName");
 
         assertEquals("The name of the task should be set to \"testName\"!", "testName", task.getName());
@@ -49,7 +48,7 @@ public class TestTask {
         public void testSetNameEmpty() {
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
         task.setName("");
 
         assertEquals("The name of the task should be set to \" \"!", "", task.getName());
@@ -59,7 +58,7 @@ public class TestTask {
     public void testMarkAsComplete() {
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
         task.markAsComplete();
 
         assertTrue("The status of the task should be marked as complete (TRUE).", task.completeStatus);
@@ -69,47 +68,29 @@ public class TestTask {
     public void testMarkAsIncomplete() {
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
         task.markAsIncomplete();
 
         assertFalse("The status of the task should be marked as incomplete (FALSE).", task.completeStatus);
     }
 
     @Test(timeout = 500)
-    public void testSetReminderOn(){
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
-        task.setReminders(TRUE);
-        //Test set reminders on.
-        assertTrue("The reminder should be turned on (TRUE)", task.reminders);
-    }
-
-    @Test(timeout = 500)
-    public void testSetReminderOff(){
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
-        task.setReminders(FALSE);
-        //Test set reminders off.
-        assertFalse("The reminder should be turned off (FALSE)", task.reminders);
-    }
-
-    @Test(timeout = 500)
     public void testSetCategory() {
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
         Category csc207 = new Category("csc207", "000000");
-        task.setTaskCategory(csc207);
-        assertEquals("The category of the task should be set to ...", csc207, task.taskCategory);
+        task.setTaskCategory("csc207");
+        csc207.addTask(task);
+        assertEquals("The category of the task should be set to ...",
+                csc207.getCategoryName(), task.taskCategory);
     }
 
     @Test(timeout = 500)
     public void testSetVisible(){
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
         task.setVisibility(TRUE);
 
         assertTrue("The visibility of the task is set to visible (TRUE)", task.visibility);
@@ -119,7 +100,7 @@ public class TestTask {
     public void testSetInvisible(){
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
         task.setVisibility(FALSE);
 
         assertFalse("The visibility of the task is set to invisible (FALSE)", task.visibility);
@@ -129,7 +110,7 @@ public class TestTask {
     public void testSetDeadline() {
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", FALSE, deadline);
+        Task task = new Task("example", deadline);
         Calendar newDeadline = Calendar.getInstance();
         newDeadline.set(2022, Calendar.DECEMBER, 22, 12, 0);
         task.setDeadline(newDeadline);
