@@ -14,9 +14,9 @@ public class EditHabitInput {
 
 
         if(s.equals("") && t.equals("")){
-           EditHabit.editName(h , hF, a);
-           EditHabit.editType(h, t);
-           EditHabit.editReminder(h, r);
+           //EditHabit.editName(h , hF, a);
+           //EditHabit.editType(h, t);
+           //EditHabit.editReminder(h, r);
         }
 
     }
