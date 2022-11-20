@@ -15,8 +15,6 @@ public class CreateHabit {
         Habit h = new Habit(title, t, v);
 
         u.getHabitCollection().addItem(h);
-
-
     }
 
 }
