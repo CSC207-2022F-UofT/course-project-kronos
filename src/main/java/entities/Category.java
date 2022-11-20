@@ -65,4 +65,8 @@ public class Category implements Serializable {
     public void addTask(Task task) {
         tasks.addItem(task);
     }
+
+    public void removeTask(Task task) {
+        tasks.removeItem(task);
+    }
 }
