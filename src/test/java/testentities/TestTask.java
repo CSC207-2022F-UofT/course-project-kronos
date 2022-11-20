@@ -74,17 +74,17 @@ public class TestTask {
         assertFalse("The status of the task should be marked as incomplete (FALSE).", task.completeStatus);
     }
 
-    @Test(timeout = 500)
-    public void testSetCategory() {
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
-        Task task = new Task("example", deadline);
-        Category csc207 = new Category("csc207", "000000");
-        task.setTaskCategory("csc207");
-        csc207.addTask(task);
-        assertEquals("The category of the task should be set to ...",
-                csc207.getCategoryName(), task.getTaskCategory());
-    }
+//    @Test(timeout = 500)
+//    public void testSetCategory() {
+//        Calendar deadline = Calendar.getInstance();
+//        deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
+//        Task task = new Task("example", deadline);
+//        Category csc207 = new Category("csc207", "000000");
+//        task.setTaskCategory("csc207");
+//        csc207.addTask(task);
+//        assertEquals("The category of the task should be set to ...",
+//                csc207.getCategoryName(), task.getTaskCategory());
+//    }
 
     @Test(timeout = 500)
     public void testSetVisible(){
