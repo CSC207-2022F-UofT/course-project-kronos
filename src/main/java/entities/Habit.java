@@ -1,10 +1,10 @@
 package entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-public class Habit {
-
+public class Habit implements Serializable {
 
     private String name;
     private String type;
@@ -36,8 +36,6 @@ public class Habit {
 
 
     public int getFrequency() { return this.frequency;}
-
-    public String getFrequencyString() { return Integer.toString(this.getFrequency());}
 
     public HashMap<String, Integer> getFrequencyMap() { return this.frequencyMap;}
 

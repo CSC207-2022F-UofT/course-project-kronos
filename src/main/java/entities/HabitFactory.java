@@ -1,14 +1,15 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class HabitFactory extends Factory<Habit>{
+public class HabitFactory extends Factory<Habit> implements Serializable {
 
     public HashMap<String, Habit> h_items;
 
     public HabitFactory(){
         super();
-        this.h_items = new HashMap<>();
+        this.h_items = new HashMap<String, Habit>();
     }
 
     @Override
@@ -28,7 +29,5 @@ public class HabitFactory extends Factory<Habit>{
         addItem(value);
 
     }
-
-    public HashMap<String, Habit> getCollection(){return h_items;}
 }
 
