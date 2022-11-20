@@ -4,26 +4,30 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import entities.CategoryFactory;
+import ui.CreateCategory;
+import user_use_cases.UserDataAccessInterface;
+
 import entities.User;
 import entities.UserFactory;
 
 public class LoginMainPage extends JFrame implements ActionListener {
-    JFrame mainFrame;
+    static JFrame mainFrame;
     UserFactory users;
 
-    Button loginbutton;
-    Button createaccountbutton;
+    static Button loginbutton;
+    static Button createaccountbutton;
 
-    Label enteremail;
-    Label enterpin;
+    static Label enteremail;
+    static Label enterpin;
 
-    TextField emailfield;
-    TextField passwordfield;
+    static TextField emailfield;
+    static TextField passwordfield;
 
-    Panel panel;
+    static Panel panel;
 
 
-    public void createLoginMainPage(){
+    public static void createLoginMainPage(){
 
         // create a new mainframe( type JFrame )
         mainFrame = new JFrame();
@@ -59,11 +63,11 @@ public class LoginMainPage extends JFrame implements ActionListener {
         // creating a new button
         loginbutton = new Button();
         loginbutton.createButton(panel.jPanel, "Login",140, 100, 80, 25);
-        loginbutton.button.addActionListener(this);
+
 
         createaccountbutton = new Button();
         createaccountbutton.createButton(panel.jPanel, "Create Account",120, 130, 120, 25);
-        createaccountbutton.button.addActionListener(this);
+
 
         mainFrame.setVisible(true);
 
@@ -77,24 +81,19 @@ public class LoginMainPage extends JFrame implements ActionListener {
             String email = emailfield.textField.getText();
             String password = String.valueOf(passwordfield.passwordField);
 
+            mainFrame.dispose();
+            MenuPage welcome = new MenuPage();
 
             // case when it is able to log in
-            for(String user: users.getkeys()){
-                User value_ = users.Users.get(user);
 
-                if (email.equals(user) && value_.getPassword().equals(password)){
-                    System.out.println("login successful!");
-                    // have to shift from this to the login page
-                } else{
-                    emailfield.textField.setText("");
-                    passwordfield.textField.setText("");
-
-
-                    System.out.println("login not successful!");
-                }
             }
-
         }
+
+
+
+    public static void main(String[] args) {
+        LoginMainPage login = new LoginMainPage();
+        createLoginMainPage();
 
     }
 

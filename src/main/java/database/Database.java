@@ -49,7 +49,10 @@ public class Database implements UserDataAccessInterface {
 
     @Override
     public User LoginUser(String emailAddress, String password) {
-        if (emailAddress.equals(collections.get(emailAddress).getEmailAddress())){
+        // User Login
+        if (emailAddress.equals(collections.get(emailAddress).getEmailAddress()) &&
+                password.equals(collections.get(emailAddress).getPassword())){
+            System.out.println("login successful");
             return collections.get(emailAddress);
         }
         return null;
@@ -58,7 +61,6 @@ public class Database implements UserDataAccessInterface {
     @Override
     public void UpdateUser(User user) {
         this.collections.replace(user.getEmailAddress(), user);
-
     }
 
     @Override
