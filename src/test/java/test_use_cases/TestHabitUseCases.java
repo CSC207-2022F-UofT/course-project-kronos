@@ -8,6 +8,7 @@ import java.util.Set;
 import static Habit_use_case.CreateHabit.createHabit;
 import static Habit_use_case.DeleteHabit.deleteHabit;
 import static Habit_use_case.EditHabit.*;
+import static Habit_use_case.TrackHabit.increaseHabitFrequency;
 import static org.junit.Assert.*;
 
 public class TestHabitUseCases {
@@ -103,6 +104,19 @@ public class TestHabitUseCases {
         editReminder(h1,newState);
 
         assertFalse("The Reminder state was changed", h1.getReminder());
+    }
+
+    @Test(timeout = 500)
+    public void testTrackHabit() {
+
+        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        HabitFactory hFactory = new HabitFactory();
+        hFactory.addItem(h1);
+        increaseHabitFrequency(h1);
+        increaseHabitFrequency(h1);
+        increaseHabitFrequency(h1);
+        increaseHabitFrequency(h1);
+        assertEquals("The frequency was marked", h1.getFrequency(), 4);
     }
 
 }
