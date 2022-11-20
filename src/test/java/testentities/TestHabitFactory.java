@@ -1,15 +1,12 @@
 package testentities;
-
 import entities.Habit;
 import entities.HabitFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.ArrayList;
 import java.util.HashMap;
-
 import static org.junit.Assert.*;
-
 
 public class TestHabitFactory {
 
@@ -74,5 +71,34 @@ public class TestHabitFactory {
         assertTrue("The Key 'Run 2.5 Kms' exists in the Factory", hFactory.h_items.containsKey("Run 2.5 Kms"));
     }
 
+    @Test(timeout = 500)
+    public void testGetCollection() {
+        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h2 = new Habit("Read a book", "daily", true);
+        Habit h3 = new Habit("Drink Water", "daily", false);
+        HabitFactory hFactory = new HabitFactory();
+        hFactory.addItem(h1);
+        hFactory.addItem(h2);
+        hFactory.addItem(h3);
 
+        assertEquals("The correct collection is returned", hFactory.h_items, hFactory.getCollection());
+    }
+
+    @Test(timeout = 500)
+    public void testConvertToArray() {
+        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h2 = new Habit("Read a book", "daily", true);
+        Habit h3 = new Habit("Drink Water", "daily", false);
+        HabitFactory hFactory = new HabitFactory();
+        hFactory.addItem(h1);
+        hFactory.addItem(h2);
+        hFactory.addItem(h3);
+
+        ArrayList<Habit> habits = hFactory.convertToArray();
+
+        assertTrue("The correct array is returned", habits.contains(h1));
+        assertTrue("The correct array is returned", habits.contains(h2));
+        assertTrue("The correct array is returned", habits.contains(h3));
+
+    }
 }

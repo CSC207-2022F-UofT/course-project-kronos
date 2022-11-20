@@ -1,6 +1,5 @@
 package ui;
-import entities.HabitFactory;
-import entities.Habit;
+import controller.TrackHabitController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Component;
@@ -8,15 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
+import static ui.TestFile.hFactory;
+
 public class HabitPage {
     public static void addHabitsToPane(JPanel pane) {
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        Habit h2 = new Habit("Read a book", "daily", true);
-        Habit h3 = new Habit("Drink Water", "daily", false);
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-        hFactory.addItem(h2);
-        hFactory.addItem(h3);
 
         for(String i :hFactory.h_items.keySet()){
 
@@ -26,7 +20,7 @@ public class HabitPage {
             l.setLayout(new BorderLayout());
             JButton button1 = new JButton("+");
             button1.setAlignmentX(Component.RIGHT_ALIGNMENT);
-            button1.addActionListener(e -> hFactory.h_items.get(i).markFrequency());
+            button1.addActionListener(e -> TrackHabitController.TrackHabitC(i));
             button1.setPreferredSize(new Dimension(50, 30));
             l.add( button1, BorderLayout.AFTER_LINE_ENDS);
             JButton button2 = new JButton("Frequency");

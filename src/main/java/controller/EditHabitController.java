@@ -10,8 +10,6 @@ public class EditHabitController {
 
         boolean r = b.equals("ON");
 
-        // need user
-
         EditHabitInput.HabitEditInput(h, s, a, t, r);
 
     }
