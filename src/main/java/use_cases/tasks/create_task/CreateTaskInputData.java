@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 /**
  *  This class is a container for the input data related to creation of task, it is created by the controller and sent
- *  to the interactor/use case
+ *  to the interactor/use case.
  */
 public class CreateTaskInputData{
     private final String name;

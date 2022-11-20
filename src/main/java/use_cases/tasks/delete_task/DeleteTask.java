@@ -16,7 +16,7 @@ public class DeleteTask implements DeleteTaskInputBoundary{
 
     /**
      * Delete an existing task based on input data.
-     * @param inputData the input data which include a task object that will be deleted.
+     * @param inputData the input data which contain a task object that will be deleted.
      */
     @Override
     public void delete(DeleteTaskInputData inputData) {

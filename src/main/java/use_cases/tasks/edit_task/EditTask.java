@@ -3,8 +3,7 @@ package use_cases.tasks.edit_task;
 import entities.Task;
 
 /**
- * Edit properties of a task. Properties include: name, completion status, reminder setting, visibility, category,
- * and deadline.
+ * Edit properties of a task. Properties include: name, category,and deadline.
  */
 public class EditTask implements EditTaskInputBoundary {
     private final EditTaskOutputBoundary outputBoundary;
@@ -13,6 +12,11 @@ public class EditTask implements EditTaskInputBoundary {
         this.outputBoundary = outputBoundary;
     }
 
+    /**
+     * Edit the properties of a task. The edible properties are name, category, and deadline for a task object.
+     * @param inputData - the input data which contain a task, an input name, an input category name, and an input
+     *                  deadline.
+     */
     @Override
     public void edit(EditTaskInputData inputData) {
         // If the input name is empty or containing only white spaces
