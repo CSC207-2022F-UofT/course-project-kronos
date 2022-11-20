@@ -18,27 +18,20 @@ public class EditTask implements EditTaskInputBoundary {
      *                  deadline.
      */
     @Override
-    public void edit(EditTaskInputData inputData) {
+    public EditTaskOutputData edit(EditTaskInputData inputData) {
         // If the input name is empty or containing only white spaces
         if (inputData.getInputName().isBlank() || inputData.getInputDeadline().isLenient()){
             EditTaskOutputData outputData = new EditTaskOutputData("Changes not saved. " +
                     "Please fill all required fields.");
-            // How can we know which failView should be prepared? To-do or Calendar?
-            outputBoundary.prepareTodoFailView(outputData);
-            outputBoundary.prepareCalendarFailView(outputData);
-            // The above 2 lines will be refactored by extracting method and pulling up field after the above question
-            // is solved.
+            return outputBoundary.prepareFailView(outputData);
         }
         Task task = inputData.getTask();
         task.setName(inputData.getInputName());
         task.setDeadline(inputData.getInputDeadline());
         task.setTaskCategory(inputData.getInputCategory());
         EditTaskOutputData outputData = new EditTaskOutputData("Changes have been saved.", task);
-        // How can we know which successView should be prepared? To-do or Calendar?
-        outputBoundary.prepareCalendarSuccessView(outputData);
-        outputBoundary.prepareTodoSuccessView(outputData);
-        // The above 2 lines will be refactored by extracting method and pulling up field after the above question is
-        // solved.
+         return outputBoundary.prepareSuccessView(outputData);
+
     }
 
     public EditTaskOutputBoundary getOutputBoundary() {
