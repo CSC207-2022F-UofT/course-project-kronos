@@ -1,8 +1,9 @@
 package entities;
 
+import java.io.Serializable;
 import java.sql.Time;
 
-public class Timer {
+public class Timer implements Serializable {
 
 
     private Time restTime;
