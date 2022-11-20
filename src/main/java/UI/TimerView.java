@@ -1,19 +1,20 @@
 package UI;
 
 import entities.Timertomato;
-import net.miginfocom.swing.*;
-// need to add classpath in Intellj of the jar file.
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-//@SuppressWarnings("serial")
+@SuppressWarnings("serial")
 public class TimerView extends JFrame
 {
     private JPanel topPanel;
-
+    String number1;
+    String number2;
     // Custom Components
     // RGB Codes for skyBlue. Used as Background.
     private final Color skyBlue = new Color(0, 153, 255);
@@ -33,7 +34,7 @@ public class TimerView extends JFrame
     // RGB code for indiaGreen.. Used as background when the timer is paused.
     private final Color indiaGreen = new Color(19, 136, 8);
 
-    private static final int ORIGINAL_COUNTDOWN_MINUTES = 25;
+    private static  int ORIGINAL_COUNTDOWN_MINUTES = 25;
     private static final int ORIGINAL_COUNTDOWN_SECONDS = 0;
     private static final int ORIGINAL_SHORTBREAK_MINUTES = 5;
     private static final int ORIGINAL_SHORTBREAK_SECONDS = 0;
@@ -136,16 +137,16 @@ public class TimerView extends JFrame
 
         startIcon = new ImageIcon("src/Play.png");
         pauseIcon = new ImageIcon("src/Pause.png");
-        startPauseBT = new JButton(pauseIcon);
+        startPauseBT = new JButton("Start");
         startPauseBT.setContentAreaFilled(false);
         startPauseBT.setBackground(indiaGreen);
-        startPauseBT.setActionCommand("Pause");
+        startPauseBT.setActionCommand("Begin");
         startPauseBT.setForeground(Color.white);
         startPauseBT.setFont(formBTStyles);
         timerPane.add(startPauseBT, "gaptop 10, alignx center, split 3, spanx, pushx");
 
         skipIcon = new ImageIcon("src/Skip.png");
-        continueBT = new JButton(skipIcon);
+        continueBT = new JButton("跳过");
         continueBT.setBackground(cardinalRed);
         continueBT.setContentAreaFilled(false);
         continueBT.setForeground(Color.white);
@@ -154,19 +155,42 @@ public class TimerView extends JFrame
         timerPane.add(continueBT, "alignx center, hidemode 0, gapleft 30, gapright 30");
 
         stopIcon = new ImageIcon("src/Stop.png");
-        stopBT = new JButton(stopIcon);
+        stopBT = new JButton("Stop");
         stopBT.setContentAreaFilled(false);
         stopBT.setBackground(cardinalRed);
+        stopBT.setActionCommand("Stop");
         stopBT.setForeground(Color.white);
         stopBT.setFont(formBTStyles);
-        timerPane.add(stopBT, "alignx center, wrap");
+        timerPane.add(stopBT, "gaptop 10, alignx center, split 3, spanx, pushx");
 
         delayRemainingLabel = new JLabel("Resumes in " + TOTAL_DELAY_TIME + " seconds");
         delayRemainingLabel.setForeground(Color.white);
         delayRemainingLabel.setVisible(false);
         delayRemainingLabel.setFont(delayLabelStyles);
         timerPane.add(delayRemainingLabel, "alignx center");
+        JTextField text3 = new JTextField(100);
+        text3.setPreferredSize(new Dimension(1,50));
+        timerPane.add(text3);
+        JTextField text4 = new JTextField(100);
+        text4.setPreferredSize(new Dimension(1,50));
+        timerPane.add(text4);
+        JButton button1 = new JButton("Setting");
+        button1.setFont(new Font("", Font.PLAIN, 50));
+        timerPane.add(button1);
+        button1.addActionListener(new ActionListener(){
 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // set time
+                number1 = text3.getText();
+                number2 = text4.getText();
+                int i1 = Integer.parseInt(number1);
+                int i2 = Integer.parseInt(number2);
+                minuteLabel.setText(String.format("%02d", i1));
+                secondLabel.setText(String.format("%02d", i2));
+            }
+
+        });
         startPauseBT.addActionListener((ActionEvent event) -> {
             switch (event.getActionCommand()) {
                 case "Pause":
@@ -294,7 +318,7 @@ public class TimerView extends JFrame
         secondsRemaining = ORIGINAL_SHORTBREAK_SECONDS;
         stopBT.setVisible(false);
         startPauseBT.setVisible(false);
-        continueBT.setVisible(true);
+        continueBT.setVisible(false);
         continueBT.setActionCommand("SkipShortTimer");
         countDown.stop();
 
@@ -399,6 +423,7 @@ public class TimerView extends JFrame
                 startPauseBT.requestFocusInWindow();
             }
         });
+
 
         delayTimer.start();
     }
