@@ -70,13 +70,5 @@ public class Database implements UserDataAccessInterface {
     public void AddUser(User user) {
         this.collections.put(user.getEmailAddress(), user);
     }
-
-    public void UpdateDatabase() {
-        WriteData(this.collections, this.filePath);
-    }
-
-    private HashMap<String, User> getCollections(){
-        return this.collections;
-    }
 }
 
