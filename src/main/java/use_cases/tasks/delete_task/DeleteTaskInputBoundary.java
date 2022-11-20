@@ -5,5 +5,5 @@ package use_cases.tasks.delete_task;
  */
 
 public interface DeleteTaskInputBoundary {
-    void delete(DeleteTaskInputData inputData);
+    DeleteTaskOutputData delete(DeleteTaskInputData inputData);
 }

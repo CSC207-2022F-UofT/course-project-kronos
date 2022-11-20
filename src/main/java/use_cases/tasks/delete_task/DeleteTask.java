@@ -19,14 +19,13 @@ public class DeleteTask implements DeleteTaskInputBoundary{
      * @param inputData the input data which contain a task object that will be deleted.
      */
     @Override
-    public void delete(DeleteTaskInputData inputData) {
+    public DeleteTaskOutputData delete(DeleteTaskInputData inputData) {
         String name = inputData.getTask().getName();
         taskFactory.removeItem(inputData.getTask());
         DeleteTaskOutputData outputData = new DeleteTaskOutputData(
-                "Task \"" + name + "\" is successfully deleted.", name);
+                "Task \"" + name + "\" is successfully deleted.", inputData.getTask());
         // How can we know which successView should be prepared? To-do or Calendar?
-        outputBoundary.prepareCalendarSuccessView(outputData);
-        outputBoundary.prepareTodoSuccessView(outputData);
+        return outputBoundary.prepareSuccessView(outputData);
         // The above 2 lines will be refactored by extracting method and pulling up field after the above question is
         // solved.
     }
