@@ -1,16 +1,20 @@
 package Habit_use_case;
 import entities.Habit;
 import entities.User;
-import ui.TestFile;
-
 
 public class CreateHabit {
 
-    //input bound will have to check that the input is valid (colour should have static FINAL options, no repeat names)
-    public static void createHabit(User userA, String title, String t, boolean v) {
+    /**
+     * The constructor of Order.
+     * @param title - the name of the habit that is to be created
+     * @param t -  the type of the habit
+     * @param v -  State of the reminder of the habit.
+     * @param u -  the user of the habit
+     */
+    public static void createHabit(User u, String title, String t, boolean v) {
         Habit h = new Habit(title, t, v);
 
-        userA.getHabitCollection().addItem(h);
+        u.getHabitCollection().addItem(h);
 
 
     }
