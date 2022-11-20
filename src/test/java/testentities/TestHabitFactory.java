@@ -94,11 +94,11 @@ public class TestHabitFactory {
         hFactory.addItem(h2);
         hFactory.addItem(h3);
 
-        ArrayList<String> habits = new ArrayList<>();
-        habits.add("Run 5 Kms");
-        habits.add("Read a book");
-        habits.add("Drink Water");
+        ArrayList<Habit> habits = hFactory.convertToArray();
 
-        assertEquals("The correct collection is returned", hFactory.h_items, hFactory.getCollection());
+        assertTrue("The correct array is returned", habits.contains(h1));
+        assertTrue("The correct array is returned", habits.contains(h2));
+        assertTrue("The correct array is returned", habits.contains(h3));
+
     }
 }

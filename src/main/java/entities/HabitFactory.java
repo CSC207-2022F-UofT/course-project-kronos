@@ -52,7 +52,6 @@ public class HabitFactory extends Factory<Habit>{
      * @return this HabitFactory object as an arraylist
      */
     public ArrayList<Habit> convertToArray() {
-
         ArrayList<Habit> habitList = new ArrayList<>();
         if (!this.h_items.isEmpty()) {
             for (String key : this.h_items.keySet()) {
