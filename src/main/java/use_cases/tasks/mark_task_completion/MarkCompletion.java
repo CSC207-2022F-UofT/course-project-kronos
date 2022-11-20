@@ -5,7 +5,7 @@ import entities.Task;
 import static java.lang.Boolean.FALSE;
 
 /**
- * The Interactor that is responsible for creating a new task.
+ * The Interactor that is responsible for marking the completion status of a task.
  */
 public class MarkCompletion implements MarkCompletionInputBound {
     private final MarkCompletionOutputBound outputBound;
@@ -48,4 +48,7 @@ public class MarkCompletion implements MarkCompletionInputBound {
 
     }
 
+    public MarkCompletionOutputBound getOutputBound() {
+        return outputBound;
+    }
 }

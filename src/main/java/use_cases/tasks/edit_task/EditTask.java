@@ -41,4 +41,7 @@ public class EditTask implements EditTaskInputBoundary {
         // solved.
     }
 
+    public EditTaskOutputBoundary getOutputBoundary() {
+        return outputBoundary;
+    }
 }
