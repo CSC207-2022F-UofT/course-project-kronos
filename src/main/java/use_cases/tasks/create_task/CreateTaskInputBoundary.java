@@ -5,5 +5,5 @@ package use_cases.tasks.create_task;
  */
 
 public interface CreateTaskInputBoundary {
-    void create(CreateTaskInputData inputData);
+    CreateTaskOutputData create(CreateTaskInputData inputData);
 }
