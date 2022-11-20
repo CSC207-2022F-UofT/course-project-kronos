@@ -16,6 +16,7 @@ public class EditTask implements EditTaskInputBoundary {
      * Edit the properties of a task. The edible properties are name, category, and deadline for a task object.
      * @param inputData - the input data which contain a task, an input name, an input category name, and an input
      *                  deadline.
+     * @return the output data after editing.
      */
     @Override
     public EditTaskOutputData edit(EditTaskInputData inputData) {

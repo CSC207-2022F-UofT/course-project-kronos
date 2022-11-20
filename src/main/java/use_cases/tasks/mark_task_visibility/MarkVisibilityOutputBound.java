@@ -5,6 +5,5 @@ package use_cases.tasks.mark_task_visibility;
  */
 public interface MarkVisibilityOutputBound {
     // the following codes might be extracted to class afterwards.
-    void prepareCalendarSuccessView(MarkVisibilityOutputData outputData);
-    void prepareTodoSuccessView(MarkVisibilityOutputData outputData);
+    MarkVisibilityOutputData prepareSuccessView(MarkVisibilityOutputData outputData);
 }

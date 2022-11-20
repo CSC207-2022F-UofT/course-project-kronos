@@ -5,6 +5,5 @@ package use_cases.tasks.mark_task_completion;
  */
 public interface MarkCompletionOutputBound {
     // the following codes might be extracted to class afterwards.
-    void prepareCalendarSuccessView(MarkCompletionOutputData outputData);
-    void prepareTodoSuccessView(MarkCompletionOutputData outputData);
+    MarkCompletionOutputData prepareSuccessView(MarkCompletionOutputData outputData);
 }

@@ -19,6 +19,7 @@ public class CreateTask implements CreateTaskInputBoundary {
     /**
      * Create a new task based on input data.
      * @param inputData - the input data which may contain the name and deadline of a task.
+     * @return the output data after creation of new task.
      */
     @Override
     public CreateTaskOutputData create(CreateTaskInputData inputData) {
