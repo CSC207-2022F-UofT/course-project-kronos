@@ -5,6 +5,8 @@ import entities.Habit;
 import javax.swing.*;
 import java.awt.*;
 
+import static ui.TestFile.hFactory;
+
 public class EditHabit {
 
     public static void editHabit () {
@@ -23,14 +25,6 @@ public class EditHabit {
         JLabel l1 = new JLabel( "Choose Habit", JLabel.CENTER);
         l1.setPreferredSize(new Dimension(100, 30));
         l1.setLayout(new BorderLayout());
-
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        Habit h2 = new Habit("Read a book", "daily", true);
-        Habit h3 = new Habit("Drink Water", "daily", false);
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-        hFactory.addItem(h2);
-        hFactory.addItem(h3);
 
         int j = hFactory.h_items.size();
 

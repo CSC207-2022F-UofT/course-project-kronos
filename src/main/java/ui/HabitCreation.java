@@ -2,6 +2,7 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 import controller.CreateHabitController;
+import static ui.TestFile.sendUser;
 
 
 public class HabitCreation {
@@ -46,16 +47,16 @@ public class HabitCreation {
         JPanel p5 = new JPanel();
         p5.setSize(new Dimension(250, 50));
 
-        String s = textField1.getText();
-        String t = textField1.getText();
-        String b = remList.getSelectedValue();
-
-
-
 
         //create submit button
         JButton b1 = new JButton("SUBMIT"); //set label to button
-        b1.addActionListener(e -> CreateHabitController.HabitCreation(s,t,b));
+
+
+        b1.addActionListener(e -> {
+            String s = textField1.getText();
+            String t = textField1.getText();
+            String b = remList.getSelectedValue();
+            CreateHabitController.HabitCreation(sendUser(), s, t, b);});
 
         frame.add(major);
         major.add(p);
