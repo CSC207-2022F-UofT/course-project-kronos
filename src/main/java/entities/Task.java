@@ -14,7 +14,7 @@ public class Task{
     private String name;
     public boolean completeStatus;
     public boolean visibility;
-    public String taskCategory;
+    private String taskCategory;
     public Calendar deadline;
     private final int id;
     private static int numberOfTasks = 0;
@@ -91,4 +91,19 @@ public class Task{
         return this.name;
     }
 
+    public String getTaskCategory() {
+        return taskCategory;
+    }
+
+    public Calendar getDeadline() {
+        return deadline;
+    }
+
+    public boolean isCompleteStatus() {
+        return completeStatus;
+    }
+
+    public boolean isVisibility() {
+        return visibility;
+    }
 }

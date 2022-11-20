@@ -30,7 +30,7 @@ public class TestTask {
         assertEquals("The name of the task should be \"example\"!", "example", task.getName());
         assertTrue("The visibility of the task should be \"TRUE\"!", task.visibility);
         assertEquals("The deadline of the task should be \"FFFFFF\"!", deadline, task.deadline);
-        assertNull("The task should not be assigned to any category", task.taskCategory);
+        assertNull("The task should not be assigned to any category", task.getTaskCategory());
         assertFalse("The completion status of the task should be \"FALSE\"!", task.completeStatus);
     }
 
@@ -83,7 +83,7 @@ public class TestTask {
         task.setTaskCategory("csc207");
         csc207.addTask(task);
         assertEquals("The category of the task should be set to ...",
-                csc207.getCategoryName(), task.taskCategory);
+                csc207.getCategoryName(), task.getTaskCategory());
     }
 
     @Test(timeout = 500)
