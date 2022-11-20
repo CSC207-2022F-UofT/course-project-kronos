@@ -1,11 +1,12 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
-public class Task{
+public class Task implements Serializable {
     private String name;
     public boolean completeStatus;
     public boolean reminders;

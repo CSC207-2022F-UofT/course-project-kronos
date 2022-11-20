@@ -1,9 +1,10 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CategoryFactory extends Factory<Category> {
+public class CategoryFactory extends Factory<Category> implements Serializable {
 
     public HashMap<Integer, Category> categories;
 

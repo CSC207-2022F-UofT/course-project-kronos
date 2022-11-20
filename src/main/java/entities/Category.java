@@ -1,6 +1,8 @@
 package entities;
 
-public class Category {
+import java.io.Serializable;
+
+public class Category implements Serializable {
 
     private static int numberOfCategories = 0;
 

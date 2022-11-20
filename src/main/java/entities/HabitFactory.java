@@ -1,8 +1,9 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class HabitFactory extends Factory<Habit>{
+public class HabitFactory extends Factory<Habit> implements Serializable {
 
     public HashMap<String, Habit> h_items;
 

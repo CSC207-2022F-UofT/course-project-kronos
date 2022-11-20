@@ -1,9 +1,10 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
     /**
      *
      * Creates User account if the user's account does not exist.

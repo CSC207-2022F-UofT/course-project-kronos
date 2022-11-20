@@ -1,6 +1,8 @@
 package entities;
 
-public abstract class Factory<T>{
+import java.io.Serializable;
+
+public abstract class Factory<T> implements Serializable {
 
     public void addItem(T item){}
 

@@ -1,9 +1,10 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class TaskFactory extends Factory<Task>{
+public class TaskFactory extends Factory<Task> implements Serializable {
     HashMap<Integer, Task> tasks;
 
     public TaskFactory(){

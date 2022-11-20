@@ -1,35 +1,34 @@
 package database;
 
 import entities.User;
+import user_use_cases.UserDataAccessInterface;
 
 import java.io.*;
 
 import java.util.HashMap;
 
-public class Database {
-    private HashMap collections;
-    private String currUserEmail;
+public class Database implements UserDataAccessInterface {
 
-    private String fileName;
-    public static void main(){
+    HashMap<String, User> collections;
 
-    }
-    public Database(String filepath) {
-        this.fileName = filepath;
+    public void Database(String filepath){
         try {
             FileInputStream file = new FileInputStream(filepath);
-            ObjectInputStream in = new ObjectInputStream(file);
-
-
-            HashMap object1 = (HashMap) in.readObject();
-            this.collections = object1;
-        } catch(IOException | ClassNotFoundException e){
+            ObjectInputStream ois = new ObjectInputStream(file);
+            ois.defaultReadObject();
+            this.collections = (HashMap<String, User>) ois.readObject();
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e){
+            e.printStackTrace();
+        } catch (ClassNotFoundException e){
             e.printStackTrace();
         }
     }
 
-    private void writeUser(User user, String filePath) {
-        this.collections.replace(this.currUserEmail, user);
+    private void writeUser(User user, String filePath, HashMap collections) {
+
+        collections.replace(user.getEmailAddress(), user);
         try {
             // Saving of object in a file
             FileOutputStream file = new FileOutputStream
@@ -38,7 +37,7 @@ public class Database {
                     (file);
 
             // Method for serialization of object
-            out.writeObject(this.collections);
+            out.writeObject(collections);
 
             out.close();
             file.close();
@@ -47,51 +46,32 @@ public class Database {
         }
     }
 
+    @Override
+    public boolean CheckUserExists(String emailAddress) {
+        return this.collections.containsKey(emailAddress);
+    }
 
-    public void addUser(User user){
-
+    @Override
+    public User LoginUser(String emailAddress, String password) {
+        if (emailAddress.equals(collections.get(emailAddress).getPassword())){
+            return collections.get(emailAddress);
         }
-
-
-
-    private HashMap getCollections(){return this.collections;}
-
-
-    public void removeUser(String userName){
-        this.collections.remove(userName);
+        return null;
     }
 
-    public boolean checkEmailExists(String email){
-        return this.collections.containsKey(email);
+    @Override
+    public void UpdateUser(User user) {
+        this.collections.replace(user.getEmailAddress(), user);
     }
 
-    private User getUser(String email){
-        return (User)this.collections.get(email);
-    }
-    public HashMap manageLogin(String email, String password){
-        if (this.collections.get(email).get(password).equals(password))
+    @Override
+    public void DeleteUser(String emailAddress) {
+        this.collections.remove(emailAddress);
     }
 
-    private static void updateUser(String person){
-        // update the user in the database
+    @Override
+    public void AddUser(User user) {
+        this.collections.put(user.getEmailAddress(), user);
     }
 }
 
-//import org.json.simple.JSONValue;
-//import org.json.simple.JSONObject;
-//import org.json.simple.parser.JSONParser;
-//import org.json.simple.parser.ParseException;
-//    public Database(String filepath) throws FileNotFoundException {
-//        JSONParser parser = new JSONParser();
-//
-//        try (Reader reader = new FileReader(filepath)) {
-//
-//            JSONObject jsonObject = (JSONObject) parser.parse(reader);
-//
-//            this.collections = jsonObject;
-//        } catch (IOException e) {
-//            System.out.println(e);
-//        } catch (ParseException e) {
-//            System.out.println(e);
-//        }
-//    }
