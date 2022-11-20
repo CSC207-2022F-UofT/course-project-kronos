@@ -5,7 +5,7 @@ import entities.User;
 public class DeleteHabit {
 
     /**
-     * The constructor of Order.
+     * Deletes an existing habit.
      * @param u -  the user of the habit.
      * @param title - the name of habit that is to be deleted.
      */

@@ -5,8 +5,7 @@ import entities.User;
 
 public class EditHabit {
 
-    /**
-     * The constructor of Order.
+    /**Edits the name of an existing habit.
      * @param u -  the user of the habit.
      * @param h - Habit to be edited.
      * @param title - the new name of habit.
@@ -16,8 +15,7 @@ public class EditHabit {
         u.getHabitCollection().updateKey(oldKey, title);
     }
 
-    /**
-     * The constructor of Order.
+    /**Edits the type of an existing habit.
      * @param h - Habit to be edited.
      * @param t - the new type of habit.
      */
@@ -27,7 +25,7 @@ public class EditHabit {
     }
 
     /**
-     * The constructor of Order.
+     * Edits the reminder state of a habit.
      * @param h - Habit to be edited.
      * @param v - the new reminder state of habit.
      */

@@ -4,8 +4,7 @@ import entities.User;
 
 public class CreateHabit {
 
-    /**
-     * The constructor of Order.
+    /**Creates a new habit.
      * @param u -  the user of the habit
      * @param title - the name of the habit that is to be created
      * @param t -  the type of the habit
