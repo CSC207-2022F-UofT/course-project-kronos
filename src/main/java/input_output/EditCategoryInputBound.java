@@ -1,7 +1,7 @@
 package input_output;
 
 import entities.Category;
-import use_cases.tasks.EditCategoryName;
+import use_cases.tasks.EditCategory;
 
 public class EditCategoryInputBound {
 
@@ -14,7 +14,7 @@ public class EditCategoryInputBound {
      */
     public static Boolean editNameInputBound(Category category, String name) {
         if (Category.categories.contains(name, true) == false && name != "") {
-            return EditCategoryName.editCategoryName(category, name);
+            return EditCategory.editCategoryName(category, name);
         }
         return false;
     }

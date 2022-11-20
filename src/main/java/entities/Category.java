@@ -63,4 +63,8 @@ public class Category {
     public void addTask(Task task) {
         tasks.addItem(task);
     }
+
+    public void removeTask(Task task) {
+        tasks.removeItem(task);
+    }
 }

@@ -1,6 +1,6 @@
 package ui;
 
-import entities.Category; // shouldn't reference entity classes
+import entities.Category; // shouldn't reference entity classes?
 import entities.User;
 import use_cases.tasks.CategoryPresenter;
 
@@ -13,12 +13,12 @@ public class ToDoViewModel extends JFrame{
     public User user = new User(); // ? need to keep track of the user somehow, don't declare a new one
     private TitleBar title;
 
-    public ToDoViewModel() {
+    public ToDoViewModel(User user) {
         this.setSize(400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         title = new TitleBar();
-        CategoryPresenter presenter = new CategoryPresenter(user);
+        CategoryPresenter presenter = new CategoryPresenter(this.user);
         ArrayList<Category> categories = presenter.getAllCategories(); // ? User needs a getter for CategoryFactory (CategoryCollection)
 
         for (Category cat: categories) { // loops through all the user's categories

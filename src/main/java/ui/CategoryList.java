@@ -24,7 +24,7 @@ public class CategoryList extends JPanel {
 
     public void populate(ArrayList<Task> tasks) {
         for (Task task: tasks){
-            // this.add(task.getName()); // ? Task entity needs a getName() method
+            this.add(new JTextField(task.getName()));
             // how do I add the new Category List's tasks without a reference name for the CategoryList?
             this.add(new JRadioButton()); // since adding is done from left to right, up to down
         }
