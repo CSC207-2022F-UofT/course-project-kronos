@@ -5,8 +5,7 @@ import entities.CategoryFactory;
 import input_output.CreateCategoryInputBound;
 import input_output.EditCategoryInputBound;
 import use_cases.tasks.DeleteCategory;
-import use_cases.tasks.EditCategoryColour;
-import use_cases.tasks.EditCategoryVisibility;
+import use_cases.tasks.EditCategory;
 
 public class CategoryController {
 
@@ -39,7 +38,7 @@ public class CategoryController {
      * @return true if the visibility of the Category object has been successfully updated.
      */
     public Boolean editCategoryVisibility(Category category, Boolean state) {
-        return EditCategoryVisibility.editCategoryVisibility(category, state);
+        return EditCategory.editCategoryVisibility(category, state);
     }
 
     /**
@@ -59,7 +58,7 @@ public class CategoryController {
      * @return true if the name of the Category object has been successfully updated.
      */
     public Boolean editCategoryColour(Category category, String colour) {
-        return EditCategoryColour.editCategoryColour(category, colour);
+        return EditCategory.editCategoryColour(category, colour);
     }
 
 }

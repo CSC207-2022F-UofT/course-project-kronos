@@ -12,4 +12,8 @@ public class Category {
     public Category(){
 
     }
+
+    public void removeTask(Task task) {
+        tasks.removeItem(task);
+    }
 }
