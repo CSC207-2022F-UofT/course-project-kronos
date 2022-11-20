@@ -8,7 +8,7 @@ public class CreateHabitController {
     public static void HabitCreation(User u, String s, String t, String b){
 
         boolean r = b.equals("ON");
-        CreateHabitInput.HabitCreateInput(u, s, t, r);
+        new CreateHabitInput(u, s, t, r);
 
     }
 }
