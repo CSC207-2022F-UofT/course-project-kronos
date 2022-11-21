@@ -16,13 +16,16 @@ import java.util.HashMap;
 
 public class CreateChart extends ApplicationFrame{
 
+    DefaultCategoryDataset dataset;
 
     public CreateChart(String applicationTitle, String chartTitle, ArrayList<Habit> habits){ // , Date startDate, Date endDate implement startDate and endDate functionality later
         super(applicationTitle);
+        this.dataset = createDataset(habits);
         JFreeChart lineChart = ChartFactory.createLineChart(
                 chartTitle,
                 "Date","Frequency",
-                createDataset(habits),
+                this.dataset
+                ,
                 PlotOrientation.VERTICAL,
                 true,true,false);
 
@@ -41,18 +44,10 @@ public class CreateChart extends ApplicationFrame{
         return dataset;
     }
 
-    public static void main(){
-        Habit habit1 = new Habit("Running", "number of minutes", true);
-        habit1.markFrequency();
-        ArrayList habitList = new ArrayList();
-        habitList.add(habit1);
-        CreateChart chart = new CreateChart("frequency of habits",
-                "frequency of each habit wrt to date", habitList);
-
-        chart.pack();
-        RefineryUtilities.centerFrameOnScreen( chart );
-        chart.setVisible( true );
-
+    public DefaultCategoryDataset getDataset(){
+        return this.dataset;
     }
+
+
 
 }
