@@ -1,4 +1,4 @@
-package Habit_use_case;
+package use_cases.habits.delete_habit;
 import entities.Habit;
 import entities.User;
 
@@ -11,11 +11,11 @@ public class DeleteHabit {
      */
     public static boolean deleteHabit(User u, String title) {
 
-        Habit h = u.getHabitCollection().h_items.get(title);
+        Habit h = u.getHabitCollection().habitCollection.get(title);
 
         u.getHabitCollection().removeItem(h);
 
-        return u.getHabitCollection().h_items.containsValue(h);
+        return u.getHabitCollection().habitCollection.containsValue(h);
     }
 
 }

@@ -1,6 +1,6 @@
-package controller;
+package controllers;
 import entities.User;
-import input_boundary.CreateHabitInput;
+import use_cases.habits.create_habit.CreateHabitInputBoundary;
 
 
 public class CreateHabitController {
@@ -12,9 +12,9 @@ public class CreateHabitController {
      * @param t - The type of the habit
      * @param b - The reminder state of the habit
      */
-    public static boolean HabitCreation(User u, String s, String t, String b){
+    public static boolean createHabitC(User u, String s, String t, String b){
         boolean r = b.equals("ON");
-        CreateHabitInput habitInput = new CreateHabitInput(u, s, t, r);
+        CreateHabitInputBoundary habitInput = new CreateHabitInputBoundary(u, s, t, r);
         return habitInput.getSuccess();
     }
 }

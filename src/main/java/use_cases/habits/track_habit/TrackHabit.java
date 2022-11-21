@@ -1,4 +1,4 @@
-package Habit_use_case;
+package use_cases.habits.track_habit;
 
 import entities.Habit;
 
