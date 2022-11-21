@@ -1,0 +1,42 @@
+package input_output;
+
+import entities.Category;
+import use_cases.tasks.CreateCategory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CreateCategoryInputBound {
+
+    private static String[] COLOURS = {"BLACK", "WHITE", "RED", "BLUE", "YELLOW", "PURPLE", "GREEN", "ORANGE", "GREY", "PINK", "BROWN"};
+    private Boolean successful;
+
+
+    /**
+     * Check whether the input fields are correct.
+     * @param name - The name of the category
+     * @param colour - The colour of the category
+     * successful is true if createCategory returns true
+     */
+    public CreateCategoryInputBound(String name, String colour) {
+        if (Category.categories.contains(name, true) == false && name != "") {
+            this.successful = CreateCategory.createCategory(name, colour);
+        }
+    }
+
+    // getters
+    public Boolean getSuccessful() {
+        return this.successful;
+    }
+
+    // Can categories have same colours? Leaning on YES
+    private Boolean checkColours(String colour) { // ? SIKE might not even need this if J Swing only has drop down menu
+        boolean found = false;
+        for(String c: COLOURS) {
+            if (c == colour) {
+                found = true;
+            }
+        }
+        return found;
+    }
+}
