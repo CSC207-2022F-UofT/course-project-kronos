@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
 public class CreateCategory extends JFrame implements ActionListener {
     public static String COLOURS[] = { "pink", "red", "white", "blue", "yellow", "green", "orange", "purple"};
@@ -35,6 +34,12 @@ public class CreateCategory extends JFrame implements ActionListener {
         categoryName.setAlignmentX(Component.LEFT_ALIGNMENT);
         frame.add(categoryName, constraints);
 
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        JLabel colour = new JLabel("Chose a colour");
+        categoryName.setAlignmentX(Component.LEFT_ALIGNMENT);
+        frame.add(colour, constraints);
+
         // input fields + button
         constraints.gridx = 1;
         constraints.gridy = 0;
@@ -48,32 +53,31 @@ public class CreateCategory extends JFrame implements ActionListener {
         colourInput.setAlignmentX(CENTER_ALIGNMENT);
         frame.add(colourInput, constraints);
 
-        constraints.gridx = 1;
+        constraints.gridwidth = 2;
+        constraints.gridx = 0;
         constraints.gridy = 3;
         JButton createCategory = new JButton("Create");
         createCategory.setAlignmentX(CENTER_ALIGNMENT);
         frame.add(createCategory, constraints);
 
+        createCategory.addActionListener(e -> {
+            String action = e.getActionCommand();
+            if (action == "Create") {
+                String categoryName1 = categoryNameInput.getText();
+                String colour1 = (String) colourInput.getSelectedItem();
 
+                // pass this onto controller
+                CreateCategoryInputData inputData = new CreateCategoryInputData(categoryName1, colour1);
+                // this is never used, so where do we use input data since we don't have to convert anything?
 
-        createCategory.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String action = e.getActionCommand();
-                if (action == "Create") {
-                    String categoryName = categoryNameInput.getText();
-                    String colour = (String) colourInput.getSelectedItem(); // ? need to check that these are the same as COLOURS list
-                    // pass this onto controller
-                    CreateCategoryInputData inputData = new CreateCategoryInputData(categoryName, colour);
-                    CategoryController controller = new CategoryController(factory, categoryName, colour);
-                    CreateCategoryOutputData outputData = controller.CreateCategory();
+                CategoryController controller = new CategoryController(factory, categoryName1, colour1);
+                CreateCategoryOutputData outputData = controller.CreateCategory();
 
-                    // create a new CategoryList
-                    CategoryList categoryList = new CategoryList(outputData.getCategory(), 0, new ArrayList<>()); // empty list since no tasks
+                // create a new CategoryList - how to add it back to ToDoViewModel?
+                ToDoViewModel.update(outputData);
 
-                    // close window
-                    frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-                }
+                // close window
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
             }
         });
 

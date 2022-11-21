@@ -6,10 +6,10 @@ import entities.Category;
  * Edit properties (name, colour) of a Category.
  */
 public class EditCategory implements EditCategoryInputBound{
-    private final EditCategoryOutputBoundary outputBound;
+    private final EditCategoryPresenter presenter;
 
-    public EditCategory(EditCategoryOutputBoundary outputBound) {
-        this.outputBound = outputBound;
+    public EditCategory(EditCategoryPresenter presenter) {
+        this.presenter = presenter;
     }
 
     /**
@@ -45,19 +45,19 @@ public class EditCategory implements EditCategoryInputBound{
         if (inputData.getName().isBlank()) {
             EditCategoryOutputData outputData = new EditCategoryOutputData("Changes not saved. Please fill " +
                     "out all fields.");
-            return outputBound.prepareFailView(outputData);
+            return presenter.prepareFailView(outputData);
         }
         Category category = inputData.getCategory();
         category.setName(inputData.getName());
         category.setColour(inputData.getName());
         category.setVisibility(inputData.getVisibility());
         EditCategoryOutputData outputData = new EditCategoryOutputData("Changes have been saved.", category);
-        return outputBound.prepareSuccessView(outputData);
+        return presenter.prepareSuccessView(outputData);
     }
 
     // getters
     public EditCategoryOutputBoundary getOutputBound() {
-        return this.outputBound;
+        return this.presenter;
     }
 
 }

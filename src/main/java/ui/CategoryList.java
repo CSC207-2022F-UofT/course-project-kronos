@@ -15,13 +15,14 @@ public class CategoryList extends JPanel {
         GridBagConstraints constraints = new GridBagConstraints();
 
         this.setLayout(layout);
-        this.setPreferredSize(new Dimension(500, tasks.size()*20));
+        // this.setPreferredSize(new Dimension(500, tasks.size()*20));
 
         // add Category label
         JLabel categoryLabel = new JLabel(category.getName());
         categoryLabel.setFont(new Font("Serif", Font.PLAIN, 16));
         categoryLabel.setHorizontalAlignment(JLabel.CENTER);
-        this.setBackground(ColourPalette.getColour(category.getColour()));
+        categoryLabel.setBackground(ColourPalette.getColour(category.getColour()));
+
         constraints.gridwidth = 4;
         constraints.ipady = 20;
         constraints.gridx = 0;
@@ -29,37 +30,20 @@ public class CategoryList extends JPanel {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         this.add(categoryLabel, constraints);
 
-        // add table labels
-        JLabel legendName = new JLabel("Task");
-        legendName.setFont(new Font("Serif", Font.PLAIN, 15));
-        constraints.gridx = 0;
-        constraints.ipadx = 20;
-        constraints.gridy = 2;
-        constraints.ipady = 0;
-        constraints.gridwidth = 1;
-        this.add(legendName, constraints);
-
-        JLabel legendDeadline = new JLabel("Deadline");
-        legendDeadline.setFont(new Font("Serif", Font.PLAIN, 15));
-        constraints.gridx = 1;
-        constraints.gridy = 2;
-        this.add(legendDeadline, constraints);
-
-        JLabel legendCompletion = new JLabel("Completion");
-        legendCompletion.setFont(new Font("Serif", Font.PLAIN, 15));
-        constraints.gridx = 2;
-        constraints.gridy = 2;
-        this.add(legendCompletion, constraints);
-
         //  have to populate the list from here with tasks
-        populate(tasks, constraints);
+        if (!category.getTasks().convertToArray().isEmpty()) {
+            populate(tasks, constraints);
+        }
+
     }
 
     public void populate(ArrayList<Task> tasks, GridBagConstraints constraints) {
         int y = 3;
         for (Task task: tasks){
+            constraints.gridwidth = 1;
             constraints.gridx = 0;
             constraints.gridy = y;
+            constraints.ipadx = 20;
             this.add(new JLabel(task.getName()), constraints);
 
             constraints.gridwidth = 2;

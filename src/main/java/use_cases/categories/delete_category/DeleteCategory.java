@@ -3,17 +3,17 @@ package use_cases.categories.delete_category;
 import entities.CategoryFactory;
 
 public class DeleteCategory implements DeleteCategoryInputBound {
-    private final DeleteCategoryOutputBoundary outputBound;
+    private final DeleteCategoryPresenter presenter;
     private final CategoryFactory factory;
 
     /**
      * The constructor of DeleteCategory.
-     * @param outputBound - the outputData that would be displayed
+     * @param presenter - the outputData that would be displayed
      * @param factory - the CategoryFactory of the user
      * @return true if the CategoryFactory no longer contains category, returns false otherwise.
      */
-    public DeleteCategory(DeleteCategoryOutputBoundary outputBound, CategoryFactory factory) {
-        this.outputBound = outputBound;
+    public DeleteCategory(DeleteCategoryPresenter presenter, CategoryFactory factory) {
+        this.presenter = presenter;
         this.factory = factory;
     }
 
@@ -28,12 +28,12 @@ public class DeleteCategory implements DeleteCategoryInputBound {
         factory.removeItem(inputData.getCategory());
         DeleteCategoryOutputData outputData = new DeleteCategoryOutputData(name + " has been successfully " +
                 "deleted.", inputData.getCategory());
-        return outputBound.prepareSuccessView(outputData);
+        return presenter.prepareSuccessView(outputData);
     }
 
     // getters
     public DeleteCategoryOutputBoundary getOutputBound() {
-        return this.outputBound;
+        return this.presenter;
     }
 
     public CategoryFactory getFactory() {
