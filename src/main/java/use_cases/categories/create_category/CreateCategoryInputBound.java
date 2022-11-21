@@ -1,4 +1,4 @@
-package use_cases.tasks.categories.create_category;
+package use_cases.categories.create_category;
 
 /**
  * Interface that passes the inputData to the interactor for creating a Category.

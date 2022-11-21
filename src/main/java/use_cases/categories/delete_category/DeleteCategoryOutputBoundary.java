@@ -1,6 +1,4 @@
-package use_cases.tasks.categories.delete_category;
-
-import use_cases.tasks.categories.create_category.CreateCategoryOutputData;
+package use_cases.categories.delete_category;
 
 /**
  * Interface that passes the inputData to the interactor of Category deletion.

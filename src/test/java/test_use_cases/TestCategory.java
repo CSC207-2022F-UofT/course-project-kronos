@@ -3,77 +3,54 @@
 package test_use_cases;
 
 import entities.Category;
+import entities.CategoryFactory;
 import entities.User;
 import org.junit.Test;
-import use_cases.tasks.categories.CategoryPresenter;
-import use_cases.tasks.categories.create_category.CreateCategoryInputBound;
-import use_cases.tasks.categories.delete_category.DeleteCategory;
-import use_cases.tasks.categories.edit_category.EditCategory;
-import use_cases.tasks.categories.edit_category.EditCategoryInputBound;
+import use_cases.categories.CategoryPresenter;
+import use_cases.categories.create_category.*;
+import use_cases.categories.delete_category.DeleteCategory;
+import use_cases.categories.edit_category.EditCategory;
+import use_cases.categories.edit_category.EditCategoryInputBound;
 
 import static org.junit.Assert.*;
 
 public class TestCategory {
+     CategoryFactory factory = new CategoryFactory();
+     String name = "Chores";
+     String colour = "RED";
+     CreateCategoryOutputBound outputBound = new CreateCategoryOutputBound() {
+        @Override
+        public CreateCategoryOutputData prepareSuccessView(CreateCategoryOutputData outputData) {
+            assertEquals(name, outputData.getCategory().getName());
+            assertTrue(factory.contains(outputData.getCategory().getName(), false));
+            return null;
+        }
+        @Override
+        public CreateCategoryOutputData prepareFailView(CreateCategoryOutputData outputData) {
+            return null;
+        }
+    } ;
 
-    // creating Use Case interactors and prerequisite objects
-    User user = new User();
-    CategoryPresenter presenter = new CategoryPresenter(user);
+    CreateCategoryInputBound inputBound = new CreateCategoryInputBound() {
+        @Override
+        public CreateCategoryOutputData edit(CreateCategoryInputData inputData) {
+            if (inputData.getName().isBlank()) {
+                CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: Please enter the name of " +
+                        "the category.");
+                return outputBound.prepareFailView(outputData);
+            } else if(factory.contains(inputData.getName(), false)){
+                CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: This category name " +
+                        "already exists. Please enter a new category name.");
+                return outputBound.prepareFailView(outputData);
+            }
+            Category category = new Category(inputData.getName(), inputData.getColour());
+            factory.addItem(category);
+            CreateCategoryOutputData outputData = new CreateCategoryOutputData(category);
+            return outputBound.prepareSuccessView(outputData);
+        }
+    };
 
-    String name = "Chores";
-    String newName = "Groceries";
+    CreateCategoryInputData inputData = new CreateCategoryInputData(name, colour);
 
-    String colour = "RED";
-    String newColour = "BLUE";
-    CreateCategoryInputBound createInputBound = new CreateCategoryInputBound(name, colour, user.getCategoryCollection());
-    Category category = presenter.createCategory(name, colour);
-
-    @Test(timeout = 500)
-    public void testCreateCategory() {
-        assertTrue(createInputBound.getSuccessful());
-        assertEquals(name, category.getCategoryName());
-        assertEquals(colour, category.getColour());
-    }
-
-    @Test(timeout = 500)
-    public void testDuplicateCreateCategory() {
-        CreateCategoryInputBound duplicateInputBound = new CreateCategoryInputBound(name, colour, user.getCategoryCollection());
-
-        assertFalse(duplicateInputBound.getSuccessful());
-    }
-
-
-    @Test(timeout = 500)
-    public void testEditCategoryName() {
-        EditCategory.editCategoryName(category, newName);
-
-        assertEquals(newName, presenter.editName(name, newName, colour));
-    }
-
-    @Test(timeout = 500)
-    public void testEditDuplicateCategoryName() {
-        assertFalse(name, EditCategoryInputBound.editNameInputBound(category, newName, user.getCategoryCollection()));
-    }
-
-    @Test(timeout = 500)
-    public void testEditCategoryColour() {
-        EditCategory.editCategoryColour(category, newColour);
-
-        assertEquals(newColour, presenter.editColour(newName, newColour).getColour()); // is this ok? doesn't follow the steps in the example
-    }
-
-    @Test(timeout = 500)
-    public void testEditCategoryVisibility() {
-        EditCategory.editCategoryVisibility(category, false);
-
-        assertFalse(presenter.editVisibility(newName, newColour, false).getVisibility());
-    }
-
-    @Test(timeout = 500)
-    public void testDeleteCategory() {
-        DeleteCategory.delete(category, user.getCategoryCollection());
-
-        assertTrue(presenter.deleteCategory(name));
-    }
-
-
+    // inputBound.edit(inputData); // what's wrong here?
 }

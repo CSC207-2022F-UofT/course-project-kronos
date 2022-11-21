@@ -1,4 +1,4 @@
-package use_cases.tasks.categories.edit_category;
+package use_cases.categories.edit_category;
 
 /**
  * Interface that passes the inputData to the interactor for editing a Category.

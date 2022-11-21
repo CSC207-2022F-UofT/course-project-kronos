@@ -1,11 +1,11 @@
-package use_cases.tasks.categories;
+package use_cases.categories;
 
 import entities.Category;
 import entities.CategoryFactory;
-import use_cases.tasks.categories.delete_category.DeleteCategory;
-import use_cases.tasks.categories.create_category.CreateCategoryInputBound;
-import use_cases.tasks.categories.edit_category.EditCategory;
-import use_cases.tasks.categories.edit_category.EditCategoryInputBound;
+import use_cases.categories.delete_category.DeleteCategory;
+import use_cases.categories.create_category.CreateCategoryInputBound;
+import use_cases.categories.edit_category.EditCategory;
+import use_cases.categories.edit_category.EditCategoryInputBound;
 
 public class CategoryController {
 

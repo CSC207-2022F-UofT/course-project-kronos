@@ -1,6 +1,5 @@
-package use_cases.tasks.categories.delete_category;
+package use_cases.categories.delete_category;
 
-import entities.Category;
 import entities.CategoryFactory;
 
 public class DeleteCategory implements DeleteCategoryInputBound {

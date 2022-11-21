@@ -1,4 +1,4 @@
-package use_cases.tasks.categories;
+package use_cases.categories;
 
 import entities.Category; // breaks clean architecture
 import entities.CategoryFactory;

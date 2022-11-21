@@ -1,4 +1,4 @@
-package use_cases.tasks.categories.create_category;
+package use_cases.categories.create_category;
 
 import entities.Category;
 
