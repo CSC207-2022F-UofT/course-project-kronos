@@ -12,9 +12,9 @@ public class Timertomato {
     private Timer timer;
 
     public Timertomato(String workTime, String restTime, int timerCycle){
-        this.workTime = workTime;
-        this.restTime = restTime;
-        this.timerCycle = timerCycle;
+        Timertomato.workTime = workTime;
+        Timertomato.restTime = restTime;
+        Timertomato.timerCycle = timerCycle;
 
     }
 
@@ -42,8 +42,13 @@ public class Timertomato {
         return timerCycle;
     }
 
-    
+    public String getWork_timeLeft() {
+        return work_timeLeft;
+    }
 
+    public String getRest_timeLeft() {
+        return rest_timeLeft;
+    }
 
     public int getTimeStatus(Timer timer){
         // timerState:

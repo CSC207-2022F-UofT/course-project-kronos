@@ -17,7 +17,7 @@ public class TimerView extends JFrame
     String number2;
     // Custom Components
     // RGB Codes for skyBlue. Used as Background.
-    private final Color skyBlue = new Color(0, 153, 255);
+    private final Color skyBlue = new Color(0, 50, 200);
 
     // Used for displaying the timer values.
     private final Font timerStyle = new Font("MonoAlphabet", Font.BOLD, 140);
@@ -31,10 +31,10 @@ public class TimerView extends JFrame
     // Used in the buttons in the Pomodoro Timer section.
     private final Font delayLabelStyles = new Font("Existence", Font.ITALIC, 20);
 
-    // RGB code for indiaGreen.. Used as background when the timer is paused.
+    // RGB code for indiaGreen. Used as background when the timer is paused.
     private final Color indiaGreen = new Color(19, 136, 8);
 
-    private static  int ORIGINAL_COUNTDOWN_MINUTES = 25;
+    private static final int ORIGINAL_COUNTDOWN_MINUTES = 25;
     private static final int ORIGINAL_COUNTDOWN_SECONDS = 0;
     private static final int ORIGINAL_SHORTBREAK_MINUTES = 5;
     private static final int ORIGINAL_SHORTBREAK_SECONDS = 0;
@@ -44,7 +44,7 @@ public class TimerView extends JFrame
     private static final int INTERVAL = 1000; // Iteration interval for the Timers.
     private static final int ONE_POMODORO_CYCLE = 8; // No of rounds in a single Pomodoro cycle.
 
-    private JPanel timerPane;
+    private JPanel timerPanel;
     private JLabel minuteLabel;
     private JLabel separator;
     private JLabel secondLabel;
@@ -116,67 +116,67 @@ public class TimerView extends JFrame
 
     private JPanel addMainTimer()
     {
-        timerPane = new JPanel();
-        timerPane.setBackground(skyBlue);
-        timerPane.setLayout(new MigLayout("insets 115 0 0 0", "", "[][]0[]"));
+        timerPanel = new JPanel();
+        timerPanel.setBackground(skyBlue);
+        timerPanel.setLayout(new MigLayout("insets 115 0 0 0", "", "[][]0[]"));
 
         minuteLabel = new JLabel(String.format("%02d", ORIGINAL_COUNTDOWN_MINUTES));
         minuteLabel.setForeground(Color.white);
         minuteLabel.setFont(timerStyle);
-        timerPane.add(minuteLabel, "split 3, gapright 20, gaptop 20, pushx, spanx, alignx center, height 145!");
+        timerPanel.add(minuteLabel, "split 3, gapright 20, gaptop 20, pushx, spanx, alignx center, height 145!");
 
         separator = new JLabel(":");
         separator.setForeground(Color.white);
         separator.setFont(timerStyle);
-        timerPane.add(separator, "alignx center, gapright 20, height 145!");
+        timerPanel.add(separator, "alignx center, gapright 20, height 145!");
 
         secondLabel = new JLabel(String.format("%02d", ORIGINAL_COUNTDOWN_SECONDS));
         secondLabel.setForeground(Color.white);
         secondLabel.setFont(timerStyle);
-        timerPane.add(secondLabel, "alignx center, height 145!, wrap");
+        timerPanel.add(secondLabel, "alignx center, height 145!, wrap");
 
         startIcon = new ImageIcon("src/Play.png");
         pauseIcon = new ImageIcon("src/Pause.png");
-        startPauseBT = new JButton("Start");
+        startPauseBT = new JButton("Start", startIcon);
         startPauseBT.setContentAreaFilled(false);
         startPauseBT.setBackground(indiaGreen);
         startPauseBT.setActionCommand("Begin");
         startPauseBT.setForeground(Color.white);
         startPauseBT.setFont(formBTStyles);
-        timerPane.add(startPauseBT, "gaptop 10, alignx center, split 3, spanx, pushx");
+        timerPanel.add(startPauseBT, "gaptop 10, alignx center, split 3, spanx, pushx");
 
         skipIcon = new ImageIcon("src/Skip.png");
-        continueBT = new JButton("跳过");
+        continueBT = new JButton("Skip", skipIcon);
         continueBT.setBackground(cardinalRed);
         continueBT.setContentAreaFilled(false);
         continueBT.setForeground(Color.white);
         continueBT.setFont(formBTStyles);
         continueBT.setVisible(false);
-        timerPane.add(continueBT, "alignx center, hidemode 0, gapleft 30, gapright 30");
+        timerPanel.add(continueBT, "alignx center, hidemode 0, gapleft 30, gapright 30");
 
         stopIcon = new ImageIcon("src/Stop.png");
-        stopBT = new JButton("Stop");
+        stopBT = new JButton("Stop", stopIcon);
         stopBT.setContentAreaFilled(false);
         stopBT.setBackground(cardinalRed);
         stopBT.setActionCommand("Stop");
         stopBT.setForeground(Color.white);
         stopBT.setFont(formBTStyles);
-        timerPane.add(stopBT, "gaptop 10, alignx center, split 3, spanx, pushx");
+        timerPanel.add(stopBT, "gaptop 10, alignx center, split 3, spanx, pushx");
 
         delayRemainingLabel = new JLabel("Resumes in " + TOTAL_DELAY_TIME + " seconds");
         delayRemainingLabel.setForeground(Color.white);
         delayRemainingLabel.setVisible(false);
         delayRemainingLabel.setFont(delayLabelStyles);
-        timerPane.add(delayRemainingLabel, "alignx center");
+        timerPanel.add(delayRemainingLabel, "alignx center");
         JTextField text3 = new JTextField(100);
         text3.setPreferredSize(new Dimension(1,50));
-        timerPane.add(text3);
+        timerPanel.add(text3);
         JTextField text4 = new JTextField(100);
         text4.setPreferredSize(new Dimension(1,50));
-        timerPane.add(text4);
+        timerPanel.add(text4);
         JButton button1 = new JButton("Setting");
         button1.setFont(new Font("", Font.PLAIN, 50));
-        timerPane.add(button1);
+        timerPanel.add(button1);
         button1.addActionListener(new ActionListener(){
 
             @Override
@@ -241,7 +241,7 @@ public class TimerView extends JFrame
 
         runMainTimer();
 
-        return timerPane;
+        return timerPanel;
     }
 
     private void runMainTimer()
