@@ -37,8 +37,7 @@ public class User {
         this.tomato = new Timer();
     }
 
-    public User() {}
-
+    public User(){}
     // GETTER METHODS
 
     public String getPassword(){
