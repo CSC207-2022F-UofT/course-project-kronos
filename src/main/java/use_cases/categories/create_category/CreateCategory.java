@@ -3,11 +3,11 @@ import entities.Category;
 import entities.CategoryFactory;
 
 public class CreateCategory implements CreateCategoryInputBound {
-    private final CreateCategoryOutputBound outputBound;
+    private final CreateCategoryPresenter presenter;
     private final CategoryFactory factory;
 
-    public CreateCategory(CreateCategoryOutputBound outputBound, CategoryFactory factory) {
-        this.outputBound = outputBound;
+    public CreateCategory(CreateCategoryPresenter presenter, CategoryFactory factory) {
+        this.presenter = presenter;
         this.factory = factory;
     }
 
@@ -23,23 +23,23 @@ public class CreateCategory implements CreateCategoryInputBound {
         if (inputData.getName().isBlank()) {
             CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: Please enter the name of " +
                     "the category.");
-            return outputBound.prepareFailView(outputData);
+            return presenter.prepareFailView(outputData);
         } else if(this.factory.contains(inputData.getName(), false)){
             CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: This category name " +
                     "already exists. Please enter a new category name.");
-            return outputBound.prepareFailView(outputData);
+            return presenter.prepareFailView(outputData);
         }
         // no need to check for colour input cause UI will display drop down menu (no user error unless they're hacker)
 
         Category category = new Category(inputData.getName(), inputData.getColour());
         factory.addItem(category);
         CreateCategoryOutputData outputData = new CreateCategoryOutputData(category);
-        return outputBound.prepareSuccessView(outputData);
+        return presenter.prepareSuccessView(outputData);
     }
 
     // getters
-    public CreateCategoryOutputBound getOutputBound() {
-        return this.outputBound;
+    public CreateCategoryPresenter getPresenter() {
+        return this.presenter;
     }
 
     public CategoryFactory getFactory() {

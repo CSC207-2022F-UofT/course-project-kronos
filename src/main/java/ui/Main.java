@@ -1,6 +1,7 @@
 package ui;
 
 import entities.*;
+import use_cases.categories.create_category.CreateCategoryInputBound;
 
 import java.util.Calendar;
 
@@ -22,7 +23,7 @@ public class Main {
 
     public static Timer timer = new Timer();
 
-    public static User user = new User(email, password, first, last, habits, tasks, categories, timer);
+
 
 
     /**
@@ -35,6 +36,12 @@ public class Main {
         task2.setTaskCategory("Category 1");
         tasks.addItem(task1);
         tasks.addItem(task2);
+        category1.addTask(task1);
+        category1.addTask(task2);
+        categories.addItem(category1);
+
+        User user = new User(email, password, first, last, habits, tasks, categories, timer);
+        // CreateCategoryInputBound interactor = new CreateCategory(user,)
 
         new ToDoViewModel(user);
     }
