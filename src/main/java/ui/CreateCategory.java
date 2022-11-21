@@ -1,15 +1,13 @@
 package ui;
 
-import entities.CategoryFactory;
-import input_output.CreateCategoryInputBound;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 // import controller?
 
 public class CreateCategory extends JFrame implements ActionListener {
+
+    // UI calls the presenter method
 
     public static void createCategory() {
         JFrame frame = new JFrame("New Category");
@@ -46,12 +44,6 @@ public class CreateCategory extends JFrame implements ActionListener {
                 }
             }
         });
-
-    }
-
-    public static void main(String[] args) { // ? have this here for now, need to move this to its own class later on
-        CategoryFactory factory = new CategoryFactory(); // this definitly shouldn't be in this file, only for testing purposes
-        new CreateCategory();
 
     }
 

@@ -1,11 +1,11 @@
-package adapters;
+package use_cases.tasks.categories;
 
 import entities.Category;
 import entities.CategoryFactory;
-import input_output.CreateCategoryInputBound;
-import input_output.EditCategoryInputBound;
-import use_cases.tasks.DeleteCategory;
-import use_cases.tasks.EditCategory;
+import use_cases.tasks.categories.delete_category.DeleteCategory;
+import use_cases.tasks.categories.create_category.CreateCategoryInputBound;
+import use_cases.tasks.categories.edit_category.EditCategory;
+import use_cases.tasks.categories.edit_category.EditCategoryInputBound;
 
 public class CategoryController {
 
@@ -17,8 +17,8 @@ public class CategoryController {
      * @param colour - the colour of the new category to be created.
      * @return true if there is not a category with provided category name in the system, return false otherwise.
      */
-    public Boolean createCategory(String name, String colour) {
-        CreateCategoryInputBound inputBound = new CreateCategoryInputBound(name, colour);
+    public Boolean createCategory(String name, String colour, CategoryFactory factory) {
+        CreateCategoryInputBound inputBound = new CreateCategoryInputBound(name, colour, factory);
         return inputBound.getSuccessful();
     }
 
@@ -47,8 +47,8 @@ public class CategoryController {
      * @param name - the new name of the category.
      * @return true if the name of the Category object has been successfully updated.
      */
-    public Boolean editCategoryName(Category category, String name) {
-        return EditCategoryInputBound.editNameInputBound(category, name);
+    public Boolean editCategoryName(Category category, String name, CategoryFactory factory) {
+        return EditCategoryInputBound.editNameInputBound(category, name, factory);
     }
 
     /**

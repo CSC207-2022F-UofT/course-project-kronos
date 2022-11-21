@@ -15,7 +15,6 @@ public class TestCategory {
         Category example = new Category(name, colour);
         // assertion
         assertEquals(name, example.categoryName);
-
     }
     @Test(timeout = 500)
     public void testSetCategoryName() {

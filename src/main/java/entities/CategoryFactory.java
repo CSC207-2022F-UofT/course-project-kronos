@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class CategoryFactory extends Factory<Category> {
 
-    public HashMap<Integer, Category> categories;
+    public HashMap<Integer, Category> categories = new HashMap<Integer, Category>();
 
 
     public CategoryFactory() {
@@ -34,7 +34,7 @@ public class CategoryFactory extends Factory<Category> {
      */
     public boolean contains(String name, Boolean createNew) {
         if (categories == null) {
-            // create a factory?
+
             if (createNew) {
                 CategoryFactory factory = new CategoryFactory();
             }
