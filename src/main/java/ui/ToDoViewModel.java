@@ -2,7 +2,7 @@ package ui;
 
 import entities.Category; // shouldn't reference entity classes?
 import entities.User;
-import use_cases.categories.CategoryPresenter;
+import controllers.CategoryPresenter;
 
 import javax.swing.*;
 import java.awt.*;

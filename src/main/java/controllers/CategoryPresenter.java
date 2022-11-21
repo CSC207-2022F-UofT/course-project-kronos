@@ -1,4 +1,4 @@
-package use_cases.categories;
+package controllers;
 
 import entities.Category; // breaks clean architecture
 import entities.CategoryFactory;

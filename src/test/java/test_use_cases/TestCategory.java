@@ -4,13 +4,7 @@ package test_use_cases;
 
 import entities.Category;
 import entities.CategoryFactory;
-import entities.User;
-import org.junit.Test;
-import use_cases.categories.CategoryPresenter;
 import use_cases.categories.create_category.*;
-import use_cases.categories.delete_category.DeleteCategory;
-import use_cases.categories.edit_category.EditCategory;
-import use_cases.categories.edit_category.EditCategoryInputBound;
 
 import static org.junit.Assert.*;
 

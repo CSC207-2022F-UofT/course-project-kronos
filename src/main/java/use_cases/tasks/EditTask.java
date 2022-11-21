@@ -33,16 +33,6 @@ public class EditTask {
         }else {t.markAsComplete();}
     }
 
-
-    /**
-     * Edit the reminder setting of the task.
-     * @param t - Target task.
-     * @param onOrOff - The target reminder setting after the edit.
-     */
-    public void editReminderSetting(Task t, boolean onOrOff){
-        t.setReminders(onOrOff);
-    }
-
     /**
      * Edit the name of the task.
      * @param t - Target task.

@@ -16,7 +16,7 @@ public class CreateTask {
      * @param deadline -  The deadline of the task.
      */
     public void createTask(User userA,String name, boolean reminders, Calendar deadline){
-        Task t = new Task(name, reminders, deadline);
+        Task t = new Task(name, deadline);
         // Need User Class to be implemented.
         //userA.getTaskCollection.addItem(t);
     }
