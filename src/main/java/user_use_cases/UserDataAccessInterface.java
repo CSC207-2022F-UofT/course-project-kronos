@@ -9,7 +9,7 @@ public interface UserDataAccessInterface {
     // Login the user, all factories available if user is logged in
     public abstract User LoginUser(String emailAddress, String password);
 
-    // Update the database with new user object if
+    // Update the database with new user object
     public abstract void UpdateUser(User user);
 
     // Delete user from database
