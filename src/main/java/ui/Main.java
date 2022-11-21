@@ -2,6 +2,8 @@ package ui;
 
 import entities.*;
 
+import java.util.Calendar;
+
 public class Main {
 
     public static String first = "Bob";
@@ -11,6 +13,13 @@ public class Main {
     public static HabitFactory habits = new HabitFactory();
     public static CategoryFactory categories = new CategoryFactory();
     public static TaskFactory tasks = new TaskFactory();
+
+    public static Calendar deadline1 = Calendar.getInstance();
+    public static Calendar deadline2 = Calendar.getInstance();
+    public static Task task1 = new Task("task 1", deadline1);
+    public static Task task2 = new Task("task 1", deadline2);
+    public static Category category1 = new Category("Category 1", "Red");
+
     public static Timer timer = new Timer();
 
     public static User user = new User(email, password, first, last, habits, tasks, categories, timer);
@@ -22,6 +31,11 @@ public class Main {
      */
 
     public static void main(String[] args){
+        task1.setTaskCategory("Category 1");
+        task2.setTaskCategory("Category 1");
+        tasks.addItem(task1);
+        tasks.addItem(task2);
+
         new ToDoViewModel(user);
     }
 }
