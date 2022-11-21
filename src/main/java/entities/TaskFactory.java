@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Represents a collection of tasks.
+ */
 public class TaskFactory extends Factory<Task> implements Serializable {
+
     HashMap<Integer, Task> tasks;
 
     public TaskFactory(){
@@ -34,7 +38,7 @@ public class TaskFactory extends Factory<Task> implements Serializable {
      * Return tasks.
      * @return the Hashmap attribute tasks of a TaskFactory.
      */
-    public HashMap getTasks(){
+    public HashMap<Integer, Task> getTasks(){
         return this.tasks;
     }
 
