@@ -23,7 +23,7 @@ public class Task{
      * Constructor for a Task object.
      * @param name - The name of the task.
      * @param deadline -  The deadline of the task.
-     */
+    */
     public Task(String name, Calendar deadline){
 
         this.id = numberOfTasks;

@@ -45,7 +45,7 @@ public class TestTask {
     }
 
     @Test(timeout = 500)
-    public void testSetNameEmpty() {
+        public void testSetNameEmpty() {
         Calendar deadline = Calendar.getInstance();
         deadline.set(2022, Calendar.NOVEMBER, 21, 23,59);
         Task task = new Task("example", deadline);
