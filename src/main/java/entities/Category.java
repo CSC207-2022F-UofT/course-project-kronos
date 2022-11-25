@@ -8,10 +8,9 @@ public class Category implements Serializable {
 
     public String categoryName;
     private String colour; // can we make all of these public without losing marks
-    private TaskFactory tasks;
+    private final TaskFactory tasks = new TaskFactory(); // new since Category was just created
     private boolean visibility;
-    private int id;
-    public static CategoryFactory categories = new CategoryFactory();
+    private final int id;
 
     /**
      * The constructor of Category.
@@ -26,14 +25,13 @@ public class Category implements Serializable {
         this.categoryName = name;
         this.colour = colour;
         this.visibility = true;
-        categories.addItem(this);
     }
 
 
     /**
      * setters and getters
      */
-    public void setCategoryName(String name) {
+    public void setName(String name) {
         this.categoryName = name;
     }
     public void setColour(String colour) {
@@ -43,7 +41,7 @@ public class Category implements Serializable {
         this.visibility = state;
     }
 
-    public String getCategoryName() {
+    public String getName() {
         return this.categoryName;
     }
     public String getColour() {

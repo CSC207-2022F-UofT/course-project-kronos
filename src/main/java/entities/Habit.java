@@ -12,7 +12,7 @@ public class Habit implements Serializable {
     private boolean reminderTrue;
 
     private int frequency;
-    private HashMap<String, Integer> frequencyMap;
+    private final HashMap<String, Integer> frequencyMap;
 
     /**
      * Constructor for a Task object.
