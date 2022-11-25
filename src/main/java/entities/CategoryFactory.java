@@ -1,11 +1,12 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CategoryFactory extends Factory<Category> {
+public class CategoryFactory extends Factory<Category> implements Serializable {
 
-    public HashMap<Integer, Category> categories;
+    public HashMap<Integer, Category> categories = new HashMap<Integer, Category>();
 
 
     public CategoryFactory() {
@@ -34,7 +35,7 @@ public class CategoryFactory extends Factory<Category> {
      */
     public boolean contains(String name, Boolean createNew) {
         if (categories == null) {
-            // create a factory?
+
             if (createNew) {
                 CategoryFactory factory = new CategoryFactory();
             }
@@ -53,7 +54,7 @@ public class CategoryFactory extends Factory<Category> {
      */
     public ArrayList<Category> convertToArray() {
         ArrayList<Category> categoryList = new ArrayList<>();
-        if (this.categories.isEmpty() == false) {
+        if (!this.categories.isEmpty()) {
             for (Integer key : this.categories.keySet()) {
                 categoryList.add(this.categories.get(key));
             }

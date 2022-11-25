@@ -10,7 +10,7 @@ public class Habit {
     private String type;
     private boolean reminderState;
     private int frequency;
-    private HashMap<String, Integer> frequencyMap;
+    private final HashMap<String, Integer> frequencyMap;
 
     /**
      * Constructor for a Habit object.
