@@ -24,7 +24,7 @@ public class User {
     private HabitFactory habitCollection;
     private TaskFactory taskCollection;
     private CategoryFactory categoryCollection;
-    private Timer tomato;
+    private TimerTomato tomato;
 
     public User(String email_id, String password, String first_name, String last_name){
         this.emailAddress = email_id;
@@ -34,7 +34,7 @@ public class User {
         this.habitCollection = new HabitFactory();
         this.taskCollection = new TaskFactory();
         this.categoryCollection = new CategoryFactory();
-        this.tomato = new Timer();
+        this.tomato = new TimerTomato();
     }
 
     public User(){}
@@ -75,7 +75,7 @@ public class User {
         return this.taskCollection;
     }
 
-    public Timer getTomato(){
+    public TimerTomato getTomato(){
         // returns the users tasks
         return this.tomato;
     }
