@@ -4,7 +4,6 @@ import entities.Category;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
 public class TestCategory {
 
     Category category = new Category("name", "colour");
@@ -15,19 +14,18 @@ public class TestCategory {
         Category example = new Category(name, colour);
         // assertion
         assertEquals(name, example.categoryName);
-
     }
     @Test(timeout = 500)
     public void testSetCategoryName() {
         String name = "Chores";
-        category.setCategoryName(name);
+        category.setName(name);
         // assertion
         assertEquals(name, category.categoryName);
     }
     public void testGetCategoryName() {
         String name = category.categoryName;
         // assertion
-        assertEquals(name, category.getCategoryName());
+        assertEquals(name, category.getName());
     }
     @Test(timeout = 500)
     public void testColour() {

@@ -1,7 +1,7 @@
 package database;
 
 import entities.User;
-import user_use_cases.UserDataAccessInterface;
+import use_cases.user.UserDataAccessInterface;
 
 import java.io.*;
 
@@ -9,11 +9,14 @@ import java.util.HashMap;
 
 public class Database implements UserDataAccessInterface {
 
-    HashMap<String, User> collections;
-    String filePath;
+    private HashMap<String, User> collections;
+    public String filePath;
+
+    public User currUser;
 
     public Database(String filepath){
         this.filePath = filepath;
+        this.currUser = null;
         try {
             FileInputStream file = new FileInputStream(filepath);
             ObjectInputStream ois = new ObjectInputStream(file);
@@ -50,9 +53,15 @@ public class Database implements UserDataAccessInterface {
     @Override
     public User LoginUser(String emailAddress, String password) {
         if (emailAddress.equals(collections.get(emailAddress).getEmailAddress())){
-            return collections.get(emailAddress);
+            this.currUser = collections.get(emailAddress);
+            return this.currUser;
         }
         return null;
+    }
+
+    @Override
+    public User GetUser() {
+        return this.currUser;
     }
 
     @Override
