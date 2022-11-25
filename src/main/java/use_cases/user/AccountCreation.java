@@ -1,8 +1,5 @@
-package user_use_cases;
-import database.Database;
+package use_cases.user;
 import entities.*;
-
-import javax.swing.Timer;
 
 public class AccountCreation {
     public void CreateAccount(String email_id, String password, String first_name, String last_name,

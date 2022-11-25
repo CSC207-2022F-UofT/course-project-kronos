@@ -1,14 +1,9 @@
-package userui;
+package ui.user;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import entities.CategoryFactory;
-import ui.CreateCategory;
-import user_use_cases.UserDataAccessInterface;
-
-import entities.User;
 import entities.UserFactory;
 
 public class LoginMainPage extends JFrame implements ActionListener {

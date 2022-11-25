@@ -1,8 +1,6 @@
-package userui;
+package ui.user;
 
 import javax.swing.*;
-
-import userui.CreateAccountPage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
