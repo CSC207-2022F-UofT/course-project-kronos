@@ -1,7 +1,7 @@
 package database;
 
 import entities.User;
-import user_use_cases.UserDataAccessInterface;
+import use_cases.user.UserDataAccessInterface;
 
 import java.io.*;
 
