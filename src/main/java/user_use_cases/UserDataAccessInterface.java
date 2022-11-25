@@ -17,4 +17,7 @@ public interface UserDataAccessInterface {
 
     // Add user to database
     public abstract void AddUser(User user);
+
+    // Get current User that has been logged in, returns null if user isn't logged in
+    public abstract User GetUser();
 }
