@@ -35,6 +35,8 @@ public class LoginMainPage extends JFrame implements ActionListener {
         mainFrame.setTitle("Kronos");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        mainFrame.setVisible(true);
+
         // create a new Jpanel
         panel = new Panel();
 
@@ -69,7 +71,7 @@ public class LoginMainPage extends JFrame implements ActionListener {
         createaccountbutton.createButton(panel.jPanel, "Create Account",120, 130, 120, 25);
 
 
-        mainFrame.setVisible(true);
+
 
     }
 

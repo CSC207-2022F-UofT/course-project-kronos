@@ -1,4 +1,5 @@
 package user_use_cases;
+import database.Database;
 import entities.*;
 
 import javax.swing.Timer;
