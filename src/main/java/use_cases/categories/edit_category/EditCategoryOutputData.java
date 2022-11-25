@@ -11,7 +11,7 @@ public class EditCategoryOutputData {
     private final Category category;
 
     /**
-     /** Constructer to be called if the use case was unsuccessful.
+     /** Constructor to be called if the use case was unsuccessful.
      * @param message - the message to be displayed after deletion
      */
     public EditCategoryOutputData(String message) {
@@ -20,7 +20,7 @@ public class EditCategoryOutputData {
     }
 
     /**
-     /** Constructer to be called if the use case was successful.
+     /** Constructor to be called if the use case was successful.
      * @param category - the category that was just deleted
      */
     public EditCategoryOutputData(String message, Category category) {

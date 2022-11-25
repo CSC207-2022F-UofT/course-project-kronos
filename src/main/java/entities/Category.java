@@ -6,9 +6,9 @@ public class Category {
 
     public String categoryName;
     private String colour; // can we make all of these public without losing marks
-    private TaskFactory tasks = new TaskFactory(); // new since Category was just created
+    private final TaskFactory tasks = new TaskFactory(); // new since Category was just created
     private boolean visibility;
-    private int id;
+    private final int id;
 
     /**
      * The constructor of Category.

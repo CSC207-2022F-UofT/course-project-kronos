@@ -1,6 +1,8 @@
 package controllers;
 
 import entities.Category;
+// controller can't depend on Entities (can't go more than 1 layer deep)
+// may need to change the Category controller for deleteCategory so we can pass in an ID instead of the Category object
 import entities.CategoryFactory;
 import use_cases.categories.create_category.*;
 
@@ -10,6 +12,8 @@ public class CategoryController {
     private final String inputColour;
     private final Boolean state;
     private final Category category;
+    CreateCategoryInputData inputData;
+
 
     public CategoryController(CategoryFactory factory, String name, String colour) {
         this.factory = factory;
@@ -17,6 +21,7 @@ public class CategoryController {
         this.inputColour = colour;
         this.state = true;
         this.category = null;
+        this.inputData = new CreateCategoryInputData(this.inputName, this.inputColour);
     }
 
     public CategoryController(CategoryFactory factory, Category category) {
@@ -39,9 +44,9 @@ public class CategoryController {
     // passes it onto to InputData
 
     public CreateCategoryOutputData CreateCategory(){
-        CreateCategoryInputData inputData = new CreateCategoryInputData(this.inputName, this.inputColour);
         CreateCategoryPresenter presenter = new CreateCategoryPresenter();
         CreateCategory createCategory = new CreateCategory(presenter, factory);
+
         return createCategory.edit(inputData);
     }
 

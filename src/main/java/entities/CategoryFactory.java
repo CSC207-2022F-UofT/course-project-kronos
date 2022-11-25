@@ -53,7 +53,7 @@ public class CategoryFactory extends Factory<Category> {
      */
     public ArrayList<Category> convertToArray() {
         ArrayList<Category> categoryList = new ArrayList<>();
-        if (this.categories.isEmpty() == false) {
+        if (!this.categories.isEmpty()) {
             for (Integer key : this.categories.keySet()) {
                 categoryList.add(this.categories.get(key));
             }

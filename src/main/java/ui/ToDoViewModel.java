@@ -53,16 +53,12 @@ public class ToDoViewModel extends JFrame{
             constraints.gridx = 0;
             constraints.gridy = y;
             int size;
-            if (cat.getTasks().getTasks() == null) {
-                size = 0;
-            } else {
-                size = cat.getTasks().getTasks().size();
-            }
+            if (cat.getTasks().getTasks() == null) { size = 0;
+            } else { size = cat.getTasks().getTasks().size(); }
             frame.add(new CategoryList(cat, size, cat.getTasks().convertToArray()), constraints);
-            // can size() be called on an empty hashmap or null?
             y++;
-
         }
+
         constraints.gridx = 0;
         constraints.gridy = 0;
         frame.add(title, constraints);

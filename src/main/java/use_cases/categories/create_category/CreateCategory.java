@@ -3,11 +3,11 @@ import entities.Category;
 import entities.CategoryFactory;
 
 public class CreateCategory implements CreateCategoryInputBound {
-    private final CreateCategoryPresenter presenter;
+    private final CreateCategoryOutputBound outputBound;
     private final CategoryFactory factory;
 
-    public CreateCategory(CreateCategoryPresenter presenter, CategoryFactory factory) {
-        this.presenter = presenter;
+    public CreateCategory(CreateCategoryOutputBound outputBound, CategoryFactory factory) {
+        this.outputBound = outputBound;
         this.factory = factory;
     }
 
@@ -15,7 +15,7 @@ public class CreateCategory implements CreateCategoryInputBound {
     /**
      * Creates a new category.
      * @param inputData - the name of the category that is to be created
-     * @return : output data upon Category creation
+     * @return output data upon Category creation
      */
 
     @Override
@@ -23,23 +23,23 @@ public class CreateCategory implements CreateCategoryInputBound {
         if (inputData.getName().isBlank()) {
             CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: Please enter the name of " +
                     "the category.");
-            return presenter.prepareFailView(outputData);
+            return outputBound.prepareFailView(outputData);
         } else if(this.factory.contains(inputData.getName(), false)){
             CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: This category name " +
                     "already exists. Please enter a new category name.");
-            return presenter.prepareFailView(outputData);
+            return outputBound.prepareFailView(outputData);
         }
-        // no need to check for colour input cause UI will display drop down menu (no user error unless they're hacker)
+        // no need to check for colour input cause UI will display drop down menu (no user error unless they're hackers)
 
         Category category = new Category(inputData.getName(), inputData.getColour());
         factory.addItem(category);
         CreateCategoryOutputData outputData = new CreateCategoryOutputData(category);
-        return presenter.prepareSuccessView(outputData);
+        return outputBound.prepareSuccessView(outputData);
     }
 
     // getters
-    public CreateCategoryPresenter getPresenter() {
-        return this.presenter;
+    public CreateCategoryOutputBound getOutputBound() {
+        return this.outputBound;
     }
 
     public CategoryFactory getFactory() {

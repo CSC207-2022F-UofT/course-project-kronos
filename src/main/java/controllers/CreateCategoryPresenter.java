@@ -1,6 +1,9 @@
-package use_cases.categories.create_category;
+package controllers;
 
-public class CreateCategoryPresenter implements CreateCategoryOutputBound{
+import use_cases.categories.create_category.CreateCategoryOutputBound;
+import use_cases.categories.create_category.CreateCategoryOutputData;
+
+public class CreateCategoryPresenter implements CreateCategoryOutputBound {
 
     @Override
     public CreateCategoryOutputData prepareFailView(CreateCategoryOutputData outputData) {

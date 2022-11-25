@@ -20,6 +20,6 @@ public class DeleteCategoryInputData {
 
     // getters
     public Category getCategory() {
-        return this.getCategory();
+        return this.category;
     }
 }

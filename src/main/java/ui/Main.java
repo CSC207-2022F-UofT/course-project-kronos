@@ -23,8 +23,6 @@ public class Main {
     public static Timer timer = new Timer();
 
 
-
-
     /**
      * this is a temporary class to check that the UI and other files work while the UI pages
      * aren't connected yet.

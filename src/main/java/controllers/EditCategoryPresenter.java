@@ -1,6 +1,9 @@
-package use_cases.categories.edit_category;
+package controllers;
 
-public class EditCategoryPresenter implements EditCategoryOutputBoundary{
+import use_cases.categories.edit_category.EditCategoryOutputBoundary;
+import use_cases.categories.edit_category.EditCategoryOutputData;
+
+public class EditCategoryPresenter implements EditCategoryOutputBoundary {
     @Override
     public EditCategoryOutputData prepareSuccessView(EditCategoryOutputData outputData) {
         return outputData;
