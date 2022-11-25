@@ -36,6 +36,7 @@ public class TimerScreen extends JFrame
     private static final int ORIGINAL_COUNTDOWN_MINUTES = 25;
     private static final int ORIGINAL_COUNTDOWN_SECONDS = 0;
 
+    //change to zero.
     private int[] workTimeMin = {-1};
     private int[] restTimeMin = {-1};
 
