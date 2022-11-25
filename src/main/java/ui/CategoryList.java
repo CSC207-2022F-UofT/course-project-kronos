@@ -1,32 +1,71 @@
 package ui;
 
+import entities.Category;
 import entities.Task;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class CategoryList extends JPanel {
-    public CategoryList(int rows, ArrayList<Task> tasks) {
-        GridLayout layout = new GridLayout(rows, 2); // need rows to adapt to number of tasks in that category
-        layout.setVgap(5);
-        // JPanel components = new JPanel();
-        // components.setLayout(layout);
+    public CategoryList(Category category, int rows, ArrayList<Task> tasks) {
+        GridBagLayout layout = new GridBagLayout(); // need rows to adapt to number of tasks in that category
+        GridBagConstraints constraints = new GridBagConstraints();
 
         this.setLayout(layout);
-        this.setPreferredSize(new Dimension(400, 560));
-        this.setBackground(ColourPalette.white); // need to set the colour to specified from category
+        // this.setPreferredSize(new Dimension(500, tasks.size()*20));
 
-        // ? have to populate the list from here with tasks
+        // add Category label
+        JLabel categoryLabel = new JLabel(category.getName());
+        categoryLabel.setFont(new Font("Serif", Font.PLAIN, 16));
+        categoryLabel.setHorizontalAlignment(JLabel.CENTER);
+        categoryLabel.setBackground(ColourPalette.getColour(category.getColour()));
 
-        populate(tasks);
+        constraints.gridwidth = 4;
+        constraints.ipady = 20;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        this.add(categoryLabel, constraints);
+
+        //  have to populate the list from here with tasks
+        if (!category.getTasks().convertToArray().isEmpty()) {
+            populate(tasks, constraints);
+        }
+
     }
 
-    public void populate(ArrayList<Task> tasks) {
+    public void populate(ArrayList<Task> tasks, GridBagConstraints constraints) {
+        int y = 3;
         for (Task task: tasks){
-            // this.add(task.getName()); // ? Task entity needs a getName() method
-            // how do I add the new Category List's tasks without a reference name for the CategoryList?
-            this.add(new JRadioButton()); // since adding is done from left to right, up to down
+            constraints.gridwidth = 1;
+            constraints.gridx = 0;
+            constraints.gridy = y;
+            constraints.ipadx = 20;
+            this.add(new JLabel(task.getName()), constraints);
+
+            constraints.gridwidth = 2;
+            constraints.gridx = 1;
+            constraints.gridy = y;
+            constraints.ipadx = 40;
+            String deadline;
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+
+            if (task.getDeadline() != null) {
+                deadline = dateFormat.format(task.getDeadline().getTime());
+            } else {
+                deadline = "";
+            }
+            this.add(new JLabel(deadline), constraints);
+
+            constraints.gridx = 3;
+            constraints.gridy = y;
+            constraints.ipadx = 0;
+            this.add(new JRadioButton(), constraints); // since adding is done from left to right, up to down
+            y ++;
         }
     }
 
