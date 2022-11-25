@@ -1,6 +1,5 @@
-package Habit_use_case;
+package use_cases.habits.edit_habit;
 import entities.Habit;
-import entities.HabitFactory;
 import entities.User;
 
 public class EditHabit {
@@ -15,7 +14,7 @@ public class EditHabit {
         u.getHabitCollection().updateKey(oldKey, title);
     }
 
-    /**Edits the type of an existing habit.
+    /**Edits the type of existing habit.
      * @param h - Habit to be edited.
      * @param t - the new type of habit.
      */

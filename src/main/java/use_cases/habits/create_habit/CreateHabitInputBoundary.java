@@ -1,10 +1,8 @@
-package input_boundary;
-
-import Habit_use_case.CreateHabit;
+package use_cases.habits.create_habit;
 import entities.User;
 
 
-public class CreateHabitInput {
+public class CreateHabitInputBoundary {
 
     private Boolean success;
 
@@ -16,8 +14,8 @@ public class CreateHabitInput {
      * @param r - The reminder state of the habit
      * success is true if no fields are empty and a Habit is created.
      */
-    public CreateHabitInput(User u, String s, String t, Boolean r){
-        if(s.equals("") && t.equals("")){
+    public CreateHabitInputBoundary(User u, String s, String t, Boolean r){
+        if(!(s.equals("") && t.equals(""))){
             CreateHabit.createHabit(u, s, t, r);
             this.success = true;
         }

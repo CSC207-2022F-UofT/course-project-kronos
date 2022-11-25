@@ -25,7 +25,7 @@ public class TestHabitFactory {
         testFactory.put(h.getName(), h);
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h);
-        assertEquals("The habit is recorded in the Factory", testFactory, hFactory.h_items );
+        assertEquals("The habit is recorded in the Factory", testFactory, hFactory.habitCollection );
     }
 
     @Test(timeout = 500)
@@ -41,7 +41,7 @@ public class TestHabitFactory {
         hFactory.addItem(h2);
         hFactory.addItem(h3);
         hFactory.removeItem(h2);
-        assertEquals("The habit is deleted from the Factory", testFactory, hFactory.h_items);
+        assertEquals("The habit is deleted from the Factory", testFactory, hFactory.habitCollection);
     }
 
     @Test(timeout = 500)
@@ -50,7 +50,7 @@ public class TestHabitFactory {
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         hFactory.removeItem(h1);
-        assertTrue("The Factory is empty", hFactory.h_items.isEmpty());
+        assertTrue("The Factory is empty", hFactory.habitCollection.isEmpty());
     }
 
     @Test(timeout = 500)
@@ -63,12 +63,12 @@ public class TestHabitFactory {
         hFactory.addItem(h2);
         hFactory.addItem(h3);
 
-        assertTrue("The Key 'Run 5 Kms' exists in the Factory", hFactory.h_items.containsKey("Run 5 Kms"));
+        assertTrue("The Key 'Run 5 Kms' exists in the Factory", hFactory.habitCollection.containsKey("Run 5 Kms"));
 
         hFactory.updateKey("Run 5 Kms", "Run 2.5 Kms");
 
-        assertFalse("The Key 'Run 5 Kms' exists in the Factory", hFactory.h_items.containsKey("Run 5 Kms"));
-        assertTrue("The Key 'Run 2.5 Kms' exists in the Factory", hFactory.h_items.containsKey("Run 2.5 Kms"));
+        assertFalse("The Key 'Run 5 Kms' exists in the Factory", hFactory.habitCollection.containsKey("Run 5 Kms"));
+        assertTrue("The Key 'Run 2.5 Kms' exists in the Factory", hFactory.habitCollection.containsKey("Run 2.5 Kms"));
     }
 
     @Test(timeout = 500)
@@ -81,7 +81,7 @@ public class TestHabitFactory {
         hFactory.addItem(h2);
         hFactory.addItem(h3);
 
-        assertEquals("The correct collection is returned", hFactory.h_items, hFactory.getCollection());
+        assertEquals("The correct collection is returned", hFactory.habitCollection, hFactory.getCollection());
     }
 
     @Test(timeout = 500)
