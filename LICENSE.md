@@ -1,7 +1,6 @@
 MIT License
 
-Copyright (c) 2022 Mugdha Banthwan, Emily Du, Madhav Kanna, Jiaxin Li, 
-Happy Nasit, Haotong Wang.
+Copyright (c) 2022 CSC207-2022F-UofT-Kronos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
