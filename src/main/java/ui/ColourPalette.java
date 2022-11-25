@@ -16,4 +16,24 @@ public class ColourPalette {
     public static Color purple = new Color(181, 157, 164);
     public static Color orange = new Color(255, 143, 46);
 
+    public static Color getColour(String colour) {
+        if (colour == "pink") {
+            return pink;
+        } else if (colour == "green") {
+            return green;
+        } else if (colour == "white") {
+            return white;
+        } else if (colour == "yellow") {
+            return yellow;
+        } else if (colour == "red") {
+            return red;
+        } else if (colour == "blue") {
+            return blue;
+        } else if (colour == "purple") {
+            return purple;
+        } else if (colour == "orange") {
+            return orange;
+        }
+        return null;
+    }
 }

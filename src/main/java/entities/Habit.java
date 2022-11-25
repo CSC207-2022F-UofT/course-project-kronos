@@ -10,7 +10,7 @@ public class Habit {
     private boolean reminderTrue;
 
     private int frequency;
-    private HashMap<String, Integer> frequencyMap;
+    private final HashMap<String, Integer> frequencyMap;
 
     public Habit(String title, String t, boolean value ){
 
