@@ -5,10 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
-import static Habit_use_case.CreateHabit.createHabit;
-import static Habit_use_case.DeleteHabit.deleteHabit;
-import static Habit_use_case.EditHabit.*;
-import static Habit_use_case.TrackHabit.increaseHabitFrequency;
+import static use_cases.habits.create_habit.CreateHabit.createHabit;
+import static use_cases.habits.delete_habit.DeleteHabit.deleteHabit;
+import static use_cases.habits.edit_habit.EditHabit.*;
+import static use_cases.habits.track_habit.TrackHabit.increaseHabitFrequency;
 import static org.junit.Assert.*;
 
 public class TestHabitUseCases {
@@ -35,7 +35,7 @@ public class TestHabitUseCases {
         createHabit(u, hTitle, hType, true);
         Set<String> s = new HashSet<>();
         s.add("Sleep at 10 pm daily");
-        assertEquals( u.getHabitCollection().h_items.keySet(), s);
+        assertEquals( u.getHabitCollection().habitCollection.keySet(), s);
     }
 
     @Test(timeout = 500)

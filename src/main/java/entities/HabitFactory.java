@@ -5,11 +5,14 @@ import java.util.HashMap;
 
 public class HabitFactory extends Factory<Habit>{
 
-    public HashMap<String, Habit> h_items;
+    public HashMap<String, Habit> habitCollection;
 
+    /**
+     * The constructor of the class HabitFactory.
+     */
     public HabitFactory(){
         super();
-        this.h_items = new HashMap<>();
+        this.habitCollection = new HashMap<>();
     }
 
     /**
@@ -18,24 +21,24 @@ public class HabitFactory extends Factory<Habit>{
      */
     @Override
     public void addItem(Habit item) {
-        h_items.put(item.getName(), item);
+        habitCollection.put(item.getName(), item);
     }
 
 
     /**
-     * Removing a habit from the HabitFactory by referring to its id (key).
+     * Removing a habit from the HabitFactory by referring to its name (key).
      * @param item - The habit that will be removed.
      */
     @Override
     public void removeItem(Habit item) {
-        h_items.remove(item.getName(), item);
+        habitCollection.remove(item.getName(), item);
     }
 
     /**
      * Updates the Key value for a habit in the Hashmap when its name is changed.
      */
     public void updateKey(String oldKey, String newKey){
-        Habit value = h_items.get(oldKey);
+        Habit value = habitCollection.get(oldKey);
         removeItem(value);
         value.setName(newKey);
         addItem(value);
@@ -43,9 +46,9 @@ public class HabitFactory extends Factory<Habit>{
     }
     /**
      * Return habits.
-     * @return the Hashmap attribute h_items of a HabitFactory.
+     * @return the Hashmap attribute habitCollection of a HabitFactory.
      */
-    public HashMap<String, Habit> getCollection(){return h_items;}
+    public HashMap<String, Habit> getCollection(){return habitCollection;}
 
     /**
      * Given the user, return an array list of that user's habits.
@@ -53,9 +56,9 @@ public class HabitFactory extends Factory<Habit>{
      */
     public ArrayList<Habit> convertToArray() {
         ArrayList<Habit> habitList = new ArrayList<>();
-        if (!this.h_items.isEmpty()) {
-            for (String key : this.h_items.keySet()) {
-                habitList.add(this.h_items.get(key));
+        if (!this.habitCollection.isEmpty()) {
+            for (String key : this.habitCollection.keySet()) {
+                habitList.add(this.habitCollection.get(key));
             }
         } // else don't populate the list
         return habitList;
