@@ -1,6 +1,5 @@
 package use_cases.categories.delete_category;
 
-import controllers.DeleteCategoryPresenter;
 import entities.CategoryFactory;
 
 public class DeleteCategory implements DeleteCategoryInputBound {

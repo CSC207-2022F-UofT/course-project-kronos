@@ -1,4 +1,4 @@
-package controllers;
+package controllers.category;
 
 import entities.Category;
 // controller can't depend on Entities (can't go more than 1 layer deep)
@@ -42,7 +42,6 @@ public class CategoryController {
 
 
     // passes it onto to InputData
-
     public CreateCategoryOutputData CreateCategory(){
         CreateCategoryPresenter presenter = new CreateCategoryPresenter();
         CreateCategory createCategory = new CreateCategory(presenter, factory);

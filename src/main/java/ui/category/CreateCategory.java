@@ -1,6 +1,6 @@
-package ui;
+package ui.category;
 
-import controllers.CategoryController;
+import controllers.category.CategoryController;
 import entities.CategoryFactory;
 import use_cases.categories.create_category.CreateCategoryInputData;
 import use_cases.categories.create_category.CreateCategoryOutputData;

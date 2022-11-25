@@ -1,4 +1,4 @@
-package controllers;
+package controllers.category;
 
 import use_cases.categories.create_category.CreateCategoryOutputBound;
 import use_cases.categories.create_category.CreateCategoryOutputData;
