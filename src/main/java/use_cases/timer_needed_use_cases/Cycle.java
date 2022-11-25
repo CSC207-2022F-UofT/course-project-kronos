@@ -1,11 +1,13 @@
-import entities.Timertomato;
+package use_cases.timer_needed_use_cases;
+
+import entities.TimerTomato;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Cycle {
 
-    int cycle = Timertomato.getTimerCycle();
+    int cycle = TimerTomato.getTimerCycle();
     Timer timer = new Timer();
 
     public void timer_cycle(int cycle){

@@ -1,14 +1,14 @@
-package use_cases;
+package use_cases.timer_use_cases;
 
-import entities.Timertomato;
+import entities.TimerTomato;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class TimerCycle {
-    private static final String workTime = Timertomato.getWorkTime();
+    private static final String workTime = TimerTomato.getWorkTime();
 
-    private static final String restTime = Timertomato.getRestTime();
+    private static final String restTime = TimerTomato.getRestTime();
 
     private static int TimeCycle;
 

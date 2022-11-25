@@ -1,7 +1,9 @@
 package entities;
 
 import javax.swing.Timer;
-public class Timertomato {
+import java.io.Serializable;
+
+public class TimerTomato implements Serializable {
 
 
     private static String restTime;
@@ -13,23 +15,24 @@ public class Timertomato {
     private String rest_timeLeft;
     private Timer timer;
 
-    public Timertomato(String workTime, String restTime, int timerCycle){
-        Timertomato.workTime = workTime;
-        Timertomato.restTime = restTime;
-        Timertomato.timerCycle = timerCycle;
+    public TimerTomato(String workTime, String restTime, int timerCycle){
+        TimerTomato.workTime = workTime;
+        TimerTomato.restTime = restTime;
+        TimerTomato.timerCycle = timerCycle;
 
     }
+    public TimerTomato(){};
 
     public static void setWorkTime(String workTime) {
-        Timertomato.workTime = workTime;
+        TimerTomato.workTime = workTime;
     }
 
     public static void setRestTime(String restTime) {
-        Timertomato.restTime = restTime;
+        TimerTomato.restTime = restTime;
     }
 
     public void setTimerCycle(int timerCycle) {
-        Timertomato.timerCycle = timerCycle;
+        TimerTomato.timerCycle = timerCycle;
     }
 
     public static String getWorkTime() {

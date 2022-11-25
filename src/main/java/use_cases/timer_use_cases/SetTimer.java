@@ -1,13 +1,13 @@
-package use_cases;
+package use_cases.timer_use_cases;
 
-import entities.Timertomato;
+import entities.TimerTomato;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class SetTimer {
 
-    private static final String workTime = Timertomato.getWorkTime();
+    private static final String workTime = TimerTomato.getWorkTime();
 
     static String[] work = workTime.split("\\:");
     private static final int workTimer_minutes = Integer.parseInt(work[0]);
@@ -21,7 +21,7 @@ public class SetTimer {
         return workTimer_minutes;
     }
 
-    private static final String restTime = Timertomato.getRestTime();
+    private static final String restTime = TimerTomato.getRestTime();
     static String[] rest = restTime.split("\\:");
     private static final int restTimer_minutes = Integer.parseInt(rest[0]);
     private static final int restTimer_seconds = Integer.parseInt(rest[1]);

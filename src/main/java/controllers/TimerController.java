@@ -1,6 +1,6 @@
 package controllers;
 
-import use_cases.TimerOutputBoundary;
+import use_cases.timer_use_cases.TimerOutputBoundary;
 
 public class TimerController {
 
