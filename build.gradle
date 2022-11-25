@@ -7,14 +7,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'junit:junit:4.13.2'
-    implementation 'com.miglayout:miglayout:3.7.4'
-    implementation 'com.miglayout:miglayout-core:11.0'
-    implementation 'com.miglayout:miglayout-examples:11.0'
-
-    // compile fileTree(dir: 'resources', include: ['*.jar'])
-
-    testImplementation('org.junit.jupiter:junit-jupiter:5.9.0')
+    implementation 'junit:junit:4.13.1'
+    implementation("com.googlecode.json-simple:json-simple:1.1.1")
+    testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
 }
 
 test {

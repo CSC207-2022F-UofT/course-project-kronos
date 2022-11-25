@@ -1,4 +1,4 @@
-package userui;
+package ui.user;
 
 import javax.swing.*;
 

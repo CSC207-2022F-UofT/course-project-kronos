@@ -1,31 +1,31 @@
-package userui;
+package ui.user;
 
 import javax.swing.*;
 
-import entities.UserFactory;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class CreateAccountPage extends JFrame {
-    JFrame mainFrame;
-    UserFactory users;
+public class CreateAccountPage extends JFrame implements ActionListener {
+    static JFrame mainFrame;
 
+    static Button createaccountbutton;
+    static Button cancelbutton;
 
-    Button createaccountbutton;
+    static Label enteremail;
+    static Label enterpin;
+    static Label repeatpin;
+    static Label firstname;
+    static Label lastname;
 
-    Label enteremail;
-    Label enterpin;
-    Label repeatpin;
-    Label firstname;
-    Label lastname;
+    static TextField emailfield;
+    static TextField passwordfield;
+    static TextField reppasswordfield;
+    static TextField firstnamefield;
+    static TextField lastnamefield;
 
-    TextField emailfield;
-    TextField passwordfield;
-    TextField reppasswordfield;
-    TextField firstnamefield;
-    TextField lastnamefield;
+    static Panel panel;
 
-    Panel panel;
-
-    public void createAccountPage(){
+    public static void createAccountPage(){
         // create a new mainframe( type JFrame )
         mainFrame = new JFrame();
         mainFrame.setSize(450, 300);
@@ -61,6 +61,10 @@ public class CreateAccountPage extends JFrame {
         createaccountbutton = new Button();
         createaccountbutton.createButton(panel.jPanel, "Create Account",150, 200, 120, 25);
 
+        // create button create account
+        cancelbutton = new Button();
+        cancelbutton.createButton(panel.jPanel, "Cancel",150, 400, 120, 25);
+
 
         // create text fields for filling up the information
         firstnamefield = new TextField();
@@ -80,5 +84,28 @@ public class CreateAccountPage extends JFrame {
 
         mainFrame.setVisible(true);
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+        // actions performed by the create account button and the cancel button
+
+        String firstname = firstnamefield.textField.getText();
+        String lastname = lastnamefield.textField.getText();
+        String email = emailfield.textField.getText();
+        String password = String.valueOf(passwordfield.passwordField);
+
+        if (e.getSource()==createaccountbutton){
+
+
+
+        }else if(e.getSource() == cancelbutton){
+            // if it wants to go back to the log in page
+
+            mainFrame.dispose();
+            LoginMainPage login = new LoginMainPage();
+
+
+        }
     }
 }
