@@ -1,21 +1,19 @@
 package entities;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-public class Habit implements Serializable {
+public class Habit {
 
 
     private String name;
     private String type;
-    private boolean reminderTrue;
-
+    private boolean reminderState;
     private int frequency;
     private final HashMap<String, Integer> frequencyMap;
 
     /**
-     * Constructor for a Task object.
+     * Constructor for a Habit object.
      * @param title - The name of the habit.
      * @param t - The type of the habit ("daily", "weekly", "monthly")
      * @param value -  Whether the reminder is on or off.
@@ -25,7 +23,7 @@ public class Habit implements Serializable {
 
         this.name = title;
         this.type = t;
-        this.reminderTrue = value;
+        this.reminderState = value;
         this.frequency = 0;
         this.frequencyMap = new HashMap<>();
     }
@@ -44,9 +42,9 @@ public class Habit implements Serializable {
 
     /**
      * Set the reminder ON (TRUE) or OFF (FALSE).
-     * @param v - The name of the task.
+     * @param value - The reminder state of the habit.
      */
-    public void setReminder(boolean v) {this.reminderTrue= v;}
+    public void setReminder(boolean value) {this.reminderState= value;}
 
 
     /**
@@ -62,7 +60,7 @@ public class Habit implements Serializable {
     /**
      * @return returns whether the reminder for the habit is ON or OFF.
      */
-    public boolean getReminder() {return this.reminderTrue;}
+    public boolean getReminder() {return this.reminderState;}
 
     /**
      * @return returns the frequency of the habit.
