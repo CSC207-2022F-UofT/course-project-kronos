@@ -5,12 +5,16 @@ import java.util.Calendar;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
+/**
+ * Represents a single task.
+ */
+
 public class Task{
+
     private String name;
     public boolean completeStatus;
-    public boolean reminders;
     public boolean visibility;
-    public Category taskCategory;
+    private String taskCategory;
     public Calendar deadline;
     private final int id;
     private static int numberOfTasks = 0;
@@ -18,16 +22,14 @@ public class Task{
     /**
      * Constructor for a Task object.
      * @param name - The name of the task.
-     * @param reminders - Whether the reminder is turned on. (Remind the user 24h before the deadline)
      * @param deadline -  The deadline of the task.
-     */
-    public Task(String name, boolean reminders, Calendar deadline){
+    */
+    public Task(String name, Calendar deadline){
 
         this.id = numberOfTasks;
         numberOfTasks += 1;
 
         this.name = name;
-        this.reminders = reminders;
         this.visibility = TRUE;
         this.deadline = deadline;
     }
@@ -56,16 +58,6 @@ public class Task{
     }
 
     /**
-     * Set the reminder ON (TRUE) or OFF (FALSE).
-     * @param remindersStatus - Whether the reminder is turned on. "TRUE" is the user wants to turn it on, and "FALSE"
-     *                        if the user wants to turn it off.
-     */
-
-    public void setReminders(boolean remindersStatus){
-        this.reminders = remindersStatus;
-    }
-
-    /**
      * Set the Visibility of the task.
      * @param visible - "TRUE" if the user wants the task to be visible. "FALSE" if the user wants the task to be
      *                invisible.
@@ -79,7 +71,7 @@ public class Task{
      * Set the category of the task to the given category.
      * @param taskCategory - The category that the users wants the task to belong to.
      */
-    public void setTaskCategory(Category taskCategory) {
+    public void setTaskCategory(String taskCategory) {
         this.taskCategory = taskCategory;
     }
 
@@ -99,4 +91,19 @@ public class Task{
         return this.name;
     }
 
+    public String getTaskCategory() {
+        return taskCategory;
+    }
+
+    public Calendar getDeadline() {
+        return deadline;
+    }
+
+    public boolean isCompleteStatus() {
+        return completeStatus;
+    }
+
+    public boolean isVisibility() {
+        return visibility;
+    }
 }

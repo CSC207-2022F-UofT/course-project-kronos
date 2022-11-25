@@ -1,6 +1,7 @@
 package entities;
 
-import javax.swing.*;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class User {
     /**
