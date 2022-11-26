@@ -1,8 +1,6 @@
 package entities;
 
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -23,10 +21,10 @@ public class UserFactory extends Factory implements Serializable {
         return this.Users;
     }
 
+
     public Set<String> getkeys(){
         // getter method to return
         return this.getUsers().keySet();
     }
-
 
 }

@@ -1,8 +1,5 @@
 package entities;
 
-import java.util.HashMap;
-import java.util.Objects;
-
 public class User {
     /**
      *
@@ -19,30 +16,28 @@ public class User {
      *      - @param CategoryFactory named categoryCollection(the categories to categorize the tasks)
      *      - @param Timer named tomato
      */
-    private String emailAddress;
-    private String password;
+
     private String firstName;
     private String lastName;
+    private String emailAddress;
+    private String password;
     private HabitFactory habitCollection;
     private TaskFactory taskCollection;
     private CategoryFactory categoryCollection;
-    private Timer tomato;
+    private TimerTomato tomato;
 
-
-    public User(String email_id, String password, String first_name, String last_name,
-                HabitFactory habits, TaskFactory tasks, CategoryFactory categories, Timer timer){
+    public User(String email_id, String password, String first_name, String last_name){
         this.emailAddress = email_id;
         this.password = password;
         this.firstName = first_name;
         this.lastName = last_name;
-        this.habitCollection = habits;
-        this.taskCollection = tasks;
-        this.categoryCollection = categories;
-        this.tomato = timer;
+        this.habitCollection = new HabitFactory();
+        this.taskCollection = new TaskFactory();
+        this.categoryCollection = new CategoryFactory();
+        this.tomato = new TimerTomato();
     }
 
-    public User() {}
-
+    public User(){}
     // GETTER METHODS
 
     public String getPassword(){
@@ -80,7 +75,7 @@ public class User {
         return this.taskCollection;
     }
 
-    public Timer getTomato(){
+    public TimerTomato getTomato(){
         // returns the users tasks
         return this.tomato;
     }
