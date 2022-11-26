@@ -9,11 +9,14 @@ import java.util.HashMap;
 
 public class Database implements UserDataAccessInterface {
 
-    HashMap<String, User> collections;
-    String filePath;
+    private HashMap<String, User> collections;
+    public String filePath;
+
+    public User currUser;
 
     public Database(String filepath){
         this.filePath = filepath;
+        this.currUser = null;
         try {
             FileInputStream file = new FileInputStream(filepath);
             ObjectInputStream ois = new ObjectInputStream(file);
@@ -49,18 +52,22 @@ public class Database implements UserDataAccessInterface {
 
     @Override
     public User LoginUser(String emailAddress, String password) {
-        // User Login
-        if (emailAddress.equals(collections.get(emailAddress).getEmailAddress()) &&
-                password.equals(collections.get(emailAddress).getPassword())){
-            System.out.println("login successful");
-            return collections.get(emailAddress);
+        if (emailAddress.equals(collections.get(emailAddress).getEmailAddress())){
+            this.currUser = collections.get(emailAddress);
+            return this.currUser;
         }
         return null;
     }
 
     @Override
+    public User GetUser() {
+        return this.currUser;
+    }
+
+    @Override
     public void UpdateUser(User user) {
         this.collections.replace(user.getEmailAddress(), user);
+
     }
 
     @Override
