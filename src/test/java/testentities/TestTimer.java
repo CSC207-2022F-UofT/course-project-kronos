@@ -1,4 +1,4 @@
 package testentities;
 
-public class HabitTest {
+public class TestTimer {
 }
