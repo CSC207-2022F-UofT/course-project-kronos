@@ -8,7 +8,6 @@ public class Habit {
 
     private String name;
     private String type;
-    private boolean reminderState;
     private int frequency;
     private final HashMap<String, Integer> frequencyMap;
 
@@ -23,7 +22,6 @@ public class Habit {
 
         this.name = title;
         this.type = t;
-        this.reminderState = value;
         this.frequency = 0;
         this.frequencyMap = new HashMap<>();
     }
@@ -41,13 +39,6 @@ public class Habit {
     public void setType(String t) {this.type = t;}
 
     /**
-     * Set the reminder ON (TRUE) or OFF (FALSE).
-     * @param value - The reminder state of the habit.
-     */
-    public void setReminder(boolean value) {this.reminderState= value;}
-
-
-    /**
      * @return returns the name of the habit.
      */
     public String getName() { return this.name;}
@@ -56,11 +47,6 @@ public class Habit {
      * @return returns the type of the habit.
      */
     public String getType() { return this.type;}
-
-    /**
-     * @return returns whether the reminder for the habit is ON or OFF.
-     */
-    public boolean getReminder() {return this.reminderState;}
 
     /**
      * @return returns the frequency of the habit.
