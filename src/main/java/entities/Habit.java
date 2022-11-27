@@ -15,10 +15,9 @@ public class Habit {
      * Constructor for a Habit object.
      * @param title - The name of the habit.
      * @param t - The type of the habit ("daily", "weekly", "monthly")
-     * @param value -  Whether the reminder is on or off.
      */
 
-    public Habit(String title, String t, boolean value ){
+    public Habit(String title, String t){
 
         this.name = title;
         this.type = t;

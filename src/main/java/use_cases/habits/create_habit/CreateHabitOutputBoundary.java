@@ -1,7 +1,10 @@
 package use_cases.habits.create_habit;
 
-public class CreateHabitOutputBoundary {
-
-
+/**
+ * This is an interface that passes the output to the Presenter of habit creation.
+ */
+public interface CreateHabitOutputBoundary {
+    CreateHabitOutputData prepareSuccessView(CreateHabitOutputData outputData);
+    CreateHabitOutputData prepareFailView(CreateHabitOutputData outputData);
 
 }
