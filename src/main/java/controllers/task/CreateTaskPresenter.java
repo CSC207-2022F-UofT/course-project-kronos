@@ -4,7 +4,7 @@ import use_cases.tasks.create_task.CreateTaskOutputData;
 import use_cases.tasks.create_task.CreateTaskOutputBoundary;
 
 
-public class CreateTaskResponseFormatter implements CreateTaskOutputBoundary {
+public class CreateTaskPresenter implements CreateTaskOutputBoundary {
 
     @Override
     public CreateTaskOutputData prepareSuccessView(CreateTaskOutputData outputData) {

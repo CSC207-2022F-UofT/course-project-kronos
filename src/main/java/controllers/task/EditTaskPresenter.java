@@ -3,7 +3,7 @@ package controllers.task;
 import use_cases.tasks.edit_task.EditTaskOutputBoundary;
 import use_cases.tasks.edit_task.EditTaskOutputData;
 
-public class EditTaskResponseFormatter implements EditTaskOutputBoundary{
+public class EditTaskPresenter implements EditTaskOutputBoundary{
 
 
     @Override
