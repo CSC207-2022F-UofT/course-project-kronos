@@ -17,7 +17,7 @@ public class TestDatabaseReadWrite {
 
         HabitFactory testHabit = new HabitFactory();
         TaskFactory testTask = new TaskFactory();
-        CategoryFactory testCat = new CategoryFactory();
+        CategoryCollection testCat = new CategoryCollection();
         Timer testTimer = new Timer();
         User user = new User("test@gmail.com", "test123", "testFirstName", "testLastName", testHabit, testTask, testCat, testTimer);
         HashMap<String, User> testHashMap = new HashMap();

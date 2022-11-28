@@ -34,7 +34,7 @@ public class EditCategory {
      * @return true if the name has been updated, return false otherwise.
      */
     public static Boolean editCategoryName(Category category, String newName){
-        category.setCategoryName(newName);
-        return category.getCategoryName() == newName;
+        category.setName(newName);
+        return category.getName() == newName;
     }
 }

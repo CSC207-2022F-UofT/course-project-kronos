@@ -3,24 +3,26 @@
 package test_use_cases;
 
 import entities.Category;
-import entities.CategoryFactory;
+import entities.CategoryCollection;
 import use_cases.categories.create_category.*;
 
 import static org.junit.Assert.*;
 
 public class TestCategory {
-     CategoryFactory factory = new CategoryFactory();
+     CategoryCollection factory = new CategoryCollection();
      String name = "Chores";
      String colour = "RED";
+     String error = "test";
      CreateCategoryOutputBound outputBound = new CreateCategoryOutputBound() {
-        @Override
+         @Override
+         public CreateCategoryOutputData prepareFailView(String error) {
+             return null;
+         }
+
+         @Override
         public CreateCategoryOutputData prepareSuccessView(CreateCategoryOutputData outputData) {
             assertEquals(name, outputData.getCategory().getName());
             assertTrue(factory.contains(outputData.getCategory().getName(), false));
-            return null;
-        }
-        @Override
-        public CreateCategoryOutputData prepareFailView(CreateCategoryOutputData outputData) {
             return null;
         }
     } ;
@@ -31,11 +33,11 @@ public class TestCategory {
             if (inputData.getName().isBlank()) {
                 CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: Please enter the name of " +
                         "the category.");
-                return outputBound.prepareFailView(outputData);
+                return outputBound.prepareFailView(error);
             } else if(factory.contains(inputData.getName(), false)){
                 CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: This category name " +
                         "already exists. Please enter a new category name.");
-                return outputBound.prepareFailView(outputData);
+                return outputBound.prepareFailView(error);
             }
             Category category = new Category(inputData.getName(), inputData.getColour());
             factory.addItem(category);

@@ -36,7 +36,7 @@ public class CreateTask implements CreateTaskInputBoundary {
 
         Task task = new Task(inputData.getName(), inputData.getDeadline());
         // The new Task object above is not assigned to any category.
-        // So we do not need to update the Category/CategoryFactory.
+        // So we do not need to update the Category/CategoryCollection.
         taskFactory.addItem(task);
         CreateTaskOutputData outputData = new CreateTaskOutputData(task);
         return outputBoundary.prepareSuccessView(outputData);

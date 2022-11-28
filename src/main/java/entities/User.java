@@ -13,7 +13,7 @@ public class User {
      *      - @param the user's first and last name(both String type)
      *      - @param HabitFactory named habitCollection(a data that has all the habits in it)
      *      - @param TaskFactory named taskCollection(a data that has all the to-do tasks in it)
-     *      - @param CategoryFactory named categoryCollection(the categories to categorize the tasks)
+     *      - @param CategoryCollection named categoryCollection(the categories to categorize the tasks)
      *      - @param Timer named tomato
      */
 
@@ -23,7 +23,7 @@ public class User {
     private String password;
     private HabitFactory habitCollection;
     private TaskFactory taskCollection;
-    private CategoryFactory categoryCollection;
+    private CategoryCollection categoryCollection;
     private TimerTomato tomato;
 
     public User(String email_id, String password, String first_name, String last_name){
@@ -33,7 +33,7 @@ public class User {
         this.lastName = last_name;
         this.habitCollection = new HabitFactory();
         this.taskCollection = new TaskFactory();
-        this.categoryCollection = new CategoryFactory();
+        this.categoryCollection = new CategoryCollection();
         this.tomato = new TimerTomato();
     }
 
@@ -65,7 +65,7 @@ public class User {
         return this.habitCollection;
     }
 
-    public CategoryFactory getCategoryCollection(){
+    public CategoryCollection getCategoryCollection(){
         // returns the users tasks
         return this.categoryCollection;
     }

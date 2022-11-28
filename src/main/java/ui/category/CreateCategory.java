@@ -1,7 +1,8 @@
 package ui.category;
 
-import controllers.category.CategoryController;
-import entities.CategoryFactory;
+import controllers.category.CreateCategoryController;
+import entities.CategoryCollection;
+import use_cases.categories.create_category.CreateCategoryInputBound;
 import use_cases.categories.create_category.CreateCategoryInputData;
 import use_cases.categories.create_category.CreateCategoryOutputData;
 
@@ -14,7 +15,7 @@ import java.awt.event.WindowEvent;
 public class CreateCategory extends JFrame implements ActionListener {
     public static String COLOURS[] = { "pink", "red", "white", "blue", "yellow", "green", "orange", "purple"};
 
-    public static void createCategory(CategoryFactory factory) {
+    public static void createCategory(CategoryCollection factory) {
         JFrame frame = new JFrame("New Category");
 
         frame.setSize(500, 300);
@@ -66,12 +67,14 @@ public class CreateCategory extends JFrame implements ActionListener {
                 String categoryName1 = categoryNameInput.getText();
                 String colour1 = (String) colourInput.getSelectedItem();
 
-                // pass this onto controller
-                CreateCategoryInputData inputData = new CreateCategoryInputData(categoryName1, colour1);
-                // this is never used, so where do we use input data since we don't have to convert anything?
-
-                CategoryController controller = new CategoryController(factory, categoryName1, colour1);
-                CreateCategoryOutputData outputData = controller.CreateCategory();
+                CreateCategoryInputBound inputBound = new CreateCategoryInputBound() {
+                    @Override
+                    public CreateCategoryOutputData edit(CreateCategoryInputData inputData) {
+                        return null; // what the hell does this do?
+                    }
+                };
+                CreateCategoryController controller = new CreateCategoryController(inputBound);
+                CreateCategoryOutputData outputData = controller.create(categoryName1, colour1);
 
                 // create a new CategoryList - how to add it back to ToDoViewModel?
                 ToDoViewModel.update(outputData);
