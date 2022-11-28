@@ -1,7 +1,7 @@
 package database;
 
-import entities.User;
-import use_cases.user.UserDataAccessInterface;
+import entities.UserEntity;
+import use_cases.user.create_user.UserDataAccessInterface;
 
 import java.io.*;
 
@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class Database implements UserDataAccessInterface {
 
-    HashMap<String, User> collections;
+    HashMap<String, UserEntity> collections;
     String filePath;
 
     public Database(String filepath){
@@ -18,13 +18,13 @@ public class Database implements UserDataAccessInterface {
             FileInputStream file = new FileInputStream(filepath);
             ObjectInputStream ois = new ObjectInputStream(file);
 
-            this.collections = (HashMap<String, User>) ois.readObject();
+            this.collections = (HashMap<String, UserEntity>) ois.readObject();
         } catch(IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public static void WriteData(HashMap<String, User> data, String filePath) {
+    public static void WriteData(HashMap<String, UserEntity> data, String filePath) {
         try {
             // Saving of object in a file
             FileOutputStream file = new FileOutputStream
@@ -48,7 +48,7 @@ public class Database implements UserDataAccessInterface {
     }
 
     @Override
-    public User LoginUser(String emailAddress, String password) {
+    public UserEntity LoginUser(String emailAddress, String password) {
         // User Login
         if (emailAddress.equals(collections.get(emailAddress).getEmailAddress()) &&
                 password.equals(collections.get(emailAddress).getPassword())){
@@ -59,7 +59,7 @@ public class Database implements UserDataAccessInterface {
     }
 
     @Override
-    public void UpdateUser(User user) {
+    public void UpdateUser(UserEntity user) {
         this.collections.replace(user.getEmailAddress(), user);
     }
 
@@ -69,7 +69,7 @@ public class Database implements UserDataAccessInterface {
     }
 
     @Override
-    public void AddUser(User user) {
+    public void AddUser(UserEntity user) {
         this.collections.put(user.getEmailAddress(), user);
     }
 }

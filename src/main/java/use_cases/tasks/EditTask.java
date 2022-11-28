@@ -1,9 +1,8 @@
 package use_cases.tasks;
 
 import entities.Task;
-import entities.User;
+import entities.UserEntity;
 
-import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class EditTask {
@@ -16,7 +15,7 @@ public class EditTask {
      * @param t - Target task.
      * @param name - The name of the task.
      */
-    public void editName(User userA, Task t, String name){
+    public void editName(UserEntity userA, Task t, String name){
         //userA.getTaskCollection.getItem().setName(name);
         t.setName(name);
     }
@@ -27,7 +26,7 @@ public class EditTask {
      *
      * @param t - Target task.
      */
-    public void editStatus(User userA, Task t){
+    public void editStatus(UserEntity userA, Task t){
         if (t.completeStatus == TRUE){
             t.markAsIncomplete();
         }else {t.markAsComplete();}

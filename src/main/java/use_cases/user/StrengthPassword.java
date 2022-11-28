@@ -1,22 +1,25 @@
 package use_cases.user;
 
+import entities.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * Checks the password strength
+ * A password is a strong password if it:
+ * - has minimum 8 letters
+ * - the alphabet must be between a-z
+ * - At least 1 should be UPPER CASE LETTER (A-Z)
+ * - At least 1 should be DIGITS(0-9)
+ * - At least 1 character from [ _ , @ , $ ]
+ *
+ *
+ */
 public class StrengthPassword {
     public boolean passwordStrength(String password){
-        /**
-         *
-         * Checks the password strength
-         * A password is a strong password if it:
-         * - has minimum 8 letters
-         * - the alphabet must be between a-z
-         * - At least 1 should be UPPER CASE LETTER (A-Z)
-         * - At least 1 should be DIGITS(0-9)
-         * - At least 1 character from [ _ , @ , $ ]
-         *
-         *
-         */
+
         if(password.length() >=8 && check_upper(password) && check_digits(password) && check_characters(password)){
             System.out.println("Password valid");
             return true;

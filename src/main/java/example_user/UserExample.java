@@ -12,10 +12,10 @@ public class UserExample {
 
     static Timer t = new Timer();
 
-    static User person = new User("hello123@gmail.com", "12345678", "Harry", "Potter",
+    static UserEntity person = new UserEntity("hello123@gmail.com", "12345678", "Harry", "Potter",
             hFactory, tFactory, cFactory, t);
 
-    public static User sendUser(){
+    public static UserEntity sendUser(){
         return person;
     }
 

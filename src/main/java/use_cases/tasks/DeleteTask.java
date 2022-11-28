@@ -1,9 +1,7 @@
 package use_cases.tasks;
 
 import entities.Task;
-import entities.User;
-
-import java.util.Calendar;
+import entities.UserEntity;
 
 public class DeleteTask {
     /**
@@ -12,7 +10,7 @@ public class DeleteTask {
      * @param userA - The target user.
      * @param task - The task that will be deleted.
      */
-    public void deleteTask(User userA, Task task){
+    public void deleteTask(UserEntity userA, Task task){
         // Need User Class to be implemented.
         //userA.getTaskCollection.removeItem(task);
         //userA.getCategoryCollection.removeItem(task);

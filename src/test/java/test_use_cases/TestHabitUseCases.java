@@ -30,7 +30,7 @@ public class TestHabitUseCases {
         TaskFactory tFactory = new TaskFactory();
         CategoryFactory cFactory = new CategoryFactory();
         Timer t = new Timer();
-        User u = new User("hello123@gmail.com", "12345678", "Harry", "Potter",
+        UserEntity u = new UserEntity("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
         createHabit(u, hTitle, hType, true);
         Set<String> s = new HashSet<>();
@@ -52,7 +52,7 @@ public class TestHabitUseCases {
         TaskFactory tFactory = new TaskFactory();
         CategoryFactory cFactory = new CategoryFactory();
         Timer t = new Timer();
-        User u = new User("hello123@gmail.com", "12345678", "Harry", "Potter",
+        UserEntity u = new UserEntity("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
 
         Boolean v = deleteHabit(u, "Read a book");
@@ -69,7 +69,7 @@ public class TestHabitUseCases {
         TaskFactory tFactory = new TaskFactory();
         CategoryFactory cFactory = new CategoryFactory();
         Timer t = new Timer();
-        User u = new User("hello123@gmail.com", "12345678", "Harry", "Potter",
+        UserEntity u = new UserEntity("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
 
         String newName = "Run 8 Kms";

@@ -1,7 +1,7 @@
 package use_cases.tasks;
 
 import entities.Task;
-import entities.User;
+import entities.UserEntity;
 
 import java.util.Calendar;
 
@@ -15,7 +15,7 @@ public class CreateTask {
      * @param reminders - Whether the reminder is turned on. (Remind the user 24h before the deadline)
      * @param deadline -  The deadline of the task.
      */
-    public void createTask(User userA,String name, boolean reminders, Calendar deadline){
+    public void createTask(UserEntity userA, String name, boolean reminders, Calendar deadline){
         Task t = new Task(name, deadline);
         // Need User Class to be implemented.
         //userA.getTaskCollection.addItem(t);

@@ -38,7 +38,7 @@ public class Main {
         categories.addItem(category1);
         categories.addItem(category2);
 
-        User user = new User(email, password, first, last, habits, tasks, categories, timer);
+        UserEntity user = new UserEntity(email, password, first, last, habits, tasks, categories, timer);
         // CreateCategoryInputBound interactor = new CreateCategory(user,)
 
         new ToDoViewModel(user);

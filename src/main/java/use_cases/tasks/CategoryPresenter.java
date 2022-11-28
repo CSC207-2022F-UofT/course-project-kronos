@@ -1,7 +1,7 @@
 package use_cases.tasks;
 
 import entities.Category; // breaks clean architecture
-import entities.User; // breaks clean architecture
+import entities.UserEntity; // breaks clean architecture
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class CategoryPresenter {
     private ArrayList<Category> visibleCategories = new ArrayList<>();
     private ArrayList<Category> allCategories = new ArrayList<>();
 
-    public CategoryPresenter(User user) {
+    public CategoryPresenter(UserEntity user) {
         if (user.getCategoryCollection() != null) {
             // user has categories
             ArrayList<Category> categories = user.getCategoryCollection().convertToArray();

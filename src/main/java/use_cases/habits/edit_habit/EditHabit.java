@@ -1,6 +1,6 @@
 package use_cases.habits.edit_habit;
 import entities.Habit;
-import entities.User;
+import entities.UserEntity;
 
 public class EditHabit {
 
@@ -9,7 +9,7 @@ public class EditHabit {
      * @param h - Habit to be edited.
      * @param title - the new name of habit.
      */
-    public static void editName(User u, Habit h, String title){
+    public static void editName(UserEntity u, Habit h, String title){
         String oldKey = h.getName();
         u.getHabitCollection().updateKey(oldKey, title);
     }

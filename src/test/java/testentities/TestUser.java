@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestUser {
 
-    User user = new User("firstname", "lastname", "emailid", "password");
+    UserEntity user = new UserEntity("firstname", "lastname", "emailid", "password");
     @Test(timeout = 500)
     public void testConstructor() {
         // tests if the first name after creating the User object is equal
@@ -15,7 +15,7 @@ public class TestUser {
         String lastname = "Evans";
         String email = "kenevans111@gmail.com";
         String password = "kdljwlkj.1";
-        User example = new User(firstname, lastname, email, password);
+        UserEntity example = new UserEntity(firstname, lastname, email, password);
 
         // assertion
         assertEquals(firstname, example.getFirstName());
