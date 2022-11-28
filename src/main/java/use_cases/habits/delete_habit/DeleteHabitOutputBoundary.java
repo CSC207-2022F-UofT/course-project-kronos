@@ -1,5 +1,7 @@
 package use_cases.habits.delete_habit;
 
-public class DeleteHabitOutputBoundary {
+import use_cases.habits.create_habit.CreateHabitOutputData;
 
+public interface DeleteHabitOutputBoundary {
+    DeleteHabitOutputData prepareSuccessView(DeleteHabitOutputData outputData);
 }

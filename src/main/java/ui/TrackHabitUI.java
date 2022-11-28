@@ -1,5 +1,5 @@
 package ui;
-import controllers.TrackHabitController;
+import controllers.habits.track.TrackHabitController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Component;

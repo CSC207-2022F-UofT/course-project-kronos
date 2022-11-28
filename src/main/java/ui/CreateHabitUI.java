@@ -1,8 +1,8 @@
 package ui;
 import javax.swing.*;
 import java.awt.*;
-import controllers.CreateHabitController;
-import static example_user.UserExample.sendUser;
+import controllers.habits.create.CreateHabitController;
+
 
 
 public class CreateHabitUI {
@@ -46,19 +46,6 @@ public class CreateHabitUI {
         //Text field 2 : Gets Habit type from user
         JTextField textField2 = new JTextField(15);
 
-        // Panel 4
-        JPanel p4 = new JPanel();
-        p4.setSize(new Dimension(250, 50));
-        // Label 4
-        JLabel l4 = new JLabel( "Reminder ON/OFF", JLabel.CENTER);
-        l4.setPreferredSize(new Dimension(150, 30));
-        l4.setLayout(new BorderLayout());
-        // String Array of possible states for Reminder
-        String[] options = {"ON", "OFF"};
-        // JList 1
-        JList<String> reminderOptions = new JList<>(options);
-        reminderOptions.setSelectedIndex(1);
-
         // Panel 5
         JPanel p5 = new JPanel();
         p5.setSize(new Dimension(250, 50));
@@ -69,8 +56,7 @@ public class CreateHabitUI {
         b1.addActionListener(e -> {
             String s = textField1.getText();
             String t = textField1.getText();
-            String b = reminderOptions.getSelectedValue();
-            CreateHabitController.createHabitC(sendUser(), s, t, b);
+            CreateHabitController.createHabitC(s, t);
         });
 
 
@@ -79,7 +65,6 @@ public class CreateHabitUI {
         mainPanel.add(p1);
         mainPanel.add(p2);
         mainPanel.add(p3);
-        mainPanel.add(p4);
         mainPanel.add(p5);
 
         p1.add(l1);
@@ -89,9 +74,6 @@ public class CreateHabitUI {
 
         p3.add(l3);
         p3.add(textField2);
-
-        p4.add(l4);
-        p4.add(reminderOptions);
 
         p5.add(b1);
 

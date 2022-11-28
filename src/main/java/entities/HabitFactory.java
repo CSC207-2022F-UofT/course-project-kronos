@@ -48,7 +48,7 @@ public class HabitFactory extends Factory<Habit>{
      * Return habits.
      * @return the Hashmap attribute habitCollection of a HabitFactory.
      */
-    public HashMap<String, Habit> getCollection(){return habitCollection;}
+    public static HashMap<String, Habit> getCollection(){return habitCollection;}
 
     /**
      * Given the user, return an array list of that user's habits.

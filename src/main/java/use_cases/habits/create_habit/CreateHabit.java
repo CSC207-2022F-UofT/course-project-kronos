@@ -1,7 +1,6 @@
 package use_cases.habits.create_habit;
 import entities.Habit;
 import entities.HabitFactory;
-import entities.User;
 
 public class CreateHabit implements CreateHabitInputBoundary{
 

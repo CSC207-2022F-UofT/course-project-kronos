@@ -1,34 +1,54 @@
 package use_cases.habits.edit_habit;
 import entities.Habit;
+import entities.HabitFactory;
 import entities.User;
 
-public class EditHabit {
+public class EditHabit implements EditHabitInputBoundary {
+    private final EditHabitOutputBoundary outputBoundary;
+    private final EditHabitDsGateway dsGateway;
+    private final HabitFactory habitFactory;
 
-    /**Edits the name of an existing habit.
-     * @param u -  the user of the habit.
-     * @param h - Habit to be edited.
-     * @param title - the new name of habit.
-     */
-    public static void editName(User u, Habit h, String title){
-        String oldKey = h.getName();
-        u.getHabitCollection().updateKey(oldKey, title);
-    }
-
-    /**Edits the type of existing habit.
-     * @param h - Habit to be edited.
-     * @param t - the new type of habit.
-     */
-    public static void editType(Habit h, String t){
-        h.setType(t);
-
+    public EditHabit(EditHabitOutputBoundary outputBoundary, EditHabitDsGateway dsGateway, HabitFactory hFactory) {
+        this.outputBoundary = outputBoundary;
+        this.dsGateway = dsGateway;
+        this.habitFactory = hFactory;
     }
 
     /**
-     * Edits the reminder state of a habit.
-     * @param h - Habit to be edited.
-     * @param v - the new reminder state of habit.
+     * Edit the properties of a task. The edible properties are name, category, and deadline for a task object.
+     * @param inputData - the input data which contain a task, an input name, an input category name, and an input
+     *                  deadline.
+     * @return the output data after editing.
      */
-    public static void editReminder(Habit h, Boolean v){
-        h.setReminder(v);
+    @Override
+    public EditHabitOutputData edit(EditHabitInputData inputData) {
+        // If the input name is empty or containing only white spaces
+        if (inputData.getInputName().isBlank()){
+            EditHabitOutputData outputData = new EditHabitOutputData("Changes not saved. " +
+                    "Please fill all required fields.");
+            return outputBoundary.prepareFailView(outputData);
+        }
+
+        String id = inputData.getInputName();
+        Habit habitBeEdited = habitFactory.getCollection().get(id);
+        habitBeEdited.setName(inputData.getInputName());
+        habitBeEdited.setType(inputData.getInputType());
+        EditHabitOutputData outputData = new EditHabitOutputData(
+                "Changes have been saved.", habitBeEdited.getName(), habitBeEdited.getType());
+        return outputBoundary.prepareSuccessView(outputData);
+
     }
+
+    public EditHabitOutputBoundary getOutputBoundary() {
+        return outputBoundary;
+    }
+
+    public EditHabitDsGateway getDsGateway() {
+        return dsGateway;
+    }
+
+    public HabitFactory getHabitFactory() {
+        return habitFactory;
+    }
+
 }

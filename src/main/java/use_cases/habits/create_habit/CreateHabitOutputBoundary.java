@@ -5,6 +5,6 @@ package use_cases.habits.create_habit;
  */
 public interface CreateHabitOutputBoundary {
     CreateHabitOutputData prepareSuccessView(CreateHabitOutputData outputData);
-    CreateHabitOutputData prepareFailView(CreateHabitOutputData outputData);
+    CreateHabitOutputData prepareFailView(String error);
 
 }

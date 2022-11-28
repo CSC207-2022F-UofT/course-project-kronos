@@ -32,7 +32,7 @@ public class TestHabitUseCases {
         Timer t = new Timer();
         User u = new User("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
-        createHabit(u, hTitle, hType, true);
+        createHabit(u, hTitle, hType);
         Set<String> s = new HashSet<>();
         s.add("Sleep at 10 pm daily");
         assertEquals( u.getHabitCollection().habitCollection.keySet(), s);
@@ -41,9 +41,9 @@ public class TestHabitUseCases {
     @Test(timeout = 500)
     public void testDeleteHabit() {
 
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        Habit h2 = new Habit("Read a book", "daily", true);
-        Habit h3 = new Habit("Drink Water", "daily", false);
+        Habit h1 = new Habit("Run 5 Kms", "weekly");
+        Habit h2 = new Habit("Read a book", "daily");
+        Habit h3 = new Habit("Drink Water", "daily");
 
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
@@ -63,7 +63,7 @@ public class TestHabitUseCases {
     public void testEditHabitName() {
 
 
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h1 = new Habit("Run 5 Kms", "weekly");
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         TaskFactory tFactory = new TaskFactory();
@@ -81,7 +81,7 @@ public class TestHabitUseCases {
     @Test(timeout = 500)
     public void testEditHabitType() {
 
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h1 = new Habit("Run 5 Kms", "weekly");
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         String newType = "daily";
@@ -92,24 +92,9 @@ public class TestHabitUseCases {
     }
 
     @Test(timeout = 500)
-    public void testEditHabitReminder() {
-
-
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-
-        Boolean newState = false;
-
-        editReminder(h1,newState);
-
-        assertFalse("The Reminder state was changed", h1.getReminder());
-    }
-
-    @Test(timeout = 500)
     public void testTrackHabit() {
 
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h1 = new Habit("Run 5 Kms", "weekly");
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         increaseHabitFrequency(h1);

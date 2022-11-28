@@ -1,8 +1,7 @@
 package ui;
-import controllers.EditHabitController;
+import controllers.habits.edit.EditHabitController;
 import javax.swing.*;
 import java.awt.*;
-import static example_user.UserExample.sendUser;
 
 public class EditHabitUI {
 
@@ -63,17 +62,6 @@ public class EditHabitUI {
         //Text field 2 : Gets new Habit type from the User
         JTextField textField2 = new JTextField(15);    //set length of the text
 
-        // Panel 5
-        JPanel p5 = new JPanel();
-        p5.setSize(new Dimension(250, 50));
-        // Label 5
-        JLabel l5 = new JLabel( "Reminder", JLabel.CENTER);
-        l5.setPreferredSize(new Dimension(150, 30));
-        l5.setLayout(new BorderLayout());
-        // String Array of possible states for Reminder
-        String[] options = {"ON", "OFF"};
-        // Jlist 2
-        JList<String> reminderOptions = new JList<>(options);
 
         // Panel 6
         JPanel p6 = new JPanel();
@@ -82,12 +70,10 @@ public class EditHabitUI {
         String habitChosen = habitOptions.getSelectedValue();
         String newHabitName = textField1.getText();
         String newHabitType = textField2.getText();
-        String newReminderState = reminderOptions.getSelectedValue();
 
         //Button 1: EDIT
         JButton b1 = new JButton("EDIT"); //set label to button
-        b1.addActionListener(e -> EditHabitController.editHabitC(sendUser(), habitChosen, newHabitName, newHabitType,
-                newReminderState));
+        b1.addActionListener(e -> EditHabitController.editHabitC(sendUser(), habitChosen, newHabitName, newHabitType));
 
         frame.add(mainPanel);
 
@@ -95,7 +81,6 @@ public class EditHabitUI {
         mainPanel.add(p2);
         mainPanel.add(p3);
         mainPanel.add(p4);
-        mainPanel.add(p5);
         mainPanel.add(p6);
 
         p1.add(l1);
@@ -108,9 +93,6 @@ public class EditHabitUI {
 
         p4.add(l4);
         p4.add(textField2);
-
-        p5.add(l5);
-        p5.add(reminderOptions);
 
         p6.add(b1);
 

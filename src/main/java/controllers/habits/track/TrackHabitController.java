@@ -1,4 +1,4 @@
-package controllers;
+package controllers.habits.track;
 import entities.Habit;
 import entities.User;
 import use_cases.habits.track_habit.TrackHabitInputBoundary;
