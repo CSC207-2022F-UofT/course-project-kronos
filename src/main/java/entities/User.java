@@ -14,7 +14,7 @@ public class User {
      *      - @param HabitFactory named habitCollection(a data that has all the habits in it)
      *      - @param TaskFactory named taskCollection(a data that has all the to-do tasks in it)
      *      - @param CategoryFactory named categoryCollection(the categories to categorize the tasks)
-     *      - @param Timer named tomato
+     *      - @param TimerTomato named tomato
      */
 
     private String firstName;
