@@ -5,6 +5,6 @@ package use_cases.tasks.edit_task;
  */
 public interface EditTaskOutputBoundary {
     EditTaskOutputData prepareSuccessView(EditTaskOutputData outputData);
-    EditTaskOutputData prepareFailView(EditTaskOutputData outputData);
+    EditTaskOutputData prepareFailView(String error);
 
 }

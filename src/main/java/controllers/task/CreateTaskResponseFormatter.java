@@ -7,11 +7,8 @@ import use_cases.tasks.create_task.CreateTaskOutputBoundary;
 public class CreateTaskResponseFormatter implements CreateTaskOutputBoundary {
 
     @Override
-    public CreateTaskOutputData prepareSuccessView(CreateTaskOutputData response) {
-
-
-
-        return null;
+    public CreateTaskOutputData prepareSuccessView(CreateTaskOutputData outputData) {
+        return outputData;
     }
 
     @Override
