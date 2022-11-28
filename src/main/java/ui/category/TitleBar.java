@@ -1,6 +1,8 @@
 package ui.category;
 
+import controllers.category.CreateCategoryController;
 import entities.CategoryCollection;
+import use_cases.categories.create_category.CreateCategoryInputBound;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +11,7 @@ public class TitleBar extends JPanel {
     private JButton newTask = new JButton("New Task");
     private JButton newCategory = new JButton("New Category");
 
-    public TitleBar(CategoryCollection factory) {
+    public TitleBar(CreateCategoryController controller) {
         newTask.setFont(new Font("Serif", Font.PLAIN, 15));
         newCategory.setFont(new Font("Serif", Font.PLAIN, 15));
 
@@ -42,6 +44,6 @@ public class TitleBar extends JPanel {
         constraints.gridy = 1;
         this.add(newCategory, constraints);
 
-        newCategory.addActionListener(e -> CreateCategory.createCategory(factory));
+        newCategory.addActionListener(e -> CreateCategory.createCategory(controller));
     }
 }

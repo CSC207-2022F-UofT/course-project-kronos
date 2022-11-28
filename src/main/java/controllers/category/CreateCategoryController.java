@@ -11,8 +11,9 @@ public class CreateCategoryController {
     }
 
     public CreateCategoryOutputData create(String name, String colour) {
+        // should there be a try catch here?
         CreateCategoryInputData inputData = new CreateCategoryInputData(name, colour);
-        return inputBound.edit(inputData);
+        return inputBound.edit(inputData); // where does this go? How does this get to use case?
     }
 
 

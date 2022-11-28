@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class ToDoViewModel extends JFrame{
 
-    public User user = new User(); // ? need to keep track of the user somehow, don't declare a new one
     private TitleBar title;
     public static JFrame frame = new JFrame("To Do List");
     public static GridBagLayout layout = new GridBagLayout();
@@ -23,7 +22,7 @@ public class ToDoViewModel extends JFrame{
         frame.setSize(dimension);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        title = new TitleBar(user.getCategoryCollection());
+        title = new TitleBar(user.getCategoryCollection()); // need to input a controller
         ArrayList<Category> categories = user.getCategoryCollection().convertToArray();
 
         // labels for the table
