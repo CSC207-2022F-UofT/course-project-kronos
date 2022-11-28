@@ -13,6 +13,6 @@ public class VisualizationInteractor implements VisualizationInputBoundary{
     final
     @Override
     public VisualizationResponseModel showQuantityVisual(VisualizationRequestModel requestModel) {
-        return null;
+
     }
 }
