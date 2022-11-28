@@ -1,5 +1,5 @@
 package use_cases.user.delete_user;
-import entities.UserEntity;
+import entities.CommonUser;
 
 /**
  *  This class is a container for the output data related to deletion of user, it is created by the Interactor and sent
@@ -7,14 +7,14 @@ import entities.UserEntity;
  */
 public class DeleteUserOutputData {
     private final String message;
-    private final UserEntity user;
+    private final CommonUser user;
 
     /**
      * Constructor
      * @param message - the message of the result of deletion.
      * @param user - the user that is deleted.
      */
-    public DeleteUserOutputData(String message, UserEntity user) {
+    public DeleteUserOutputData(String message, CommonUser user) {
         this.message = message;
         this.user = user;
     }
@@ -23,6 +23,6 @@ public class DeleteUserOutputData {
         return message;
     }
 
-    public UserEntity getUser(){return user;}
+    public CommonUser getUser(){return user;}
 
 }

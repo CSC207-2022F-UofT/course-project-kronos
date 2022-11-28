@@ -9,7 +9,7 @@ import java.util.List;
  * If it does, then it logs the user in and the page directs to the main page.
  *
  */
-public class UserEntity implements User{
+public class CommonUser implements User{
 
     private String firstName;
     private String lastName;
@@ -36,7 +36,7 @@ public class UserEntity implements User{
  *      - @param CategoryFactory named categoryCollection(the categories to categorize the tasks)
  *      - @param Timer named tomato
      */
-    public UserEntity(String email_id, String password, String first_name, String last_name){
+    public CommonUser(String email_id, String password, String first_name, String last_name){
         this.emailAddress = email_id;
         this.password = password;
         this.firstName = first_name;
@@ -47,9 +47,9 @@ public class UserEntity implements User{
         this.tomato = new Timer();
     }
 
-    public UserEntity(){}
+    public CommonUser(){}
 
-    public UserEntity(String s, String s1, String harry, String potter, HabitFactory hFactory, TaskFactory tFactory, CategoryFactory cFactory, Timer t) {
+    public CommonUser(String s, String s1, String harry, String potter, HabitFactory hFactory, TaskFactory tFactory, CategoryFactory cFactory, Timer t) {
     }
 
 
@@ -77,6 +77,12 @@ public class UserEntity implements User{
     public String getLastName(){
         // returns the user's first name
         return this.lastName;
+    }
+
+    @Override
+    public HabitFactory getHabitCollection(){
+        // returns the user's habit collection
+        return this.habitCollection;
     }
 
     // SETTER METHODS

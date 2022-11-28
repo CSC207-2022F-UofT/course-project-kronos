@@ -1,6 +1,6 @@
 package use_cases.user.create_user;
 
-import entities.UserEntity;
+import entities.CommonUser;
 import entities.UserFactory;
 
 /**
@@ -38,7 +38,7 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
             }
         }
 
-        UserEntity user = new UserEntity(inputData.getFirstname(), inputData.getLastname(),
+        CommonUser user = new CommonUser(inputData.getFirstname(), inputData.getLastname(),
                 inputData.getEmailaddress(), inputData.getPassword());
 
         if (!user.passwordStrength()){

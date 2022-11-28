@@ -1,6 +1,6 @@
 package use_cases.habits.create_habit;
 import entities.Habit;
-import entities.UserEntity;
+import entities.CommonUser;
 
 public class CreateHabit {
 
@@ -10,7 +10,7 @@ public class CreateHabit {
      * @param t -  the type of the habit
      * @param v -  State of the reminder of the habit.
      */
-    public static void createHabit(UserEntity u, String title, String t, boolean v) {
+    public static void createHabit(CommonUser u, String title, String t, boolean v) {
         Habit h = new Habit(title, t, v);
 
         u.getHabitCollection().addItem(h);

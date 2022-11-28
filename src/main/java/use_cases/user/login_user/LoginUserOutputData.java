@@ -1,13 +1,13 @@
 package use_cases.user.login_user;
 
-import entities.UserEntity;
+import entities.CommonUser;
 
 /**
  *  This class is a container for the output data related to user login
  */
 public class LoginUserOutputData {
     private final String message;
-    private final UserEntity user;
+    private final CommonUser user;
     private final String emailaddress;
 
 
@@ -18,7 +18,7 @@ public class LoginUserOutputData {
      * @param emailaddress - the emailaddress of the user
      * @param user - the User object of the user.
      */
-    public LoginUserOutputData(String message, String emailaddress, UserEntity user) {
+    public LoginUserOutputData(String message, String emailaddress, CommonUser user) {
         this.message = message;
         this.emailaddress = emailaddress;
         this.user = user;
@@ -29,7 +29,7 @@ public class LoginUserOutputData {
      * @param emailaddress - the emailaddress of the user
      * @param user - the User object of the user.
      */
-    public LoginUserOutputData(String emailaddress, UserEntity user) {
+    public LoginUserOutputData(String emailaddress, CommonUser user) {
         this.message = null;
         this.emailaddress = emailaddress;
         this.user = user;
@@ -39,7 +39,7 @@ public class LoginUserOutputData {
         return message;
     }
 
-    public UserEntity getUser() {
+    public CommonUser getUser() {
         return user;
     }
 

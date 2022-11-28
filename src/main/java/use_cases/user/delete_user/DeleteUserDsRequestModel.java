@@ -1,19 +1,19 @@
 package use_cases.user.delete_user;
 
-import entities.UserEntity;
+import entities.CommonUser;
 
 /**
  * use case layer
  */
 
 public class DeleteUserDsRequestModel {
-    private final UserEntity user;
+    private final CommonUser user;
 
-    public DeleteUserDsRequestModel(UserEntity user) {
+    public DeleteUserDsRequestModel(CommonUser user) {
         this.user = user;
     }
 
-    public UserEntity getUser() {
+    public CommonUser getUser() {
         return user;
     }
 }

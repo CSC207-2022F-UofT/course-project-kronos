@@ -1,12 +1,12 @@
 package use_cases.user.login_user;
 
-import entities.UserEntity;
+import entities.CommonUser;
 
 /**
  * This class is a container for the input data related to user login
  */
 public class LoginUserInputData {
-    private final UserEntity user;
+    private final CommonUser user;
     private final String emailaddress;
     private final String password;
 
@@ -16,7 +16,7 @@ public class LoginUserInputData {
      * @param emailaddress - the input emailaddres which will be checked to log in.
      * @param password - the input password which will be checked to log into the user account.
      */
-    public LoginUserInputData(UserEntity user, String emailaddress, String password) {
+    public LoginUserInputData(CommonUser user, String emailaddress, String password) {
         this.user = user;
         this.emailaddress = emailaddress;
         this.password = password;
@@ -41,7 +41,7 @@ public class LoginUserInputData {
     /**
      * @return the user attribute of a LoginUserInputData object.
      */
-    public UserEntity getUser() {
+    public CommonUser getUser() {
         return user;
     }
 }

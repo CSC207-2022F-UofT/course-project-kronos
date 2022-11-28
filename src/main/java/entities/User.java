@@ -5,7 +5,10 @@ public interface User {
     String getPassword();
     String getFirstName();
     String getLastName();
+    HabitFactory getHabitCollection();
 
     boolean passwordStrength();
+    boolean check_characters();
+
 
 }
