@@ -1,5 +1,6 @@
 package use_cases.tasks.delete_task;
 
+import entities.Task;
 import entities.TaskFactory;
 
 /**
@@ -7,10 +8,12 @@ import entities.TaskFactory;
  */
 public class DeleteTask implements DeleteTaskInputBoundary{
     private final DeleteTaskOutputBoundary outputBoundary;
+    private final DeleteTaskDsGateway dsGateway;
     private final TaskFactory taskFactory;
 
-    public DeleteTask(DeleteTaskOutputBoundary outputBoundary, TaskFactory taskFactory) {
+    public DeleteTask(DeleteTaskOutputBoundary outputBoundary, DeleteTaskDsGateway dsGateway, TaskFactory taskFactory) {
         this.outputBoundary = outputBoundary;
+        this.dsGateway = dsGateway;
         this.taskFactory = taskFactory;
     }
 
@@ -21,10 +24,12 @@ public class DeleteTask implements DeleteTaskInputBoundary{
      */
     @Override
     public DeleteTaskOutputData delete(DeleteTaskInputData inputData) {
-        String name = inputData.getTask().getName();
-        taskFactory.removeItem(inputData.getTask());
+        int id = inputData.getTaskId();
+        Task taskToDelete = taskFactory.getTasks().get(id);
+        taskFactory.removeItem(taskToDelete);
+        String name = taskToDelete.getName();
         DeleteTaskOutputData outputData = new DeleteTaskOutputData(
-                "Task \"" + name + "\" is successfully deleted.", inputData.getTask());
+                "Task \"" + name + "\" is successfully deleted.");
         // How can we know which successView should be prepared? To-do or Calendar?
         return outputBoundary.prepareSuccessView(outputData);
         // The above 2 lines will be refactored by extracting method and pulling up field after the above question is
@@ -37,5 +42,9 @@ public class DeleteTask implements DeleteTaskInputBoundary{
 
     public TaskFactory getTaskFactory() {
         return taskFactory;
+    }
+
+    public DeleteTaskDsGateway getDsGateway() {
+        return dsGateway;
     }
 }

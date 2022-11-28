@@ -5,5 +5,5 @@ package use_cases.tasks.create_task;
  */
 public interface CreateTaskOutputBoundary {
     CreateTaskOutputData prepareSuccessView(CreateTaskOutputData outputData);
-    CreateTaskOutputData prepareFailView(CreateTaskOutputData outputData);
+    CreateTaskOutputData prepareFailView(String error);
 }
