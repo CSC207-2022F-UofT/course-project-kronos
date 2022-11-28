@@ -7,11 +7,11 @@ import use_cases.visualization.visualization_quantity.VisualizationResponseModel
 
 import java.util.Date;
 
-public class VisualizationQtyController {
+public class VisualizationQuantityController {
 
     final VisualizationInputBoundary visualizationInput;
 
-    public VisualizationQtyController(VisualizationInputBoundary visualizationInput){
+    public VisualizationQuantityController(VisualizationInputBoundary visualizationInput){
         this.visualizationInput = visualizationInput;
     }
 
