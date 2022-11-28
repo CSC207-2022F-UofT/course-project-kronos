@@ -1,7 +1,7 @@
 package database;
 
-import entities.UserEntity;
-import use_cases.user.create_user.UserDataAccessInterface;
+import entities.User;
+import use_cases.user.UserDataAccessInterface;
 
 import java.io.*;
 
@@ -9,22 +9,25 @@ import java.util.HashMap;
 
 public class Database implements UserDataAccessInterface {
 
-    HashMap<String, UserEntity> collections;
-    String filePath;
+    private HashMap<String, User> collections;
+    public String filePath;
+
+    public User currUser;
 
     public Database(String filepath){
         this.filePath = filepath;
+        this.currUser = null;
         try {
             FileInputStream file = new FileInputStream(filepath);
             ObjectInputStream ois = new ObjectInputStream(file);
 
-            this.collections = (HashMap<String, UserEntity>) ois.readObject();
+            this.collections = (HashMap<String, User>) ois.readObject();
         } catch(IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public static void WriteData(HashMap<String, UserEntity> data, String filePath) {
+    public static void WriteData(HashMap<String, User> data, String filePath) {
         try {
             // Saving of object in a file
             FileOutputStream file = new FileOutputStream
@@ -48,19 +51,23 @@ public class Database implements UserDataAccessInterface {
     }
 
     @Override
-    public UserEntity LoginUser(String emailAddress, String password) {
-        // User Login
-        if (emailAddress.equals(collections.get(emailAddress).getEmailAddress()) &&
-                password.equals(collections.get(emailAddress).getPassword())){
-            System.out.println("login successful");
-            return collections.get(emailAddress);
+    public User LoginUser(String emailAddress, String password) {
+        if (emailAddress.equals(collections.get(emailAddress).getEmailAddress())){
+            this.currUser = collections.get(emailAddress);
+            return this.currUser;
         }
         return null;
     }
 
     @Override
-    public void UpdateUser(UserEntity user) {
+    public User GetUser() {
+        return this.currUser;
+    }
+
+    @Override
+    public void UpdateUser(User user) {
         this.collections.replace(user.getEmailAddress(), user);
+
     }
 
     @Override
@@ -69,7 +76,7 @@ public class Database implements UserDataAccessInterface {
     }
 
     @Override
-    public void AddUser(UserEntity user) {
+    public void AddUser(User user) {
         this.collections.put(user.getEmailAddress(), user);
     }
 }
