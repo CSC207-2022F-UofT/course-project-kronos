@@ -16,15 +16,13 @@ public class ToDoViewModel extends JFrame{
     public static GridBagConstraints constraints = new GridBagConstraints();
     public static Dimension dimension = new Dimension(1080, 800);
     public static int y = 2;
-
     public ToDoViewModel(User user) {
         layout.minimumLayoutSize(frame);
         frame.setLayout(layout);
         frame.setSize(dimension);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-
-        // title = new TitleBar(user.getCategoryCollection()); // need to input a controller HERE
+        title = new TitleBar(user.getCategoryCollection()); // need to input a controller
         ArrayList<Category> categories = user.getCategoryCollection().convertToArray();
 
         // labels for the table
