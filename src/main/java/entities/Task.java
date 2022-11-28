@@ -12,10 +12,10 @@ import static java.lang.Boolean.TRUE;
 public class Task{
 
     private String name;
-    public boolean completeStatus;
-    public boolean visibility;
+    private boolean completeStatus;
+    private boolean visibility;
     private String taskCategory;
-    public Calendar deadline;
+    private Calendar deadline;
     private final int id;
     private static int numberOfTasks = 0;
 

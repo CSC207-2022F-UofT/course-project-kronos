@@ -1,29 +1,41 @@
 package use_cases.tasks.create_task;
 
-import entities.Task;
+import java.util.Calendar;
 
-import java.time.LocalDateTime;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 // Use case Layer
 
 public class CreateTaskDsRequestModel {
-    private Task task;
-    private final LocalDateTime creationTime;
+    private final String name;
+    private final boolean completeStatus = FALSE;
+    private final boolean visibility = TRUE;
+    private final String taskCategory;
+    private final Calendar deadline;
+    private final int id;
 
-    public CreateTaskDsRequestModel(Task task, LocalDateTime creationTime) {
-        this.task = task;
-        this.creationTime = creationTime;
+
+    public CreateTaskDsRequestModel(int id, String name, Calendar deadline) {
+        this.name = name;
+        this.deadline = deadline;
+        this.taskCategory = null;
+        this.id = id;
     }
 
-    public Task getTask() {
-        return task;
+    public String getName() {
+        return name;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    public Calendar getDeadline() {
+        return deadline;
     }
 
-    public LocalDateTime getCreationTime() {
-        return creationTime;
+    public String getTaskCategory() {
+        return taskCategory;
+    }
+
+    public int getId() {
+        return id;
     }
 }

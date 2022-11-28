@@ -28,7 +28,7 @@ public class EditTask {
      * @param t - Target task.
      */
     public void editStatus(User userA, Task t){
-        if (t.completeStatus == TRUE){
+        if (t.isCompleteStatus() == TRUE){
             t.markAsIncomplete();
         }else {t.markAsComplete();}
     }
