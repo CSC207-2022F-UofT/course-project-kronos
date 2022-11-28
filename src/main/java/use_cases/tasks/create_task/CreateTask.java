@@ -4,16 +4,22 @@ import entities.Task;
 import entities.TaskFactory;
 
 /**
- * The Interactor that is responsible for creating a new task.
+ * -- Application Business Layer --
+ * The use case Interactor that is responsible for creating a new task.
  */
 public class CreateTask implements CreateTaskInputBoundary {
 
     private final CreateTaskOutputBoundary outputBoundary;
     private final TaskFactory taskFactory;
 
-    public CreateTask(CreateTaskOutputBoundary outputBoundary, TaskFactory taskfactory) {
+    /**
+     * Constructor
+     * @param outputBoundary - the output boundary.
+     * @param taskFactory - the task factory of a specific user.
+     */
+    public CreateTask(CreateTaskOutputBoundary outputBoundary, TaskFactory taskFactory) {
         this.outputBoundary = outputBoundary;
-        this.taskFactory = taskfactory;
+        this.taskFactory = taskFactory;
     }
 
     /**
@@ -36,14 +42,19 @@ public class CreateTask implements CreateTaskInputBoundary {
         // The new Task object above is not assigned to any category.
         // So we do not need to update the Category/CategoryFactory.
         taskFactory.addItem(task);
-        CreateTaskOutputData outputData = new CreateTaskOutputData(task);
+        CreateTaskOutputData outputData = new CreateTaskOutputData(task.getId(), task.getName(), task.getDeadline());
         return outputBoundary.prepareSuccessView(outputData);
     }
-
+    /**
+     * @return the output boundary of the use case
+     */
     public CreateTaskOutputBoundary getOutputBoundary() {
         return outputBoundary;
     }
 
+    /**
+     * @return the taskFactory of the use case. (A specific user's task factory)
+     */
     public TaskFactory getTaskFactory() {
         return taskFactory;
     }

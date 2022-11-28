@@ -1,4 +1,4 @@
-package controllers.task;
+package controllers.tasks;
 
 /**
  * Exception deals the failure of task editing.

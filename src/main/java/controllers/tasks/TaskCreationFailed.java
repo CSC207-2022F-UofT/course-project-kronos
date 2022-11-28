@@ -1,4 +1,4 @@
-package controllers.task;
+package controllers.tasks;
 
 /**
  * Exception deals with failure of creating task.

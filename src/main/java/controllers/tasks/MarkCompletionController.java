@@ -1,4 +1,4 @@
-package controllers.task;
+package controllers.tasks;
 
 import use_cases.tasks.mark_task_completion.MarkCompletionInputBound;
 import use_cases.tasks.mark_task_completion.MarkCompletionInputData;

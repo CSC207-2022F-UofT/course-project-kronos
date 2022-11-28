@@ -1,4 +1,4 @@
-package controllers.task;
+package controllers.tasks;
 
 import use_cases.tasks.mark_task_visibility.MarkVisibilityOutputBound;
 import use_cases.tasks.mark_task_visibility.MarkVisibilityOutputData;

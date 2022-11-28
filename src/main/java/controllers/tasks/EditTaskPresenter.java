@@ -1,4 +1,4 @@
-package controllers.task;
+package controllers.tasks;
 
 import use_cases.tasks.edit_task.EditTaskOutputBoundary;
 import use_cases.tasks.edit_task.EditTaskOutputData;

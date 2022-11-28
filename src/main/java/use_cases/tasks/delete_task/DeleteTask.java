@@ -4,6 +4,7 @@ import entities.Task;
 import entities.TaskFactory;
 
 /**
+ * -- Application Business Layer --
  * The Interactor that is responsible for deleting a new task.
  */
 public class DeleteTask implements DeleteTaskInputBoundary{
@@ -11,6 +12,12 @@ public class DeleteTask implements DeleteTaskInputBoundary{
     private final DeleteTaskDsGateway dsGateway;
     private final TaskFactory taskFactory;
 
+    /**
+     * Constructor
+     * @param outputBoundary - the output boundary interface.
+     * @param dsGateway - the database gateway interface.
+     * @param taskFactory - the task factory of a specific user.
+     */
     public DeleteTask(DeleteTaskOutputBoundary outputBoundary, DeleteTaskDsGateway dsGateway, TaskFactory taskFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
@@ -36,14 +43,23 @@ public class DeleteTask implements DeleteTaskInputBoundary{
         // solved.
     }
 
+    /**
+     * @return the output boundary of the use case.
+     */
     public DeleteTaskOutputBoundary getOutputBoundary() {
         return outputBoundary;
     }
 
+    /**
+     * @return the taskFactory of the use case. (A specific user's task factory)
+     */
     public TaskFactory getTaskFactory() {
         return taskFactory;
     }
 
+    /**
+     * @return the data gateway of the use case.
+     */
     public DeleteTaskDsGateway getDsGateway() {
         return dsGateway;
     }

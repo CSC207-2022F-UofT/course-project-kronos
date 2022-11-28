@@ -83,26 +83,41 @@ public class Task{
         this.deadline = deadline;
     }
     /**
-     * @return returns the id (a private attribute) of the task.
+     * @return the id (a private attribute) of the task.
      */
     public int getId(){return this.id;}
 
+    /**
+     * @return the name of the task.
+     */
     public String getName(){
         return this.name;
     }
 
+    /**
+     * @return the category of the task.
+     */
     public String getTaskCategory() {
         return taskCategory;
     }
 
+    /**
+     * @return the deadline of the task.
+     */
     public Calendar getDeadline() {
         return deadline;
     }
 
+    /**
+     * @return the completionStatus of the task.
+     */
     public boolean isCompleteStatus() {
         return completeStatus;
     }
 
+    /**
+     * @return the visibility of the task.
+     */
     public boolean isVisibility() {
         return visibility;
     }

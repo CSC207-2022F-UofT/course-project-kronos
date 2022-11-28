@@ -1,4 +1,4 @@
-package controllers.task;
+package controllers.tasks;
 
 import use_cases.tasks.delete_task.DeleteTaskOutputBoundary;
 import use_cases.tasks.delete_task.DeleteTaskOutputData;
