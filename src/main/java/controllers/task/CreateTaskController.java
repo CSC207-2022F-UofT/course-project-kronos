@@ -12,7 +12,7 @@ public class CreateTaskController {
     public CreateTaskController(CreateTaskInputBoundary taskGateway) {
         this.userInput = taskGateway;
     }
-    CreateTaskOutputData create(String name, Calendar deadline){
+    public CreateTaskOutputData create(String name, Calendar deadline){
         CreateTaskInputData inputData = new CreateTaskInputData(name, deadline);
         return userInput.create(inputData);
     }

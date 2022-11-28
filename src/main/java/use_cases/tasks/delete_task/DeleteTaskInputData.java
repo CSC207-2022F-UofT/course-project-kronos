@@ -3,6 +3,8 @@ package use_cases.tasks.delete_task;
 import entities.Task;
 
 /**
+ * Application Business Layer
+ *
  * This class is a container for the input data related to deletion of a task, it is created by the controller and sent
  * to the interactor/use case.
  */

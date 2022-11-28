@@ -16,7 +16,7 @@ public class DeleteTaskController {
     }
 
 
-    DeleteTaskOutputData delete(int taskID){
+    public DeleteTaskOutputData delete(int taskID){
         DeleteTaskInputData inputData = new DeleteTaskInputData(taskID);
         return userInput.delete(inputData);
     }
