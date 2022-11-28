@@ -1,7 +1,5 @@
 package use_cases.tasks.mark_task_completion;
 
-import entities.Task;
-
 import java.util.Calendar;
 
 /**
@@ -11,20 +9,20 @@ public class MarkCompletionOutputData {
     int taskId;
     String name;
     Calendar taskDeadline;
-    boolean completionStatus;
+    boolean visibility;
 
     /**
      *
      * @param taskId - the id of the task.
      * @param taskName - the name of the task.
      * @param taskDeadline - the deadline of the task
-     * @param completionStatus - the completion status of the task ofter marked.
+     * @param visibility - the completion status of the task ofter marked.
      */
-    public MarkCompletionOutputData(int taskId, String taskName, Calendar taskDeadline, boolean completionStatus) {
+    public MarkCompletionOutputData(int taskId, String taskName, Calendar taskDeadline, boolean visibility) {
         this.taskId = taskId;
         this.name = taskName;
         this.taskDeadline = taskDeadline;
-        this.completionStatus = completionStatus;
+        this.visibility = visibility;
     }
 
     public int getTaskId() {
@@ -39,7 +37,7 @@ public class MarkCompletionOutputData {
         return name;
     }
 
-    public boolean isCompletionStatus() {
-        return completionStatus;
+    public boolean isVisibility() {
+        return visibility;
     }
 }
