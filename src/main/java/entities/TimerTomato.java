@@ -9,7 +9,8 @@ public class TimerTomato {
     public static int timerCycle;
     private String work_timeLeft;
     private String rest_timeLeft;
-    private Timer timer;
+    private Timer workTimer;
+    private Timer restTimer;
 
     public TimerTomato(){}
 
@@ -60,7 +61,13 @@ public class TimerTomato {
         return timerCycle;
     }
 
+    public String getWork_timeLeft() {
+        return work_timeLeft;
+    }
 
+    public String getRest_timeLeft() {
+        return rest_timeLeft;
+    }
 
 
     public int getTimeStatus(Timer timer){
