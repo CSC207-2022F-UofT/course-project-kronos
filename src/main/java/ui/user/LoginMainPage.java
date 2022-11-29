@@ -6,18 +6,18 @@ import java.awt.event.ActionListener;
 
 import entities.UserFactory;
 
-public class LoginMainPage extends JFrame implements ActionListener {
+public class LoginMainPage extends JFrame {
     static JFrame mainFrame;
     UserFactory users;
 
-    static Button loginButton;
-    static Button createAccountButton;
+    static Button loginbutton;
+    static Button createaccountbutton;
 
-    static Label enterEmail;
-    static Label enterPin;
+    static Label enteremail;
+    static Label enterpin;
 
-    static TextField emailField;
-    static TextField passwordField;
+    static TextField emailfield;
+    static TextField passwordfield;
 
     static Panel panel;
 
@@ -41,58 +41,33 @@ public class LoginMainPage extends JFrame implements ActionListener {
 
 
         // create a new label
-        enterEmail = new Label();
-        enterEmail.createLabel("Enter Email Address:", 10,0,
+        enteremail = new Label();
+        enteremail.createLabel("Enter Email Address:", 10,0,
                 150,70, panel.getPanel());
 
-        enterPin = new Label();
-        enterPin.createLabel("Enter Password:", 10, 30,
+        enterpin = new Label();
+        enterpin.createLabel("Enter Password:", 10, 30,
                 150, 70, panel.getPanel());
 
         // create text fields
-        emailField = new TextField();
-        emailField.createTextField(160, 20, 200, 25, panel.getPanel());
+        emailfield = new TextField();
+        emailfield.createTextField(160, 20, 200, 25, panel.getPanel());
 
-        passwordField = new TextField();
-        passwordField.createPasswordField(160, 50, 200, 25, panel.getPanel());
+        passwordfield = new TextField();
+        passwordfield.createPasswordField(160, 50, 200, 25, panel.getPanel());
 
 
         // creating a new button
-        loginButton = new Button();
-        loginButton.createButton(panel.jPanel, "Login",140, 100, 80, 25);
+        loginbutton = new Button();
+        loginbutton.createButton(panel.jPanel, "Login",140, 100, 80, 25);
 
 
-        createAccountButton = new Button();
-        createAccountButton.createButton(panel.jPanel, "Create Account",120, 130, 120, 25);
-
-
-
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e){
-        if (e.getSource()==createAccountButton){
-
-        }else if(e.getSource() == loginButton){
-            String email = emailField.textField.getText();
-            String password = String.valueOf(passwordField.passwordField);
-
-            mainFrame.dispose();
-            MenuPage welcome = new MenuPage();
-
-            // case when it is able to log in
-
-            }
-        }
+        createaccountbutton = new Button();
+        createaccountbutton.createButton(panel.jPanel, "Create Account",120, 130, 120, 25);
 
 
 
-    public static void main(String[] args) {
-        LoginMainPage login = new LoginMainPage();
-        createLoginMainPage();
 
     }
-
 
 }
