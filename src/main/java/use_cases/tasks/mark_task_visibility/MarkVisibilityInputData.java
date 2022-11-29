@@ -6,17 +6,18 @@ import entities.Task;
  *  This class is a container for the input data, it is created by the controller and sent to the interactor/use case.
  */
 public class MarkVisibilityInputData {
-    private final Task task;
+    private final int taskId;
 
     /**
      * Constructor for a MarkVisibilityInputData object.
-     * @param task - the task that will be marked.
+     *
+     * @param taskId - the id of task that will be marked.
      */
-    public MarkVisibilityInputData(Task task) {
-        this.task = task;
+    public MarkVisibilityInputData(int taskId) {
+        this.taskId = taskId;
     }
 
-    public Task getTask() {
-        return task;
+    public int getTaskId() {
+        return taskId;
     }
 }

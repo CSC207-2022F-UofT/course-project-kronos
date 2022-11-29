@@ -8,7 +8,7 @@ import java.util.HashMap;
  */
 
 public class TaskFactory extends Factory<Task>{
-    HashMap<Integer, Task> tasks;
+    private HashMap<Integer, Task> tasks;
 
     public TaskFactory(){
         super();
@@ -39,6 +39,10 @@ public class TaskFactory extends Factory<Task>{
      */
     public HashMap<Integer, Task> getTasks(){
         return this.tasks;
+    }
+
+    public void setTasks(HashMap<Integer, Task> tasks) {
+        this.tasks = tasks;
     }
 
     /**
