@@ -1,6 +1,7 @@
 package use_cases.tasks.mark_task_completion;
 
 import entities.Task;
+import entities.TaskFactory;
 
 import static java.lang.Boolean.FALSE;
 
@@ -9,9 +10,14 @@ import static java.lang.Boolean.FALSE;
  */
 public class MarkCompletion implements MarkCompletionInputBound {
     private final MarkCompletionOutputBound outputBound;
+    private final MarkCompletionDsGateway dsGateway;
+    private final TaskFactory taskFactory;
 
-    public MarkCompletion(MarkCompletionOutputBound outputBound) {
+    public MarkCompletion(MarkCompletionOutputBound outputBound, MarkCompletionDsGateway dsGateway,
+                          TaskFactory taskFactory) {
         this.outputBound = outputBound;
+        this.dsGateway = dsGateway;
+        this.taskFactory = taskFactory;
     }
 
     /**
@@ -23,8 +29,9 @@ public class MarkCompletion implements MarkCompletionInputBound {
      */
     @Override
     public MarkCompletionOutputData mark(MarkCompletionInputData inputData) {
-        boolean complete = inputData.getTask().isCompleteStatus();
-        Task task = inputData.getTask();
+        int id = inputData.getTaskId();
+        Task task = taskFactory.getTasks().get(id);
+        boolean complete = task.isCompleteStatus();
         // if complete is TRUE
         if (complete){
             task.markAsIncomplete(); // the completionStatus of task is marked as incomplete (FALSE)
@@ -33,11 +40,20 @@ public class MarkCompletion implements MarkCompletionInputBound {
             // When a task is marked as completed, it becomes invisible.
             task.setVisibility(FALSE);
         }
-        MarkCompletionOutputData outputData = new MarkCompletionOutputData(task);
+        MarkCompletionOutputData outputData = new MarkCompletionOutputData(id, task.getName(),
+                task.getDeadline(),task.isCompleteStatus());
         return outputBound.prepareSuccessView(outputData);
     }
 
     public MarkCompletionOutputBound getOutputBound() {
         return outputBound;
+    }
+
+    public TaskFactory getTaskFactory() {
+        return taskFactory;
+    }
+
+    public MarkCompletionDsGateway getDsGateway() {
+        return dsGateway;
     }
 }

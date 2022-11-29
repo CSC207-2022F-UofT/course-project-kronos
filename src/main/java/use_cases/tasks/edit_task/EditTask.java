@@ -1,15 +1,20 @@
 package use_cases.tasks.edit_task;
 
 import entities.Task;
+import entities.TaskFactory;
 
 /**
  * Edit properties of a task. Properties include: name, category,and deadline.
  */
 public class EditTask implements EditTaskInputBoundary {
     private final EditTaskOutputBoundary outputBoundary;
+    private final EditTaskDsGateway dsGateway;
+    private final TaskFactory taskFactory;
 
-    public EditTask(EditTaskOutputBoundary outputBoundary) {
+    public EditTask(EditTaskOutputBoundary outputBoundary, EditTaskDsGateway dsGateway, TaskFactory taskFactory) {
         this.outputBoundary = outputBoundary;
+        this.dsGateway = dsGateway;
+        this.taskFactory = taskFactory;
     }
 
     /**
@@ -26,16 +31,29 @@ public class EditTask implements EditTaskInputBoundary {
                     "Please fill all required fields.");
             return outputBoundary.prepareFailView(outputData);
         }
-        Task task = inputData.getTask();
-        task.setName(inputData.getInputName());
-        task.setDeadline(inputData.getInputDeadline());
-        task.setTaskCategory(inputData.getInputCategory());
-        EditTaskOutputData outputData = new EditTaskOutputData("Changes have been saved.", task);
+        int id = inputData.getTaskId();
+        Task taskBeEdited = taskFactory.getTasks().get(id);
+        taskBeEdited.setName(inputData.getInputName());
+        taskBeEdited.setDeadline(inputData.getInputDeadline());
+        taskBeEdited.setTaskCategory(inputData.getInputCategory());
+        EditTaskOutputData outputData = new EditTaskOutputData(
+                "Changes have been saved.",
+                id,
+                taskBeEdited.getName(),
+                taskBeEdited.getDeadline());
          return outputBoundary.prepareSuccessView(outputData);
 
     }
 
     public EditTaskOutputBoundary getOutputBoundary() {
         return outputBoundary;
+    }
+
+    public EditTaskDsGateway getDsGateway() {
+        return dsGateway;
+    }
+
+    public TaskFactory getTaskFactory() {
+        return taskFactory;
     }
 }
