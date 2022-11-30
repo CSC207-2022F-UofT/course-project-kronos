@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import entities.UserFactory;
 
-public class LoginMainPage extends JFrame implements ActionListener {
+public class LoginMainPage extends JFrame {
     static JFrame mainFrame;
     UserFactory users;
 
@@ -69,30 +69,5 @@ public class LoginMainPage extends JFrame implements ActionListener {
 
 
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e){
-        if (e.getSource()==createaccountbutton){
-
-        }else if(e.getSource() == loginbutton){
-            String email = emailfield.textField.getText();
-            String password = String.valueOf(passwordfield.passwordField);
-
-            mainFrame.dispose();
-            MenuPage welcome = new MenuPage();
-
-            // case when it is able to log in
-
-            }
-        }
-
-
-
-    public static void main(String[] args) {
-        LoginMainPage login = new LoginMainPage();
-        createLoginMainPage();
-
-    }
-
 
 }
