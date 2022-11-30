@@ -3,7 +3,7 @@ package use_cases.tasks.edit_task;
 import java.util.Calendar;
 
 /**
- * Application Business Layer
+ * -- Application Business Layer --
  *  This class is a container for the input data related to edition/modification of task, it is created by the controller and sent
  *  to the interactor/use case
  */
@@ -29,18 +29,28 @@ public class EditTaskInputData {
         this.inputDeadline = deadline;
     }
 
+    /**
+     * @return the id of the task that will be edited.
+     */
     public int getTaskId() {
         return taskId;
     }
 
+    /**
+     * @return the name of the task after edition.
+     */
     public String getInputName() {
         return inputName;
     }
-
+    /**
+     * @return the category of the task after edition.
+     */
     public String getInputCategory() {
         return inputCategory;
     }
-
+    /**
+     * @return the deadline of the task after edition.
+     */
     public Calendar getInputDeadline() {
         return inputDeadline;
     }

@@ -3,24 +3,15 @@ package use_cases.tasks.edit_task;
 import java.util.Calendar;
 
 /**
+ * -- Application Business Layer --
  *  This class is a container for the output data related to edition/modification of task, it is created by the
  *  Interactor and sent to the Presenter.
  */
 public class EditTaskOutputData {
     private final String message;
-    private int taskId;
-    private String taskName;
-    private Calendar taskDeadline;
-
-
-    /**
-     * A constructor that is used when there is a failure to edit task.
-     *
-     * @param message - the failure message.
-     */
-    public EditTaskOutputData(String message){
-        this.message = message;
-    }
+    private final int taskId;
+    private final String taskName;
+    private final Calendar taskDeadline;
 
     /**
      * A constructor that is used only when a task is successfully edited.
@@ -37,18 +28,30 @@ public class EditTaskOutputData {
         this.taskDeadline = taskDeadline;
     }
 
+    /**
+     * @return the message of the output data.
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * @return the id of the task edited.
+     */
     public int getTaskId() {
         return taskId;
     }
 
+    /**
+     * @return the deadline of the task edited.
+     */
     public Calendar getTaskDeadline() {
         return taskDeadline;
     }
 
+    /**
+     * @return the name of the task edited.
+     */
     public String getTaskName() {
         return taskName;
     }

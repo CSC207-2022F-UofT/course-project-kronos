@@ -4,6 +4,7 @@ import entities.Task;
 import entities.TaskFactory;
 
 /**
+ * -- Application Business Layer --
  * The Interactor that is responsible for marking the visibility of a task.
  */
 public class MarkVisibility implements MarkVisibilityInputBound {
@@ -11,6 +12,12 @@ public class MarkVisibility implements MarkVisibilityInputBound {
     private final MarkVisibilityDsGateway dsGateway;
     private final TaskFactory taskFactory;
 
+    /**
+     * Constructor
+     * @param outputBound - the output boundary interface.
+     * @param dsGateway - the database gateway interface.
+     * @param taskFactory - the task factory of a specific user.
+     */
     public MarkVisibility(MarkVisibilityOutputBound outputBound, MarkVisibilityDsGateway dsGateway, TaskFactory taskFactory) {
         this.outputBound = outputBound;
         this.dsGateway = dsGateway;
@@ -34,10 +41,24 @@ public class MarkVisibility implements MarkVisibilityInputBound {
         return outputBound.prepareSuccessView(outputData);
     }
 
-
+    /**
+     * @return the output boundary of the use case.
+     */
     public MarkVisibilityOutputBound getOutputBound() {
         return outputBound;
     }
 
+    /**
+     * @return the taskFactory of the use case. (A specific user's task factory)
+     */
+    public TaskFactory getTaskFactory() {
+        return taskFactory;
+    }
 
+    /**
+     * @return the data gateway of the use case.
+     */
+    public MarkVisibilityDsGateway getDsGateway() {
+        return dsGateway;
+    }
 }

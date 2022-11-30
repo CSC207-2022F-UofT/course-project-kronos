@@ -52,4 +52,8 @@ public class CreateTaskDsRequestModel {
     public int getId() {
         return id;
     }
+
+    public String getTaskCategory() {
+        return taskCategory;
+    }
 }

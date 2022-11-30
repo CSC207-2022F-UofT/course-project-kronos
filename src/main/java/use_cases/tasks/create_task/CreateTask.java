@@ -31,10 +31,10 @@ public class CreateTask implements CreateTaskInputBoundary {
     public CreateTaskOutputData create(CreateTaskInputData inputData) {
         // If the input name is empty or containing only white spaces
         if (inputData.getName().isBlank()){
-            String error = new String ("Task Creation Failed. Please enter the name of the task.");
+            String error = "Task Creation Failed. Please enter the name of the task.";
             return outputBoundary.prepareFailView(error);
         } else if (inputData.getDeadline().isLenient()) {
-            String error = new String("Task Creation Failed. Please enter a valid deadline.");
+            String error = "Task Creation Failed. Please enter a valid deadline.";
             return outputBoundary.prepareFailView(error);
         }
 

@@ -1,7 +1,5 @@
 package use_cases.tasks.create_task;
 
-import entities.Task;
-
 import java.util.Calendar;
 
 /**
@@ -11,17 +9,9 @@ import java.util.Calendar;
  */
 public class CreateTaskOutputData {
     private String message;
-    private int taskId;
-    private String taskName;
-    private Calendar taskDeadline;
-
-    /**
-     * A constructor that is used when there is a failure to create task.
-     * @param message - the failure message.
-     */
-    public CreateTaskOutputData(String message){
-        this.message = message;
-    }
+    private final int taskId;
+    private final String taskName;
+    private final Calendar taskDeadline;
 
     /**
      * A constructor that is used only when a task is successfully created.

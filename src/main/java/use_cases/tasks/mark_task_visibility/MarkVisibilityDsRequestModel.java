@@ -2,20 +2,36 @@ package use_cases.tasks.mark_task_visibility;
 
 import entities.Task;
 
+/**
+ * -- Application Business Layer --
+ * A data structure that stores data about the marked task that should be updated in the database. It passes data to the
+ * data gateway.
+ */
 public class MarkVisibilityDsRequestModel {
-    private Task task;
-    public MarkVisibilityDsRequestModel(Task task){
-        this.task = task;
+    private final int id ;
+    private final boolean visibility;
+
+    /**
+     * Constructor
+     * @param id - the id of the task being marked.
+     * @param visibility - the visibility of the task after marking.
+     */
+    public MarkVisibilityDsRequestModel(int id, boolean visibility){
+        this.id = id;
+        this.visibility = visibility;
     }
 
-    public Task getTask() {
-        return task;
+    /**
+     * @return the id of the task being marked.
+     */
+    public int getId() {
+        return id;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    /**
+     * @return return the visibility of the task after marking.
+     */
+    public boolean isVisibility() {
+        return visibility;
     }
-
-    // Might extract to a general class afterwards. (As duplicate code appears in EditTaskDsRequestModel,
-    // MarkCompletionDsRequestModel, and MarkVisibilityDsRequestModel.)
 }
