@@ -17,8 +17,6 @@ As students, we have to balance and keep track of various things at the same tim
 * Pomodoro Timer
 * User Data Analysis and Visualization
 
-## At a Glance
-
 ## How to Use
 
 ## 
