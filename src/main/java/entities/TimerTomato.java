@@ -70,6 +70,7 @@ public class TimerTomato {
     }
 
 
+
     public int getTimeStatus(Timer timer){
         // timerState:
         // value 0 - stop
