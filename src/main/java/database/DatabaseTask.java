@@ -12,8 +12,20 @@ import use_cases.tasks.mark_task_visibility.MarkVisibilityDsGateway;
 import use_cases.tasks.mark_task_visibility.MarkVisibilityDsRequestModel;
 
 public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, EditTaskDsGateway, MarkVisibilityDsGateway, MarkCompletionDsGateway {
+
+
+    /**
+     * Saves the data in the request model to the database.
+     *
+     * @param requestModel - a data structure that contains data about the new task that should be saved in the database.
+     */
     @Override
     public void saveTask(CreateTaskDsRequestModel requestModel) {
+
+    }
+
+    @Override
+    public void deleteTask(DeleteTaskDsRequestModel requestModel) {
 
     }
 
@@ -31,12 +43,4 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, E
     public void saveTask(MarkVisibilityDsRequestModel requestModel) {
 
     }
-
-    @Override
-    public void deleteTask(DeleteTaskDsRequestModel requestModel) {
-
-    }
-
-
-
 }

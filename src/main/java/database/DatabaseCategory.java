@@ -25,11 +25,11 @@ public class DatabaseCategory implements CreateCategoryDsGateway, DeleteCategory
 
     @Override
     public void save(DeleteCategoryDsRequestModel requestModel) {
-        this.collection.categories.remove()
+        this.collection.categories.remove(requestModel.getCategory().getId());
     }
 
     @Override
     public void save(EditCategoryDsRequestModel requestModel) {
-
+        this.collection.categories.replace(requestModel.getCategory().getId(), requestModel.getCategory());
     }
 }
