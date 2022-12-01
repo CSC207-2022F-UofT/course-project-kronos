@@ -1,7 +1,7 @@
-package ui.category;
+package ui;
 
 import entities.Category; // shouldn't reference entity classes?
-import entities.User;
+import entities.CommonUser;
 import use_cases.categories.create_category.CreateCategoryOutputData;
 
 import javax.swing.*;
@@ -10,21 +10,20 @@ import java.util.ArrayList;
 
 public class ToDoViewModel extends JFrame{
 
+    public CommonUser user = new CommonUser(); // ? need to keep track of the user somehow, don't declare a new one
     private TitleBar title;
     public static JFrame frame = new JFrame("To Do List");
     public static GridBagLayout layout = new GridBagLayout();
     public static GridBagConstraints constraints = new GridBagConstraints();
     public static Dimension dimension = new Dimension(1080, 800);
     public static int y = 2;
-
-    public ToDoViewModel(User user) {
+    public ToDoViewModel(CommonUser user) {
         layout.minimumLayoutSize(frame);
         frame.setLayout(layout);
         frame.setSize(dimension);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-
-        // title = new TitleBar(user.getCategoryCollection()); // need to input a controller HERE
+        title = new TitleBar(user.getCategoryCollection());
         ArrayList<Category> categories = user.getCategoryCollection().convertToArray();
 
         // labels for the table

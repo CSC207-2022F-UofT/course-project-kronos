@@ -1,16 +1,26 @@
 package use_cases.tasks.delete_task;
 
+import entities.Task;
 import entities.TaskFactory;
 
 /**
+ * -- Application Business Layer --
  * The Interactor that is responsible for deleting a new task.
  */
 public class DeleteTask implements DeleteTaskInputBoundary{
     private final DeleteTaskOutputBoundary outputBoundary;
+    private final DeleteTaskDsGateway dsGateway;
     private final TaskFactory taskFactory;
 
-    public DeleteTask(DeleteTaskOutputBoundary outputBoundary, TaskFactory taskFactory) {
+    /**
+     * Constructor
+     * @param outputBoundary - the output boundary interface.
+     * @param dsGateway - the database gateway interface.
+     * @param taskFactory - the task factory of a specific user.
+     */
+    public DeleteTask(DeleteTaskOutputBoundary outputBoundary, DeleteTaskDsGateway dsGateway, TaskFactory taskFactory) {
         this.outputBoundary = outputBoundary;
+        this.dsGateway = dsGateway;
         this.taskFactory = taskFactory;
     }
 
@@ -21,21 +31,36 @@ public class DeleteTask implements DeleteTaskInputBoundary{
      */
     @Override
     public DeleteTaskOutputData delete(DeleteTaskInputData inputData) {
-        String name = inputData.getTask().getName();
-        taskFactory.removeItem(inputData.getTask());
+        int id = inputData.getTaskId();
+        Task taskToDelete = taskFactory.getTasks().get(id);
+        taskFactory.removeItem(taskToDelete);
+        String name = taskToDelete.getName();
         DeleteTaskOutputData outputData = new DeleteTaskOutputData(
-                "Task \"" + name + "\" is successfully deleted.", inputData.getTask());
+                "Task \"" + name + "\" is successfully deleted.");
         // How can we know which successView should be prepared? To-do or Calendar?
         return outputBoundary.prepareSuccessView(outputData);
         // The above 2 lines will be refactored by extracting method and pulling up field after the above question is
         // solved.
     }
 
+    /**
+     * @return the output boundary of the use case.
+     */
     public DeleteTaskOutputBoundary getOutputBoundary() {
         return outputBoundary;
     }
 
+    /**
+     * @return the taskFactory of the use case. (A specific user's task factory)
+     */
     public TaskFactory getTaskFactory() {
         return taskFactory;
+    }
+
+    /**
+     * @return the data gateway of the use case.
+     */
+    public DeleteTaskDsGateway getDsGateway() {
+        return dsGateway;
     }
 }
