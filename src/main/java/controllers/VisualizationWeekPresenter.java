@@ -11,6 +11,6 @@ public class VisualizationWeekPresenter implements VisualizationWeekOutputBounda
 
     @Override
     public VisualizationWeekResponseModel prepareFailureView(String errorMessage) {
-        return null;
+        throw new RuntimeException(errorMessage);
     }
 }
