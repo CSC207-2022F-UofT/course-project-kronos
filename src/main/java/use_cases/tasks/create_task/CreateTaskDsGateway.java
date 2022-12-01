@@ -9,5 +9,6 @@ public interface CreateTaskDsGateway {
      * Saves the task related the data in the request model to the database.
      * @param requestModel - a data structure that contains data about the new task that should be saved in the database.
      */
-    void save(CreateTaskDsRequestModel requestModel);
+    void saveTask(CreateTaskDsRequestModel requestModel);
 }
+
