@@ -10,20 +10,20 @@ public class MarkVisibilityOutputData {
     int taskId;
     String name;
     Calendar taskDeadline;
-    boolean completionStatus;
+    boolean visibility;
 
     /**
      *
      * @param taskId - the id of the task.
      * @param taskName - the name of the task.
      * @param taskDeadline - the deadline of the task
-     * @param completionStatus - the completion status of the task ofter marked.
+     * @param visibility - the completion status of the task ofter marked.
      */
-    public MarkVisibilityOutputData(int taskId, String taskName, Calendar taskDeadline, boolean completionStatus) {
+    public MarkVisibilityOutputData(int taskId, String taskName, Calendar taskDeadline, boolean visibility) {
         this.taskId = taskId;
         this.name = taskName;
         this.taskDeadline = taskDeadline;
-        this.completionStatus = completionStatus;
+        this.visibility = visibility;
     }
 
     /**
@@ -50,7 +50,7 @@ public class MarkVisibilityOutputData {
     /**
      * @return whether the task marked is completed.
      */
-    public boolean isCompletionStatus() {
-        return completionStatus;
+    public boolean isVisibility() {
+        return visibility;
     }
 }

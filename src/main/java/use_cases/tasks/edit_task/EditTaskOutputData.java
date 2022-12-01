@@ -8,32 +8,26 @@ import java.util.Calendar;
  *  Interactor and sent to the Presenter.
  */
 public class EditTaskOutputData {
-    private final String message;
     private final int taskId;
     private final String taskName;
     private final Calendar taskDeadline;
+    private final String category;
 
     /**
      * A constructor that is used only when a task is successfully edited.
      *
-     * @param message - the success message.
-     * @param taskId  - the id of the task that is being edited.
-     * @param taskName - the name of the task after edition.
+     * @param taskId       - the id of the task that is being edited.
+     * @param taskName     - the name of the task after edition.
      * @param taskDeadline - the deadline of the task after edition.
+     * @param category     - the category of the task.
      */
-    public EditTaskOutputData(String message, int taskId, String taskName, Calendar taskDeadline) {
-        this.message = message;
+    public EditTaskOutputData(int taskId, String taskName, Calendar taskDeadline, String category) {
         this.taskId = taskId;
         this.taskName = taskName;
         this.taskDeadline = taskDeadline;
+        this.category = category;
     }
 
-    /**
-     * @return the message of the output data.
-     */
-    public String getMessage() {
-        return message;
-    }
 
     /**
      * @return the id of the task edited.
@@ -43,16 +37,23 @@ public class EditTaskOutputData {
     }
 
     /**
-     * @return the deadline of the task edited.
+     * @return the deadline of the task after edition.
      */
     public Calendar getTaskDeadline() {
         return taskDeadline;
     }
 
     /**
-     * @return the name of the task edited.
+     * @return the name of the task after edition
      */
     public String getTaskName() {
         return taskName;
+    }
+
+    /**
+     * @return the category of the task after edition.
+     */
+    public String getCategory() {
+        return category;
     }
 }

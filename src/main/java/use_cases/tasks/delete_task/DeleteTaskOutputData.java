@@ -7,6 +7,7 @@ package use_cases.tasks.delete_task;
  */
 public class DeleteTaskOutputData {
     private final String message;
+    private final int taskId;
 
     /**
      * Constructor
@@ -14,6 +15,7 @@ public class DeleteTaskOutputData {
      */
     public DeleteTaskOutputData(String message) {
         this.message = message;
+        this.taskId = 0;
     }
 
     /**
@@ -23,4 +25,10 @@ public class DeleteTaskOutputData {
         return message;
     }
 
+    /**
+     * @return the id of the deleted task.
+     */
+    public int getTaskId() {
+        return taskId;
+    }
 }

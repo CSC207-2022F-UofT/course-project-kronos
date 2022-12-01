@@ -7,7 +7,7 @@ package use_cases.tasks.delete_task;
 public interface DeleteTaskDsGateway {
     /**
      * Deletes the task based on data in the request model from the database.
-     * @param requestModel - a data structure that contains data about the task that should be removed from the database,
+     * @param requestModel - a data structure that contains data about the task that should be removed from the database.
      */
     void deleteTask(DeleteTaskDsRequestModel requestModel);
 }

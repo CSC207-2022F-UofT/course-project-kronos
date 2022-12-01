@@ -43,10 +43,10 @@ public class EditTask implements EditTaskInputBoundary {
         taskBeEdited.setDeadline(inputData.getInputDeadline());
         taskBeEdited.setTaskCategory(inputData.getInputCategory());
         EditTaskOutputData outputData = new EditTaskOutputData(
-                "Changes have been saved.",
                 id,
                 taskBeEdited.getName(),
-                taskBeEdited.getDeadline());
+                taskBeEdited.getDeadline(),
+                taskBeEdited.getTaskCategory());
          return outputBoundary.prepareSuccessView(outputData);
 
     }

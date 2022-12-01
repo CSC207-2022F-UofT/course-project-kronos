@@ -3,12 +3,10 @@ package database;
 import entities.CategoryFactory;
 import use_cases.categories.create_category.CreateCategoryDsGateway;
 import use_cases.categories.create_category.CreateCategoryDsRequestModel;
-import use_cases.categories.delete_category.DeleteCategoryDsGateway;
-import use_cases.categories.delete_category.DeleteCategoryDsRequestModel;
+import use_cases.categories.create_category.delete_category.DeleteCategoryDsGateway;
+import use_cases.categories.create_category.delete_category.DeleteCategoryDsRequestModel;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryDsRequestModel;
-
-import java.util.HashMap;
 
 public class DatabaseCategory implements CreateCategoryDsGateway, DeleteCategoryDsGateway, EditCategoryDsGateway {
 

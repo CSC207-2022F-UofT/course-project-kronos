@@ -1,4 +1,4 @@
-package use_cases.categories.delete_category;
+package use_cases.categories.create_category.delete_category;
 
 import entities.Category;
 import entities.CategoryFactory;

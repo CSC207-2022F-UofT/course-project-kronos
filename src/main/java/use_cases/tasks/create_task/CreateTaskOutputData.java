@@ -8,7 +8,6 @@ import java.util.Calendar;
  *  to the Presenter.
  */
 public class CreateTaskOutputData {
-    private String message;
     private final int taskId;
     private final String taskName;
     private final Calendar taskDeadline;
@@ -23,13 +22,6 @@ public class CreateTaskOutputData {
         this.taskId = taskId;
         this.taskName = taskName;
         this.taskDeadline = taskDeadline;
-    }
-
-    /**
-     * @return the message of the output data.
-     */
-    public String getMessage() {
-        return message;
     }
 
     /**
