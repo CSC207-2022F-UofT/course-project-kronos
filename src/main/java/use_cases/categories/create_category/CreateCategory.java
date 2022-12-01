@@ -8,13 +8,13 @@ public class CreateCategory implements CreateCategoryInputBound {
     private final User user;
     private final CategoryCollection collection;
 
+    // need to change the parameter back to Hashmap object for Category Collection
     public CreateCategory(CreateCategoryOutputBound outputBound, User user) {
         this.outputBound = outputBound;
         this.user = user;
         this.collection = user.getCategoryCollection();
 
     }
-
 
     /**
      * Creates a new category.
