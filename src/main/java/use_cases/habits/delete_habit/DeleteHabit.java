@@ -1,6 +1,6 @@
 package use_cases.habits.delete_habit;
 import entities.Habit;
-import entities.User;
+import entities.CommonUser;
 
 public class DeleteHabit {
 
@@ -9,7 +9,7 @@ public class DeleteHabit {
      * @param u -  the user of the habit.
      * @param title - the name of habit that is to be deleted.
      */
-    public static boolean deleteHabit(User u, String title) {
+    public static boolean deleteHabit(CommonUser u, String title) {
 
         Habit h = u.getHabitCollection().habitCollection.get(title);
 

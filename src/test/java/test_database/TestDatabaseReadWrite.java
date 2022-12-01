@@ -19,8 +19,8 @@ public class TestDatabaseReadWrite {
         TaskFactory testTask = new TaskFactory();
         CategoryFactory testCat = new CategoryFactory();
         Timer testTimer = new Timer();
-        User user = new User("test@gmail.com", "test123", "testFirstName", "testLastName", testHabit, testTask, testCat, testTimer);
-        HashMap<String, User> testHashMap = new HashMap();
+        CommonUser user = new CommonUser("test@gmail.com", "test123", "testFirstName", "testLastName", testHabit, testTask, testCat, testTimer);
+        HashMap<String, CommonUser> testHashMap = new HashMap();
         testHashMap.put("test@gmail.com", user);
         Database.WriteData(testHashMap, "test.ser");
         Database database = new Database("test.ser");

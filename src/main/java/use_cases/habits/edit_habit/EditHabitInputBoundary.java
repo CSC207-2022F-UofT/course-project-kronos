@@ -1,6 +1,6 @@
 package use_cases.habits.edit_habit;
 import entities.Habit;
-import entities.User;
+import entities.CommonUser;
 
 public class EditHabitInputBoundary {
 
@@ -12,7 +12,7 @@ public class EditHabitInputBoundary {
      * @param t - The new type of the habit
      * @param r - The new reminder state of the habit
      */
-    public static void editHabitInputBoundary(User u, String s, String a, String t, Boolean r){
+    public static void editHabitInputBoundary(CommonUser u, String s, String a, String t, Boolean r){
 
         if(!(s.equals("") && a.equals("") && t.equals(""))){
             Habit h = u.getHabitCollection().habitCollection.get(s);

@@ -3,19 +3,19 @@ package use_cases.tasks.mark_task_completion;
 import entities.Task;
 
 public class MarkCompletionDsRequestModel {
-    private Task task;
-    public MarkCompletionDsRequestModel(Task task){
-        this.task = task;
+    private final int id;
+    private final boolean completeStatus;
+
+    public MarkCompletionDsRequestModel(int id, boolean completeStatus){
+        this.id = id;
+        this.completeStatus = completeStatus;
     }
 
-    public Task getTask() {
-        return task;
+    public int getId() {
+        return id;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    public boolean isCompleteStatus() {
+        return completeStatus;
     }
-
-    // Might extract to a general class afterwards. (As duplicate code appears in EditTaskDsRequestModel,
-    // MarkCompletionDsRequestModel, and MarkVisibilityDsRequestModel.)
 }
