@@ -30,7 +30,8 @@ public class CreateCategory implements CreateCategoryInputBound {
             String error ="Error: This category name already exists. Please enter a new category name.";
             return outputBound.prepareFailView(error);
         }
-        // no need to check for colour input cause UI will display drop down menu (no user error unless they're hackers)
+        // no need to check for colour input cause UI will display drop down men
+        // u (no user error unless they're hackers)
 
         Category category = new Category(inputData.getName(), inputData.getColour());
         collection.addItem(category);
