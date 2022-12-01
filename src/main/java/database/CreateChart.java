@@ -1,4 +1,4 @@
-package use_cases.visualization;
+package database;
 
 import entities.Habit;
 import org.jfree.chart.ChartPanel;
