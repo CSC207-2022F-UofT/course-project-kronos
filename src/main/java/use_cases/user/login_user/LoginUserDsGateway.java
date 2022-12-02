@@ -1,8 +1,10 @@
 package use_cases.user.login_user;
 
-/**
- * Interface used to store the user details
- */
+
+import entities.User;
+
 public interface LoginUserDsGateway {
-    void save(LoginUserDsRequestModel requestModel);
+    void loginUser(LoginUserDsRequestModel requestModel);
+
+    User getUser();
 }

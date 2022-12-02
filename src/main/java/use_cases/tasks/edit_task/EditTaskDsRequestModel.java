@@ -1,39 +1,23 @@
 package use_cases.tasks.edit_task;
 
 
+import entities.Task;
+
 import java.util.Calendar;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 public class EditTaskDsRequestModel {
-    private final String name;
-    private final boolean completeStatus = FALSE;
-    private final boolean visibility = TRUE;
-    private final String taskCategory;
-    private final Calendar deadline;
-    private final int id;
+    private final Integer id;
+    private final Task task;
 
-    public EditTaskDsRequestModel(int id, String name, Calendar deadline, String taskCategory){
-        this.name = name;
-        this.taskCategory = taskCategory;
+    public EditTaskDsRequestModel(Integer id, Task task) {
         this.id = id;
-        this.deadline = deadline;
+        this.task = task;
     }
 
-    public String getName() {
-        return name;
-    }
+    public Task getTask(){return this.task;}
 
-    public int getId() {
-        return id;
-    }
-
-    public Calendar getDeadline() {
-        return deadline;
-    }
-
-    public String getTaskCategory() {
-        return taskCategory;
-    }
+    public int getId(){return this.id;}
 }

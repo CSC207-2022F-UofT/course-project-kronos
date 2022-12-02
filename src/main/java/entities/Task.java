@@ -116,6 +116,11 @@ public class Task{
     }
 
     /**
+     * Set the completion status to status
+     * @param status
+     */
+    public void setCompleteStatus(boolean status){ this.completeStatus = status;}
+    /**
      * @return the visibility of the task.
      */
     public boolean isVisibility() {

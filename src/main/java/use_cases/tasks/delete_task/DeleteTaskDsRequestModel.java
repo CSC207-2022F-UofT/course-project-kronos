@@ -4,14 +4,12 @@ import entities.Task;
 
 // Use case Layer
 public class DeleteTaskDsRequestModel {
-    private final Task task;
+    private final Integer id;
 
 
-    public DeleteTaskDsRequestModel(Task task) {
-        this.task = task;
+    public DeleteTaskDsRequestModel(Integer id) {
+        this.id = id;
     }
 
-    public Task getTask() {
-        return task;
-    }
+    public Integer getId(){return this.id;}
 }
