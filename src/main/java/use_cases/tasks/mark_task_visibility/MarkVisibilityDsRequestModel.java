@@ -3,19 +3,20 @@ package use_cases.tasks.mark_task_visibility;
 import entities.Task;
 
 public class MarkVisibilityDsRequestModel {
-    private Task task;
-    public MarkVisibilityDsRequestModel(Task task){
-        this.task = task;
+
+    private final Integer id;
+
+    private boolean visibility;
+    public MarkVisibilityDsRequestModel(Integer id, boolean visibility){
+        this.id = id;
+        this.visibility = visibility;
     }
 
-    public Task getTask() {
-        return task;
+    public Integer getId(){return this.id;}
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
-    }
-
-    // Might extract to a general class afterwards. (As duplicate code appears in EditTaskDsRequestModel,
-    // MarkCompletionDsRequestModel, and MarkVisibilityDsRequestModel.)
+    public boolean getVisibility(){return this.visibility;}
 }
