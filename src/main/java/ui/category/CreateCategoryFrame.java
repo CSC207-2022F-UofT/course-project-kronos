@@ -1,9 +1,7 @@
-package ui;
+package ui.category;
 
-import controllers.category.CreateCategoryController;
 import entities.CategoryCollection;
 import use_cases.categories.create_category.CreateCategoryInputData;
-import use_cases.categories.create_category.CreateCategoryOutputData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
-public class CreateCategory extends JFrame implements ActionListener {
+public class CreateCategoryFrame extends JFrame implements ActionListener {
     public static String COLOURS[] = { "pink", "red", "white", "blue", "yellow", "green", "orange", "purple"};
 
     public static void createCategory(CategoryCollection factory) {
@@ -71,7 +69,7 @@ public class CreateCategory extends JFrame implements ActionListener {
                 // this is never used, so where do we use input data since we don't have to convert anything?
 
                 //CreateCategoryController controller = new CreateCategoryController(factory, categoryName1, colour1); HERE
-                //CreateCategoryOutputData outputData = controller.CreateCategory(); HERE
+                //CreateCategoryOutputData outputData = controller.CreateCategoryFrame(); HERE
 
                 // create a new CategoryList - how to add it back to ToDoViewModel?
                 //ToDoViewModel.update(outputData); HERE

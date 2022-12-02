@@ -1,4 +1,4 @@
-package ui;
+package ui.category;
 
 import entities.Category; // shouldn't reference entity classes?
 import entities.CommonUser;

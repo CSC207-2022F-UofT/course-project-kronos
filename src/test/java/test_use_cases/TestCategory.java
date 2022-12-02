@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class TestCategory {
     /**
-     * Test CreateCategory use case.
+     * Test CreateCategoryFrame use case.
      */
     @Test
     public void create() {
@@ -36,7 +36,7 @@ public class TestCategory {
         };
         CategoryCollection categories = new CategoryCollection();
 
-        CreateCategoryInputBound interactor = new CreateCategory(outputBoundary, categories);
+        CreateCategoryInputBound interactor = new CreateCategory(outputBoundary, categoryRepository, categories);
         CreateCategoryInputData inputData = new CreateCategoryInputData("example", "yellow");
 
         interactor.create(inputData);
@@ -64,7 +64,7 @@ public class TestCategory {
         };
         CategoryCollection categories = new CategoryCollection();
 
-        DeleteCategoryInputBound deleteInteractor = new DeleteCategory(outputBoundary,categories);
+        DeleteCategoryInputBound deleteInteractor = new DeleteCategory(outputBoundary, categoryRepository, categories);
         DeleteCategoryInputData inputData = new DeleteCategoryInputData(id);
         deleteInteractor.delete(inputData);
     }
@@ -79,7 +79,7 @@ public class TestCategory {
         Category example = new Category("example", "orange");
         int id = example.getId();
 
-        EditCategoryDsGateway taskRepository = new DatabaseCategory();
+        EditCategoryDsGateway categoryRepository = new DatabaseCategory();
         EditCategoryOutputBoundary outputBoundary = new EditCategoryOutputBoundary() {
             @Override
             public EditCategoryOutputData prepareSuccessView(EditCategoryOutputData outputData) {
@@ -99,7 +99,7 @@ public class TestCategory {
         };
         CategoryCollection categories = new CategoryCollection();
 
-        EditCategoryInputBound editInteractor = new EditCategory(outputBoundary, categories, id);
+        EditCategoryInputBound editInteractor = new EditCategory(outputBoundary, categoryRepository, categories, id);
         EditCategoryInputData inputData = new EditCategoryInputData(id, "after", "pink", false);
         editInteractor.edit(inputData);
 

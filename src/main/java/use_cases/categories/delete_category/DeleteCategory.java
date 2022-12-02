@@ -2,25 +2,31 @@ package use_cases.categories.delete_category;
 
 import entities.Category;
 import entities.CategoryCollection;
-import entities.User;
 
+/**
+ * -- Application Business Layer --
+ * The use case Interactor that is responsible for deleting a category.
+ */
 public class DeleteCategory implements DeleteCategoryInputBound {
     private final DeleteCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
+    private DeleteCategoryDsGateway dsGateway;
 
     /**
      * The constructor of DeleteCategory.
      * @param outputBound - the outputData that would be displayed
+     * @param dsGateway - the database gateway interface
      * @param categories - the categories of the User that's logged in
      * @return true if the CategoryCollection no longer contains category, returns false otherwise.
      */
-    public DeleteCategory(DeleteCategoryOutputBoundary outputBound, CategoryCollection categories) {
+    public DeleteCategory(DeleteCategoryOutputBoundary outputBound, DeleteCategoryDsGateway dsGateway, CategoryCollection categories) {
         this.outputBound = outputBound;
         this.categories = categories;
+        this.dsGateway = dsGateway;
     }
 
     /**
-     * Deleting the category with given input.
+     * Deleting the category with the given input.
      * @param inputData - the outputData that would be displayed
      * @return true if the CategoryCollection no longer contains category, returns false otherwise.
      */
@@ -35,12 +41,19 @@ public class DeleteCategory implements DeleteCategoryInputBound {
         return outputBound.prepareSuccessView(outputData);
     }
 
-    // getters
+    /**
+     * outputBound getter
+     * @return the outputBound object
+     */
     public DeleteCategoryOutputBoundary getOutputBound() {
         return this.outputBound;
     }
 
-    public CategoryCollection getFactory() {
+    /**
+     * collection getter
+     * @return the category collection of the user logged in
+     */
+    public CategoryCollection getCollection() {
         return this.categories;
     }
 }
