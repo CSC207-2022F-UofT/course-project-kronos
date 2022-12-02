@@ -11,7 +11,6 @@ public class EditTaskOutputData {
     private final int taskId;
     private final String taskName;
     private final Calendar taskDeadline;
-    private final String category;
 
     /**
      * A constructor that is used only when a task is successfully edited.
@@ -19,13 +18,11 @@ public class EditTaskOutputData {
      * @param taskId       - the id of the task that is being edited.
      * @param taskName     - the name of the task after edition.
      * @param taskDeadline - the deadline of the task after edition.
-     * @param category     - the category of the task.
      */
-    public EditTaskOutputData(int taskId, String taskName, Calendar taskDeadline, String category) {
+    public EditTaskOutputData(int taskId, String taskName, Calendar taskDeadline) {
         this.taskId = taskId;
         this.taskName = taskName;
         this.taskDeadline = taskDeadline;
-        this.category = category;
     }
 
 
@@ -50,10 +47,4 @@ public class EditTaskOutputData {
         return taskName;
     }
 
-    /**
-     * @return the category of the task after edition.
-     */
-    public String getCategory() {
-        return category;
-    }
 }

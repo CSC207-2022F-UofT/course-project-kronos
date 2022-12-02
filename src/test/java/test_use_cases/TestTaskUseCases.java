@@ -7,7 +7,6 @@ import use_cases.tasks.create_task.*;
 import use_cases.tasks.delete_task.*;
 import use_cases.tasks.edit_task.*;
 import use_cases.tasks.mark_task_completion.*;
-import use_cases.tasks.mark_task_visibility.*;
 
 import org.junit.Test;
 
@@ -91,7 +90,7 @@ public class TestTaskUseCases {
         deadline.set(2023, Calendar.JANUARY, 1);
         Task example = new Task("example", deadline);
         int id = example.getId();
-        example.setTaskCategory("Category1");
+
         Calendar afterDeadline = Calendar.getInstance();
         afterDeadline.set(2023, Calendar.JANUARY, 2);
 
@@ -101,7 +100,6 @@ public class TestTaskUseCases {
             public EditTaskOutputData prepareSuccessView(EditTaskOutputData outputData) {
                 assertEquals("after", outputData.getTaskName());
                 assertEquals(afterDeadline, outputData.getTaskDeadline());
-                assertEquals("Category2", outputData.getCategory());
                 assertEquals(1, outputData.getTaskId());
                 return null;
             }
@@ -115,7 +113,7 @@ public class TestTaskUseCases {
         TaskFactory taskFactory = new TaskFactory();
 
         EditTaskInputBoundary editInteractor = new EditTask(outputBoundary, taskRepository,taskFactory);
-        EditTaskInputData inputData = new EditTaskInputData(id, "after", "Category2", afterDeadline);
+        EditTaskInputData inputData = new EditTaskInputData(id, "after", afterDeadline);
         editInteractor.edit(inputData);
 
     }
@@ -181,64 +179,5 @@ public class TestTaskUseCases {
         markCompletionInteractor.mark(inputData);
     }
 
-    /**
-     * Test MarkVisibility use case when the visibility of the task is TRUE before marking.
-     */
-    @Test
-    public void markVisibilityToFalse(){
-        // Set example task object. Visibility is TRUE by default.
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2023, Calendar.JANUARY, 1);
-        Task example = new Task("example", deadline);
-        int id = example.getId();
-
-        MarkVisibilityDsGateway taskRepository = new DatabaseTask();
-        MarkVisibilityOutputBound outputBound = new MarkVisibilityOutputBound() {
-            @Override
-            public MarkVisibilityOutputData prepareSuccessView(MarkVisibilityOutputData outputData) {
-                assertFalse(outputData.isVisibility());
-                assertEquals("example", outputData.getName());
-                assertEquals(id, outputData.getTaskId());
-                assertEquals(deadline, outputData.getTaskDeadline());
-                return null;
-            }
-        };
-        TaskFactory taskFactory = new TaskFactory();
-        MarkVisibilityInputBound markVisibilityInteractor = new MarkVisibility(outputBound,taskRepository, taskFactory);
-
-        MarkVisibilityInputData inputData = new MarkVisibilityInputData(id);
-        markVisibilityInteractor.mark(inputData);
-    }
-
-    /**
-     * Test MarkVisibility use case when the visibility of the task is FALSE before marking.
-     */
-    @Test
-    public void markVisibilityToTrue(){
-        // Set example task object. Visibility is TRUE by default.
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2023, Calendar.JANUARY, 1);
-        Task example = new Task("example", deadline);
-        // Set the visibility of example task to FALSE.
-        example.setVisibility(FALSE);
-        int id = example.getId();
-
-        MarkVisibilityDsGateway taskRepository = new DatabaseTask();
-        MarkVisibilityOutputBound outputBound = new MarkVisibilityOutputBound() {
-            @Override
-            public MarkVisibilityOutputData prepareSuccessView(MarkVisibilityOutputData outputData) {
-                assertTrue(outputData.isVisibility());
-                assertEquals("example", outputData.getName());
-                assertEquals(id, outputData.getTaskId());
-                assertEquals(deadline, outputData.getTaskDeadline());
-                return null;
-            }
-        };
-        TaskFactory taskFactory = new TaskFactory();
-        MarkVisibilityInputBound markVisibilityInteractor = new MarkVisibility(outputBound,taskRepository, taskFactory);
-
-        MarkVisibilityInputData inputData = new MarkVisibilityInputData(id);
-        markVisibilityInteractor.mark(inputData);
-    }
 
 }

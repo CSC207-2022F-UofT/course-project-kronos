@@ -28,7 +28,7 @@ public class EditTaskController {
      * @return corresponding OutputData object.
      */
     public EditTaskOutputData edit(int taskId, String inputName, String category, Calendar deadline){
-        EditTaskInputData inputData = new EditTaskInputData(taskId, inputName, category, deadline);
+        EditTaskInputData inputData = new EditTaskInputData(taskId, inputName, deadline);
         return userInput.edit(inputData);
 
     }

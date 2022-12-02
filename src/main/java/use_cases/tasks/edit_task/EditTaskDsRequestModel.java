@@ -11,7 +11,6 @@ import java.util.Calendar;
 
 public class EditTaskDsRequestModel {
     private final String name;
-    private final String taskCategory;
     private final Calendar deadline;
     private final int id;
 
@@ -20,11 +19,9 @@ public class EditTaskDsRequestModel {
      * @param id - the id of the task being edited.
      * @param name - the name of the task after edition.
      * @param deadline - the deadline of the task after edition.
-     * @param taskCategory - the category of the task after edition.
      */
-    public EditTaskDsRequestModel(int id, String name, Calendar deadline, String taskCategory){
+    public EditTaskDsRequestModel(int id, String name, Calendar deadline){
         this.name = name;
-        this.taskCategory = taskCategory;
         this.id = id;
         this.deadline = deadline;
     }
@@ -48,13 +45,6 @@ public class EditTaskDsRequestModel {
      */
     public Calendar getDeadline() {
         return deadline;
-    }
-
-    /**
-     * @return the category of the task after edition.
-     */
-    public String getTaskCategory() {
-        return taskCategory;
     }
 
 }
