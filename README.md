@@ -1,3 +1,4 @@
+![Kronos symbol](https://user-images.githubusercontent.com/113299553/205387220-89076fcb-f2e9-4b1e-bfbc-89b7260a6481.png)
 
 # KRONOS
 
