@@ -31,4 +31,11 @@ public class CreateCategoryOutputData {
     public Category getCategory() {
         return this.category;
     }
+
+    public String getCategoryName() {
+        return this.category.getName();
+    }
+    public int getCategoryId() {
+        return this.category.getId();
+    }
 }

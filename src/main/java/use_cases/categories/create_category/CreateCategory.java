@@ -21,7 +21,7 @@ public class CreateCategory implements CreateCategoryInputBound {
      */
 
     @Override
-    public CreateCategoryOutputData edit(CreateCategoryInputData inputData) {
+    public CreateCategoryOutputData create(CreateCategoryInputData inputData) {
         if (inputData.getName().isBlank()) {
             String error = "Error: Please enter the name of the category.";
             return outputBound.prepareFailView(error);

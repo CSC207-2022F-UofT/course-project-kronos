@@ -5,5 +5,5 @@ package use_cases.categories.create_category;
  */
 
 public interface CreateCategoryInputBound {
-    CreateCategoryOutputData edit(CreateCategoryInputData inputData); // takes in inputData and returns outputData
+    CreateCategoryOutputData create(CreateCategoryInputData inputData); // takes in inputData and returns outputData
 }
