@@ -1,8 +1,5 @@
 package use_cases.categories.create_category;
 
-import entities.Category;
-import entities.CategoryFactory;
-
 public class CreateCategoryInputData {
     // data structure class
 
