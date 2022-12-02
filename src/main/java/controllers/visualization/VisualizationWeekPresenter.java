@@ -6,7 +6,7 @@ import use_cases.visualization.visualization_week.VisualizationWeekResponseModel
 public class VisualizationWeekPresenter implements VisualizationWeekOutputBoundary {
     @Override
     public VisualizationWeekResponseModel prepareSuccessView(VisualizationWeekResponseModel visualizationWeekResponseModel) {
-        // need to implement
+        return  null; // need to implement
     }
 
     @Override
