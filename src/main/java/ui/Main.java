@@ -38,9 +38,9 @@ public class Main {
         categories.addItem(category1);
         categories.addItem(category2);
 
-        CommonUser user = new CommonUser(email, password, first, last, habits, tasks, categories, timer);
+        //User user = new User(email, password, first, last, habits, tasks, categories, timer);
         // CreateCategoryInputBound interactor = new CreateCategory(user,)
 
-        new ToDoViewModel(user);
+        //new ToDoViewModel(user);
     }
 }

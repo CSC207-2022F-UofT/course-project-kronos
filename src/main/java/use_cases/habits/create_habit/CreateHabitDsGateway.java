@@ -1,6 +1,9 @@
 package use_cases.habits.create_habit;
 
-public interface CreateHabitDsGateway, DeleteHabitDsGateway,  {
+/**
+ * Gateway for creating a habit.
+ */
+public interface CreateHabitDsGateway {
 
-    
+    void save(CreateHabitDsRequestModel requestModel);
 }
