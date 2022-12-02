@@ -15,7 +15,7 @@ As students, we have to balance and keep track of various things at the same tim
 * Habit Creation and Tracking
 * Task and Category Creation
 * Pomodoro Timer
-* User Data Analysis and Visualization
+* User Data Visualization
 
 ## How to Use
 
