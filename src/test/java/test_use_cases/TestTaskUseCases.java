@@ -241,21 +241,4 @@ public class TestTaskUseCases {
         markVisibilityInteractor.mark(inputData);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
