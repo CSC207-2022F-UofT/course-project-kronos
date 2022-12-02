@@ -18,6 +18,10 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, E
 
     private HashMap taskCollection;
 
+
+    public DatabaseTask(DatabaseUser database){
+        this.taskCollection = database.get
+    }
     /**
      * Saves the data in the request model to the database.
      *

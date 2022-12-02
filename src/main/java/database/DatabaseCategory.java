@@ -14,8 +14,8 @@ public class DatabaseCategory implements CreateCategoryDsGateway, DeleteCategory
 
     protected CategoryFactory collection;
 
-    public DatabaseCategory(Database database){
-        this.collection = database.currUser.getCategoryCollection();
+    public DatabaseCategory(DatabaseUser database){
+        this.collection = database.getCategoryCollection();
     }
 
     @Override

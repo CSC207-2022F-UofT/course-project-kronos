@@ -38,6 +38,24 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
         }
     }
 
+    public void storeData(String filePath) {
+        try {
+            // Saving of object in a file
+            FileOutputStream file = new FileOutputStream
+                    (filePath);
+            ObjectOutputStream out = new ObjectOutputStream
+                    (file);
+
+            // Method for serialization of object
+            out.writeObject(this.userCollection);
+
+            out.close();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public boolean userExistByEmail(String email) {
         return userCollection.containsKey(email);
@@ -63,6 +81,18 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
     @Override
     public User getUser() {
         return this.currUser;
+    }
+
+    public HashMap getCategories() {
+        return categoryCollection;
+    }
+
+    public HashMap getTasks(){
+        return  taskCollection;
+    }
+
+    public HashMap getHabits() {
+        return habitCollection;
     }
 }
 

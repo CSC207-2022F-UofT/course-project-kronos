@@ -28,22 +28,6 @@ public class Database {
         }
     }
 
-    public static void WriteData(HashMap<String, User> data, String filePath) {
-        try {
-            // Saving of object in a file
-            FileOutputStream file = new FileOutputStream
-                    (filePath);
-            ObjectOutputStream out = new ObjectOutputStream
-                    (file);
 
-            // Method for serialization of object
-            out.writeObject(data);
-
-            out.close();
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
 
