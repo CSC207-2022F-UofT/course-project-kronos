@@ -5,7 +5,8 @@ package use_cases.categories.create_category;
  */
 public interface CreateCategoryOutputBound {
 
-    CreateCategoryOutputData prepareFailView(CreateCategoryOutputData outputData);
+    CreateCategoryOutputData prepareFailView(String error);
+
     CreateCategoryOutputData prepareSuccessView(CreateCategoryOutputData outputData);
 
 }

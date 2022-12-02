@@ -1,4 +1,4 @@
-package controllers;
+package controllers.category;
 
 import use_cases.categories.edit_category.EditCategoryOutputBoundary;
 import use_cases.categories.edit_category.EditCategoryOutputData;

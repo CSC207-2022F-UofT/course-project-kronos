@@ -28,7 +28,7 @@ public class TestHabitUseCases {
         String hType = "weekly";
         HabitFactory hFactory = new HabitFactory();
         TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
+        CategoryCollection cFactory = new CategoryCollection();
         Timer t = new Timer();
         CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
@@ -50,7 +50,7 @@ public class TestHabitUseCases {
         hFactory.addItem(h2);
         hFactory.addItem(h3);
         TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
+        CategoryCollection cFactory = new CategoryCollection();
         Timer t = new Timer();
         CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
@@ -67,7 +67,7 @@ public class TestHabitUseCases {
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
+        CategoryCollection cFactory = new CategoryCollection();
         Timer t = new Timer();
         CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
