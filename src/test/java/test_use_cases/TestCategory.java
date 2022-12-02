@@ -74,7 +74,7 @@ public class TestCategory {
      */
     @Test
     public void edit(){
-        // Set example task object.
+        // Set example category object.
 
         Category example = new Category("example", "orange");
         int id = example.getId();

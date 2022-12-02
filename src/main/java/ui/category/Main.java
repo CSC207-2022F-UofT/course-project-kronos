@@ -1,8 +1,7 @@
+/*
 package ui.category;
 
 import entities.*;
-import ui.category.ToDoViewModel;
-
 import java.util.Calendar;
 
 public class Main {
@@ -25,10 +24,12 @@ public class Main {
     public static Timer timer = new Timer();
 
 
-    /**
+    */
+/**
      * this is a temporary class to check that the UI and other files work while the UI pages
      * aren't connected yet.
-     */
+     *//*
+
 
     public static void main(String[] args){
         task1.setTaskCategory("Category 1");
@@ -46,3 +47,4 @@ public class Main {
         new ToDoViewModel(user);
     }
 }
+*/

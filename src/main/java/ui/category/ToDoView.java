@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
  * -- User Interface Layer --
  * The To Do List view model to be loaded onto the screen when the user clicks "To Do" from the menu bar
  */
+
+// screen should have the menu button on top left to lead back to menu page
 public class ToDoView extends JFrame implements ActionListener {
 
     private JFrame toDoFrame;
