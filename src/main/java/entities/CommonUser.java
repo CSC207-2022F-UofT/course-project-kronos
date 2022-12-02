@@ -18,7 +18,7 @@ public class CommonUser implements User{
     private HabitFactory habitCollection;
     private TaskFactory taskCollection;
     private CategoryCollection categoryCollection;
-    private Timer tomato;
+    private TimerTomato tomato;
 
 
     /**
@@ -44,12 +44,12 @@ public class CommonUser implements User{
         this.habitCollection = new HabitFactory();
         this.taskCollection = new TaskFactory();
         this.categoryCollection = new CategoryCollection();
-        this.tomato = new Timer();
+        this.tomato = new TimerTomato();
     }
 
     public CommonUser(){}
 
-    public CommonUser(String s, String s1, String harry, String potter, HabitFactory hFactory, TaskFactory tFactory, CategoryCollection cFactory, Timer t) {
+    public CommonUser(String s, String s1, String harry, String potter, HabitFactory hFactory, TaskFactory tFactory, CategoryCollection cFactory, TimerTomato t) {
     }
 
 

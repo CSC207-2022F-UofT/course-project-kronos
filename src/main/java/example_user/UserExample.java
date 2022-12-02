@@ -10,7 +10,7 @@ public class UserExample {
 
     static CategoryCollection cFactory =  new CategoryCollection();
 
-    static Timer t = new Timer();
+    static TimerTomato t = new TimerTomato();
 
     static CommonUser person = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
             hFactory, tFactory, cFactory, t);

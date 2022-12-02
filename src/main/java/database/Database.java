@@ -1,7 +1,8 @@
 package database;
 
+import entities.CommonUser;
 import entities.User;
-import use_cases.user.UserDataAccessInterface;
+import use_cases.user.create_user.UserDataAccessInterface;
 
 import java.io.*;
 
@@ -12,7 +13,7 @@ public class Database implements UserDataAccessInterface {
     private HashMap<String, User> collections;
     public String filePath;
 
-    public User currUser;
+    public CommonUser currUser;
 
     public Database(String filepath){
         this.filePath = filepath;
@@ -27,7 +28,7 @@ public class Database implements UserDataAccessInterface {
         }
     }
 
-    public static void WriteData(HashMap<String, User> data, String filePath) {
+    public static void WriteData(HashMap<String, CommonUser> data, String filePath) {
         try {
             // Saving of object in a file
             FileOutputStream file = new FileOutputStream
@@ -51,12 +52,17 @@ public class Database implements UserDataAccessInterface {
     }
 
     @Override
-    public User LoginUser(String emailAddress, String password) {
+    public CommonUser LoginUser(String emailAddress, String password) {
         if (emailAddress.equals(collections.get(emailAddress).getEmailAddress())){
-            this.currUser = collections.get(emailAddress);
+            this.currUser = (CommonUser) collections.get(emailAddress);
             return this.currUser;
         }
         return null;
+    }
+
+    @Override
+    public void UpdateUser(CommonUser user) {
+
     }
 
     @Override
@@ -73,6 +79,11 @@ public class Database implements UserDataAccessInterface {
     @Override
     public void DeleteUser(String emailAddress) {
         this.collections.remove(emailAddress);
+    }
+
+    @Override
+    public void AddUser(CommonUser user) {
+
     }
 
     @Override
