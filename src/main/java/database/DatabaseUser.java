@@ -73,8 +73,8 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
 
     @Override
     public void loginUser(LoginUserDsRequestModel requestModel) {
-        if (userCollection.get(requestModel.getEmailaddress()).getPassword().equals(requestModel.getPassword())){
-            this.currUser = userCollection.get(requestModel.getEmailaddress());
+        if (userCollection.get(requestModel.getEmailAddress()).getPassword().equals(requestModel.getPassword())){
+            this.currUser = userCollection.get(requestModel.getEmailAddress());
         }
     }
 

@@ -6,7 +6,7 @@ public class DatabaseHabit{
 
     private HashMap habitCollection;
 
-    public DatabaseHabit(Database database){
-        this.habitCollection = database.
+    public DatabaseHabit(DatabaseUser database){
+        this.habitCollection = database.getHabits();
     }
 }
