@@ -1,13 +1,12 @@
 package database;
 
 import entities.User;
-import use_cases.user.UserDataAccessInterface;
 
 import java.io.*;
 
 import java.util.HashMap;
 
-public class Database implements UserDataAccessInterface {
+public class Database {
 
     protected HashMap<String, User> userCollection;
     public String filePath;
@@ -45,41 +44,6 @@ public class Database implements UserDataAccessInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public boolean CheckUserExists(String emailAddress) {
-        return this.userCollection.containsKey(emailAddress);
-    }
-
-    @Override
-    public User LoginUser(String emailAddress, String password) {
-        if (emailAddress.equals(userCollection.get(emailAddress).getEmailAddress())){
-            this.currUser = userCollection.get(emailAddress);
-            return this.currUser;
-        }
-        return null;
-    }
-
-    @Override
-    public User GetUser() {
-        return this.currUser;
-    }
-
-    @Override
-    public void UpdateUser(User user) {
-        this.userCollection.replace(user.getEmailAddress(), user);
-
-    }
-
-    @Override
-    public void DeleteUser(String emailAddress) {
-        this.userCollection.remove(emailAddress);
-    }
-
-    @Override
-    public void AddUser(User user) {
-        this.userCollection.put(user.getEmailAddress(), user);
     }
 }
 

@@ -1,6 +1,10 @@
 package use_cases.user.login_user;
 
 
+import entities.User;
+
 public interface LoginUserDsGateway {
-    void save(LoginUserDsRequestModel requestModel);
+    void loginUser(LoginUserDsRequestModel requestModel);
+
+    User getUser();
 }

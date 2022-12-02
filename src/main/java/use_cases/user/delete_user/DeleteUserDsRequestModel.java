@@ -3,17 +3,20 @@ package use_cases.user.delete_user;
 import entities.CommonUser;
 
 /**
- * use case layer
+ * Request model used to pass information onto the database for delete user use case.
  */
 
 public class DeleteUserDsRequestModel {
-    private final CommonUser user;
+    private final String email;
 
-    public DeleteUserDsRequestModel(CommonUser user) {
-        this.user = user;
+    /**
+     * Constructor of Request Model
+     * @param email
+     */
+    public DeleteUserDsRequestModel(String email) {
+        this.email = email;
     }
 
-    public CommonUser getUser() {
-        return user;
-    }
+
+    public String getEmail(){return this.email;}
 }

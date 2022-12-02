@@ -1,13 +1,18 @@
 package database;
 
 import entities.User;
-import use_cases.user.UserDataAccessInterface;
+import use_cases.user.create_user.CreateUserDsGateway;
+import use_cases.user.create_user.CreateUserDsRequestModel;
+import use_cases.user.delete_user.DeleteUserDsGateway;
+import use_cases.user.delete_user.DeleteUserDsRequestModel;
+import use_cases.user.login_user.LoginUserDsGateway;
+import use_cases.user.login_user.LoginUserDsRequestModel;
 
 import java.io.*;
 
 import java.util.HashMap;
 
-public class DatabaseUser implements UserDataAccessInterface {
+public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, LoginUserDsGateway {
 
     private HashMap<String, User> userCollection;
     private HashMap taskCollection;
@@ -33,57 +38,31 @@ public class DatabaseUser implements UserDataAccessInterface {
         }
     }
 
-    public static void WriteData(HashMap<String, User> data, String filePath) {
-        try {
-            // Saving of object in a file
-            FileOutputStream file = new FileOutputStream
-                    (filePath);
-            ObjectOutputStream out = new ObjectOutputStream
-                    (file);
+    @Override
+    public boolean userExistByEmail(String email) {
+        return userCollection.containsKey(email);
+    }
 
-            // Method for serialization of object
-            out.writeObject(data);
+    @Override
+    public void save(CreateUserDsRequestModel requestModel) {
+        this.userCollection.put(requestModel.getEmailaddress(), requestModel.getUser());
+    }
 
-            out.close();
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+    @Override
+    public void removeUser(DeleteUserDsRequestModel requestModel) {
+        this.userCollection.remove(requestModel.getEmail());
+    }
+
+    @Override
+    public void loginUser(LoginUserDsRequestModel requestModel) {
+        if (userCollection.get(requestModel.getEmailaddress()).getPassword().equals(requestModel.getPassword())){
+            this.currUser = userCollection.get(requestModel.getEmailaddress());
         }
     }
 
     @Override
-    public boolean CheckUserExists(String emailAddress) {
-        return this.userCollection.containsKey(emailAddress);
-    }
-
-    @Override
-    public User LoginUser(String emailAddress, String password) {
-        if (emailAddress.equals(userCollection.get(emailAddress).getEmailAddress())){
-            this.currUser = userCollection.get(emailAddress);
-            return this.currUser;
-        }
-        return null;
-    }
-
-    @Override
-    public User GetUser() {
+    public User getUser() {
         return this.currUser;
-    }
-
-    @Override
-    public void UpdateUser(User user) {
-        this.userCollection.replace(user.getEmailAddress(), user);
-
-    }
-
-    @Override
-    public void DeleteUser(String emailAddress) {
-        this.userCollection.remove(emailAddress);
-    }
-
-    @Override
-    public void AddUser(User user) {
-        this.userCollection.put(user.getEmailAddress(), user);
     }
 }
 

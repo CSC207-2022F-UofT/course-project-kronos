@@ -1,14 +1,17 @@
 package use_cases.user.create_user;
 
+import entities.User;
+
 public class CreateUserDsRequestModel {
 
     private final String emailaddress;
-    private String password;
+
+    private User user;
 
 
-    public CreateUserDsRequestModel(String email, String password) {
+    public CreateUserDsRequestModel(String email, User user) {
         this.emailaddress = email;
-        this.password = password;
+        this.user = user;
 
     }
 
@@ -16,11 +19,11 @@ public class CreateUserDsRequestModel {
         return emailaddress;
     }
 
-    public String getPassword() {
-        return password;
+    public User getUser() {
+        return this.user;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(User user) {
+        this.user = user;
     }
 }

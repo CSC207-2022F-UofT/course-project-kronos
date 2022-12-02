@@ -15,4 +15,6 @@ public class LoginUserDsRequestModel {
 
     public String getEmailaddress(){return emailaddress;}
     public String getPassword(){return password;}
+
+
 }
