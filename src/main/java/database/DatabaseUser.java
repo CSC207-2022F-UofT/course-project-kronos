@@ -7,14 +7,18 @@ import java.io.*;
 
 import java.util.HashMap;
 
-public class Database implements UserDataAccessInterface {
+public class DatabaseUser implements UserDataAccessInterface {
 
-    protected HashMap<String, User> userCollection;
+    private HashMap<String, User> userCollection;
+    private HashMap taskCollection;
+    private HashMap categoryCollection;
+    private HashMap habitCollection;
     public String filePath;
+
 
     public User currUser;
 
-    public Database(String filepath){
+    public DatabaseUser(String filepath){
         this.filePath = filepath;
 
         // by default all other parameters are set to null

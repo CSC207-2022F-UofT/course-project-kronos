@@ -59,4 +59,13 @@ public class TaskFactory extends Factory<Task>{
         return taskList;
     }
 
+    /**
+     * Check if the given id is a key in the tasks HashMap of a TaskFactory.
+     * @param id - an integer. Refer to the id of a task.
+     * @return TRUE if this key exist; otherwise return FALSE.
+     */
+    public boolean existById(int id){
+        return this.tasks.containsKey(id);
+    }
+
 }

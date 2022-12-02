@@ -10,15 +10,20 @@ import entities.TaskFactory;
 public class CreateTask implements CreateTaskInputBoundary {
 
     private final CreateTaskOutputBoundary outputBoundary;
+
+    private final CreateTaskDsGateway dsGateway;
     private final TaskFactory taskFactory;
 
     /**
      * Constructor
+     *
      * @param outputBoundary - the output boundary.
-     * @param taskFactory - the task factory of a specific user.
+     * @param dsGateway - the database gateway interface.
+     * @param taskFactory    - the task factory of a specific user.
      */
-    public CreateTask(CreateTaskOutputBoundary outputBoundary, TaskFactory taskFactory) {
+    public CreateTask(CreateTaskOutputBoundary outputBoundary, CreateTaskDsGateway dsGateway, TaskFactory taskFactory) {
         this.outputBoundary = outputBoundary;
+        this.dsGateway = dsGateway;
         this.taskFactory = taskFactory;
     }
 
@@ -30,11 +35,8 @@ public class CreateTask implements CreateTaskInputBoundary {
     @Override
     public CreateTaskOutputData create(CreateTaskInputData inputData) {
         // If the input name is empty or containing only white spaces
-        if (inputData.getName().isBlank()){
-            String error = new String ("Task Creation Failed. Please enter the name of the task.");
-            return outputBoundary.prepareFailView(error);
-        } else if (inputData.getDeadline().isLenient()) {
-            String error = new String("Task Creation Failed. Please enter a valid deadline.");
+        if (inputData.getName().isBlank() | inputData.getDeadline().isLenient()){
+            String error = "Task Creation Failed. Please enter valid information";
             return outputBoundary.prepareFailView(error);
         }
 

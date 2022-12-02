@@ -1,4 +1,4 @@
-package use_cases.categories.delete_category;
+package use_cases.categories.create_category.delete_category;
 
 /**
  * Interface that passes the inputData to the interactor of Category deletion.

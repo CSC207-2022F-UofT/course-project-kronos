@@ -6,6 +6,7 @@ import entities.TaskFactory;
 import static java.lang.Boolean.FALSE;
 
 /**
+ * -- Application Business Layer --
  * The Interactor that is responsible for marking the completion status of a task.
  */
 public class MarkCompletion implements MarkCompletionInputBound {
@@ -13,6 +14,12 @@ public class MarkCompletion implements MarkCompletionInputBound {
     private final MarkCompletionDsGateway dsGateway;
     private final TaskFactory taskFactory;
 
+    /**
+     * Constructor
+     * @param outputBound - the output boundary interface.
+     * @param dsGateway - the database gateway interface.
+     * @param taskFactory - the task factory of a specific user.
+     */
     public MarkCompletion(MarkCompletionOutputBound outputBound, MarkCompletionDsGateway dsGateway,
                           TaskFactory taskFactory) {
         this.outputBound = outputBound;
@@ -25,7 +32,7 @@ public class MarkCompletion implements MarkCompletionInputBound {
      * will be changed to "incomplete". On the other hand, if the task's completionStatus is currently "incomplete",
      * then the status will be changed to "completed".
      * @param inputData - the input data which contain a task.
-     * @return - the output data after marking.
+     * @return the output data after marking.
      */
     @Override
     public MarkCompletionOutputData mark(MarkCompletionInputData inputData) {
@@ -45,14 +52,23 @@ public class MarkCompletion implements MarkCompletionInputBound {
         return outputBound.prepareSuccessView(outputData);
     }
 
+    /**
+     * @return the output boundary of the use case.
+     */
     public MarkCompletionOutputBound getOutputBound() {
         return outputBound;
     }
 
+    /**
+     * @return the taskFactory of the use case. (A specific user's task factory)
+     */
     public TaskFactory getTaskFactory() {
         return taskFactory;
     }
 
+    /**
+     * @return the data gateway of the use case.
+     */
     public MarkCompletionDsGateway getDsGateway() {
         return dsGateway;
     }
