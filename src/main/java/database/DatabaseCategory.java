@@ -8,13 +8,11 @@ import use_cases.categories.delete_category.DeleteCategoryDsRequestModel;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryDsRequestModel;
 
-import java.util.HashMap;
-
 public class DatabaseCategory implements CreateCategoryDsGateway, DeleteCategoryDsGateway, EditCategoryDsGateway {
 
     protected CategoryFactory collection;
 
-    public DatabaseCategory(Database database){
+    public DatabaseCategory(DatabaseUser database){
         this.collection = database.currUser.getCategoryCollection();
     }
 

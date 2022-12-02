@@ -14,12 +14,15 @@ public class VisualizationWeekInteractor implements VisualizationWeekInputBounda
 
     final
     @Override
-    public VisualizationWeekResponseModel showQuantityVisual(VisualizationWeekRequestModel requestModel) {
+    public VisualizationWeekResponseModel showVisual(VisualizationWeekRequestModel requestModel) {
         if (!visualizationWeekDsGateway.existsByName(requestModel.getHabitName())) {
             return visualizationWeekPresenter.prepareFailureView("Habit Name does not exist");
+        } else if (!visualizationWeekDsGateway.checkRecordsExist(requestModel.getHabitName())){
+            return visualizationWeekPresenter.prepareFailureView("Habit doesn't have enough records");
         }
         VisualizationWeekDsRequestModel dsRequestModel = new VisualizationWeekDsRequestModel(requestModel.getHabitName(), requestModel.getStartDate());
-        HashMap data = visualizationWeekDsGateway.createChart(dsRequestModel);
-        
+        visualizationWeekDsGateway.createChart(dsRequestModel);
+
+        VisualizationWeekResponseModel visualResponseModel = new VisualizationWeekResponseModel()
     }
 }

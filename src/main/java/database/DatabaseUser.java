@@ -2,19 +2,18 @@ package database;
 
 import entities.User;
 import use_cases.user.UserDataAccessInterface;
+import use_cases.user.create_user.CreateUserDsGateway;
+import use_cases.user.delete_user.DeleteUserDsGateway;
+import use_cases.user.login_user.LoginUserDsGateway;
 
 import java.io.*;
 
 import java.util.HashMap;
 
-public class DatabaseUser implements UserDataAccessInterface {
+public class DatabaseUser  implements CreateUserDsGateway, DeleteUserDsGateway, LoginUserDsGateway {
 
-    private HashMap<String, User> userCollection;
-    private HashMap taskCollection;
-    private HashMap categoryCollection;
-    private HashMap habitCollection;
+    protected HashMap<String, User> userCollection;
     public String filePath;
-
 
     public User currUser;
 

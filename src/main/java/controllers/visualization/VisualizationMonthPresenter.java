@@ -1,0 +1,6 @@
+package controllers.visualization;
+
+import use_cases.visualization.visualization_month.VisualizationMonthOutputBoundary;
+
+public class VisualizationMonthPresenter implements VisualizationMonthOutputBoundary {
+}

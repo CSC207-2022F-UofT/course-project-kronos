@@ -6,5 +6,5 @@ public interface VisualizationWeekInputBoundary {
      * @param requestModel
      * @return
      */
-    VisualizationWeekResponseModel showQuantityVisual(VisualizationWeekRequestModel requestModel);
+    VisualizationWeekResponseModel showVisual(VisualizationWeekRequestModel requestModel);
 }

@@ -1,4 +1,4 @@
-package controllers;
+package controllers.visualization;
 
 
 import use_cases.visualization.visualization_week.VisualizationWeekInputBoundary;
@@ -16,10 +16,10 @@ public class VisualizationWeekController {
     }
 
 
-    VisualizationWeekResponseModel showQuantityVisual(String habitName, Date startDate){
-        VisualizationWeekRequestModel requestModel = new VisualizationWeekRequestModel(habitName, startDate);
+    VisualizationWeekResponseModel showVisual(String habitName, Date startDate){
+        VisualizationWeekRequestModel requestModel = new VisualizationWeekRequestModel(habitName, startDate, "./");
 
-        return visualizationInput.showQuantityVisual(requestModel);
+        return visualizationInput.showVisual(requestModel);
     }
 
 

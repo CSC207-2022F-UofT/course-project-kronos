@@ -1,4 +1,4 @@
-package controllers;
+package controllers.visualization;
 
 import use_cases.visualization.visualization_week.VisualizationWeekOutputBoundary;
 import use_cases.visualization.visualization_week.VisualizationWeekResponseModel;
