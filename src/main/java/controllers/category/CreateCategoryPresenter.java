@@ -10,7 +10,7 @@ import use_cases.categories.create_category.CreateCategoryOutputData;
 public class CreateCategoryPresenter implements CreateCategoryOutputBound {
 
     /**
-     * This method is called when the creation of new category is unsuccessful. It prepares the view.
+     * This method is called when the creation of new category is unsuccessful, it prepares the view.
      * @param error - the error message
      * @return the output data
      */
