@@ -1,7 +1,5 @@
 package use_cases.visualization.visualization_week;
 
-import java.util.HashMap;
-
 public class VisualizationWeekInteractor implements VisualizationWeekInputBoundary {
 
     final VisualizationWeekDsGateway visualizationWeekDsGateway;
@@ -15,14 +13,15 @@ public class VisualizationWeekInteractor implements VisualizationWeekInputBounda
     final
     @Override
     public VisualizationWeekResponseModel showVisual(VisualizationWeekRequestModel requestModel) {
-        if (!visualizationWeekDsGateway.existsByName(requestModel.getHabitName())) {
+        if (!visualizationWeekDsGateway.habitExistsByName(requestModel.getHabitName())) {
             return visualizationWeekPresenter.prepareFailureView("Habit Name does not exist");
         } else if (!visualizationWeekDsGateway.checkRecordsExist(requestModel.getHabitName())){
             return visualizationWeekPresenter.prepareFailureView("Habit doesn't have enough records");
         }
-        VisualizationWeekDsRequestModel dsRequestModel = new VisualizationWeekDsRequestModel(requestModel.getHabitName(), requestModel.getStartDate());
+        VisualizationWeekDsRequestModel dsRequestModel = new VisualizationWeekDsRequestModel(requestModel.getHabitName(), requestModel.getStartDate(), "./src/main/java/database/weekVisual.jpeg");
         visualizationWeekDsGateway.createChart(dsRequestModel);
 
-        VisualizationWeekResponseModel visualResponseModel = new VisualizationWeekResponseModel()
+        VisualizationWeekResponseModel visualResponseModel = new VisualizationWeekResponseModel(requestModel.getHabitName(), requestModel.getStartDate(), "./src/main/java/database/weekVisual.jpeg");
+        return visualizationWeekPresenter.prepareSuccessView(visualResponseModel);
     }
 }

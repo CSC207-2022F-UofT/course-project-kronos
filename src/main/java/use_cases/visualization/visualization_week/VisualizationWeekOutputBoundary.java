@@ -8,11 +8,16 @@ public interface VisualizationWeekOutputBoundary {
 
 
     /**
-     * return
+     * return response model for successful use case execution
      * @param visualizationWeekResponseModel
      * @return
      */
     VisualizationWeekResponseModel prepareSuccessView(VisualizationWeekResponseModel visualizationWeekResponseModel);
 
+    /**
+     * Return response model for unsuccessful use case execution
+     * @param errorMessage
+     * @return
+     */
     VisualizationWeekResponseModel prepareFailureView(String errorMessage);
 }

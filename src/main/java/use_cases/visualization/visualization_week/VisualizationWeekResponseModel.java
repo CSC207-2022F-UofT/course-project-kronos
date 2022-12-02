@@ -1,30 +1,27 @@
 package use_cases.visualization.visualization_week;
 
 import java.util.Date;
-import java.util.HashMap;
 
 public class VisualizationWeekResponseModel {
-    private HashMap habitData;
+    private String habitName;
     private Date startDate;
 
-    public VisualizationWeekResponseModel(HashMap habitData, Date startDate){
-        this.habitData = habitData;
+    private String imagePath;
+    public VisualizationWeekResponseModel(String habitName, Date startDate, String imagePath){
+        this.habitName = habitName;
         this.startDate = startDate;
+        this.imagePath = imagePath;
     }
 
-    public void setHabitData(HashMap habitData) {
-        this.habitData = habitData;
-    }
+    String getHabitName(){return this.habitName;}
 
-    public HashMap getHabitData() {
-        return habitData;
-    }
+    Date getStartDate(){return this.startDate;}
 
-    public Date getStartDate() {
-        return startDate;
-    }
+    String getImagePath(){return this.imagePath;}
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
+    void setHabitName(String habitName){this.habitName = habitName;}
+
+    void setStartDate(Date startDate){this.startDate = startDate;}
+
+    void setImagePath(String imagePath){this.imagePath = imagePath;}
 }
