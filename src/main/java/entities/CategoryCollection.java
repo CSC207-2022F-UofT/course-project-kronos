@@ -71,5 +71,13 @@ public class CategoryCollection extends Factory<Category> implements Serializabl
         } // else don't populate the list
         return categoryList;
     }
+    /**
+     * Given the id, check if the id-category pair exist.
+     * @param id - the id of the category to be checked
+     * @return true if the id is one of the keys, return false others.
+     */
+    public Boolean existById(Integer id) {
+        return this.categories.containsKey(id);
+    }
 
 }

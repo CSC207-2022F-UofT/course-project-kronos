@@ -28,4 +28,7 @@ public class DeleteCategoryOutputData {
     public Category getCategory() {
         return this.category;
     }
+    public int getCategoryId() {
+        return this.category.getId();
+    }
 }

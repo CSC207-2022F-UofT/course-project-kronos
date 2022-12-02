@@ -56,9 +56,9 @@ public class EditCategory implements EditCategoryInputBound{
     @Override
     public EditCategoryOutputData edit(EditCategoryInputData inputData) {
         if (inputData.getName().isBlank()) {
-            EditCategoryOutputData outputData = new EditCategoryOutputData("Changes not saved. Please fill " +
-                    "out all fields.");
-            return outputBound.prepareFailView(outputData);
+            String error = "Changes not saved. Please fill out all fields.";
+            EditCategoryOutputData outputData = new EditCategoryOutputData(error);
+            return outputBound.prepareFailView(error);
         }
 
         Category category = categories.getItem(ID);

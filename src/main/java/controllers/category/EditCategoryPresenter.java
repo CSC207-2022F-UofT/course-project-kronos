@@ -10,7 +10,7 @@ public class EditCategoryPresenter implements EditCategoryOutputBoundary {
     }
 
     @Override
-    public EditCategoryOutputData prepareFailView(EditCategoryOutputData outputData) {
-        return outputData;
+    public EditCategoryOutputData prepareFailView(String error) {
+        throw new CategoryEditFailed(error);
     }
 }

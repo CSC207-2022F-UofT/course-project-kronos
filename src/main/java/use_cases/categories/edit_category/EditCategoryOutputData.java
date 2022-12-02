@@ -36,4 +36,18 @@ public class EditCategoryOutputData {
     public Category getCategory() {
         return this.category;
     }
+    public int getCategoryId() {
+        return this.category.getId();
+    }
+    public String getCategoryName() {
+        return this.category.getName();
+    }
+    public String getCategoryColour() {
+        return this.category.getColour();
+    }
+    public Boolean getVisibility() {
+        return this.category.getVisibility();
+    }
+
+
 }
