@@ -26,15 +26,11 @@ public class CommonUser implements User{
      * Creates User account if the user's account does not exist.
      * If it does, then it logs the user in and the page directs to the main page.
      *
-     *
      *  The parameters include:
-     *  - @param password (user password)
-     *  - @param emailAddress(user's email address)
- *      - @param the user's first and last name(both String type)
- *      - @param HabitFactory named habitCollection(a data that has all the habits in it)
- *      - @param TaskFactory named taskCollection(a data that has all the to-do tasks in it)
- *      - @param CategoryFactory named categoryCollection(the categories to categorize the tasks)
- *      - @param Timer named tomato
+     *  @param password - user password
+     *  @param email_id - users email address
+     *  @param first_name - user's first name
+     *  @param last_name - user's last name
      */
     public CommonUser(String email_id, String password, String first_name, String last_name){
         this.emailAddress = email_id;
@@ -47,51 +43,113 @@ public class CommonUser implements User{
         this.tomato = new Timer();
     }
 
+    /**
+     * Constructor to create an empty CommonUser Object
+     */
+
     public CommonUser(){}
-
-    public CommonUser(String s, String s1, String harry, String potter, HabitFactory hFactory, TaskFactory tFactory, CategoryFactory cFactory, Timer t) {
-    }
-
 
     // GETTER METHODS
 
+
+    /**
+     * Returns the user's password
+     * @return password
+     */
     @Override
     public String getPassword(){
         // returns the password of the user
         return this.password;
     }
 
+    /**
+     * Returns the user's email address
+     * @return email address
+     */
     @Override
     public String getEmailAddress(){
         // returns the user email address
         return this.emailAddress;
     }
 
+
+    /**
+     * Returns the user's first name
+     * @return first name
+     */
     @Override
     public String getFirstName(){
         // returns the user's first name
         return this.firstName;
     }
 
+
+    /**
+     * Returns the user's last name
+     * @return last name
+     */
     @Override
     public String getLastName(){
         // returns the user's first name
         return this.lastName;
     }
 
+
+    /**
+     * Returns the user's collection of habits
+     * @return habit_collection
+     */
     @Override
     public HabitFactory getHabitCollection(){
         // returns the user's habit collection
         return this.habitCollection;
     }
 
+
+    /**
+     * Returns the user's collection of its categories
+     * @return category_collection
+     */
+    @Override
+    public CategoryFactory getCategoryCollection(){
+        // returns the user's habit collection
+        return this.categoryCollection;
+    }
+
+    /**
+     * Returns the user's tasks that the user has entered
+     * @return task_collection
+     */
+    @Override
+    public TaskFactory getTaskCollection() {
+        return this.taskCollection;
+    }
+
+    /**
+     * Returns the user's timer object for the user's schedule
+     * @return timer object
+     */
+    @Override
+    public Timer getTomato(){
+        return this.tomato;
+    }
+
+
     // SETTER METHODS
 
+    /**
+     * Stores the password parameter in the User Object
+     * @param password that the user stores
+     */
     public void setPassword(String password){
         // returns the password of the user
         this.password = password;
     }
 
+    /**
+     * Stores the email id in the User Object
+     * @param emailAddress address of the user
+     */
     public void setEmailAddress(String emailAddress){
         // returns the password of the user
         this.emailAddress = emailAddress;
@@ -109,10 +167,7 @@ public class CommonUser implements User{
 
     // Strength of the Password
     public boolean passwordStrength(){
-        if(password.length() >=8 && check_upper() && check_digits() && check_characters()){
-            return true;
-        }
-        return false;
+        return password.length() >= 8 && check_upper() && check_digits() && check_characters();
     }
 
     public boolean check_upper(){

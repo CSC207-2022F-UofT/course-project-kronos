@@ -19,7 +19,7 @@ public class CreateUserOutputData {
 
     /**
      * A constructor that is used only when a user's account is successfully created.
-     * @param user - user object created by the interactor
+     * @param user - user object created by the Interactor
      */
     public CreateUserOutputData(CommonUser user) {
         this.user = user;
