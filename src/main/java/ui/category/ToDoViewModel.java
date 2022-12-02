@@ -1,3 +1,4 @@
+/*
 package ui.category;
 
 import entities.Category; // shouldn't reference entity classes?
@@ -9,9 +10,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+*/
 /**
  * THIS IS A PRACTISE RUN
- */
+ *//*
+
 public class ToDoViewModel extends JFrame{
 
     public CommonUser user = new CommonUser(); // ? need to keep track of the user somehow, don't declare a new one
@@ -79,3 +82,4 @@ public class ToDoViewModel extends JFrame{
 
 
 }
+*/
