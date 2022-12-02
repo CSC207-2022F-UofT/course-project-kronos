@@ -28,9 +28,9 @@ public class TestHabitUseCases {
         String hType = "weekly";
         HabitFactory hFactory = new HabitFactory();
         TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
+        CategoryCollection cFactory = new CategoryCollection();
         Timer t = new Timer();
-        User u = new User("hello123@gmail.com", "12345678", "Harry", "Potter",
+        CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
         createHabit(u, hTitle, hType, true);
         Set<String> s = new HashSet<>();
@@ -50,9 +50,9 @@ public class TestHabitUseCases {
         hFactory.addItem(h2);
         hFactory.addItem(h3);
         TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
+        CategoryCollection cFactory = new CategoryCollection();
         Timer t = new Timer();
-        User u = new User("hello123@gmail.com", "12345678", "Harry", "Potter",
+        CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
 
         Boolean v = deleteHabit(u, "Read a book");
@@ -67,9 +67,9 @@ public class TestHabitUseCases {
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
+        CategoryCollection cFactory = new CategoryCollection();
         Timer t = new Timer();
-        User u = new User("hello123@gmail.com", "12345678", "Harry", "Potter",
+        CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
                 hFactory, tFactory, cFactory, t);
 
         String newName = "Run 8 Kms";

@@ -1,8 +1,5 @@
 package use_cases.tasks.edit_task;
 
-import entities.Task;
-import use_cases.tasks.create_task.CreateTaskOutputData;
-
 import java.util.Calendar;
 
 /**
@@ -11,32 +8,48 @@ import java.util.Calendar;
  */
 public class EditTaskOutputData {
     private final String message;
-    private final Task task;
+    private int taskId;
+    private String taskName;
+    private Calendar taskDeadline;
+
 
     /**
      * A constructor that is used when there is a failure to edit task.
+     *
      * @param message - the failure message.
      */
     public EditTaskOutputData(String message){
         this.message = message;
-        this.task = new Task(null, null);
     }
 
     /**
      * A constructor that is used only when a task is successfully edited.
+     *
      * @param message - the success message.
-     * @param task - task object after modification.
+     * @param taskId  - the id of the task that is being edited.
+     * @param taskName - the name of the task after edition.
+     * @param taskDeadline - the deadline of the task after edition.
      */
-    public EditTaskOutputData(String message, Task task) {
+    public EditTaskOutputData(String message, int taskId, String taskName, Calendar taskDeadline) {
         this.message = message;
-        this.task = task;
+        this.taskId = taskId;
+        this.taskName = taskName;
+        this.taskDeadline = taskDeadline;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public Task getTask() {
-        return task;
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public Calendar getTaskDeadline() {
+        return taskDeadline;
+    }
+
+    public String getTaskName() {
+        return taskName;
     }
 }

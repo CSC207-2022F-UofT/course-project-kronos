@@ -10,7 +10,7 @@ public class Main {
     public static String email = "example@gmail.com";
     public static String password = "password";
     public static HabitFactory habits = new HabitFactory();
-    public static CategoryFactory categories = new CategoryFactory();
+    public static CategoryCollection categories = new CategoryCollection();
     public static TaskFactory tasks = new TaskFactory();
 
     public static Calendar deadline1 = Calendar.getInstance();
@@ -38,7 +38,7 @@ public class Main {
         categories.addItem(category1);
         categories.addItem(category2);
 
-        User user = new User(email, password, first, last, habits, tasks, categories, timer);
+        CommonUser user = new CommonUser(email, password, first, last, habits, tasks, categories, timer);
         // CreateCategoryInputBound interactor = new CreateCategory(user,)
 
         new ToDoViewModel(user);

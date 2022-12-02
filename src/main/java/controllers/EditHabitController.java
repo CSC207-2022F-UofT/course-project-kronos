@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.User;
+import entities.CommonUser;
 import use_cases.habits.edit_habit.EditHabitInputBoundary;
 
 public class EditHabitController {
@@ -12,7 +12,7 @@ public class EditHabitController {
      * @param t - The type of the habit
      * @param b - The reminder state of the habit
      */
-    public static void editHabitC(User u, String s, String a, String t, String b){
+    public static void editHabitC(CommonUser u, String s, String a, String t, String b){
 
         boolean r = b.equals("ON");
 

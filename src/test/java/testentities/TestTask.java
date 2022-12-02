@@ -28,10 +28,10 @@ public class TestTask {
         Task task = new Task("example", deadline);
 
         assertEquals("The name of the task should be \"example\"!", "example", task.getName());
-        assertTrue("The visibility of the task should be \"TRUE\"!", task.visibility);
-        assertEquals("The deadline of the task should be \"FFFFFF\"!", deadline, task.deadline);
+        assertTrue("The visibility of the task should be \"TRUE\"!", task.isVisibility());
+        assertEquals("The deadline of the task should be \"FFFFFF\"!", deadline, task.getDeadline());
         assertNull("The task should not be assigned to any category", task.getTaskCategory());
-        assertFalse("The completion status of the task should be \"FALSE\"!", task.completeStatus);
+        assertFalse("The completion status of the task should be \"FALSE\"!", task.isCompleteStatus());
     }
 
     @Test(timeout = 500)
@@ -61,7 +61,7 @@ public class TestTask {
         Task task = new Task("example", deadline);
         task.markAsComplete();
 
-        assertTrue("The status of the task should be marked as complete (TRUE).", task.completeStatus);
+        assertTrue("The status of the task should be marked as complete (TRUE).", task.isVisibility());
     }
 
     @Test(timeout = 500)
@@ -71,7 +71,7 @@ public class TestTask {
         Task task = new Task("example", deadline);
         task.markAsIncomplete();
 
-        assertFalse("The status of the task should be marked as incomplete (FALSE).", task.completeStatus);
+        assertFalse("The status of the task should be marked as incomplete (FALSE).", task.isCompleteStatus());
     }
 
 //    @Test(timeout = 500)
@@ -93,7 +93,7 @@ public class TestTask {
         Task task = new Task("example", deadline);
         task.setVisibility(TRUE);
 
-        assertTrue("The visibility of the task is set to visible (TRUE)", task.visibility);
+        assertTrue("The visibility of the task is set to visible (TRUE)", task.isVisibility());
     }
 
     @Test(timeout = 500)
@@ -103,7 +103,7 @@ public class TestTask {
         Task task = new Task("example", deadline);
         task.setVisibility(FALSE);
 
-        assertFalse("The visibility of the task is set to invisible (FALSE)", task.visibility);
+        assertFalse("The visibility of the task is set to invisible (FALSE)", task.isVisibility());
     }
 
     @Test(timeout = 500)
@@ -116,7 +116,7 @@ public class TestTask {
         task.setDeadline(newDeadline);
 
         assertEquals("The deadline of the task should be modified to the new deadline given",
-                newDeadline, task.deadline);
+                newDeadline, task.getDeadline());
     }
 
 

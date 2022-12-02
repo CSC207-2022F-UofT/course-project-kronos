@@ -1,6 +1,8 @@
 package use_cases.categories.edit_category;
 
 import entities.Category;
+import entities.CategoryCollection;
+import entities.User;
 
 import java.util.Objects;
 
@@ -9,9 +11,18 @@ import java.util.Objects;
  */
 public class EditCategory implements EditCategoryInputBound{
     private final EditCategoryOutputBoundary outputBound;
+    private final CategoryCollection categories;
+    private final Integer ID;
 
-    public EditCategory(EditCategoryOutputBoundary outputBound) {
+    /**
+     * Constructor for EditCategory
+     * @param outputBound - outputBound for EditCategory
+     * @param categories - the categories of the User that's logged in
+     */
+    public EditCategory(EditCategoryOutputBoundary outputBound, CategoryCollection categories, Integer ID) {
         this.outputBound = outputBound;
+        this.categories = categories;
+        this.ID = ID;
     }
 
     /**
@@ -49,7 +60,8 @@ public class EditCategory implements EditCategoryInputBound{
                     "out all fields.");
             return outputBound.prepareFailView(outputData);
         }
-        Category category = inputData.getCategory();
+
+        Category category = categories.getItem(ID);
         category.setName(inputData.getName());
         category.setColour(inputData.getName());
         category.setVisibility(inputData.getVisibility());
