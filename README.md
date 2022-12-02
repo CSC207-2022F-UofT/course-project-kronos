@@ -1,3 +1,4 @@
+![Kronos symbol](https://user-images.githubusercontent.com/113299553/205387220-89076fcb-f2e9-4b1e-bfbc-89b7260a6481.png)
 
 # KRONOS
 
@@ -15,7 +16,7 @@ As students, we have to balance and keep track of various things at the same tim
 * Habit Creation and Tracking
 * Task and Category Creation
 * Pomodoro Timer
-* User Data Analysis and Visualization
+* User Habits Visualization
 
 ## How to Use
 
