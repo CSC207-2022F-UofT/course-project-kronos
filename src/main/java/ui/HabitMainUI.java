@@ -51,15 +51,15 @@ public class HabitMainUI {
 
         // Button 1: CREATE
         JButton b1 = new JButton("Create");
-        b1.addActionListener(e -> CreateHabitUI.addNewHabit());
+        //b1.addActionListener(e -> CreateHabitUI.addNewHabit());
 
         // Button 2 : EDIT
         JButton b2 = new JButton("Edit");
-        b2.addActionListener(e -> EditHabitUI.editExistingHabit());
+       // b2.addActionListener(e -> EditHabitUI.editExistingHabit());
 
         //Button 3: VIEW
         JButton b3 = new JButton("View"); //set label to button
-        b3.addActionListener(e -> TrackHabitUI.showHabitList());
+        // b3.addActionListener(e -> TrackHabitUI.showHabitList());
 
         frame.add(mainPanel);
 

@@ -3,11 +3,20 @@ import entities.Habit;
 import entities.HabitFactory;
 import entities.User;
 
+/**
+ * Use case class for editing a habit.
+ */
 public class EditHabit implements EditHabitInputBoundary {
     private final EditHabitOutputBoundary outputBoundary;
     private final EditHabitDsGateway dsGateway;
     private final HabitFactory habitFactory;
 
+    /**
+     * Constructor for this class.
+     * @param outputBoundary -
+     * @param dsGateway -
+     * @param hFactory - factory of the habit to be edited.
+     */
     public EditHabit(EditHabitOutputBoundary outputBoundary, EditHabitDsGateway dsGateway, HabitFactory hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
@@ -15,14 +24,13 @@ public class EditHabit implements EditHabitInputBoundary {
     }
 
     /**
-     * Edit the properties of a task. The edible properties are name, category, and deadline for a task object.
-     * @param inputData - the input data which contain a task, an input name, an input category name, and an input
-     *                  deadline.
+     * Edit the properties of a habit. The edible properties are name, type, and frequency for a habit object.
+     * @param inputData - the input data which contain a habit, an input name, an input type, and an input
+     *                  frequency.
      * @return the output data after editing.
      */
     @Override
     public EditHabitOutputData edit(EditHabitInputData inputData) {
-        // If the input name is empty or containing only white spaces
         if (inputData.getInputName().isBlank()){
             EditHabitOutputData outputData = new EditHabitOutputData("Changes not saved. " +
                     "Please fill all required fields.");
@@ -39,14 +47,23 @@ public class EditHabit implements EditHabitInputBoundary {
 
     }
 
+    /**
+     * @return the output boundary
+     */
     public EditHabitOutputBoundary getOutputBoundary() {
         return outputBoundary;
     }
 
+    /**
+     * @return the dsGateway
+     */
     public EditHabitDsGateway getDsGateway() {
         return dsGateway;
     }
 
+    /**
+     * @return the habit factory
+     */
     public HabitFactory getHabitFactory() {
         return habitFactory;
     }

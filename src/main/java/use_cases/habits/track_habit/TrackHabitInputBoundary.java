@@ -1,8 +1,12 @@
 package use_cases.habits.track_habit;
-import entities.Habit;
-import use_cases.habits.edit_habit.EditHabitInputData;
-import use_cases.habits.edit_habit.EditHabitOutputData;
 
+/**
+ * This is an interface that passes the inputData to the interactor of track habit.
+ */
 public interface TrackHabitInputBoundary {
+
+    /**
+     * @param inputData - data to be passed to the interactor.
+     */
     TrackHabitOutputData track(TrackHabitInputData inputData);
 }

@@ -15,7 +15,7 @@ public class AccountCreation {
         }else{
             StrengthPassword strength = new StrengthPassword();
             if(strength.passwordStrength(password) && first_name != null && last_name != null) {
-                User user = new User(first_name, last_name, email_id, password);
+                //User user = new User(first_name, last_name, email_id, password);
 
                 System.out.println("Account Successfully Created");
             }

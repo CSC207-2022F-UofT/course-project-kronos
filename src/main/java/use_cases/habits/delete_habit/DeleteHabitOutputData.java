@@ -1,5 +1,9 @@
 package use_cases.habits.delete_habit;
 
+/**
+ *  This class is a container for the output data related to deletion of habit, it is created by the Interactor and sent
+ *  to the Presenter.
+ */
 public class DeleteHabitOutputData {
 
     private final String message;
@@ -13,6 +17,9 @@ public class DeleteHabitOutputData {
         this.message = message;
     }
 
+    /**
+     * @return the message displayed when habit is deleted.
+     */
     public String getMessage() {
         return message;
     }

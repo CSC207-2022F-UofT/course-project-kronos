@@ -31,6 +31,6 @@ public class CreateHabitOutputData {
         return message;
     }
 
-    public Habit getTask() {
+    public  Habit getHabit() {
         return habit;}
 }

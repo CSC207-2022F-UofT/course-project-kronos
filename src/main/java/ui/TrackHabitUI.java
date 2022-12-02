@@ -6,7 +6,7 @@ import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
-import static example_user.UserExample.sendUser;
+
 
 public class TrackHabitUI {
 
@@ -17,11 +17,11 @@ public class TrackHabitUI {
      */
     public static void addHabitsToPane(JPanel pane) {
 
-        for(String i :sendUser().getHabitCollection().habitCollection
-                .keySet()){
+       // for(String i :sendUser().getHabitCollection().habitCollection
+          //      .keySet()){
 
             // Label: Habit name
-            JLabel l = new JLabel( i + "  " , JLabel.CENTER);
+            JLabel l = new JLabel( 1 + "  " , JLabel.CENTER);
             l.setPreferredSize(new Dimension(100, 30));
             l.setBorder(new LineBorder(Color.GRAY, 1));
             l.setLayout(new BorderLayout());
@@ -29,14 +29,14 @@ public class TrackHabitUI {
             // Button 1: increase frequency
             JButton button1 = new JButton("+");
             button1.setAlignmentX(Component.RIGHT_ALIGNMENT);
-            button1.addActionListener(e -> TrackHabitController.TrackHabitC(sendUser(), i));
+           // button1.addActionListener(e -> TrackHabitController.TrackHabitC(sendUser(), i));
             button1.setPreferredSize(new Dimension(50, 30));
 
             // Button 2: Show frequency
             JButton button2 = new JButton("Frequency");
             button2.setAlignmentX(Component.LEFT_ALIGNMENT);
-            button2.addActionListener(e ->
-                    button2.setText(sendUser().getHabitCollection().habitCollection.get(i).getFrequencyString()));
+            //button2.addActionListener(e ->
+                    //button2.setText(sendUser().getHabitCollection().habitCollection.get(i).getFrequencyString()));
             button2.setPreferredSize(new Dimension(100, 30));
 
             l.add( button1, BorderLayout.AFTER_LINE_ENDS);
@@ -45,7 +45,7 @@ public class TrackHabitUI {
             pane.add(l);
 
         }
-    }
+    //}
 
     /**
      * Produces a UI to show a list of all existing Habits in the User's collection.
@@ -81,10 +81,6 @@ public class TrackHabitUI {
 
         frame.pack();
         frame.setVisible(true);
-    }
-    public static void main(String[] args) {
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(TrackHabitUI::showHabitList);
     }
 }
 

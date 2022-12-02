@@ -3,6 +3,9 @@ package entities;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Factory class for habit entity.
+ */
 public class HabitFactory extends Factory<Habit>{
 
     public HashMap<String, Habit> habitCollection;
@@ -48,7 +51,7 @@ public class HabitFactory extends Factory<Habit>{
      * Return habits.
      * @return the Hashmap attribute habitCollection of a HabitFactory.
      */
-    public static HashMap<String, Habit> getCollection(){return habitCollection;}
+    public HashMap<String, Habit> getCollection(){return habitCollection;}
 
     /**
      * Given the user, return an array list of that user's habits.
@@ -60,7 +63,7 @@ public class HabitFactory extends Factory<Habit>{
             for (String key : this.habitCollection.keySet()) {
                 habitList.add(this.habitCollection.get(key));
             }
-        } // else don't populate the list
+        }
         return habitList;
     }
 }

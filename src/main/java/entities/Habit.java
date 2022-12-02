@@ -3,8 +3,10 @@ package entities;
 import java.time.LocalDate;
 import java.util.HashMap;
 
+/**
+ * Entity class for Habit feature.
+ */
 public class Habit {
-
 
     private String name;
     private String type;
@@ -14,13 +16,13 @@ public class Habit {
     /**
      * Constructor for a Habit object.
      * @param title - The name of the habit.
-     * @param t - The type of the habit ("daily", "weekly", "monthly")
+     * @param type - The type of the habit ("daily", "weekly", "monthly")
      */
 
-    public Habit(String title, String t){
+    public Habit(String title, String type){
 
         this.name = title;
-        this.type = t;
+        this.type = type;
         this.frequency = 0;
         this.frequencyMap = new HashMap<>();
     }
@@ -33,9 +35,9 @@ public class Habit {
 
     /**
      * Set the type of the habit.
-     * @param t - The type of the habit.
+     * @param type - The type of the habit.
      */
-    public void setType(String t) {this.type = t;}
+    public void setType(String type) {this.type = type;}
 
     /**
      * @return returns the name of the habit.

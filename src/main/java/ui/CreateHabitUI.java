@@ -1,16 +1,24 @@
 package ui;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import controllers.habits.create.CreateHabitController;
 
-
-
-public class CreateHabitUI {
+public class CreateHabitUI extends JFrame implements ActionListener {
 
     /**
      * Produces a UI to add new Habits to the User's collection.
      */
-    public static void addNewHabit () {
+    JTextField title = new JTextField(15);
+
+    JTextField type = new JTextField(15);
+
+    CreateHabitController userHabit;
+    public void addNewHabit(CreateHabitController u) {
+
+        this.userHabit = u;
 
         // The frame of the screen titled "HABIT CREATION PAGE"
         JFrame frame = new JFrame("HABIT CREATION PAGE");
@@ -34,7 +42,7 @@ public class CreateHabitUI {
         l2.setPreferredSize(new Dimension(100, 30));
         l2.setLayout(new BorderLayout());
         //Text field 1 : Gets Habit name from user
-        JTextField textField1 = new JTextField(15);
+
 
         // Panel 3
         JPanel p3 = new JPanel();
@@ -44,7 +52,7 @@ public class CreateHabitUI {
         l3.setPreferredSize(new Dimension(100, 30));
         l3.setLayout(new BorderLayout());
         //Text field 2 : Gets Habit type from user
-        JTextField textField2 = new JTextField(15);
+
 
         // Panel 5
         JPanel p5 = new JPanel();
@@ -53,12 +61,7 @@ public class CreateHabitUI {
 
         //Button 1 : Submit button
         JButton b1 = new JButton("SUBMIT");
-        b1.addActionListener(e -> {
-            String s = textField1.getText();
-            String t = textField1.getText();
-            CreateHabitController.createHabitC(s, t);
-        });
-
+        b1.addActionListener(this);
 
         frame.add(mainPanel);
 
@@ -70,10 +73,10 @@ public class CreateHabitUI {
         p1.add(l1);
 
         p2.add(l2);
-        p2.add(textField1);
+        p2.add(this);
 
         p3.add(l3);
-        p3.add(textField2);
+        p3.add(this);
 
         p5.add(b1);
 
@@ -81,10 +84,17 @@ public class CreateHabitUI {
         frame.setVisible(true);
 
     }
+    @Override
+    public void actionPerformed(ActionEvent evt) {
 
-    public static void main(String[] args) {
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(CreateHabitUI::addNewHabit);
+        try {
+            userHabit.create(title.getText(), type.getText());
+            JOptionPane.showMessageDialog(this, title.getText() + "%s created.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
+
     }
 }
 

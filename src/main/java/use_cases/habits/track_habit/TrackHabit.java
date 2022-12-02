@@ -4,11 +4,20 @@ import entities.Habit;
 import entities.HabitFactory;
 import use_cases.habits.edit_habit.*;
 
+/**
+ * Use case class for tracking a habit.
+ */
 public class TrackHabit implements TrackHabitInputBoundary {
     private final TrackHabitOutputBoundary outputBoundary;
     private final TrackHabitDsGateway dsGateway;
     private final HabitFactory habitFactory;
 
+    /**
+     * Constructor for this class.
+     * @param outputBoundary -
+     * @param dsGateway -
+     * @param hFactory -
+     */
     public TrackHabit(TrackHabitOutputBoundary outputBoundary, TrackHabitDsGateway dsGateway, HabitFactory hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
@@ -16,14 +25,12 @@ public class TrackHabit implements TrackHabitInputBoundary {
     }
 
     /**
-     * Edit the properties of a task. The edible properties are name, category, and deadline for a task object.
-     * @param inputData - the input data which contain a task, an input name, an input category name, and an input
-     *                  deadline.
-     * @return the output data after editing.
+     * Track the frequency of a habit.
+     * @param inputData - the input data which contain a habit.
+     * @return the output data after tracking.
      */
     @Override
     public TrackHabitOutputData track(TrackHabitInputData inputData) {
-        // If the input name is empty or containing only white spaces
         if (inputData.getInputName().isBlank()){
             TrackHabitOutputData outputData = new TrackHabitOutputData("Changes not saved. " +
                     "Please fill all required fields.");
@@ -37,17 +44,25 @@ public class TrackHabit implements TrackHabitInputBoundary {
         TrackHabitOutputData outputData = new TrackHabitOutputData(
                 "Changes have been saved.", habitBeTracked.getName(), habitBeTracked.getFrequency());
         return outputBoundary.prepareSuccessView(outputData);
-
     }
 
+    /**
+     * @return output boundary
+     */
     public TrackHabitOutputBoundary getOutputBoundary() {
         return outputBoundary;
     }
 
+    /**
+     * @return dsGateway
+     */
     public TrackHabitDsGateway getDsGateway() {
         return dsGateway;
     }
 
+    /**
+     * @return habit factory
+     */
     public HabitFactory getHabitFactory() {
         return habitFactory;
     }
