@@ -11,13 +11,13 @@ import java.awt.event.ActionListener;
  */
 
 // screen should have the menu button on top left to lead back to menu page
-public class ToDoView extends JFrame implements ActionListener {
+public class ToDoScreen extends JFrame implements ActionListener {
 
     private JFrame toDoFrame;
     private JButton newTask;
     private JButton newCategory;
 
-    public ToDoView() {
+    public ToDoScreen() {
         toDoFrame = new JFrame ("To Do List");
         toDoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         toDoFrame.setSize(1000, 800);
