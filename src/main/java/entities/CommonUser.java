@@ -17,7 +17,7 @@ public class CommonUser implements User{
     private String password;
     private HabitFactory habitCollection;
     private TaskFactory taskCollection;
-    private CategoryFactory categoryCollection;
+    private CategoryCollection categoryCollection;
     private Timer tomato;
 
 
@@ -33,7 +33,7 @@ public class CommonUser implements User{
  *      - @param the user's first and last name(both String type)
  *      - @param HabitFactory named habitCollection(a data that has all the habits in it)
  *      - @param TaskFactory named taskCollection(a data that has all the to-do tasks in it)
- *      - @param CategoryFactory named categoryCollection(the categories to categorize the tasks)
+ *      - @param CategoryCollection named categoryCollection(the categories to categorize the tasks)
  *      - @param Timer named tomato
      */
     public CommonUser(String email_id, String password, String first_name, String last_name){
@@ -43,13 +43,13 @@ public class CommonUser implements User{
         this.lastName = last_name;
         this.habitCollection = new HabitFactory();
         this.taskCollection = new TaskFactory();
-        this.categoryCollection = new CategoryFactory();
+        this.categoryCollection = new CategoryCollection();
         this.tomato = new Timer();
     }
 
     public CommonUser(){}
 
-    public CommonUser(String s, String s1, String harry, String potter, HabitFactory hFactory, TaskFactory tFactory, CategoryFactory cFactory, Timer t) {
+    public CommonUser(String s, String s1, String harry, String potter, HabitFactory hFactory, TaskFactory tFactory, CategoryCollection cFactory, Timer t) {
     }
 
 

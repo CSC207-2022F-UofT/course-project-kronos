@@ -1,34 +1,37 @@
 package use_cases.categories.delete_category;
 
-import controllers.DeleteCategoryPresenter;
-import entities.CategoryFactory;
+import entities.Category;
+import entities.CategoryCollection;
+import entities.User;
 
 public class DeleteCategory implements DeleteCategoryInputBound {
     private final DeleteCategoryOutputBoundary outputBound;
-    private final CategoryFactory factory;
+    private final CategoryCollection categories;
 
     /**
      * The constructor of DeleteCategory.
      * @param outputBound - the outputData that would be displayed
-     * @param factory - the CategoryFactory of the user
-     * @return true if the CategoryFactory no longer contains category, returns false otherwise.
+     * @param categories - the categories of the User that's logged in
+     * @return true if the CategoryCollection no longer contains category, returns false otherwise.
      */
-    public DeleteCategory(DeleteCategoryOutputBoundary outputBound, CategoryFactory factory) {
+    public DeleteCategory(DeleteCategoryOutputBoundary outputBound, CategoryCollection categories) {
         this.outputBound = outputBound;
-        this.factory = factory;
+        this.categories = categories;
     }
 
     /**
      * Deleting the category with given input.
      * @param inputData - the outputData that would be displayed
-     * @return true if the CategoryFactory no longer contains category, returns false otherwise.
+     * @return true if the CategoryCollection no longer contains category, returns false otherwise.
      */
     @Override
     public DeleteCategoryOutputData delete(DeleteCategoryInputData inputData) {
-        String name = inputData.getCategory().getName();
-        factory.removeItem(inputData.getCategory());
+        Integer ID = inputData.getID();
+        Category category = this.categories.getItem(ID);
+        String name = category.getName();
+        categories.removeItem(category);
         DeleteCategoryOutputData outputData = new DeleteCategoryOutputData(name + " has been successfully " +
-                "deleted.", inputData.getCategory());
+                "deleted.", category);
         return outputBound.prepareSuccessView(outputData);
     }
 
@@ -37,7 +40,7 @@ public class DeleteCategory implements DeleteCategoryInputBound {
         return this.outputBound;
     }
 
-    public CategoryFactory getFactory() {
-        return this.factory;
+    public CategoryCollection getFactory() {
+        return this.categories;
     }
 }

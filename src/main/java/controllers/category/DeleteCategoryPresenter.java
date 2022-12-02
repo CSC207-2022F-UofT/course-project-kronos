@@ -1,4 +1,4 @@
-package controllers;
+package controllers.category;
 
 import use_cases.categories.delete_category.DeleteCategoryOutputBoundary;
 import use_cases.categories.delete_category.DeleteCategoryOutputData;
