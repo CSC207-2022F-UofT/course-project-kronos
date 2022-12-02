@@ -26,6 +26,13 @@ public class ToDoScreen extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Updates the to do list to reflect the database
+     */
+    public void updateList() {
+
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
