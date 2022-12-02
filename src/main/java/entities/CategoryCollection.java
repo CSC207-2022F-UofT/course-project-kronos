@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CategoryFactory extends Factory<Category> implements Serializable {
+public class CategoryCollection extends Factory<Category> implements Serializable {
 
     public HashMap<Integer, Category> categories = new HashMap<Integer, Category>();
 
 
-    public CategoryFactory() {
+    public CategoryCollection() {
         super();
     }
 
@@ -30,14 +30,24 @@ public class CategoryFactory extends Factory<Category> implements Serializable {
     /**
      * Check if the factory contains the specified category name. Create a new factory if categories = null (factory
      * hasn't been created yet)
-     * @param name - the name of the category that is to be checked.
+     * @param ID - the name of the category that is to be checked
+     * @return the category to which the ID belongs to.
+     */
+    public Category getItem(Integer ID) {
+        return this.categories.get(ID);
+    }
+
+    /**
+     * Check if the factory contains the specified category name. Create a new factory if categories = null (factory
+     * hasn't been created yet)
+     * @param name - the name of the category that is to be checked
      * @return true if the name is in the factory hashmap, return false otherwise.
      */
     public boolean contains(String name, Boolean createNew) {
         if (categories == null) {
 
             if (createNew) {
-                CategoryFactory factory = new CategoryFactory();
+                CategoryCollection factory = new CategoryCollection();
             }
             return false;
         }else {
@@ -50,7 +60,7 @@ public class CategoryFactory extends Factory<Category> implements Serializable {
 
     /**
      * Given the user, return an array list of that user's categories.
-     * @return this CategoryFactory object as an arraylist
+     * @return this CategoryCollection object as an arraylist
      */
     public ArrayList<Category> convertToArray() {
         ArrayList<Category> categoryList = new ArrayList<>();
