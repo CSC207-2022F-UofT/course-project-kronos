@@ -27,9 +27,9 @@ public class EditCategoryInputData {
     }
 
     /**
-     * @return the edited category
+     * @return the ID of the category that's being edited
      */
-    public Integer getCategory() { return this.ID; }
+    public Integer getId() { return this.ID; }
     /**
      * @return the name of the category that will be edited.
      */

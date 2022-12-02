@@ -17,7 +17,6 @@ public class EditCategory implements EditCategoryInputBound{
     private final Integer ID;
     private EditCategoryDsGateway dsGateway;
 
-
     /**
      * Constructor for EditCategory
      * @param outputBound - outputBound for EditCategory
@@ -61,9 +60,14 @@ public class EditCategory implements EditCategoryInputBound{
      */
     @Override
     public EditCategoryOutputData edit(EditCategoryInputData inputData) {
+        Category currentCategory = categories.getItem(inputData.getId());
         if (inputData.getName().isBlank()) {
             String error = "Changes not saved. Please fill out all fields.";
             EditCategoryOutputData outputData = new EditCategoryOutputData(error);
+            return outputBound.prepareFailView(error);
+        }else if(this.categories.contains(inputData.getName(), false) &&
+                inputData.getName() != currentCategory.getName()){
+            String error ="Error: This category name already exists. Please enter a new category name.";
             return outputBound.prepareFailView(error);
         }
 
