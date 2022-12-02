@@ -21,7 +21,7 @@ public class Main {
     public static Category category1 = new Category("Category 1", "Red");
     public static Category category2 = new Category("Category 2", "Blue");
 
-    public static Timer timer = new Timer();
+    public static TimerTomato timer = new TimerTomato();
 
 
     */
