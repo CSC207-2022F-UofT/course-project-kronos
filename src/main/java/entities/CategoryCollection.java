@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * The entity layer, a collection of all the categories for a specific user.
+ */
 public class CategoryCollection extends Factory<Category> implements Serializable {
 
     public HashMap<Integer, Category> categories = new HashMap<Integer, Category>();
@@ -14,7 +17,7 @@ public class CategoryCollection extends Factory<Category> implements Serializabl
     }
 
     /**
-     * Add item to the hashmap
+     * Add item to the hashmap.
      * @param category - the Category object to be added
      */
     @Override
@@ -22,6 +25,10 @@ public class CategoryCollection extends Factory<Category> implements Serializabl
         categories.put(category.getId(), category); // categories = null, throws exception, but then how do I add pairs?
     }
 
+    /**
+     * Remove item to the hashmap.
+     * @param category - the Category object to be deleted
+     */
     @Override
     public void removeItem(Category category) {
         categories.remove(category.getId());
@@ -29,7 +36,7 @@ public class CategoryCollection extends Factory<Category> implements Serializabl
 
     /**
      * Check if the factory contains the specified category name. Create a new factory if categories = null (factory
-     * hasn't been created yet)
+     * hasn't been created yet).
      * @param ID - the name of the category that is to be checked
      * @return the category to which the ID belongs to.
      */
@@ -39,7 +46,7 @@ public class CategoryCollection extends Factory<Category> implements Serializabl
 
     /**
      * Check if the factory contains the specified category name. Create a new factory if categories = null (factory
-     * hasn't been created yet)
+     * hasn't been created yet).
      * @param name - the name of the category that is to be checked
      * @return true if the name is in the factory hashmap, return false otherwise.
      */
@@ -70,6 +77,14 @@ public class CategoryCollection extends Factory<Category> implements Serializabl
             }
         } // else don't populate the list
         return categoryList;
+    }
+    /**
+     * Given the id, check if the id-category pair exist.
+     * @param id - the id of the category to be checked
+     * @return true if the id is one of the keys, return false others.
+     */
+    public Boolean existById(Integer id) {
+        return this.categories.containsKey(id);
     }
 
 }

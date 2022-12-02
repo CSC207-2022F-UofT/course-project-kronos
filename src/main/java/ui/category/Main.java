@@ -1,4 +1,5 @@
-package ui;
+/*
+package ui.category;
 
 import entities.*;
 import java.util.Calendar;
@@ -23,10 +24,12 @@ public class Main {
     public static Timer timer = new Timer();
 
 
-    /**
+    */
+/**
      * this is a temporary class to check that the UI and other files work while the UI pages
      * aren't connected yet.
-     */
+     *//*
+
 
     public static void main(String[] args){
         task1.setTaskCategory("Category 1");
@@ -39,8 +42,9 @@ public class Main {
         categories.addItem(category2);
 
         CommonUser user = new CommonUser(email, password, first, last, habits, tasks, categories, timer);
-        // CreateCategoryInputBound interactor = new CreateCategory(user,)
+        // CreateCategoryInputBound interactor = new CreateCategoryFrame(user,)
 
         new ToDoViewModel(user);
     }
 }
+*/

@@ -1,7 +1,9 @@
 package use_cases.categories.edit_category;
 
 /**
- * Contains input data for editing an existing Category.
+ * -- Application Business Layer --
+ *  This class is a container for the input data related to modification of category, it is created by the controller
+ *  and sent to the interactor/use case
  */
 public class EditCategoryInputData {
     private final Integer ID;
@@ -24,13 +26,23 @@ public class EditCategoryInputData {
         this.inputState = inputState;
     }
 
-    // getters
-
-    public Integer getCategory() { return this.ID; }
+    /**
+     * @return the ID of the category that's being edited
+     */
+    public Integer getId() { return this.ID; }
+    /**
+     * @return the name of the category that will be edited.
+     */
     public String getName() { return this.inputName; }
+    /**
+     * @return the colour of the category that will be edited.
+     */
     public String getColour() {
         return this.inputColour;
     }
+    /**
+     * @return the visibility state of the category that will be edited.
+     */
     public Boolean getVisibility() {
         return this.inputState;
     }
