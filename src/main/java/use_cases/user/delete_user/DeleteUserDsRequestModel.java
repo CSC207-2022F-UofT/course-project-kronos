@@ -3,7 +3,7 @@ package use_cases.user.delete_user;
 import entities.CommonUser;
 
 /**
- * use case layer
+ * A use case layer that requires only the user class since this use case deletes the user from the database.
  */
 
 public class DeleteUserDsRequestModel {

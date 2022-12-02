@@ -11,10 +11,14 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
     private final CreateUserOutputBoundary outputBoundary;
     private final UserFactory userFactory;
 
-
-    public CreateUserInteractor(CreateUserOutputBoundary outputBoundary, UserFactory userfactory) {
+    /**
+     * Constructor method for CreateUserInteractor
+     * @param outputBoundary obtained
+     * @param userFactory of the user
+     */
+    public CreateUserInteractor(CreateUserOutputBoundary outputBoundary, UserFactory userFactory) {
         this.outputBoundary = outputBoundary;
-        this.userFactory = userfactory;
+        this.userFactory = userFactory;
     }
 
     /**
@@ -25,21 +29,21 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
 
     @Override
     public CreateUserOutputData create(CreateUserInputData inputData) {
-        if (userFactory.Users.containsKey(inputData.getEmailaddress())){
+        if (userFactory.Users.containsKey(inputData.getEmailAddress())){
             CreateUserOutputData outputData = new CreateUserOutputData("User email already exists. " +
                     "Please enter a new email address.");
             return outputBoundary.prepareFailView(outputData);
         }else {
             // case when the repeated password does not match the password
-            if (!inputData.getPassword().equals(inputData.getRepeatpassword())) {
+            if (!inputData.getPassword().equals(inputData.getRepeatPassword())) {
                 CreateUserOutputData outputData = new CreateUserOutputData("Both passwords do not match. " +
                         "Please re enter the password.");
                 return outputBoundary.prepareFailView(outputData);
             }
         }
 
-        CommonUser user = new CommonUser(inputData.getFirstname(), inputData.getLastname(),
-                inputData.getEmailaddress(), inputData.getPassword());
+        CommonUser user = new CommonUser(inputData.getFirstName(), inputData.getLastName(),
+                inputData.getEmailAddress(), inputData.getPassword());
 
         if (!user.passwordStrength()){
             // if the given password is not strong enough then it shows fail view

@@ -1,5 +1,6 @@
 package use_cases.user.login_user;
 
+import database.Database;
 import entities.UserFactory;
 
 /**
@@ -7,11 +8,16 @@ import entities.UserFactory;
  */
 public class LoginUserInteractor implements LoginUserInputBoundary{
     private final LoginUserOutputBoundary outputBoundary;
-    private final UserFactory userFactory;
+    private final Database database;
 
-    public LoginUserInteractor(LoginUserOutputBoundary outputBoundary, UserFactory users) {
+    /**
+     * Constructor method for the LoginUserInteractor
+     * @param outputBoundary obtained
+     * @param database of the user
+     */
+    public LoginUserInteractor(LoginUserOutputBoundary outputBoundary, Database database) {
         this.outputBoundary = outputBoundary;
-        this.userFactory = users;
+        this.database = database;
     }
 
     /**
@@ -21,7 +27,7 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
      */
     @Override
     public LoginUserOutputData login(LoginUserInputData inputData){
-        if (userFactory.Users.containsKey(inputData.getEmailaddress())){
+        if (database.CheckUserExists(inputData.getEmailaddress())){
             // case if the email and the password matches the information in the hash map
             if (inputData.getPassword().equals(userFactory.Users.get(inputData.getEmailaddress()).getPassword())){
                 LoginUserOutputData outputData = new LoginUserOutputData(inputData.getEmailaddress(),

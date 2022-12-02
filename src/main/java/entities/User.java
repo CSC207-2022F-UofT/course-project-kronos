@@ -7,6 +7,12 @@ public interface User {
     String getLastName();
     HabitFactory getHabitCollection();
 
+    CategoryFactory getCategoryCollection();
+
+    TaskFactory getTaskCollection();
+
+    Timer getTomato();
+
     boolean passwordStrength();
     boolean check_characters();
 

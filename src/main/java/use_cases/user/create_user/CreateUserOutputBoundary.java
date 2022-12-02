@@ -1,7 +1,7 @@
 package use_cases.user.create_user;
 
 /**
- * Interface that passes the output to the Presenter of User account creation(CreateUser).
+ * Interface that passes the output to the Presenter of User account creation.
  */
 public interface CreateUserOutputBoundary {
 

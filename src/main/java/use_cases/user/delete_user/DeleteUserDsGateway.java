@@ -2,7 +2,7 @@ package use_cases.user.delete_user;
 
 
 /**
- * use case layer
+ * Use case layer that stores the user details
  */
 public interface DeleteUserDsGateway {
     void save(DeleteUserDsRequestModel requestModel);
