@@ -54,24 +54,32 @@ public class SampleDataCreator {
         }
         user1.getHabitCollection().habitCollection.put(habit3.getName(), habit3);
 
-        // creating tasks
-        HashMap<String, Calendar> taskMap = new HashMap<>();
+        // creating 4 tasks
+        HashMap<Integer, Task> taskMap = new HashMap<>();
 
         Calendar calendar1 = Calendar.getInstance();
         calendar1.set(122, 12, 12);
         Task task1 = new Task("Do HomeWork", calendar1);
-        taskMap.put()
+        taskMap.put(task1.getId(), task1);
 
         Calendar calendar2 = Calendar.getInstance();
         calendar2.set(122, 12, 14);
         Task task2 = new Task("Study for csc207 test", calendar2);
+        taskMap.put(task2.getId(), task2);
 
         Calendar calendar3 = Calendar.getInstance();
         calendar3.set(122, 12, 8);
         Task task3 = new Task("Submit csc207 project", calendar3);
+        taskMap.put(task3.getId(), task3);
 
+        Calendar calendar4 = Calendar.getInstance();
+        calendar4.set(122, 12, 16);
+        Task task4 = new Task("Final Exam", calendar4);
+        taskMap.put(task4.getId(), task4);
 
-        user1.getTaskCollection().getTasks().putAll();
+        user1.getTaskCollection().getTasks().putAll(taskMap);
+
+        // creating categories for tasks
 
     }
 }
