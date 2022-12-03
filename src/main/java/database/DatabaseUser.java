@@ -1,6 +1,6 @@
 package database;
 
-import entities.User;
+import entities.*;
 import use_cases.user.create_user.CreateUserDsGateway;
 import use_cases.user.create_user.CreateUserDsRequestModel;
 import use_cases.user.delete_user.DeleteUserDsGateway;
@@ -15,14 +15,15 @@ import java.util.HashMap;
 public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, LoginUserDsGateway {
 
     private HashMap<String, User> userCollection;
-    private HashMap taskCollection;
-    private HashMap categoryCollection;
-    private HashMap habitCollection;
+    private HashMap<Integer, Task> taskCollection;
+    private HashMap<Integer, Category> categoryCollection;
+    private HashMap<String, Habit> habitCollection;
     public String filePath;
 
 
     public User currUser;
 
+    @SuppressWarnings("unchecked") // When reading the file, the file stored is always going to be a HashMap of Email: User
     public DatabaseUser(String filepath){
         this.filePath = filepath;
 
@@ -82,15 +83,15 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
     public User getUser() {
         return this.currUser;
     }
-    public HashMap getCategories() {
+    public HashMap<Integer, Category> getCategories() {
         return categoryCollection;
     }
 
-    public HashMap getTasks(){
+    public HashMap<Integer, Task> getTasks(){
         return  taskCollection;
     }
 
-    public HashMap getHabits() {
+    public HashMap<String, Habit> getHabits() {
         return habitCollection;
     }
 }
