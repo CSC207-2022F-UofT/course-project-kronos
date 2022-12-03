@@ -71,7 +71,7 @@ public class TestTask {
 
         assertFalse("The status of the task should be marked as incomplete (FALSE).", task.isCompleteStatus());
     }
-    
+
     @Test(timeout = 500)
     public void testSetDeadline() {
         Calendar deadline = Calendar.getInstance();
