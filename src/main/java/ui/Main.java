@@ -10,7 +10,7 @@ public class Main {
     public static String email = "example@gmail.com";
     public static String password = "password";
     public static HabitFactory habits = new HabitFactory();
-    public static CategoryFactory categories = new CategoryFactory();
+    public static CategoryCollection categories = new CategoryCollection();
     public static TaskFactory tasks = new TaskFactory();
 
     public static Calendar deadline1 = Calendar.getInstance();
