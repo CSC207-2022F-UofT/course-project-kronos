@@ -7,13 +7,15 @@ import entities.Habit;
  */
 public class TrackHabitDsRequestModel {
 
+    private String habitName;
     private Habit habit;
 
     /**
      * Constructor for this class.
      * @param habit - habit to be tracked.
      */
-    public TrackHabitDsRequestModel(Habit habit){
+    public TrackHabitDsRequestModel(String habitName,Habit habit){
+        this.habitName = habitName;
         this.habit = habit;
     }
 
@@ -31,4 +33,9 @@ public class TrackHabitDsRequestModel {
     public void setHabit(Habit habit) {
         this.habit = habit;
     }
+
+    /**
+     * @return Name of the Habit
+     */
+    public String getHabitName(){return this.habitName;}
 }

@@ -28,7 +28,4 @@ public class CreateHabitDsRequestModel {
      * Sets the attribute habit for this class to the given habit.
      * @param h -
      */
-    public void setHabit(Habit h) {
-        this.habit = h;
-    }
 }

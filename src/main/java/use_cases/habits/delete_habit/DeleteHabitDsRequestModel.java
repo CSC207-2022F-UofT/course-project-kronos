@@ -8,22 +8,22 @@ import entities.Habit;
  */
 public class DeleteHabitDsRequestModel {
 
-    private final Habit habit;
+    private final String habitName;
 
 
     /**
      * Constructor for this class.
-     * @param h - Habit to be deleted.
+     * @param habitName - Name of habit to be deleted.
      */
-    public DeleteHabitDsRequestModel(Habit h) {
-        this.habit = h;
+    public DeleteHabitDsRequestModel(String habitName) {
+        this.habitName = habitName;
     }
 
     /**
      *
      * @return habit
      */
-    public Habit getHabit() {
-        return habit;
+    public String getHabitName() {
+        return this.habitName;
     }
 }
