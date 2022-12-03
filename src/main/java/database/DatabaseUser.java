@@ -111,16 +111,25 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
         }
     }
 
+    /**
+     * @return current user. If not logged in, return null
+     */
     @Override
     public User getUser() {
         return this.currUser;
     }
 
+    /**
+     * @param email
+     * @param password
+     * @return if password matches for given email and password
+     */
     @Override
     public boolean checkPasswordsMatch(String email, String password) {
         return userCollection.get(email).getPassword().equals(password);
     }
 
+    // getter methods for Category, Task, and Habit Collections.
     public HashMap<Integer, Category> getCategories() {
         return categoryCollection;
     }
