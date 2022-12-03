@@ -1,23 +1,50 @@
 package use_cases.tasks.edit_task;
 
 
-import entities.Task;
-
 import java.util.Calendar;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
+/**
+ * -- Application Business Layer --
+ * A data structure that stores data about the edited task that should be updated in the database. It passes data to
+ * the gateway.
+ */
 
 public class EditTaskDsRequestModel {
-    private final Integer id;
-    private final Task task;
+    private final String name;
+    private final Calendar deadline;
+    private final int id;
 
-    public EditTaskDsRequestModel(Integer id, Task task) {
+    /**
+     * Constructor
+     * @param id - the id of the task being edited.
+     * @param name - the name of the task after edition.
+     * @param deadline - the deadline of the task after edition.
+     */
+    public EditTaskDsRequestModel(int id, String name, Calendar deadline){
+        this.name = name;
         this.id = id;
-        this.task = task;
+        this.deadline = deadline;
     }
 
-    public Task getTask(){return this.task;}
+    /**
+     * @return the name of the task after edition.
+     */
+    public String getName() {
+        return name;
+    }
 
-    public int getId(){return this.id;}
+    /**
+     * @return the id of the task after edition.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @return the deadline of the task after edition.
+     */
+    public Calendar getDeadline() {
+        return deadline;
+    }
+
 }

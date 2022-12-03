@@ -1,6 +1,6 @@
 package ui;
 
-import entities.CategoryCollection;
+import entities.CategoryFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ public class TitleBar extends JPanel {
     private JButton newTask = new JButton("New Task");
     private JButton newCategory = new JButton("New Category");
 
-    public TitleBar(CategoryCollection factory) {
+    public TitleBar(CategoryFactory factory) {
         newTask.setFont(new Font("Serif", Font.PLAIN, 15));
         newCategory.setFont(new Font("Serif", Font.PLAIN, 15));
 
