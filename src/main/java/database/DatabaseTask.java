@@ -20,7 +20,7 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, E
 
 
     public DatabaseTask(DatabaseUser database){
-        this.taskCollection = database.get
+        this.taskCollection = database.getTasks();
     }
     /**
      * Saves the data in the request model to the database.

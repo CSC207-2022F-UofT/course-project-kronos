@@ -1,25 +1,26 @@
 package use_cases.categories.delete_category;
 
-import entities.Category;
-import entities.CategoryFactory;
-
 /**
- * Contains input data to delete a Category (goes from controller to use case).
+ * -- Application Business Layer --
+ *  This class is a container for the input data related to deletion of a category, it is created by the controller and
+ *  sent to the interactor/use case
  */
 public class DeleteCategoryInputData {
-    private final Category category;
+    private final Integer ID;
 
     /**
      * Constructor for a DeleteCategoryInputData object.
-     * @param category - the input category to be deleted
+     * @param ID - the input category to be deleted
      * Precondition: argument will always exist in the database (since user will select from a drop down menu to delete)
      */
-    public DeleteCategoryInputData(Category category) {
-        this.category = category;
+    public DeleteCategoryInputData(Integer ID) {
+        this.ID = ID;
     }
 
-    // getters
-    public Category getCategory() {
-        return this.category;
+    /**
+     * @return the id of the category that will be deleted.
+     */
+    public Integer getID() {
+        return this.ID;
     }
 }

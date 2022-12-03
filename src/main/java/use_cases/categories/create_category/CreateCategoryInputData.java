@@ -1,8 +1,10 @@
 package use_cases.categories.create_category;
 
-import entities.Category;
-import entities.CategoryFactory;
-
+/**
+ * -- Application Business Layer --
+ *  This class is a container for the input data related to creation of a category, it is created by the controller and
+ *  sent to the interactor/use case
+ */
 public class CreateCategoryInputData {
     // data structure class
 
@@ -20,11 +22,15 @@ public class CreateCategoryInputData {
         this.inputColour = inputColour;
     }
 
-    // getters
+    /**
+     * @return the name of the category that will be created.
+     */
     public String getName() {
         return this.inputName;
     }
-
+    /**
+     * @return the id of the category that will be created.
+     */
     public String getColour() {
         return this.inputColour;
     }
