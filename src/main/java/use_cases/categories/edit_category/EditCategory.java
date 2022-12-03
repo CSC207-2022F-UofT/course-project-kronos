@@ -3,26 +3,32 @@ package use_cases.categories.edit_category;
 import entities.Category;
 import entities.CategoryCollection;
 import entities.User;
+import use_cases.categories.create_category.CreateCategoryDsGateway;
 
 import java.util.Objects;
 
 /**
- * Edit properties (name, colour) of a Category.
+ * -- Application Business Layer --
+ * The use case Interactor that is responsible for editing a category.
  */
 public class EditCategory implements EditCategoryInputBound{
     private final EditCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
     private final Integer ID;
+    private EditCategoryDsGateway dsGateway;
 
     /**
      * Constructor for EditCategory
      * @param outputBound - outputBound for EditCategory
+     * @param dsGateway - the database gateway interface
      * @param categories - the categories of the User that's logged in
+     * @param ID - the ID of the category to be edited
      */
-    public EditCategory(EditCategoryOutputBoundary outputBound, CategoryCollection categories, Integer ID) {
+    public EditCategory(EditCategoryOutputBoundary outputBound, EditCategoryDsGateway dsGateway, CategoryCollection categories, Integer ID) {
         this.outputBound = outputBound;
         this.categories = categories;
         this.ID = ID;
+        this.dsGateway = dsGateway;
     }
 
     /**
@@ -52,13 +58,17 @@ public class EditCategory implements EditCategoryInputBound{
      * @param inputData - the input data to edit the Category properties
      * @return the output after edit.
      */
-
     @Override
     public EditCategoryOutputData edit(EditCategoryInputData inputData) {
+        Category currentCategory = categories.getItem(inputData.getId());
         if (inputData.getName().isBlank()) {
-            EditCategoryOutputData outputData = new EditCategoryOutputData("Changes not saved. Please fill " +
-                    "out all fields.");
-            return outputBound.prepareFailView(outputData);
+            String error = "Changes not saved. Please fill out all fields.";
+            EditCategoryOutputData outputData = new EditCategoryOutputData(error);
+            return outputBound.prepareFailView(error);
+        }else if(this.categories.contains(inputData.getName(), false) &&
+                inputData.getName() != currentCategory.getName()){
+            String error ="Error: This category name already exists. Please enter a new category name.";
+            return outputBound.prepareFailView(error);
         }
 
         Category category = categories.getItem(ID);
@@ -69,7 +79,10 @@ public class EditCategory implements EditCategoryInputBound{
         return outputBound.prepareSuccessView(outputData);
     }
 
-    // getters
+    /**
+     * outputBound getter
+     * @return the outputBound object
+     */
     public EditCategoryOutputBoundary getOutputBound() {
         return this.outputBound;
     }

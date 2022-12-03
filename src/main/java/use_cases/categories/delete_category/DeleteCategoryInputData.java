@@ -1,7 +1,9 @@
 package use_cases.categories.delete_category;
 
 /**
- * Contains input data to delete a Category (goes from controller to use case).
+ * -- Application Business Layer --
+ *  This class is a container for the input data related to deletion of a category, it is created by the controller and
+ *  sent to the interactor/use case
  */
 public class DeleteCategoryInputData {
     private final Integer ID;
@@ -15,7 +17,9 @@ public class DeleteCategoryInputData {
         this.ID = ID;
     }
 
-    // getters
+    /**
+     * @return the id of the category that will be deleted.
+     */
     public Integer getID() {
         return this.ID;
     }
