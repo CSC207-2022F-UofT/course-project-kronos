@@ -1,9 +1,7 @@
-package ui;
+package ui.category;
 
-import controllers.CategoryController;
-import entities.CategoryFactory;
+import entities.CategoryCollection;
 import use_cases.categories.create_category.CreateCategoryInputData;
-import use_cases.categories.create_category.CreateCategoryOutputData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
-public class CreateCategory extends JFrame implements ActionListener {
+public class CreateCategoryFrame extends JFrame implements ActionListener {
     public static String COLOURS[] = { "pink", "red", "white", "blue", "yellow", "green", "orange", "purple"};
 
-    public static void createCategory(CategoryFactory factory) {
+    public static void createCategory(CategoryCollection factory) {
         JFrame frame = new JFrame("New Category");
 
         frame.setSize(500, 300);
@@ -70,11 +68,11 @@ public class CreateCategory extends JFrame implements ActionListener {
                 CreateCategoryInputData inputData = new CreateCategoryInputData(categoryName1, colour1);
                 // this is never used, so where do we use input data since we don't have to convert anything?
 
-                CategoryController controller = new CategoryController(factory, categoryName1, colour1);
-                CreateCategoryOutputData outputData = controller.CreateCategory();
+                //CreateCategoryController controller = new CreateCategoryController(factory, categoryName1, colour1); HERE
+                //CreateCategoryOutputData outputData = controller.CreateCategoryFrame(); HERE
 
                 // create a new CategoryList - how to add it back to ToDoViewModel?
-                ToDoViewModel.update(outputData);
+                //ToDoViewModel.update(outputData); HERE
 
                 // close window
                 frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
