@@ -1,4 +1,3 @@
-
 package ui;
 
 import net.miginfocom.swing.MigLayout;

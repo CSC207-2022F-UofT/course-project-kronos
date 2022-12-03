@@ -1,66 +1,48 @@
 package use_cases.categories.create_category;
 import entities.Category;
-import entities.CategoryCollection;
-import entities.User;
+import entities.CategoryFactory;
 
-import java.util.HashMap;
-
-/**
- * -- Application Business Layer --
- * The use case Interactor that is responsible for creating a new category.
- */
 public class CreateCategory implements CreateCategoryInputBound {
     private final CreateCategoryOutputBound outputBound;
-    private final CategoryCollection categories;
-    private CreateCategoryDsGateway dsGateway;
+    private final CategoryFactory factory;
 
-    /**
-     * Constructor
-     * @param outputBound - the output boundary
-     * @param dsGateway - the database gateway interface
-     * @param categories    - the category collection of a specific user
-     */
-    public CreateCategory(CreateCategoryOutputBound outputBound, CreateCategoryDsGateway dsGateway, CategoryCollection categories) {
+    public CreateCategory(CreateCategoryOutputBound outputBound, CategoryFactory factory) {
         this.outputBound = outputBound;
-        this.categories = categories;
-        this.dsGateway = dsGateway;
+        this.factory = factory;
     }
+
 
     /**
      * Creates a new category.
      * @param inputData - the name of the category that is to be created
      * @return output data upon Category creation
      */
+
     @Override
-    public CreateCategoryOutputData create(CreateCategoryInputData inputData) {
+    public CreateCategoryOutputData edit(CreateCategoryInputData inputData) {
         if (inputData.getName().isBlank()) {
-            String error = "Error: Please enter the name of the category.";
-            return outputBound.prepareFailView(error);
-        } else if(this.categories.contains(inputData.getName(), false)){
-            String error ="Error: This category name already exists. Please enter a new category name.";
-            return outputBound.prepareFailView(error);
+            CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: Please enter the name of " +
+                    "the category.");
+            return outputBound.prepareFailView(outputData);
+        } else if(this.factory.contains(inputData.getName(), false)){
+            CreateCategoryOutputData outputData = new CreateCategoryOutputData("Error: This category name " +
+                    "already exists. Please enter a new category name.");
+            return outputBound.prepareFailView(outputData);
         }
         // no need to check for colour input cause UI will display drop down menu (no user error unless they're hackers)
 
         Category category = new Category(inputData.getName(), inputData.getColour());
-        categories.addItem(category);
+        factory.addItem(category);
         CreateCategoryOutputData outputData = new CreateCategoryOutputData(category);
         return outputBound.prepareSuccessView(outputData);
     }
 
-    /**
-     * outputBound getter
-     * @return the outputBound object
-     */
+    // getters
     public CreateCategoryOutputBound getOutputBound() {
         return this.outputBound;
     }
 
-    /**
-     * collection getter
-     * @return the category collection of the user logged in
-     */
-    public CategoryCollection getCollection() {
-        return this.categories;
+    public CategoryFactory getFactory() {
+        return this.factory;
     }
 }

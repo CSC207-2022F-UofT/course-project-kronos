@@ -1,13 +1,9 @@
 package use_cases.categories.create_category;
 
 /**
- * -- Application Business Layer --
- * This is an interface that passes the inputData to the interactor of category creation.
+ * Interface that passes the inputData to the interactor for creating a Category.
  */
+
 public interface CreateCategoryInputBound {
-    /**
-     * Create a category based on input data.
-     * @param inputData - input data including the id, name, and colour of the category to be created
-     */
-    CreateCategoryOutputData create(CreateCategoryInputData inputData); // takes in inputData and returns outputData
+    CreateCategoryOutputData edit(CreateCategoryInputData inputData); // takes in inputData and returns outputData
 }

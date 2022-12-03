@@ -1,5 +1,4 @@
-/*
-package ui.category;
+package ui;
 
 import entities.Category; // shouldn't reference entity classes?
 import entities.CommonUser;
@@ -7,13 +6,7 @@ import use_cases.categories.create_category.CreateCategoryOutputData;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-*/
-/**
- * THIS IS A PRACTISE RUN
- *//*
 
 public class ToDoViewModel extends JFrame{
 
@@ -82,4 +75,3 @@ public class ToDoViewModel extends JFrame{
 
 
 }
-*/

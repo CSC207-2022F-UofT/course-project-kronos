@@ -1,32 +1,30 @@
-package use_cases.categories.delete_category;
+package use_cases.categories.create_category.delete_category;
 
+<<<<<<< HEAD:src/main/java/use_cases/categories/create_category/delete_category/DeleteCategory.java
+import entities.CategoryFactory;
+=======
 import entities.Category;
 import entities.CategoryCollection;
+import entities.User;
+>>>>>>> origin/main:src/main/java/use_cases/categories/delete_category/DeleteCategory.java
 
-/**
- * -- Application Business Layer --
- * The use case Interactor that is responsible for deleting a category.
- */
 public class DeleteCategory implements DeleteCategoryInputBound {
     private final DeleteCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
-    private DeleteCategoryDsGateway dsGateway;
 
     /**
      * The constructor of DeleteCategory.
      * @param outputBound - the outputData that would be displayed
-     * @param dsGateway - the database gateway interface
      * @param categories - the categories of the User that's logged in
      * @return true if the CategoryCollection no longer contains category, returns false otherwise.
      */
-    public DeleteCategory(DeleteCategoryOutputBoundary outputBound, DeleteCategoryDsGateway dsGateway, CategoryCollection categories) {
+    public DeleteCategory(DeleteCategoryOutputBoundary outputBound, CategoryCollection categories) {
         this.outputBound = outputBound;
         this.categories = categories;
-        this.dsGateway = dsGateway;
     }
 
     /**
-     * Deleting the category with the given input.
+     * Deleting the category with given input.
      * @param inputData - the outputData that would be displayed
      * @return true if the CategoryCollection no longer contains category, returns false otherwise.
      */
@@ -41,19 +39,12 @@ public class DeleteCategory implements DeleteCategoryInputBound {
         return outputBound.prepareSuccessView(outputData);
     }
 
-    /**
-     * outputBound getter
-     * @return the outputBound object
-     */
+    // getters
     public DeleteCategoryOutputBoundary getOutputBound() {
         return this.outputBound;
     }
 
-    /**
-     * collection getter
-     * @return the category collection of the user logged in
-     */
-    public CategoryCollection getCollection() {
+    public CategoryCollection getFactory() {
         return this.categories;
     }
 }

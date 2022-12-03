@@ -3,9 +3,7 @@ package use_cases.categories.create_category.delete_category;
 import entities.Category;
 
 /**
- * -- Application Business Layer --
- *  This class is a container for the output data related to deletion of a category, it is created by the
- *  Interactor and sent to the Presenter.
+ * Contains output data for Category deletion.
  */
 
 public class DeleteCategoryOutputData {
@@ -22,22 +20,12 @@ public class DeleteCategoryOutputData {
         this.category = category;
     }
 
-    /**
-     * @return the message if category deletion success
-     */
+    // getters
     public String getMessage() {
         return this.message;
     }
-    /**
-     * @return the category to be deleted
-     */
+
     public Category getCategory() {
         return this.category;
-    }
-    /**
-     * @return the ID of category that's deleted
-     */
-    public int getCategoryId() {
-        return this.category.getId();
     }
 }
