@@ -57,7 +57,7 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
     }
 
     @Override
-    public boolean userExistByEmail(String email) {
+    public boolean userExistsByEmail(String email) {
         return userCollection.containsKey(email);
     }
 
