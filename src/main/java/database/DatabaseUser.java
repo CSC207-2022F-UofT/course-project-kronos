@@ -64,7 +64,7 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
 
     @Override
     public void save(CreateUserDsRequestModel requestModel) {
-        this.userCollection.put(requestModel.getEmailaddress(), requestModel.getUser());
+        this.userCollection.put(requestModel.getEmailAddress(), requestModel.getUser());
     }
 
     @Override

@@ -1,7 +1,6 @@
 package use_cases.user.create_user;
 
 import entities.CommonUser;
-
 public interface UserDataAccessInterface {
     // Check that user exists in Database
     public abstract boolean CheckUserExists(String emailAddress);

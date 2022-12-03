@@ -1,10 +1,6 @@
 package ui.user;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import entities.UserFactory;
 
 public class LoginMainPage extends JFrame {
     static JFrame mainFrame;

@@ -3,6 +3,7 @@ package use_cases.user.create_user;
 
 /**
  * It has the user's information when the user first creates account.
+ * @author happynasit
  */
 public class CreateUserInputData {
 

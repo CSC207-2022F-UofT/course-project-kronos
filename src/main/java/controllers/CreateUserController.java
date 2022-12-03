@@ -19,7 +19,7 @@ public class CreateUserController {
         this.userInput = accountGateway;
     }
 
-    CreateUserOutputData create(String firstName, String lastName, String emailAddress, String password, String repPassword) {
+    public CreateUserOutputData create(String firstName, String lastName, String emailAddress, String password, String repPassword) {
         CreateUserInputData inputData = new CreateUserInputData(emailAddress, password, firstName, lastName, repPassword);
 
         return userInput.create(inputData);

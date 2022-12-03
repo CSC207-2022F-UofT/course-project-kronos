@@ -1,5 +1,4 @@
 package use_cases.user.delete_user;
-import entities.UserFactory;
 
 /**
  * The Interactor that is responsible for deleting a user from the collections.
