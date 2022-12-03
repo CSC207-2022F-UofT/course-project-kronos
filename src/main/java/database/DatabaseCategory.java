@@ -1,33 +1,43 @@
 package database;
 
-import entities.CategoryFactory;
 import use_cases.categories.create_category.CreateCategoryDsGateway;
 import use_cases.categories.create_category.CreateCategoryDsRequestModel;
-import use_cases.categories.create_category.delete_category.DeleteCategoryDsGateway;
-import use_cases.categories.create_category.delete_category.DeleteCategoryDsRequestModel;
+import use_cases.categories.delete_category.DeleteCategoryDsGateway;
+import use_cases.categories.delete_category.DeleteCategoryDsRequestModel;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryDsRequestModel;
 
+/**
+ * External layer, database for the category objects.
+ */
+
 public class DatabaseCategory implements CreateCategoryDsGateway, DeleteCategoryDsGateway, EditCategoryDsGateway {
-
-    protected CategoryFactory collection;
-
-    public DatabaseCategory(Database database){
-        this.collection = database.currUser.getCategoryCollection();
-    }
+    /**
+     * Saves the data in the request model to the database.
+     * @param requestModel - a data structure that contains data about the new category that should be saved in database
+     */
 
     @Override
-    public void save(CreateCategoryDsRequestModel requestModel) {
-        this.collection.categories.put(requestModel.getId(), requestModel.getCategory());
+    public void saveCategory(CreateCategoryDsRequestModel requestModel) {
+
     }
 
+    /**
+     * Deletes the data in the request model from the database.
+     * @param requestModel - a data structure that contains data about the category that should be deleted from database
+     */
     @Override
-    public void save(DeleteCategoryDsRequestModel requestModel) {
-        this.collection.categories.remove(requestModel.getCategory().getId());
+    public void deleteCategory(DeleteCategoryDsRequestModel requestModel) {
+
     }
 
+    /**
+     * Edits the data in the database to match the data from the request model.
+     * @param requestModel - a data structure that contains data about the category that should be edited
+     */
     @Override
-    public void save(EditCategoryDsRequestModel requestModel) {
-        this.collection.categories.replace(requestModel.getCategory().getId(), requestModel.getCategory());
+    public void editCategory(EditCategoryDsRequestModel requestModel) {
+
     }
+
 }

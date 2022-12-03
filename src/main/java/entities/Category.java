@@ -29,41 +29,73 @@ public class Category implements Serializable {
 
 
     /**
-     * setters and getters
+     * The setter for name.
+     * @param name - the name of the category
      */
     public void setName(String name) {
         this.categoryName = name;
     }
+    /**
+     * The setter for name.
+     * @param colour - the colour of the category
+     */
     public void setColour(String colour) {
         this.colour = colour;
-    }
+    }/**
+     * The setter for name.
+     * @param state - the state of the category
+     */
     public void setVisibility(Boolean state) {
         this.visibility = state;
     }
 
+    /**
+     * The getter for name.
+     * @return - the name of the category
+     */
     public String getName() {
         return this.categoryName;
     }
+    /**
+     * The getter for colour.
+     * @return - the colour of the category
+     */
     public String getColour() {
         return this.colour;
     }
+    /**
+     * The getter for visibility.
+     * @return - the visibility state of the category
+     */
     public Boolean getVisibility() {
         return this.visibility;
     }
+    /**
+     * The getter for id.
+     * @return - the id of the category
+     */
     public int getId() {
         return this.id;
     }
+    /**
+     * The getter for tasks.
+     * @return - the tasks of the category
+     */
     public TaskFactory getTasks() {
         return this.tasks;
     }
 
     /**
-     * add a task to the category's Task Factory
+     * add a task to the category's Task Factory.
+     * @param task - the task to be added
      */
     public void addTask(Task task) {
         tasks.addItem(task);
     }
-
+    /**
+     * remove the task from the category's Task Factory.
+     * @param task - the task to be removed
+     */
     public void removeTask(Task task) {
         tasks.removeItem(task);
     }
