@@ -7,7 +7,7 @@ public interface User {
     String getLastName();
     HabitFactory getHabitCollection();
 
-    CategoryFactory getCategoryCollection();
+    CategoryCollection getCategoryCollection();
 
     TaskFactory getTaskCollection();
 

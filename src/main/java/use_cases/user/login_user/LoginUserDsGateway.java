@@ -8,4 +8,6 @@ public interface LoginUserDsGateway {
 
     boolean userExistsByEmail(String email);
     User getUser();
+
+    boolean checkPasswordsMatch(String email, String password);
 }

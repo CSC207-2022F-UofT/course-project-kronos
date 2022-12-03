@@ -1,6 +1,5 @@
 package use_cases.user.login_user;
 
-import database.Database;
 import entities.UserFactory;
 
 /**

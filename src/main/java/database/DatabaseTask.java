@@ -32,22 +32,39 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, E
         this.taskCollection.put(requestModel.getId(), requestModel.getTask());
     }
 
+    /**
+     * Delete the task from database
+     * @param requestModel
+     */
     @Override
     public void deleteTask(DeleteTaskDsRequestModel requestModel) {
         this.taskCollection.remove(requestModel.getId());
     }
 
+
+    /**
+     * Save the edited task to database
+     * @param requestModel
+     */
     @Override
     public void saveTask(EditTaskDsRequestModel requestModel) {
         this.taskCollection.replace(requestModel.getId(), requestModel.getTask());
     }
 
+    /**
+     * Update the completion status of task to database
+     * @param requestModel
+     */
     @Override
     public void saveTask(MarkCompletionDsRequestModel requestModel) {
         Task newTask = (Task) this.taskCollection.get(requestModel.getId());
         newTask.setCompleteStatus(requestModel.isCompleteStatus());
     }
 
+    /**
+     * Update the visibility of task to database
+     * @param requestModel
+     */
     @Override
     public void saveTask(MarkVisibilityDsRequestModel requestModel) {
         Task newTask = (Task) this.taskCollection.get(requestModel.getId());
