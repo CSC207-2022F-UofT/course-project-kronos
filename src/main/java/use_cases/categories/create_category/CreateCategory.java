@@ -5,13 +5,25 @@ import entities.User;
 
 import java.util.HashMap;
 
+/**
+ * -- Application Business Layer --
+ * The use case Interactor that is responsible for creating a new category.
+ */
 public class CreateCategory implements CreateCategoryInputBound {
     private final CreateCategoryOutputBound outputBound;
     private final CategoryCollection categories;
+    private CreateCategoryDsGateway dsGateway;
 
-    public CreateCategory(CreateCategoryOutputBound outputBound, CategoryCollection categories) {
+    /**
+     * Constructor
+     * @param outputBound - the output boundary
+     * @param dsGateway - the database gateway interface
+     * @param categories    - the category collection of a specific user
+     */
+    public CreateCategory(CreateCategoryOutputBound outputBound, CreateCategoryDsGateway dsGateway, CategoryCollection categories) {
         this.outputBound = outputBound;
         this.categories = categories;
+        this.dsGateway = dsGateway;
     }
 
     /**
@@ -19,9 +31,8 @@ public class CreateCategory implements CreateCategoryInputBound {
      * @param inputData - the name of the category that is to be created
      * @return output data upon Category creation
      */
-
     @Override
-    public CreateCategoryOutputData edit(CreateCategoryInputData inputData) {
+    public CreateCategoryOutputData create(CreateCategoryInputData inputData) {
         if (inputData.getName().isBlank()) {
             String error = "Error: Please enter the name of the category.";
             return outputBound.prepareFailView(error);
@@ -37,12 +48,19 @@ public class CreateCategory implements CreateCategoryInputBound {
         return outputBound.prepareSuccessView(outputData);
     }
 
-    // getters
+    /**
+     * outputBound getter
+     * @return the outputBound object
+     */
     public CreateCategoryOutputBound getOutputBound() {
         return this.outputBound;
     }
 
-    public CategoryCollection getFactory() {
+    /**
+     * collection getter
+     * @return the category collection of the user logged in
+     */
+    public CategoryCollection getCollection() {
         return this.categories;
     }
 }

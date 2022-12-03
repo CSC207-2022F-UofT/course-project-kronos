@@ -1,7 +1,8 @@
-package ui;
+package ui.category;
 
 import entities.Category;
 import entities.Task;
+import ui.ColourPalette;
 
 import javax.swing.*;
 import java.awt.*;

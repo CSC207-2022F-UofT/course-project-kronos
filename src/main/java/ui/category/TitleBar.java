@@ -1,6 +1,7 @@
-package ui;
+package ui.category;
 
 import entities.CategoryCollection;
+import ui.ColourPalette;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,6 +43,6 @@ public class TitleBar extends JPanel {
         constraints.gridy = 1;
         this.add(newCategory, constraints);
 
-        newCategory.addActionListener(e -> CreateCategory.createCategory(factory));
+        newCategory.addActionListener(e -> CreateCategoryFrame.createCategory(factory));
     }
 }
