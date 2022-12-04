@@ -1,9 +1,16 @@
 package ui.category;
 
+import controllers.category.CreateCategoryController;
+import controllers.category.DeleteCategoryController;
+import controllers.category.EditCategoryController;
 import entities.Category;
 import entities.CategoryCollection;
 import entities.Task;
 import ui.ColourPalette;
+import use_cases.categories.edit_category.EditCategory;
+import use_cases.categories.edit_category.EditCategoryDsGateway;
+import use_cases.categories.edit_category.EditCategoryInputBound;
+import use_cases.categories.edit_category.EditCategoryOutputBoundary;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,8 +34,20 @@ public class ToDoScreen extends JFrame implements ActionListener {
     private static JLabel title;
     private JButton newCategory;
     private JButton menu;
+    private JButton edit;
+    private CreateCategoryController createController;
+    private EditCategoryOutputBoundary editCategoryPresenter;
+    private EditCategoryDsGateway editDsGateway;
+    private DeleteCategoryController deleteController;
 
-    public ToDoScreen(CategoryCollection categories) {
+    public ToDoScreen(CategoryCollection categories, CreateCategoryController createController,
+                      EditCategoryOutputBoundary editCategoryPresenter, EditCategoryDsGateway editDsGateway,
+                      DeleteCategoryController deleteController) {
+        this.createController = createController;
+        this.editCategoryPresenter = editCategoryPresenter;
+        this.editDsGateway = editDsGateway;
+        this.deleteController = deleteController;
+
         this.categories = categories;
         toDoFrame = new JFrame("To Do List");
         toDoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,8 +93,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.gridy = 0;
         header.add(menu, c);
 
-        newCategory = new JButton("New Category");
-
         /**
          * Adding table headlining row for tasks
          */
@@ -112,13 +129,15 @@ public class ToDoScreen extends JFrame implements ActionListener {
         int y = 3;
         for (Integer id: categories.categories.keySet()) {
             Category cat = categories.getItem(id);
-            Color colour = ColourPalette.getColour(cat.getColour());
+            Color colour = ColourPalette.getColour(cat.getColour()); // to display
             // new constraints for gridlayout
             GridBagConstraints c = new GridBagConstraints();
             c.gridx = 0;
             c.gridy = y;
             c.fill = GridBagConstraints.HORIZONTAL;
-            this.body.add(new JLabel(cat.getName()), c);
+            edit = new JButton(cat.getId() + ": " + cat.getName());
+            edit.setAlignmentX(Component.LEFT_ALIGNMENT);
+            this.body.add(edit, c);
             y++;
 
             // loop through all the tasks in this category
@@ -141,15 +160,31 @@ public class ToDoScreen extends JFrame implements ActionListener {
             c.fill = GridBagConstraints.HORIZONTAL;
             c.gridx = 0;
             c.gridy = y;
+
             this.body.add(new JButton("New Task for " + cat.getName()), c);
             y++;
+        }
+    }
+
+    public void actionPerformed(ActionEvent evt) {
+        if (evt.getSource() == newCategory){
+            new CreateCategoryScreen(createController);
+        }
+        if (evt.getSource() == menu){
+            // new Menu(); leads to menu page, still needs to be implemented
+        }
+        // what if newTask button is clicked
+
+        // what if someone clicks the edit button
+        if (evt.getSource() == edit){
+            // how to get the specific category that button belongs to? how to associate these two objects?
+            int id = Integer.parseInt(edit.getText().split(":")[0]);
+            Category cat = categories.getItem(id);
+            EditCategoryInputBound editCategory = new EditCategory(editCategoryPresenter, editDsGateway, categories, id);
+            EditCategoryController editController = new EditCategoryController(editCategory);
+            new CategoryScreen(editController, deleteController, id, cat.getName(), cat.getColour());
         }
 
     }
 
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }

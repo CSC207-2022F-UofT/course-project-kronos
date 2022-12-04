@@ -29,7 +29,7 @@ public class EditTask implements EditTaskInputBoundary {
         if (inputData.getInputName().isBlank() || inputData.getInputDeadline().isLenient()){
             EditTaskOutputData outputData = new EditTaskOutputData("Changes not saved. " +
                     "Please fill all required fields.");
-            return outputBoundary.prepareFailView(outputData);
+            // return outputBoundary.prepareFailView(outputData);
         }
         int id = inputData.getTaskId();
         Task taskBeEdited = taskFactory.getTasks().get(id);
