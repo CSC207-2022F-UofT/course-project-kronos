@@ -2,6 +2,8 @@ package ui.category;
 
 import entities.Category;
 import entities.CategoryCollection;
+import entities.Task;
+import ui.ColourPalette;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,10 +58,11 @@ public class ToDoScreen extends JFrame implements ActionListener {
         header.add(title, c);
 
         /**
-         * Creating and setting the placement of the "create" buttons and menu button
+         * Creating and setting the placement of the "create" button and menu button
          */
 
         newCategory = new JButton("New Category");
+        c.gridwidth = 1;
         c.ipady = 1;
         c.gridx = 2;
         c.gridy = 0;
@@ -94,7 +97,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.gridy = 0;
         header.add(completion, c);
 
-
+        updateList();
 
     }
 
@@ -109,8 +112,37 @@ public class ToDoScreen extends JFrame implements ActionListener {
         int y = 3;
         for (Integer id: categories.categories.keySet()) {
             Category cat = categories.getItem(id);
+            Color colour = ColourPalette.getColour(cat.getColour());
             // new constraints for gridlayout
+            GridBagConstraints c = new GridBagConstraints();
+            c.gridx = 0;
+            c.gridy = y;
+            c.fill = GridBagConstraints.HORIZONTAL;
+            this.body.add(new JLabel(cat.getName()), c);
+            y++;
 
+            // loop through all the tasks in this category
+            for (Task task: cat.getTasks().convertToArray()){
+                c.gridwidth = 1;
+                c.gridx = 0;
+                c.gridy = y;
+                this.body.add(new JLabel(task.getName()), c);
+                y++;
+                c.gridx = 1;
+                c.gridy = y;
+                this.body.add(new JLabel(task.getDeadline().toString()), c);
+                y++;
+                c.gridx = 2;
+                c.gridy = y;
+                this.body.add(new JCheckBox(new CheckTask()), c);
+                y++;
+            }
+            // add the newTask button
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.gridx = 0;
+            c.gridy = y;
+            this.body.add(new JButton("New Task for " + cat.getName()), c);
+            y++;
         }
 
     }
