@@ -20,7 +20,7 @@ public class TestHabitFactory {
 
     @Test(timeout = 500)
     public void testHabitAddItem() {
-        Habit h = new Habit("Run 5 Kms", "weekly");
+        Habit h = new Habit("Run 5 Kms", "weekly", true);
         HashMap<String, Habit> testFactory = new HashMap<>();
         testFactory.put(h.getName(), h);
         HabitFactory hFactory = new HabitFactory();
@@ -30,9 +30,9 @@ public class TestHabitFactory {
 
     @Test(timeout = 500)
     public void testHabitRemoveItem() {
-        Habit h1 = new Habit("Run 5 Kms", "weekly");
-        Habit h2 = new Habit("Read a book", "daily");
-        Habit h3 = new Habit("Drink Water", "daily");
+        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h2 = new Habit("Read a book", "daily", true);
+        Habit h3 = new Habit("Drink Water", "daily", false);
         HashMap<String, Habit> testFactory = new HashMap<>();
         testFactory.put(h1.getName(), h1);
         testFactory.put(h3.getName(), h3);
@@ -46,7 +46,7 @@ public class TestHabitFactory {
 
     @Test(timeout = 500)
     public void testHabitRemoveItemEmpty() {
-        Habit h1 = new Habit("Run 5 Kms", "weekly");
+        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         hFactory.removeItem(h1);
@@ -55,9 +55,9 @@ public class TestHabitFactory {
 
     @Test(timeout = 500)
     public void testHabitUpdateKey() {
-        Habit h1 = new Habit("Run 5 Kms", "weekly");
-        Habit h2 = new Habit("Read a book", "daily");
-        Habit h3 = new Habit("Drink Water", "daily");
+        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h2 = new Habit("Read a book", "daily", true);
+        Habit h3 = new Habit("Drink Water", "daily", false);
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         hFactory.addItem(h2);
@@ -73,9 +73,9 @@ public class TestHabitFactory {
 
     @Test(timeout = 500)
     public void testGetCollection() {
-        Habit h1 = new Habit("Run 5 Kms", "weekly");
-        Habit h2 = new Habit("Read a book", "daily");
-        Habit h3 = new Habit("Drink Water", "daily");
+        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h2 = new Habit("Read a book", "daily", true);
+        Habit h3 = new Habit("Drink Water", "daily", false);
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         hFactory.addItem(h2);
@@ -86,9 +86,9 @@ public class TestHabitFactory {
 
     @Test(timeout = 500)
     public void testConvertToArray() {
-        Habit h1 = new Habit("Run 5 Kms", "weekly");
-        Habit h2 = new Habit("Read a book", "daily");
-        Habit h3 = new Habit("Drink Water", "daily");
+        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
+        Habit h2 = new Habit("Read a book", "daily", true);
+        Habit h3 = new Habit("Drink Water", "daily", false);
         HabitFactory hFactory = new HabitFactory();
         hFactory.addItem(h1);
         hFactory.addItem(h2);
