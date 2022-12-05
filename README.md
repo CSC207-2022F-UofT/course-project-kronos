@@ -20,4 +20,8 @@ As students, we have to balance and keep track of various things at the same tim
 
 ## How to Use
 
-## 
+## User Interface
+
+### 1. User Landing Page
+
+![front page]([front page.png](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/aef88c06d14816a872dbdf8115f568220f87cd5c/front%20page.png))
