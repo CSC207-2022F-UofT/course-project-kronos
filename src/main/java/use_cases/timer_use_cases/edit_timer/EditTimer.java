@@ -1,16 +1,14 @@
 package use_cases.timer_use_cases.edit_timer;
 
-import use_cases.tasks.edit_task.EditTaskOutputBoundary;
-
 /**
  * Edit properties of the whole timer. Properties include: work timer minutes and rest timer minutes.
  */
 
 public class EditTimer {
 
-    private final EditTaskOutputBoundary outputBoundary;
+    private final EditTimerOutputBoundary outputBoundary;
 
-    public EditTimer (EditTaskOutputBoundary outputBoundary) {
+    public EditTimer (EditTimerOutputBoundary outputBoundary) {
         this.outputBoundary = outputBoundary;
     }
 
@@ -26,7 +24,7 @@ public class EditTimer {
     public EditTimerOutputData edit(EditTimerInputData inputData) {
         //If one of the input is empty or containing things not integer.
         EditTimerOutputData outputData = new EditTimerOutputData();
-        return outputBoundary.prepareFailView(String.valueOf(outputData));
+        return outputBoundary.prepareFailView(outputData);
     }
 
 }

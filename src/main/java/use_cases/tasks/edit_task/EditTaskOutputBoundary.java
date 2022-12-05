@@ -13,9 +13,11 @@ public interface EditTaskOutputBoundary {
     EditTaskOutputData prepareSuccessView(EditTaskOutputData outputData);
     /**
      * This method passes output data from the Interactor to the Presenter if the edition of task is failed.
+     *
      * @param error - the error message showed.
      * @return output data.
      */
     EditTaskOutputData prepareFailView(String error);
 
 }
+
