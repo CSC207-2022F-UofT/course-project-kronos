@@ -19,10 +19,16 @@ public class DeleteUserOutputData {
         this.user = user;
     }
 
+    /**
+     * @return the message based on the condition
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * @return the user object
+     */
     public CommonUser getUser(){return user;}
 
 }

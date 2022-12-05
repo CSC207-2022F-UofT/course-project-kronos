@@ -1,51 +1,55 @@
 package use_cases.user.create_user;
 
 
+/**
+ * It has the user's information when the user first creates account.
+ * @author happynasit
+ */
 public class CreateUserInputData {
 
-    private final String emailaddress;
+    private final String emailAddress;
     private final String password;
-    private final String firstname;
-    private final String lastname;
-    private final String repeatpassword;
+    private final String firstName;
+    private final String lastName;
+    private final String repeatPassword;
 
     /**
      * Constructor for a CreateUserInputData object.
-     * @param emailaddress - the input email address
+     * @param emailAddress - the input email address
      * @param password - the input password
-     * @param firstname - the input first name
-     * @param lastname - the input last name
-     * @param repeatpassword - repeat the password
+     * @param firstName - the input first name
+     * @param lastName - the input last name
+     * @param repeatPassword - repeat the password
      */
-    public CreateUserInputData(String emailaddress, String password, String firstname, String lastname, String repeatpassword) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.emailaddress = emailaddress;
+    public CreateUserInputData(String emailAddress, String password, String firstName, String lastName, String repeatPassword) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
         this.password = password;
-        this.repeatpassword = repeatpassword;
+        this.repeatPassword = repeatPassword;
     }
 
     /**
      * @return the email address attribute of a CreateUserInputData object.
      */
-    public String getEmailaddress() {
-        return emailaddress;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
 
     /**
      * @return the firstname attribute of a CreateUserInputData object.
      */
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
 
     /**
      * @return the lastname attribute of a CreateUserInputData object.
      */
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
 
@@ -61,5 +65,5 @@ public class CreateUserInputData {
      * that is entered again.
      *
      */
-    public String getRepeatpassword() {return repeatpassword;}
+    public String getRepeatPassword() {return repeatPassword;}
 }
