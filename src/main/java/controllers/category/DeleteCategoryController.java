@@ -1,6 +1,6 @@
 package controllers.category;
 
-import use_cases.categories.delete_category.DeleteCategoryInputBound;
+import use_cases.categories.delete_category.DeleteCategoryInputBoundary;
 import use_cases.categories.delete_category.DeleteCategoryInputData;
 import use_cases.categories.delete_category.DeleteCategoryOutputData;
 
@@ -9,10 +9,10 @@ import use_cases.categories.delete_category.DeleteCategoryOutputData;
  * The Controller that passes input data from the UI to the use case that deletes a category.
  */
 public class DeleteCategoryController {
-    final private DeleteCategoryInputBound inputBound;
+    final private DeleteCategoryInputBoundary inputBound;
 
 
-    public DeleteCategoryController(DeleteCategoryInputBound categoryGateway) {
+    public DeleteCategoryController(DeleteCategoryInputBoundary categoryGateway) {
         this.inputBound = categoryGateway;
     }
 

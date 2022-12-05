@@ -7,7 +7,7 @@ import entities.CategoryCollection;
  * -- Application Business Layer --
  * The use case Interactor that is responsible for deleting a category.
  */
-public class DeleteCategory implements DeleteCategoryInputBound {
+public class DeleteCategory implements DeleteCategoryInputBoundary {
     private final DeleteCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
     private DeleteCategoryDsGateway dsGateway;

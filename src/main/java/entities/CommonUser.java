@@ -85,6 +85,12 @@ public class CommonUser implements User{
         return this.habitCollection;
     }
 
+    @Override
+    public CategoryCollection getCategoryCollection(){
+        // returns the user's habit collection
+        return this.categoryCollection;
+    }
+
     // SETTER METHODS
 
     public void setPassword(String password){

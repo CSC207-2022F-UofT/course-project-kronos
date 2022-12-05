@@ -2,8 +2,6 @@ package use_cases.categories.edit_category;
 
 import entities.Category;
 import entities.CategoryCollection;
-import entities.User;
-import use_cases.categories.create_category.CreateCategoryDsGateway;
 
 import java.util.Objects;
 
@@ -11,7 +9,7 @@ import java.util.Objects;
  * -- Application Business Layer --
  * The use case Interactor that is responsible for editing a category.
  */
-public class EditCategory implements EditCategoryInputBound{
+public class EditCategory implements EditCategoryInputBoundary {
     private final EditCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
     private final Integer ID;

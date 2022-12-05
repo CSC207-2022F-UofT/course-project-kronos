@@ -7,13 +7,13 @@ import use_cases.categories.create_category.*;
  * The Controller that passes input data from the UI to the use case that creates a new category.
  */
 public class CreateCategoryController {
-    final CreateCategoryInputBound inputBound;
+    final CreateCategoryInputBoundary inputBound;
 
     /**
      * Constructor
      * @param categoryGateway - Input Boundary Interface
      */
-    public CreateCategoryController(CreateCategoryInputBound categoryGateway) {
+    public CreateCategoryController(CreateCategoryInputBoundary categoryGateway) {
         this.inputBound = categoryGateway;
     }
 

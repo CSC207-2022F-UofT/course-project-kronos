@@ -1,16 +1,18 @@
 package ui.category;
 
 import controllers.category.*;
+import database.Database;
 import database.DatabaseCategory;
 import entities.*;
 import use_cases.categories.create_category.*;
 import use_cases.categories.delete_category.DeleteCategory;
 import use_cases.categories.delete_category.DeleteCategoryDsGateway;
-import use_cases.categories.delete_category.DeleteCategoryInputBound;
+import use_cases.categories.delete_category.DeleteCategoryInputBoundary;
 import use_cases.categories.delete_category.DeleteCategoryOutputBoundary;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryOutputBoundary;
 
+import javax.xml.crypto.Data;
 import java.util.Calendar;
 
 public class Main {
@@ -30,8 +32,6 @@ public class Main {
     public static TimerTomato timer = new TimerTomato();
 
     public static void main(String[] args){
-        task1.setTaskCategory("Category 1");
-        task2.setTaskCategory("Category 1");
         tasks.addItem(task1);
         tasks.addItem(task2);
         category1.addTask(task1);
@@ -39,21 +39,22 @@ public class Main {
         categories.addItem(category1);
         categories.addItem(category2);
 
+        Database database = new Database("./myFileName"); // fake file path
 
         // Create Category Use Case
-        CreateCategoryOutputBound createCategoryPresenter = new CreateCategoryPresenter();
-        CreateCategoryDsGateway dsGateway = new DatabaseCategory();
-        CreateCategoryInputBound createCategory = new CreateCategory(createCategoryPresenter, dsGateway, categories);
+        CreateCategoryOutputBoundary createCategoryPresenter = new CreateCategoryPresenter();
+        CreateCategoryDsGateway dsGateway = new DatabaseCategory(database);
+        CreateCategoryInputBoundary createCategory = new CreateCategory(createCategoryPresenter, dsGateway, categories);
         CreateCategoryController createCategoryController = new CreateCategoryController(createCategory);
 
         // Edit Category Use Case
         EditCategoryOutputBoundary editCategoryPresenter = new EditCategoryPresenter();
-        EditCategoryDsGateway editDsGateway = new DatabaseCategory();
+        EditCategoryDsGateway editDsGateway = new DatabaseCategory(database);
 
         // Delete Category Use Case
         DeleteCategoryOutputBoundary deleteCategoryPresenter = new DeleteCategoryPresenter();
-        DeleteCategoryDsGateway deleteDsGateway = new DatabaseCategory();
-        DeleteCategoryInputBound deleteCategory = new DeleteCategory(deleteCategoryPresenter, deleteDsGateway, categories);
+        DeleteCategoryDsGateway deleteDsGateway = new DatabaseCategory(database);
+        DeleteCategoryInputBoundary deleteCategory = new DeleteCategory(deleteCategoryPresenter, deleteDsGateway, categories);
         DeleteCategoryController deleteCategoryController = new DeleteCategoryController(deleteCategory);
 
         new ToDoScreen(categories, createCategoryController, editCategoryPresenter, editDsGateway, deleteCategoryController);

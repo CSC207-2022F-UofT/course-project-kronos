@@ -6,6 +6,7 @@ public interface User {
     String getFirstName();
     String getLastName();
     HabitFactory getHabitCollection();
+    CategoryCollection getCategoryCollection();
 
     boolean passwordStrength();
     boolean check_characters();
