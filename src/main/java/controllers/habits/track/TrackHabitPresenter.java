@@ -1,7 +1,5 @@
 package controllers.habits.track;
 
-import controllers.habits.HabitCreationFailed;
-import use_cases.habits.create_habit.CreateHabitOutputData;
 import use_cases.habits.track_habit.TrackHabitOutputBoundary;
 import use_cases.habits.track_habit.TrackHabitOutputData;
 

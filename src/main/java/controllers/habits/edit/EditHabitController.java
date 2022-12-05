@@ -1,7 +1,5 @@
 package controllers.habits.edit;
 
-import use_cases.habits.create_habit.CreateHabitInputData;
-import use_cases.habits.create_habit.CreateHabitOutputData;
 import use_cases.habits.edit_habit.EditHabitInputBoundary;
 import use_cases.habits.edit_habit.EditHabitInputData;
 import use_cases.habits.edit_habit.EditHabitOutputData;
@@ -24,12 +22,13 @@ public class EditHabitController {
     }
 
     /**
-     * @param name - The name of habit.
+     * @param oldName - The name of habit before editing.
+     * @param newName - The name of habit after editing.
      * @param type - The type of habit.
      * @return returns the output data after creation.
      */
-    public EditHabitOutputData edit(String name, String type){
-        EditHabitInputData inputData = new EditHabitInputData(name, type);
+    public EditHabitOutputData edit(String oldName, String newName, String type){
+        EditHabitInputData inputData = new EditHabitInputData(oldName, newName, type);
         return userInput.edit(inputData);
     }
 }

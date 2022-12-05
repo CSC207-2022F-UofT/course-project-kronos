@@ -3,6 +3,7 @@ import entities.CommonUser;
 
 /**
  *  This class is a container for the output data related to creation of user
+ * @author happynasit
  */
 public class CreateUserOutputData {
     private final String message;
@@ -26,10 +27,16 @@ public class CreateUserOutputData {
         this.message = null;
     }
 
+    /**
+     * @return the message that it shows based on the conditions
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * @return the user's user object
+     */
     public CommonUser getUser() {
         return user;
     }

@@ -9,12 +9,12 @@ public class LoginPage extends JFrame {
     private JTextField textField;
 
     // strings
-    public String emailAddress;
+    public String emailaddress;
     public String password_;
 
     // buttons
-    public JButton loginButton;
-    public JButton createAccountButton;
+    public JButton loginbutton;
+    public JButton createaccountbutton;
 
     // labels to identify the fields
     private JLabel emailLabel;
@@ -47,13 +47,13 @@ public class LoginPage extends JFrame {
 
 
         // creating new button
-        loginButton = new JButton("Login");
-        createAccountButton = new JButton("Create Account!");
+        loginbutton = new JButton("Login");
+        createaccountbutton = new JButton("Create Account!");
 
 
         // creating the text fields
         emailAddressField = new JFormattedTextField(emailFormat);
-        emailAddressField.setValue(emailAddress);
+        emailAddressField.setValue(emailaddress);
         emailAddressField.setColumns(10);
 
         passwordField = new JFormattedTextField(passwordFormat);

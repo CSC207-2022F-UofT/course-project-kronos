@@ -9,8 +9,8 @@ public class App {
         SwingUtilities.invokeLater(new Runnable() {
 
             public void run() {
-                CreateAccountPage signUp = new CreateAccountPage();
-                signUp.createAccountPage();
+                CreateAccountPage signup = new CreateAccountPage();
+                signup.createAccountPage();
             }
         });
     }
