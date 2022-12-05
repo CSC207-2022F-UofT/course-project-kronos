@@ -10,19 +10,19 @@ import java.util.Calendar;
 public class EditTaskOutputData {
     private final int taskId;
     private final String taskName;
-    private final Calendar taskDeadline;
+    private final boolean completionStatus;
 
     /**
      * A constructor that is used only when a task is successfully edited.
      *
      * @param taskId       - the id of the task that is being edited.
      * @param taskName     - the name of the task after edition.
-     * @param taskDeadline - the deadline of the task after edition.
+     * @param completionStatus - the deadline of the task after edition.
      */
-    public EditTaskOutputData(int taskId, String taskName, Calendar taskDeadline) {
+    public EditTaskOutputData(int taskId, String taskName, boolean completionStatus) {
         this.taskId = taskId;
         this.taskName = taskName;
-        this.taskDeadline = taskDeadline;
+        this.completionStatus = completionStatus;
     }
 
 
@@ -34,10 +34,10 @@ public class EditTaskOutputData {
     }
 
     /**
-     * @return the deadline of the task after edition.
+     * @return the completion status of the task.
      */
-    public Calendar getTaskDeadline() {
-        return taskDeadline;
+    public boolean isCompletionStatus() {
+        return completionStatus;
     }
 
     /**

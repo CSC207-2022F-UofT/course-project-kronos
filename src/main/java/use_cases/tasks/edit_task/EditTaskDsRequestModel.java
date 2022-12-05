@@ -11,19 +11,19 @@ import java.util.Calendar;
 
 public class EditTaskDsRequestModel {
     private final String name;
-    private final Calendar deadline;
+    private final boolean completionStatus;
     private final int id;
 
     /**
      * Constructor
      * @param id - the id of the task being edited.
      * @param name - the name of the task after edition.
-     * @param deadline - the deadline of the task after edition.
+     * @param completionStatus - the completionStatus of the task after edition.
      */
-    public EditTaskDsRequestModel(int id, String name, Calendar deadline){
+    public EditTaskDsRequestModel(int id, String name, boolean completionStatus){
         this.name = name;
         this.id = id;
-        this.deadline = deadline;
+        this.completionStatus = completionStatus;
     }
 
     /**
@@ -41,10 +41,9 @@ public class EditTaskDsRequestModel {
     }
 
     /**
-     * @return the deadline of the task after edition.
+     * @return the completion status of the task.
      */
-    public Calendar getDeadline() {
-        return deadline;
+    public boolean isCompletionStatus() {
+        return completionStatus;
     }
-
 }

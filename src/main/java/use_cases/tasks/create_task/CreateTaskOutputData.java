@@ -10,18 +10,15 @@ import java.util.Calendar;
 public class CreateTaskOutputData {
     private final int taskId;
     private final String taskName;
-    private final Calendar taskDeadline;
 
     /**
      * A constructor that is used only when a task is successfully created.
      * @param taskId - the id of the task created.
      * @param taskName - the name of the task created.
-     * @param taskDeadline - the deadline of the task created.
      */
-    public CreateTaskOutputData(int taskId, String taskName, Calendar taskDeadline) {
+    public CreateTaskOutputData(int taskId, String taskName) {
         this.taskId = taskId;
         this.taskName = taskName;
-        this.taskDeadline = taskDeadline;
     }
 
     /**
@@ -38,10 +35,4 @@ public class CreateTaskOutputData {
         return taskName;
     }
 
-    /**
-     * @return the deadline of the task created.
-     */
-    public Calendar getTaskDeadline() {
-        return taskDeadline;
-    }
 }
