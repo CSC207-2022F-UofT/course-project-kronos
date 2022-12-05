@@ -1,5 +1,5 @@
 package ui.habits;
-import controllers.habits.edit.EditHabitController;
+import controllers.habits.EditHabitController;
 
 import javax.swing.*;
 import java.awt.*;

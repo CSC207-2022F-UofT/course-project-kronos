@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controllers.habits.create.CreateHabitController;
+import controllers.habits.CreateHabitController;
 
 public class CreateHabitScreen extends JFrame implements ActionListener {
 

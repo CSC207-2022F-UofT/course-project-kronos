@@ -1,7 +1,6 @@
 package ui.habits;
 
-import controllers.habits.track.TrackHabitController;
-import database.DatabaseHabit;
+import controllers.habits.TrackHabitController;
 
 import javax.swing.*;
 import java.awt.*;
