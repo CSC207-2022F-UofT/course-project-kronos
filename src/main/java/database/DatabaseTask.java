@@ -70,4 +70,8 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, E
         Task newTask = (Task) this.taskCollection.get(requestModel.getId());
         newTask.setVisibility(requestModel.getVisibility());
     }
+
+
+
+    
 }
