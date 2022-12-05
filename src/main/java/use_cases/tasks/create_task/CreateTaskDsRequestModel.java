@@ -14,8 +14,6 @@ import static java.lang.Boolean.TRUE;
 public class CreateTaskDsRequestModel {
     private final String name;
     private final boolean completeStatus = FALSE;
-    private final boolean visibility = TRUE;
-    private final String taskCategory;
     private final Calendar deadline;
     private final int id;
 
@@ -28,7 +26,6 @@ public class CreateTaskDsRequestModel {
     public CreateTaskDsRequestModel(int id, String name, Calendar deadline) {
         this.name = name;
         this.deadline = deadline;
-        this.taskCategory = null;
         this.id = id;
     }
 
@@ -52,4 +49,5 @@ public class CreateTaskDsRequestModel {
     public int getId() {
         return id;
     }
+
 }
