@@ -3,9 +3,12 @@ package entities;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Factory class for habit entity.
+ */
 public class HabitFactory extends Factory<Habit>{
 
-    public HashMap<String, Habit> habitCollection;
+    private final HashMap<String, Habit> habitCollection;
 
     /**
      * The constructor of the class HabitFactory.
@@ -60,7 +63,7 @@ public class HabitFactory extends Factory<Habit>{
             for (String key : this.habitCollection.keySet()) {
                 habitList.add(this.habitCollection.get(key));
             }
-        } // else don't populate the list
+        }
         return habitList;
     }
 }
