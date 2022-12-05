@@ -8,7 +8,7 @@ public class UserExample {
 
     static TaskFactory tFactory = new TaskFactory();
 
-    static CategoryCollection cFactory =  new CategoryCollection();
+    static CategoryFactory cFactory =  new CategoryFactory();
 
     static TimerTomato t = new TimerTomato();
 

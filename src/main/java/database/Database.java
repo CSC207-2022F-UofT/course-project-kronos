@@ -1,8 +1,7 @@
 package database;
 
-import entities.CommonUser;
 import entities.User;
-import use_cases.user.create_user.UserDataAccessInterface;
+import use_cases.user.UserDataAccessInterface;
 
 import java.io.*;
 
@@ -10,25 +9,27 @@ import java.util.HashMap;
 
 public class Database implements UserDataAccessInterface {
 
-    private HashMap<String, User> collections;
+    protected HashMap<String, User> userCollection;
     public String filePath;
 
-    public CommonUser currUser;
+    public User currUser;
 
     public Database(String filepath){
         this.filePath = filepath;
-        this.currUser = null;
+
+        // by default all other parameters are set to null
+
         try {
             FileInputStream file = new FileInputStream(filepath);
             ObjectInputStream ois = new ObjectInputStream(file);
 
-            this.collections = (HashMap<String, User>) ois.readObject();
+            this.userCollection = (HashMap<String, User>) ois.readObject();
         } catch(IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public static void WriteData(HashMap<String, CommonUser> data, String filePath) {
+    public static void WriteData(HashMap<String, User> data, String filePath) {
         try {
             // Saving of object in a file
             FileOutputStream file = new FileOutputStream
@@ -48,21 +49,16 @@ public class Database implements UserDataAccessInterface {
 
     @Override
     public boolean CheckUserExists(String emailAddress) {
-        return this.collections.containsKey(emailAddress);
+        return this.userCollection.containsKey(emailAddress);
     }
 
     @Override
-    public CommonUser LoginUser(String emailAddress, String password) {
-        if (emailAddress.equals(collections.get(emailAddress).getEmailAddress())){
-            this.currUser = (CommonUser) collections.get(emailAddress);
+    public User LoginUser(String emailAddress, String password) {
+        if (emailAddress.equals(userCollection.get(emailAddress).getEmailAddress())){
+            this.currUser = userCollection.get(emailAddress);
             return this.currUser;
         }
         return null;
-    }
-
-    @Override
-    public void UpdateUser(CommonUser user) {
-
     }
 
     @Override
@@ -72,23 +68,18 @@ public class Database implements UserDataAccessInterface {
 
     @Override
     public void UpdateUser(User user) {
-        this.collections.replace(user.getEmailAddress(), user);
+        this.userCollection.replace(user.getEmailAddress(), user);
 
     }
 
     @Override
     public void DeleteUser(String emailAddress) {
-        this.collections.remove(emailAddress);
-    }
-
-    @Override
-    public void AddUser(CommonUser user) {
-
+        this.userCollection.remove(emailAddress);
     }
 
     @Override
     public void AddUser(User user) {
-        this.collections.put(user.getEmailAddress(), user);
+        this.userCollection.put(user.getEmailAddress(), user);
     }
 }
 

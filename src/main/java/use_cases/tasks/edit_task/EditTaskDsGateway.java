@@ -1,6 +1,13 @@
 package use_cases.tasks.edit_task;
 
-// Use case Layer
+/**
+ * -- Application Business Layer --
+ * The database gateway for editTask use case.
+ */
 public interface EditTaskDsGateway {
-    void save(EditTaskDsRequestModel requestModel);
+    /**
+     * Saves the data about the task after edition to the database.
+     * @param requestModel - a data structure that contains data about the task after edition.
+     */
+    void saveTask(EditTaskDsRequestModel requestModel);
 }
