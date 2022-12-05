@@ -170,7 +170,7 @@ public class TimerScreen extends JFrame
         timerPanel.add(delayRemainingLabel, "alignx center");
 
         // Label not shown.
-        WorkTimerSet = new JLabel();
+        WorkTimerSet = new JLabel("Work Timer");
         WorkTimerSet.setForeground(Color.white);
         WorkTimerSet.setVisible(true);
         WorkTimerSet.setFont(formBTStyles);
@@ -181,7 +181,7 @@ public class TimerScreen extends JFrame
         timerPanel.add(workText, "alignx center, split 3");
 
         //Label not shown.
-        RestTimerSet = new JLabel();
+        RestTimerSet = new JLabel("Rest Timer");
         RestTimerSet.setForeground(Color.white);
         RestTimerSet.setVisible(true);
         RestTimerSet.setFont(formBTStyles);
