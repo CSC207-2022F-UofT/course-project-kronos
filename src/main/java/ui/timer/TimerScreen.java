@@ -1,5 +1,5 @@
 
-package ui;
+package ui.timer;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -169,8 +169,8 @@ public class TimerScreen extends JFrame
         delayRemainingLabel.setFont(delayLabelStyles);
         timerPanel.add(delayRemainingLabel, "alignx center");
 
-        // Label not shown.
-        WorkTimerSet = new JLabel();
+        // Work Timer Label.
+        WorkTimerSet = new JLabel("Work Timer");
         WorkTimerSet.setForeground(Color.white);
         WorkTimerSet.setVisible(true);
         WorkTimerSet.setFont(formBTStyles);
@@ -180,8 +180,8 @@ public class TimerScreen extends JFrame
         workText.setPreferredSize(new Dimension(1,50));
         timerPanel.add(workText, "alignx center, split 3");
 
-        //Label not shown.
-        RestTimerSet = new JLabel();
+        // Rest Timer Label.
+        RestTimerSet = new JLabel("Rest Timer");
         RestTimerSet.setForeground(Color.white);
         RestTimerSet.setVisible(true);
         RestTimerSet.setFont(formBTStyles);
