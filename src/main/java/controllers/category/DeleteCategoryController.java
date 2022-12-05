@@ -1,8 +1,8 @@
 package controllers.category;
 
-import use_cases.categories.delete_category.DeleteCategoryInputBound;
-import use_cases.categories.delete_category.DeleteCategoryInputData;
-import use_cases.categories.delete_category.DeleteCategoryOutputData;
+import use_cases.categories.create_category.delete_category.DeleteCategoryInputBound;
+import use_cases.categories.create_category.delete_category.DeleteCategoryInputData;
+import use_cases.categories.create_category.delete_category.DeleteCategoryOutputData;
 
 /**
  * -- Interface Adaptor Layer --

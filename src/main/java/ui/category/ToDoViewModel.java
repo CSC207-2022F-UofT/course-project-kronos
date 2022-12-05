@@ -1,7 +1,6 @@
 /*
 package ui.category;
 
-import entities.Category; // shouldn't reference entity classes?
 import entities.CommonUser;
 import use_cases.categories.create_category.CreateCategoryOutputData;
 
@@ -30,8 +29,8 @@ public class ToDoViewModel extends JFrame{
         frame.setSize(dimension);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        title = new TitleBar(user.getCategoryCollection());
-        ArrayList<Category> categories = user.getCategoryCollection().convertToArray();
+        //title = new TitleBar(user.getCategoryCollection());
+        //ArrayList<Category> categories = user.getCategoryCollection().convertToArray();
 
         // labels for the table
         JLabel legendName = new JLabel("Task");
@@ -55,7 +54,7 @@ public class ToDoViewModel extends JFrame{
         constraints.gridy = 1;
         frame.add(legendCompletion, constraints);
 
-        for (Category cat: categories) { // loops through all the user's categories
+        /*for (Category cat: categories) { // loops through all the user's categories
             constraints.gridwidth = 3;
             constraints.gridx = 0;
             constraints.gridy = y;
@@ -64,7 +63,7 @@ public class ToDoViewModel extends JFrame{
             } else { size = cat.getTasks().getTasks().size(); }
             frame.add(new CategoryList(cat, size, cat.getTasks().convertToArray()), constraints);
             y++;
-        }
+        }*/
 
         constraints.gridx = 0;
         constraints.gridy = 0;

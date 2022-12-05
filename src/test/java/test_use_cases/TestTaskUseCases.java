@@ -9,6 +9,7 @@ import use_cases.tasks.edit_task.*;
 import use_cases.tasks.mark_task_completion.*;
 
 import org.junit.Test;
+import use_cases.timer_use_cases.edit_timer.EditTimerOutputData;
 
 import java.util.Calendar;
 
@@ -105,7 +106,7 @@ public class TestTaskUseCases {
             }
 
             @Override
-            public EditTaskOutputData prepareFailView(String error) {
+            public EditTimerOutputData prepareFailView(String error) {
                 assertEquals("Changes not saved. Please fill all required fields.", error);
                 return null;
             }

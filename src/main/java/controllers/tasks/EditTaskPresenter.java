@@ -2,6 +2,7 @@ package controllers.tasks;
 
 import use_cases.tasks.edit_task.EditTaskOutputBoundary;
 import use_cases.tasks.edit_task.EditTaskOutputData;
+import use_cases.timer_use_cases.edit_timer.EditTimerOutputData;
 
 /**
  * -- Interface Adaptor Layer --
@@ -21,11 +22,12 @@ public class EditTaskPresenter implements EditTaskOutputBoundary{
 
     /**
      * This method is called when the edition of task is failed. It prepares view.
+     *
      * @param error - the error message showed.
      * @return taskEditionFailed Exception.
      */
     @Override
-    public EditTaskOutputData prepareFailView(String error) {
+    public EditTimerOutputData prepareFailView(String error) {
         throw new TaskEditionFailed(error);
     }
 }
