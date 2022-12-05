@@ -4,10 +4,11 @@ import entities.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestUser {
 
-    CommonUser user = new CommonUser("firstname", "lastname", "emailid", "password");
+    CommonUser user = new CommonUser("email_id", "password", "firstname", "lastname");
     @Test(timeout = 500)
     public void testConstructor() {
         // tests if the first name after creating the User object is equal
@@ -15,17 +16,13 @@ public class TestUser {
         String lastname = "Evans";
         String email = "kenevans111@gmail.com";
         String password = "kdljwlkj.1";
-        CommonUser example = new CommonUser(firstname, lastname, email, password);
+        CommonUser example = new CommonUser(email, password, firstname, lastname);
 
         // assertion
         assertEquals(firstname, example.getFirstName());
         assertEquals(lastname, example.getLastName());
         assertEquals(email, example.getEmailAddress());
         assertEquals(password, example.getPassword());
-        assertEquals(new HabitFactory(), example.getHabitCollection());
-        assertEquals(new CategoryFactory(), example.getCategoryCollection());
-        assertEquals(new TaskFactory(), example.getTaskCollection());
-        assertEquals(new Timer(), example.getTomato());
 
     }
 
@@ -42,7 +39,7 @@ public class TestUser {
     public void testSetUserLastName() {
         // tests if the last name set in the User Object is equal
         String lastname = "Stevens";
-        user.setEmailAddress(lastname);
+        user.setLastName(lastname);
         // assertion
         assertEquals(lastname, user.getLastName());
     }
@@ -64,6 +61,13 @@ public class TestUser {
         user.setPassword(password);
         // assertion
         assertEquals(password, user.getPassword());
+    }
+
+    @Test(timeout = 500)
+    public void testPasswordStrength(){
+        String password = "Hello22";
+        user.setPassword(password);
+        assertTrue(user.passwordStrength());
     }
 
 

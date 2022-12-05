@@ -4,7 +4,6 @@ package use_cases.user.login_user;
  * Use case layer that stores the user's login detail
  */
 public class LoginUserDsRequestModel {
-
     private final String emailAddress;
     private final String password;
 

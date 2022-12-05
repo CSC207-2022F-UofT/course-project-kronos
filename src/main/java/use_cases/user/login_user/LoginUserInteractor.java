@@ -1,23 +1,25 @@
 package use_cases.user.login_user;
 
+
 import database.DatabaseUser;
 
 /**
  * The Interactor that is responsible for logging a user into its account.
- * @author happynasit
  */
 public class LoginUserInteractor implements LoginUserInputBoundary{
     private final LoginUserOutputBoundary outputBoundary;
-    private final LoginUserDsGateway gateway;
     private final DatabaseUser databaseUser;
+    private final LoginUserDsGateway gateway;
 
     /**
      * Constructor method for the LoginUserInteractor
+     *
      * @param outputBoundary obtained
      * @param databaseUser of the user
-     * @param gateway of the login user database
+     * @param gateway of the user
      */
-    public LoginUserInteractor(LoginUserOutputBoundary outputBoundary, DatabaseUser databaseUser, LoginUserDsGateway gateway) {
+    public LoginUserInteractor(LoginUserOutputBoundary outputBoundary, DatabaseUser databaseUser,
+                               LoginUserDsGateway gateway) {
         this.outputBoundary = outputBoundary;
         this.databaseUser = databaseUser;
         this.gateway = gateway;
@@ -32,7 +34,12 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
     public LoginUserOutputData login(LoginUserInputData inputData){
         if (gateway.userExistsByEmail(inputData.getEmailAddress())){
             // case if the email and the password matches the information in the hash map
-            if (inputData.getPassword().equals(userFactory.Users.get(inputData.getEmailAddress()).getPassword())){
+            if (databaseUser.checkPasswordsMatch(inputData.getEmailAddress(), inputData.getPassword())){
+
+                LoginUserDsRequestModel requestModel = new LoginUserDsRequestModel(inputData.getEmailAddress(),
+                        inputData.getPassword());
+                gateway.loginUser(requestModel);
+
                 LoginUserOutputData outputData = new LoginUserOutputData(inputData.getEmailAddress(),
                         inputData.getUser());
                 return outputBoundary.prepareSuccessView(outputData);
@@ -50,9 +57,17 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
         }
     }
 
+    /**
+     *
+     * @return the success view or fail view
+     */
     public LoginUserOutputBoundary getOutputBoundary() {
         return outputBoundary;
     }
 
+
+    /**
+     * @return the database gateway
+     */
     public LoginUserDsGateway getGateway(){return gateway;}
 }

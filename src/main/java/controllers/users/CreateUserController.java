@@ -1,4 +1,4 @@
-package controllers;
+package controllers.users;
 
 import use_cases.user.create_user.CreateUserInputBoundary;
 import use_cases.user.create_user.CreateUserInputData;
@@ -19,8 +19,10 @@ public class CreateUserController {
         this.userInput = accountGateway;
     }
 
-    public CreateUserOutputData create(String firstName, String lastName, String emailAddress, String password, String repPassword) {
-        CreateUserInputData inputData = new CreateUserInputData(emailAddress, password, firstName, lastName, repPassword);
+    public CreateUserOutputData create(String firstName, String lastName, String emailAddress,
+                                       String password, String repPassword) {
+        CreateUserInputData inputData = new CreateUserInputData(emailAddress, password, firstName, lastName,
+                repPassword);
 
         return userInput.create(inputData);
     }

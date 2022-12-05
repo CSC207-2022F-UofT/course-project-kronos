@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class LoginMainPage extends JFrame {
     static JFrame mainFrame;
-    UserFactory users;
 
     static Button loginbutton;
     static Button createaccountbutton;

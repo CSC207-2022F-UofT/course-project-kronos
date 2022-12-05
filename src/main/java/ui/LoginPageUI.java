@@ -1,7 +1,6 @@
 package ui;
-
-
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,7 +9,7 @@ import java.awt.event.ActionListener;
  * Menu Page of the User.
  * @author happynasit
  */
-public class LoginPageUI extends JFrame {
+public class LoginPageUI extends JFrame{
     /**
      * Constructor for the LoginPageUI class
      * sets the labels, buttons and the text field to enter the user information.
@@ -41,7 +40,6 @@ public class LoginPageUI extends JFrame {
         JButton createAccountButton = new JButton("Create Account!");
         createAccountButton.setBounds(140, 130, 300, 35);
 
-        createAccountButton.addActionListener(e -> CreateAccountUI.main());
 
         // creating the text fields
         // for data entry
@@ -73,5 +71,4 @@ public class LoginPageUI extends JFrame {
         // it shows the visibility
         mainFrame.setVisible(true);
     }
-
 }
