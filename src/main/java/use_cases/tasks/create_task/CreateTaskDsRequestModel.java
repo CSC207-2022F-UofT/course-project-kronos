@@ -1,9 +1,6 @@
 package use_cases.tasks.create_task;
 
-import entities.Task;
-
 import java.util.Calendar;
-import java.util.HashMap;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -15,16 +12,42 @@ import static java.lang.Boolean.TRUE;
  */
 
 public class CreateTaskDsRequestModel {
-    private final Integer id;
-    private final Task task;
+    private final String name;
+    private final boolean completeStatus = FALSE;
+    private final Calendar deadline;
+    private final int id;
 
-    public CreateTaskDsRequestModel(Integer id, Task task) {
+    /**
+     * Constructor
+     * @param id - the id of the created task.
+     * @param name - the name of the created task.
+     * @param deadline - the deadline of the created task.
+     */
+    public CreateTaskDsRequestModel(int id, String name, Calendar deadline) {
+        this.name = name;
+        this.deadline = deadline;
         this.id = id;
-        this.task = task;
     }
 
-    public Task getTask(){return this.task;}
+    /**
+     * @return the name of the created task.
+     */
+    public String getName() {
+        return name;
+    }
 
-    public int getId(){return this.id;}
+    /**
+     * @return the deadline of the created task.
+     */
+    public Calendar getDeadline() {
+        return deadline;
+    }
+
+    /**
+     * @return the id of the created task.
+     */
+    public int getId() {
+        return id;
+    }
 
 }

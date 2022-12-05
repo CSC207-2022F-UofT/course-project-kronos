@@ -13,8 +13,6 @@ public class Task{
 
     private String name;
     private boolean completeStatus;
-    private boolean visibility;
-    private String taskCategory;
     private Calendar deadline;
     private final int id;
     private static int numberOfTasks = 0;
@@ -30,7 +28,6 @@ public class Task{
         numberOfTasks += 1;
 
         this.name = name;
-        this.visibility = TRUE;
         this.deadline = deadline;
     }
 
@@ -58,24 +55,6 @@ public class Task{
     }
 
     /**
-     * Set the Visibility of the task.
-     * @param visible - "TRUE" if the user wants the task to be visible. "FALSE" if the user wants the task to be
-     *                invisible.
-     */
-    public void setVisibility(boolean visible){
-
-        this.visibility = visible;
-    }
-
-    /**
-     * Set the category of the task to the given category.
-     * @param taskCategory - The category that the users wants the task to belong to.
-     */
-    public void setTaskCategory(String taskCategory) {
-        this.taskCategory = taskCategory;
-    }
-
-    /**
      * Set the deadline of the task to the given deadline.
      * @param deadline - The deadline that the users wants the task to have.
      */
@@ -95,13 +74,6 @@ public class Task{
     }
 
     /**
-     * @return the category of the task.
-     */
-    public String getTaskCategory() {
-        return taskCategory;
-    }
-
-    /**
      * @return the deadline of the task.
      */
     public Calendar getDeadline() {
@@ -113,17 +85,5 @@ public class Task{
      */
     public boolean isCompleteStatus() {
         return completeStatus;
-    }
-
-    /**
-     * Set the completion status to status
-     * @param status
-     */
-    public void setCompleteStatus(boolean status){ this.completeStatus = status;}
-    /**
-     * @return the visibility of the task.
-     */
-    public boolean isVisibility() {
-        return visibility;
     }
 }

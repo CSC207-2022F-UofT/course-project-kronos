@@ -5,13 +5,13 @@ import javax.swing.*;
 public class MenuPage {
     static JFrame mainFrame;
     static Button habits;
-    static Button todoLists;
+    static Button todolists;
     static Button Timer;
-    static Button changePassword;
-    static Button deleteAccount;
-    static Button logOut;
+    static Button changepassword;
+    static Button deleteaccount;
+    static Button logout;
 
-    static Label welcomeStr;
+    static Label welcomestr;
 
     static Panel panel;
 
@@ -30,8 +30,8 @@ public class MenuPage {
 
 
         // create new label for welcome title
-        welcomeStr = new Label();
-        welcomeStr.createLabel("WELCOME!!", 10,0,
+        welcomestr = new Label();
+        welcomestr.createLabel("WELCOME!!", 10,0,
                 150,70, panel.getPanel());
 
 

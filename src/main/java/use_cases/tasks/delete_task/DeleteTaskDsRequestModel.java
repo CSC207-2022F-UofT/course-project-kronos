@@ -1,15 +1,25 @@
 package use_cases.tasks.delete_task;
 
-import entities.Task;
-
-// Use case Layer
+/**
+ * -- Application Business Layer --
+ * A data structure that stores data about the id of the task that should be removed from the database. It passes data
+ * to the gateway.
+ */
 public class DeleteTaskDsRequestModel {
-    private final Integer id;
+    private final int  taskId;
 
-
-    public DeleteTaskDsRequestModel(Integer id) {
-        this.id = id;
+    /**
+     * Constructor
+     * @param taskId - the id of the task.
+     */
+    public DeleteTaskDsRequestModel(int taskId) {
+        this.taskId = taskId;
     }
 
-    public Integer getId(){return this.id;}
+    /**
+     * @return the id of the delected task.
+     */
+    public int getTaskId() {
+        return taskId;
+    }
 }
