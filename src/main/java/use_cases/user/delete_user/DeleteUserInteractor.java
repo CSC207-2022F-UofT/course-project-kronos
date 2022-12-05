@@ -1,4 +1,5 @@
 package use_cases.user.delete_user;
+
 import entities.UserFactory;
 
 /**
@@ -8,7 +9,11 @@ public class DeleteUserInteractor implements DeleteUserInputBoundary{
     private final DeleteUserOutputBoundary outputBoundary;
     private final UserFactory userFactory;
 
-
+    /**
+     * Constructor method for the Delete User interactor
+     * @param outputBoundary obtained
+     * @param users collection of the users
+     */
     public DeleteUserInteractor(DeleteUserOutputBoundary outputBoundary, UserFactory users) {
         this.outputBoundary = outputBoundary;
         this.userFactory = users;
