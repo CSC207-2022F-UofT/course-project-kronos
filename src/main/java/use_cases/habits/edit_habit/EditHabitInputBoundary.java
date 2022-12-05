@@ -1,25 +1,12 @@
 package use_cases.habits.edit_habit;
-import entities.Habit;
-import entities.User;
 
-public class EditHabitInputBoundary {
+/**
+ * This is an interface that passes the inputData to the interactor of edit habit.
+ */
+public interface EditHabitInputBoundary {
 
     /**
-     * Check whether the input fields are correct.
-     * @param u - The user for the habits
-     * @param s - The old name of the habit
-     * @param a - The new name of the habit
-     * @param t - The new type of the habit
-     * @param r - The new reminder state of the habit
+     * @param inputData - data to be passed to the interactor.
      */
-    public static void editHabitInputBoundary(User u, String s, String a, String t, Boolean r){
-
-        if(!(s.equals("") && a.equals("") && t.equals(""))){
-            Habit h = u.getHabitCollection().habitCollection.get(s);
-            EditHabit.editName(u, h , a);
-            EditHabit.editType(h, t);
-            EditHabit.editReminder(h, r);
-        }
-
-    }
+    EditHabitOutputData edit(EditHabitInputData inputData);
 }

@@ -1,21 +1,35 @@
 package use_cases.tasks.mark_task_completion;
 
-import entities.Task;
-
+/**
+ * -- Application Business Layer --
+ * A data structure that stores data about the marked task that should be updated in the database. It passes data to the
+ * data gateway.
+ */
 public class MarkCompletionDsRequestModel {
-    private Task task;
-    public MarkCompletionDsRequestModel(Task task){
-        this.task = task;
+    private final int id;
+    private final boolean completeStatus;
+
+    /**
+     * Constructor
+     * @param id - the id of the task being marked.
+     * @param completeStatus - the completion status of the task after marking.
+     */
+    public MarkCompletionDsRequestModel(int id, boolean completeStatus){
+        this.id = id;
+        this.completeStatus = completeStatus;
     }
 
-    public Task getTask() {
-        return task;
+    /**
+     * @return the id of the task being marked.
+     */
+    public int getId() {
+        return id;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    /**
+     * @return return the completion status of the task after marking.
+     */
+    public boolean isCompleteStatus() {
+        return completeStatus;
     }
-
-    // Might extract to a general class afterwards. (As duplicate code appears in EditTaskDsRequestModel,
-    // MarkCompletionDsRequestModel, and MarkVisibilityDsRequestModel.)
 }

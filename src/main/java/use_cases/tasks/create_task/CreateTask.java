@@ -4,16 +4,27 @@ import entities.Task;
 import entities.TaskFactory;
 
 /**
- * The Interactor that is responsible for creating a new task.
+ * -- Application Business Layer --
+ * The use case Interactor that is responsible for creating a new task.
  */
 public class CreateTask implements CreateTaskInputBoundary {
 
     private final CreateTaskOutputBoundary outputBoundary;
+
+    private final CreateTaskDsGateway dsGateway;
     private final TaskFactory taskFactory;
 
-    public CreateTask(CreateTaskOutputBoundary outputBoundary, TaskFactory taskfactory) {
+    /**
+     * Constructor
+     *
+     * @param outputBoundary - the output boundary.
+     * @param dsGateway - the database gateway interface.
+     * @param taskFactory    - the task factory of a specific user.
+     */
+    public CreateTask(CreateTaskOutputBoundary outputBoundary, CreateTaskDsGateway dsGateway, TaskFactory taskFactory) {
         this.outputBoundary = outputBoundary;
-        this.taskFactory = taskfactory;
+        this.dsGateway = dsGateway;
+        this.taskFactory = taskFactory;
     }
 
     /**
@@ -24,28 +35,28 @@ public class CreateTask implements CreateTaskInputBoundary {
     @Override
     public CreateTaskOutputData create(CreateTaskInputData inputData) {
         // If the input name is empty or containing only white spaces
-        if (inputData.getName().isBlank()){
-            CreateTaskOutputData outputData = new CreateTaskOutputData("Task Creation Failed. " +
-                    "Please enter the name of the task.");
-            return outputBoundary.prepareFailView(outputData);
-        } else if (inputData.getDeadline().isLenient()) {
-            CreateTaskOutputData outputData = new CreateTaskOutputData("Task Creation Failed. " +
-                    "Please enter a valid deadline");
-            return outputBoundary.prepareFailView(outputData);
+        if (inputData.getName().isBlank() | inputData.getDeadline().isLenient()){
+            String error = "Task Creation Failed. Please enter valid information";
+            return outputBoundary.prepareFailView(error);
         }
 
         Task task = new Task(inputData.getName(), inputData.getDeadline());
         // The new Task object above is not assigned to any category.
         // So we do not need to update the Category/CategoryFactory.
         taskFactory.addItem(task);
-        CreateTaskOutputData outputData = new CreateTaskOutputData(task);
+        CreateTaskOutputData outputData = new CreateTaskOutputData(task.getId(), task.getName(), task.getDeadline());
         return outputBoundary.prepareSuccessView(outputData);
     }
-
+    /**
+     * @return the output boundary of the use case
+     */
     public CreateTaskOutputBoundary getOutputBoundary() {
         return outputBoundary;
     }
 
+    /**
+     * @return the taskFactory of the use case. (A specific user's task factory)
+     */
     public TaskFactory getTaskFactory() {
         return taskFactory;
     }

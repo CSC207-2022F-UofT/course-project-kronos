@@ -1,6 +1,13 @@
 package use_cases.tasks.delete_task;
 
-// Use case Layer
+/**
+ * -- Application Business Layer --
+ * The database gateway for deleteTask use case.
+ */
 public interface DeleteTaskDsGateway {
-    void save(DeleteTaskDsRequestModel requestModel);
+    /**
+     * Deletes the task based on data in the request model from the database.
+     * @param requestModel - a data structure that contains data about the task that should be removed from the database.
+     */
+    void deleteTask(DeleteTaskDsRequestModel requestModel);
 }

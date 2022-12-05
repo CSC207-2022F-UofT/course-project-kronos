@@ -1,29 +1,53 @@
 package use_cases.tasks.create_task;
 
-import entities.Task;
+import java.util.Calendar;
 
-import java.time.LocalDateTime;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
-// Use case Layer
+/**
+ * -- Application Business Layer --
+ * A data structure that stores data about the new task that should be saved by the database. It passes data to the
+ * gateway.
+ */
 
 public class CreateTaskDsRequestModel {
-    private Task task;
-    private final LocalDateTime creationTime;
+    private final String name;
+    private final boolean completeStatus = FALSE;
+    private final Calendar deadline;
+    private final int id;
 
-    public CreateTaskDsRequestModel(Task task, LocalDateTime creationTime) {
-        this.task = task;
-        this.creationTime = creationTime;
+    /**
+     * Constructor
+     * @param id - the id of the created task.
+     * @param name - the name of the created task.
+     * @param deadline - the deadline of the created task.
+     */
+    public CreateTaskDsRequestModel(int id, String name, Calendar deadline) {
+        this.name = name;
+        this.deadline = deadline;
+        this.id = id;
     }
 
-    public Task getTask() {
-        return task;
+    /**
+     * @return the name of the created task.
+     */
+    public String getName() {
+        return name;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    /**
+     * @return the deadline of the created task.
+     */
+    public Calendar getDeadline() {
+        return deadline;
     }
 
-    public LocalDateTime getCreationTime() {
-        return creationTime;
+    /**
+     * @return the id of the created task.
+     */
+    public int getId() {
+        return id;
     }
+
 }

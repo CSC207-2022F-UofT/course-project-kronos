@@ -12,10 +12,8 @@ import static java.lang.Boolean.TRUE;
 public class Task{
 
     private String name;
-    public boolean completeStatus;
-    public boolean visibility;
-    private String taskCategory;
-    public Calendar deadline;
+    private boolean completeStatus;
+    private Calendar deadline;
     private final int id;
     private static int numberOfTasks = 0;
 
@@ -30,7 +28,6 @@ public class Task{
         numberOfTasks += 1;
 
         this.name = name;
-        this.visibility = TRUE;
         this.deadline = deadline;
     }
 
@@ -58,24 +55,6 @@ public class Task{
     }
 
     /**
-     * Set the Visibility of the task.
-     * @param visible - "TRUE" if the user wants the task to be visible. "FALSE" if the user wants the task to be
-     *                invisible.
-     */
-    public void setVisibility(boolean visible){
-
-        this.visibility = visible;
-    }
-
-    /**
-     * Set the category of the task to the given category.
-     * @param taskCategory - The category that the users wants the task to belong to.
-     */
-    public void setTaskCategory(String taskCategory) {
-        this.taskCategory = taskCategory;
-    }
-
-    /**
      * Set the deadline of the task to the given deadline.
      * @param deadline - The deadline that the users wants the task to have.
      */
@@ -83,27 +62,28 @@ public class Task{
         this.deadline = deadline;
     }
     /**
-     * @return returns the id (a private attribute) of the task.
+     * @return the id (a private attribute) of the task.
      */
     public int getId(){return this.id;}
 
+    /**
+     * @return the name of the task.
+     */
     public String getName(){
         return this.name;
     }
 
-    public String getTaskCategory() {
-        return taskCategory;
-    }
-
+    /**
+     * @return the deadline of the task.
+     */
     public Calendar getDeadline() {
         return deadline;
     }
 
+    /**
+     * @return the completionStatus of the task.
+     */
     public boolean isCompleteStatus() {
         return completeStatus;
-    }
-
-    public boolean isVisibility() {
-        return visibility;
     }
 }

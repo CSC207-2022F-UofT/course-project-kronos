@@ -1,22 +1,24 @@
 package use_cases.tasks.mark_task_completion;
 
-import entities.Task;
-
 /**
+ * -- Application Business Layer --
  *  This class is a container for the input data, it is created by the controller and sent to the interactor/use case.
  */
 public class MarkCompletionInputData {
-    private final Task task;
+    private final int taskId;
 
     /**
      * Constructor for a MarkCompletionInputData object.
-     * @param task - the task that will be marked.
+     * @param taskId - the id of task that will be marked.
      */
-    public MarkCompletionInputData(Task task) {
-        this.task = task;
+    public MarkCompletionInputData(int taskId) {
+        this.taskId = taskId;
     }
 
-    public Task getTask() {
-        return task;
+    /**
+     * @return the id of the task that will be marked.
+     */
+    public int getTaskId() {
+        return taskId;
     }
 }
