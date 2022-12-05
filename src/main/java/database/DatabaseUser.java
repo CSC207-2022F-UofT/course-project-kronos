@@ -142,4 +142,3 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
         return habitCollection;
     }
 }
-

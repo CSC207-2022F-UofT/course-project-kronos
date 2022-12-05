@@ -73,5 +73,5 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, E
 
 
 
-    
+
 }
