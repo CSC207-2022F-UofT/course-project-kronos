@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class TimerCycle {
-    private static final String workTime = TimerTomato.getWorkTime();
+    private static final int workTime = TimerTomato.getWorkTime();
 
-    private static final String restTime = TimerTomato.getRestTime();
+    private static final int restTime = TimerTomato.getRestTime();
 
     private static int TimeCycle;
 
@@ -41,7 +41,7 @@ public class TimerCycle {
         }
 
         countDown = new Timer(1000, (ActionEvent event) -> {
-            if(secondsRemaining == SetTimer.getWorkTimer_seconds())
+            if(secondsRemaining == SetTimer.getWorkTimerSeconds())
             {
                 if(minutesRemaining == 0)
                 {
@@ -70,7 +70,7 @@ public class TimerCycle {
             }
             else
             {
-                if(secondsRemaining > SetTimer.getWorkTimer_seconds())
+                if(secondsRemaining > SetTimer.getWorkTimerSeconds())
                 {
                     secondsRemaining -= 1;
                     //secondLabel.setText(String.format("%02d", secondsRemaining));

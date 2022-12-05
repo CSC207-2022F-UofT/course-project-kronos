@@ -37,7 +37,7 @@ public class SetTimer {
     private static int minutesRemaining;
     private static int secondsRemaining;
 
-    public static void runWorkTimer(String workTime)
+    public static void runWorkTimer(int workTime)
     {
         //System.out.println("Start Long " + String.format("%d", roundsCompleted));
 
