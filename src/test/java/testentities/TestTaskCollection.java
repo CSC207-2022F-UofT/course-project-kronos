@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -85,7 +84,7 @@ public class TestTaskCollection {
         TaskFactory collection = new TaskFactory();
         Task taskA = new Task("CSC207 Project");
         Task taskB = new Task("CSC207 Presentation");
-        ArrayList<Task> array = new ArrayList<Task>();
+        ArrayList<Task> array = new ArrayList<>();
         array.add(taskA);
         array.add(taskB);
         assertEquals(array, collection.convertToArray());
