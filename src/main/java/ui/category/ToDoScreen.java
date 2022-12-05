@@ -9,7 +9,7 @@ import entities.Task;
 import ui.ColourPalette;
 import use_cases.categories.edit_category.EditCategory;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
-import use_cases.categories.edit_category.EditCategoryInputBound;
+import use_cases.categories.edit_category.EditCategoryInputBoundary;
 import use_cases.categories.edit_category.EditCategoryOutputBoundary;
 
 import javax.swing.*;
@@ -30,7 +30,8 @@ public class ToDoScreen extends JFrame implements ActionListener {
     private JFrame toDoFrame;
     private CategoryCollection categories;
     private JPanel header;
-    private JScrollPane body;
+    private JScrollPane scrollable;
+    private JPanel body;
     private static JLabel title;
     private JButton newCategory;
     private JButton menu;
@@ -53,15 +54,19 @@ public class ToDoScreen extends JFrame implements ActionListener {
         toDoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         toDoFrame.setSize(1000, 800);
         toDoFrame.setLayout(new BorderLayout());
+        toDoFrame.setVisible(true);
 
         header = new JPanel();
         header.setLayout(new GridBagLayout());
 
-        body = new JScrollPane();
+        body = new JPanel();
         body.setLayout(new GridBagLayout());
 
+        scrollable = new JScrollPane();
+        toDoFrame.add(scrollable, BorderLayout.CENTER);
+        scrollable.add(body);
+
         toDoFrame.add(header, BorderLayout.NORTH);
-        toDoFrame.add(body, BorderLayout.CENTER);
 
         GridBagConstraints c = new GridBagConstraints();
 
@@ -180,7 +185,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
             // how to get the specific category that button belongs to? how to associate these two objects?
             int id = Integer.parseInt(edit.getText().split(":")[0]);
             Category cat = categories.getItem(id);
-            EditCategoryInputBound editCategory = new EditCategory(editCategoryPresenter, editDsGateway, categories, id);
+            EditCategoryInputBoundary editCategory = new EditCategory(editCategoryPresenter, editDsGateway, categories, id);
             EditCategoryController editController = new EditCategoryController(editCategory);
             new CategoryScreen(editController, deleteController, id, cat.getName(), cat.getColour());
         }
