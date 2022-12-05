@@ -22,6 +22,10 @@ As students, we have to balance and keep track of various things at the same tim
 
 ## Graphical User Interface
 
+## Kronos App Landing Page 
+
+![home page](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/a796d8576f0059ed114cc3e7f7665319248451c0/home%20page.png)
+
 ## 1. Feature: User
 
 ### a. User Login Screen
