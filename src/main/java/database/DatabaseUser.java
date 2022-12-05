@@ -1,3 +1,4 @@
+/*
 package database;
 
 import entities.User;
@@ -87,3 +88,4 @@ public class DatabaseUser implements UserDataAccessInterface {
     }
 }
 
+*/

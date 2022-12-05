@@ -1,3 +1,4 @@
+/*
 package database;
 
 import entities.CategoryFactory;
@@ -31,3 +32,4 @@ public class DatabaseCategory implements CreateCategoryDsGateway, DeleteCategory
         this.collection.categories.replace(requestModel.getCategory().getId(), requestModel.getCategory());
     }
 }
+*/
