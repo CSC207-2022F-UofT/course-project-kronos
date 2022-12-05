@@ -80,8 +80,6 @@ public class CreateCategoryScreen {
             } catch (CategoryCreationFailed error){
                 JOptionPane.showMessageDialog(this.createCategoryFrame, error.getMessage());
             }
-
         }
     }
-
 }

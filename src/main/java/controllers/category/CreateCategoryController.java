@@ -18,15 +18,14 @@ public class CreateCategoryController {
     }
 
     /**
-     * Calls create() method in use case Interactor.
+     * Calls create() method in use case interactor.
      * @param name - the input name of the category
      * @param colour - the input colour of the category
      * @return corresponding OutputData object
      */
     public CreateCategoryOutputData create(String name, String colour) {
-        // should there be a try catch here?
         CreateCategoryInputData inputData = new CreateCategoryInputData(name, colour);
-        return inputBound.create(inputData); // where does this go? How does this get to use case?
+        return inputBound.create(inputData);
     }
 
 

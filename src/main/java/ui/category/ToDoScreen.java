@@ -36,6 +36,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
     private JButton newCategory;
     private JButton menu;
     private JButton edit;
+    private JButton newTask;
     private CreateCategoryController createController;
     private EditCategoryOutputBoundary editCategoryPresenter;
     private EditCategoryDsGateway editDsGateway;
@@ -84,7 +85,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
         /**
          * Creating and setting the placement of the "create" button and menu button
          */
-
         newCategory = new JButton("New Category");
         c.gridwidth = 1;
         c.ipady = 1;
@@ -120,7 +120,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
         header.add(completion, c);
 
         updateList();
-
     }
 
     /**
@@ -166,7 +165,8 @@ public class ToDoScreen extends JFrame implements ActionListener {
             c.gridx = 0;
             c.gridy = y;
 
-            this.body.add(new JButton("New Task for " + cat.getName()), c);
+            newTask = new JButton(cat.getId() + ": New Task");
+            this.body.add(newTask, c);
             y++;
         }
     }
@@ -178,7 +178,12 @@ public class ToDoScreen extends JFrame implements ActionListener {
         if (evt.getSource() == menu){
             // new Menu(); leads to menu page, still needs to be implemented
         }
-        // what if newTask button is clicked
+        if (evt.getSource() == newTask){ // will this track the right button since we create it multiple times?
+            int id = Integer.parseInt(newTask.getText().split(":")[0]);
+            Category cat = categories.getItem(id);
+            // how to update the task collection in this Category? --> need to update the database
+            // new CreateTask(cat.getTasks());
+        }
 
         // what if someone clicks the edit button
         if (evt.getSource() == edit){

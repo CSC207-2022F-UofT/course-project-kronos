@@ -1,5 +1,6 @@
 package database;
 
+import entities.CategoryCollection;
 import entities.User;
 import use_cases.user.UserDataAccessInterface;
 
@@ -84,6 +85,9 @@ public class DatabaseUser implements UserDataAccessInterface {
     @Override
     public void AddUser(User user) {
         this.userCollection.put(user.getEmailAddress(), user);
+    }
+    public CategoryCollection getCategories() {
+        return this.categoryCollection;
     }
 }
 
