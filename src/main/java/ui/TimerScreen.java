@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
+
 @SuppressWarnings("serial")
 public class TimerScreen extends JFrame
 {
@@ -169,7 +172,7 @@ public class TimerScreen extends JFrame
         timerPanel.add(delayRemainingLabel, "alignx center");
 
         // Label not shown.
-        WorkTimerSet = new JLabel();
+        WorkTimerSet = new JLabel("Work Time");
         WorkTimerSet.setForeground(Color.white);
         WorkTimerSet.setVisible(true);
         WorkTimerSet.setFont(formBTStyles);
@@ -180,7 +183,7 @@ public class TimerScreen extends JFrame
         timerPanel.add(workText, "alignx center, split 3");
 
         //Label not shown.
-        RestTimerSet = new JLabel();
+        RestTimerSet = new JLabel("Rest Time");
         RestTimerSet.setForeground(Color.white);
         RestTimerSet.setVisible(true);
         RestTimerSet.setFont(formBTStyles);
@@ -435,11 +438,10 @@ public class TimerScreen extends JFrame
     public static void main(String[] args)
     {
         SwingUtilities.invokeLater(TimerScreen::runGUI);
-    }
+    }}
 
 
 
 
 
 
-}
