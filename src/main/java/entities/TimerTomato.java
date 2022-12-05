@@ -4,17 +4,17 @@ import javax.swing.Timer;
 public class TimerTomato {
 
 
-    private static String restTime;
-    private static String workTime;
+    private static int restTime;
+    private static int workTime;
     public static int timerCycle;
-    private String workTimeLeft;
-    private String restTimeLeft;
+    private int workTimeLeft;
+    private int restTimeLeft;
     private Timer workTimer;
     private Timer restTimer;
 
     public TimerTomato(){}
 
-    public TimerTomato(String workTime, String restTime, int timerCycle){
+    public TimerTomato(int workTime, int restTime, int timerCycle){
         TimerTomato.workTime = workTime;
         TimerTomato.restTime = restTime;
         TimerTomato.timerCycle = timerCycle;
@@ -27,7 +27,7 @@ public class TimerTomato {
      * @param workTime - The minutes needs for the work timer.
      */
 
-    public static void setWorkTime(String workTime) {
+    public static void setWorkTime(int workTime) {
         TimerTomato.workTime = workTime;
     }
 
@@ -36,7 +36,7 @@ public class TimerTomato {
      * @param restTime - The minutes needs for the rest timer.
      */
 
-    public static void setRestTime(String restTime) {
+    public static void setRestTime(int restTime) {
         TimerTomato.restTime = restTime;
     }
 
@@ -49,11 +49,11 @@ public class TimerTomato {
         TimerTomato.timerCycle = timerCycle;
     }
 
-    public static String getWorkTime() {
+    public static int getWorkTime() {
         return workTime;
     }
 
-    public static String getRestTime(){
+    public static int getRestTime(){
         return restTime;
     }
 
@@ -61,11 +61,11 @@ public class TimerTomato {
         return timerCycle;
     }
 
-    public String getWorkTimeLeft() {
+    public int getWorkTimeLeft() {
         return workTimeLeft;
     }
 
-    public String getRestTimeLeft() {
+    public int getRestTimeLeft() {
         return restTimeLeft;
     }
 
