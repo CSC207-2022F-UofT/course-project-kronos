@@ -21,6 +21,11 @@ public class TimerTomato {
 
     }
 
+    public TimerTomato(int workTime){
+        TimerTomato.workTime = workTime;
+    }
+
+
 
     /**
      * Set the minutes of the work Timer.

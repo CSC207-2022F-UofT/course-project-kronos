@@ -1,4 +1,17 @@
 package use_cases.timer_use_cases.edit_timer;
 
-public class EditTimerDsGateway {
+/**
+ * Create the database gateway for createWorkTimer.
+ */
+
+public interface EditTimerDsGateway {
+
+    /**
+     * Saving the work timer related data in the request model.
+     * @param requestModel - a data structure that contains data about the new work timer that should be saved in
+     *                     the database.
+     */
+
+    void saveTimer(EditTimerDsRequestModel requestModel);
 }
+
