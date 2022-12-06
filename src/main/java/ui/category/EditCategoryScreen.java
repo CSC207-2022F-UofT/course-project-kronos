@@ -1,4 +1,4 @@
-package ui.category;
-
-public class EditCategoryScreen {
-}
+//package ui.category;
+//
+//public class EditCategoryScreen {
+//}

@@ -6,13 +6,12 @@ public interface User {
     String getFirstName();
     String getLastName();
     HabitFactory getHabitCollection();
-    CategoryCollection getCategoryCollection();
 
     CategoryCollection getCategoryCollection();
 
     TaskFactory getTaskCollection();
 
-    Timer getTomato();
+    TimerTomato getTomato();
 
     boolean passwordStrength();
 

@@ -6,24 +6,26 @@ import use_cases.user.create_user.CreateUserOutputData;
 
 /**
  * Controller that is used in CreateUser UI to create the user account.
+ * @author happynasit
  */
 public class CreateUserController {
 
-    final CreateUserInputBoundary userInput;
+    final CreateUserInputBoundary userInputBoundary;
 
     /**
      * Constructor method for controller
      * @param accountGateway - use case layer
      */
     public CreateUserController(CreateUserInputBoundary accountGateway) {
-        this.userInput = accountGateway;
+        this.userInputBoundary = accountGateway;
     }
 
-    public CreateUserOutputData create(String firstName, String lastName, String emailAddress,
-                                       String password, String repPassword) {
-        CreateUserInputData inputData = new CreateUserInputData(emailAddress, password, firstName, lastName,
-                repPassword);
-
-        return userInput.create(inputData);
+    /**
+     * it calls the interactor of the creation of user
+     * @param userInputData - input data of the user
+     * @return the output data and shows if the creation was successful or not
+     */
+    public CreateUserOutputData create(CreateUserInputData userInputData) {
+        return userInputBoundary.create(userInputData);
     }
 }
