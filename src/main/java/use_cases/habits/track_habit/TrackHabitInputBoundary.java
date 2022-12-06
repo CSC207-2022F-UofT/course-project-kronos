@@ -1,11 +1,12 @@
 package use_cases.habits.track_habit;
-import entities.Habit;
 
-public class TrackHabitInputBoundary {
+/**
+ * This is an interface that passes the inputData to the interactor of track habit.
+ */
+public interface TrackHabitInputBoundary {
 
     /**
-     * Marks the frequency of a habit.
-     * @param h - The habit for which the frequency is to be increased.
+     * @param inputData - data to be passed to the interactor.
      */
-    public static void trackHabit(Habit h){ TrackHabit.increaseHabitFrequency(h);}
+    TrackHabitOutputData track(TrackHabitInputData inputData);
 }

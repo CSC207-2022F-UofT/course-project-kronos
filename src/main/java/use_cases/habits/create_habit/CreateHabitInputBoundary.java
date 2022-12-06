@@ -1,30 +1,14 @@
 package use_cases.habits.create_habit;
-import entities.CommonUser;
+import entities.HabitFactory;
 
-
-public class CreateHabitInputBoundary {
-
-    private Boolean success;
-
-    /**
-     * Check whether the input fields are correct.
-     * @param u - The user for the habits
-     * @param s - The name of the habit
-     * @param t - The type of the habit
-     * @param r - The reminder state of the habit
-     * success is true if no fields are empty and a Habit is created.
-     */
-    public CreateHabitInputBoundary(CommonUser u, String s, String t, Boolean r){
-        if(!(s.equals("") && t.equals(""))){
-            CreateHabit.createHabit(u, s, t, r);
-            this.success = true;
-        }
-    }
+/**
+ * This is an interface that passes the inputData to the interactor of habit creation.
+ */
+public interface CreateHabitInputBoundary {
 
     /**
-     * @return - Returns whether habit was created successfully.
+     * @param inputData - Data to be passed to the interactor.
      */
-    public Boolean getSuccess() {
-        return this.success;
-    }
+    CreateHabitOutputData create(CreateHabitInputData inputData);
+
 }

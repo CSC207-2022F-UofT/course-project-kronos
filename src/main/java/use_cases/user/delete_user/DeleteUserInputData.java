@@ -4,7 +4,7 @@ import entities.CommonUser;
 
 /**
  * This class is a container for the input data related to deletion of a user, it is created by the controller and sent
- * to the interactor/use case.
+ * to the delete user use case.
  */
 public class DeleteUserInputData {
     private final CommonUser user;
@@ -14,9 +14,8 @@ public class DeleteUserInputData {
      * Constructor for a DeleteUserInputData object.
      * @param user - the input user which will be deleted. The input user is always existing in the database.
      */
-    public DeleteUserInputData(CommonUser user, String emailaddress) {
+    public DeleteUserInputData(CommonUser user) {
         this.user = user;
-
     }
 
     /**

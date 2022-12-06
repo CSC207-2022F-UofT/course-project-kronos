@@ -1,26 +1,49 @@
 package use_cases.user.create_user;
 
+import entities.CommonUser;
+import entities.User;
+
+/**
+ * Use case database request model
+ * It is a use case layer
+ *
+ * @author happynasit
+ */
 public class CreateUserDsRequestModel {
 
-    private final String emailaddress;
-    private String password;
+    private final String emailAddress;
 
+    private CommonUser user;
 
-    public CreateUserDsRequestModel(String email, String password) {
-        this.emailaddress = email;
-        this.password = password;
+    /**
+     * Constructor method for User database request model
+     * @param email - user's email address
+     * @param user - user's user object
+     */
+    public CreateUserDsRequestModel(String email, CommonUser user) {
+        this.emailAddress = email;
+        this.user = user;
 
     }
 
-    public String getEmailaddress() {
-        return emailaddress;
+    /**
+     * @return the user's email address
+     */
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public String getPassword() {
-        return password;
+    /**
+     * @return the user's user object
+     */
+    public User getUser() {
+        return this.user;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    /**
+     * @param user -  the user's user object
+     */
+    public void setPassword(CommonUser user) {
+        this.user = user;
     }
 }
