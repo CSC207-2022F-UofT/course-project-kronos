@@ -25,6 +25,10 @@ public class DatabaseVisualization implements VisualizationWeekDsGateway, Visual
         this.collection = database.currUser.getHabitCollection().getCollection();
     }
 
+    /**
+     *  Create chart for week-wise visualization
+     * @param requestModel - Ds RequestModel used to store data required to create week-wise visualization
+     */
     @Override
     public void createChart(VisualizationWeekDsRequestModel requestModel) {
 
@@ -48,26 +52,40 @@ public class DatabaseVisualization implements VisualizationWeekDsGateway, Visual
         }
     }
 
+
+    /**
+     *  Create chart for Month-wise visualization
+     * @param requestModel - Ds RequestModel used to store data required to create week-wise visualization
+     */
     @Override
     public void createChart(VisualizationYearRequestModel requestModel) {
 
     }
 
     /**
-     * Create the chart requested for in the request model
-     *
-     * @param requestModel
+     *  Create chart for year-wise visualization
+     * @param requestModel - Ds RequestModel used to store data required to create year-wise visualization
      */
     @Override
     public void createChart(VisualizationMonthDsRequestModel requestModel) {
 
     }
 
+    /**
+     * return true if habit exists in the collection of habits for database
+     * @param habitName - name of habit
+     * @return whether habit with given name exists
+     */
     @Override
     public boolean habitExistsByName(String habitName) {
         return collection.containsKey(habitName);
     }
 
+    /**
+     * return whether at least one record exists in the speficied time period
+     * @param habitName
+     * @return whether any records exist for meaningful visualization
+     */
     @Override
     public boolean checkRecordsExist(String habitName) {
         return collection.get(habitName).getFrequencyMap().size() > 0;
