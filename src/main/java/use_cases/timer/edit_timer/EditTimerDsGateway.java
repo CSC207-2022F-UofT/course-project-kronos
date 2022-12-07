@@ -1,10 +1,10 @@
-package use_cases.timer_use_cases.create_single_timer;
+package use_cases.timer.edit_timer;
 
 /**
  * Create the database gateway for createWorkTimer.
  */
 
-public interface CreateWorkTimerDsGateway{
+public interface EditTimerDsGateway {
 
     /**
      * Saving the work timer related data in the request model.
@@ -12,5 +12,6 @@ public interface CreateWorkTimerDsGateway{
      *                     the database.
      */
 
-    void saveWorkTimer(CreateWorkTimerDsRequestModel requestModel);
+    void saveTimer(EditTimerDsRequestModel requestModel);
 }
+

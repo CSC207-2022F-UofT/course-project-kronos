@@ -1,4 +1,4 @@
-package use_cases.timer_use_cases.create_single_timer;
+package use_cases.timer.create_single_timer;
 
 /**
  * An interface to pass input data into the interactor of timer creation.

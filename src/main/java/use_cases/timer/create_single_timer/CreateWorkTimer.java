@@ -1,4 +1,4 @@
-package use_cases.timer_use_cases.create_single_timer;
+package use_cases.timer.create_single_timer;
 
 import entities.TimerTomato;
 

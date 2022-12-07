@@ -1,4 +1,4 @@
-package use_cases.timer_use_cases.create_single_timer;
+package use_cases.timer.create_single_timer;
 
 public class CreateWorkTimerDsRequestModel {
 
@@ -6,7 +6,7 @@ public class CreateWorkTimerDsRequestModel {
 
     /**
      * Constructor
-     * @param m - the minutes of the work timer.
+     * @param workTimerMinutes - the minutes of the work timer.
      */
 
     public CreateWorkTimerDsRequestModel(int workTimerMinutes){

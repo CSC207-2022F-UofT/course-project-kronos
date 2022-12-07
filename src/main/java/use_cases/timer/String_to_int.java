@@ -1,4 +1,4 @@
-package use_cases.timer_use_cases;
+package use_cases.timer;
 
 import java.util.Scanner;
 
