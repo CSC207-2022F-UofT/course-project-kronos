@@ -118,7 +118,6 @@ public class TestTimerTomato {
         //assertion
         assertEquals(status, timer2.getTimeStatus(timer3));
 
-
     }
 
 
