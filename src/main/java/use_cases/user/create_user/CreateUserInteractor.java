@@ -7,14 +7,15 @@ import entities.CommonUser;
  * @author happynasit
  */
 public class CreateUserInteractor implements CreateUserInputBoundary{
-    private final CreateUserDsGateway gateway;
+    private final CreateUserDsGateway database;
 
     /**
      * Constructor method for CreateUserInteractor
      * @param gateway of the user
+     *
      */
     public CreateUserInteractor(CreateUserDsGateway gateway) {
-        this.gateway = gateway;
+        this.database = gateway;
     }
 
     /**
@@ -25,7 +26,7 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
 
     @Override
     public CreateUserOutputData create(CreateUserInputData inputData) {
-        if (gateway.userExistsByEmail(inputData.getEmailAddress())){
+        if (database.userExistsByEmail(inputData.getEmailAddress())){
             return new CreateUserOutputData(false, "Username already exists!");
         }
         // case when the repeated password does not match the password
@@ -45,7 +46,7 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
             // When the Account is successfully created.
             // it creates the database request model and the gateway saves the email along with the user object
             CreateUserDsRequestModel userDsRequestModel = new CreateUserDsRequestModel(inputData.getEmailAddress(), user);
-            gateway.save(userDsRequestModel);
+            database.save(userDsRequestModel);
             return new CreateUserOutputData(true, user);
         }
     }
@@ -54,5 +55,5 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
     /**
      * @return the database gateway
      */
-    public CreateUserDsGateway getGateway(){return gateway;}
+    public CreateUserDsGateway getGateway(){return database;}
 }
