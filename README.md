@@ -52,7 +52,7 @@ As students, we have to balance and keep track of various things at the same tim
 
 ### d. Habit Track Screen
 
-![]()
+![habit track](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/08e023df618eaeaab3342110420fc791415bd3c8/habit%20track.png)
 
 ## 3. & 4. Features: Task and Category
 
