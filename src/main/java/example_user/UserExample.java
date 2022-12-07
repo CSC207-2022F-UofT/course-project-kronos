@@ -1,3 +1,4 @@
+/*
 package example_user;
 
 import entities.*;
@@ -8,7 +9,7 @@ public class UserExample {
 
     static TaskFactory tFactory = new TaskFactory();
 
-    static CategoryFactory cFactory =  new CategoryFactory();
+    static CategoryCollection cFactory =  new CategoryCollection();
 
     static TimerTomato t = new TimerTomato();
 
@@ -28,3 +29,4 @@ public class UserExample {
     }
 
 }
+*/

@@ -10,8 +10,6 @@ public interface User {
     HabitFactory getHabitCollection();
     CategoryCollection getCategoryCollection();
 
-    CategoryCollection getCategoryCollection();
-
     TaskFactory getTaskCollection();
 
     TimerTomato getTomato();

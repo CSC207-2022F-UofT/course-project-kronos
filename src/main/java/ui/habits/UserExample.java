@@ -1,3 +1,4 @@
+/*
 package ui.habits;
 
 import ui.habits.CreateHabitScreen;
@@ -9,9 +10,9 @@ public class UserExample {
 
     static TaskFactory tFactory = new TaskFactory();
 
-    static CategoryFactory cFactory =  new CategoryFactory();
+    static CategoryCollection cFactory =  new CategoryCollection();
 
-    static Timer t = new Timer();
+    static TimerTomato t = new TimerTomato();
 
     static CommonUser person = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
             hFactory, tFactory, cFactory, t);
@@ -35,3 +36,4 @@ public class UserExample {
     }
 
 }
+*/

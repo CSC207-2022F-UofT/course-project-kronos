@@ -1,45 +1,64 @@
 package entities;
 
 import javax.swing.Timer;
-import java.io.Serializable;
-
-public class TimerTomato implements Serializable {
+public class TimerTomato {
 
 
-    private static String restTime;
-
-
-    private static String workTime;
+    private static int restTime;
+    private static int workTime;
     public static int timerCycle;
-    private String work_timeLeft;
-    private String rest_timeLeft;
-    private Timer timer;
+    private int workTimeLeft;
+    private int restTimeLeft;
+    private Timer workTimer;
+    private Timer restTimer;
 
-    public TimerTomato(String workTime, String restTime, int timerCycle){
+    public TimerTomato(){}
+
+    public TimerTomato(int workTime, int restTime, int timerCycle){
         TimerTomato.workTime = workTime;
         TimerTomato.restTime = restTime;
         TimerTomato.timerCycle = timerCycle;
 
     }
-    public TimerTomato(){};
 
-    public static void setWorkTime(String workTime) {
+    public TimerTomato(int workTime){
         TimerTomato.workTime = workTime;
     }
 
-    public static void setRestTime(String restTime) {
+
+
+    /**
+     * Set the minutes of the work Timer.
+     * @param workTime - The minutes needs for the work timer.
+     */
+
+    public static void setWorkTime(int workTime) {
+        TimerTomato.workTime = workTime;
+    }
+
+    /**
+     * Set the minutes of the rest Timer.
+     * @param restTime - The minutes needs for the rest timer.
+     */
+
+    public static void setRestTime(int restTime) {
         TimerTomato.restTime = restTime;
     }
+
+    /**
+     * Set the number of cycle needed for the loop of workTimer and restTimer.
+     * @param timerCycle - The cycle needs for the work timer.
+     */
 
     public void setTimerCycle(int timerCycle) {
         TimerTomato.timerCycle = timerCycle;
     }
 
-    public static String getWorkTime() {
+    public static int getWorkTime() {
         return workTime;
     }
 
-    public static String getRestTime(){
+    public static int getRestTime(){
         return restTime;
     }
 
@@ -47,13 +66,15 @@ public class TimerTomato implements Serializable {
         return timerCycle;
     }
 
-    public String getWork_timeLeft() {
-        return work_timeLeft;
+    public int getWorkTimeLeft() {
+        return workTimeLeft;
     }
 
-    public String getRest_timeLeft() {
-        return rest_timeLeft;
+    public int getRestTimeLeft() {
+        return restTimeLeft;
     }
+
+
 
     public int getTimeStatus(Timer timer){
         // timerState:
