@@ -10,7 +10,6 @@ import java.util.Calendar;
 public class EditTaskInputData {
     private final int taskId;
     private final String inputName;
-    private final Calendar inputDeadline;
 
 
     /**
@@ -18,12 +17,10 @@ public class EditTaskInputData {
      *
      * @param taskId    - the id of the task that will be edited.
      * @param inputName - the name of the task after edition.
-     * @param deadline  - the deadline of the task after edition.
      */
-    public EditTaskInputData(int taskId, String inputName, Calendar deadline) {
+    public EditTaskInputData(int taskId, String inputName) {
         this.taskId = taskId;
         this.inputName = inputName;
-        this.inputDeadline = deadline;
     }
 
     /**
@@ -40,10 +37,4 @@ public class EditTaskInputData {
         return inputName;
     }
 
-    /**
-     * @return the deadline of the task after edition.
-     */
-    public Calendar getInputDeadline() {
-        return inputDeadline;
-    }
 }

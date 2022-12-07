@@ -28,7 +28,7 @@ public class CreateTaskController {
      * @return corresponding OutputData object.
      */
     public CreateTaskOutputData create(String name, Calendar deadline){
-        CreateTaskInputData inputData = new CreateTaskInputData(name, deadline);
+        CreateTaskInputData inputData = new CreateTaskInputData(name);
         return userInput.create(inputData);
     }
 }

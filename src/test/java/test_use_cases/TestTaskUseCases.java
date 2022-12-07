@@ -3,7 +3,6 @@ package test_use_cases;
 import database.DatabaseTask;
 import entities.Task;
 import entities.TaskFactory;
-import org.junit.Test;
 import use_cases.tasks.create_task.*;
 import use_cases.tasks.delete_task.*;
 import use_cases.tasks.edit_task.*;
@@ -14,6 +13,13 @@ import java.util.Calendar;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTaskUseCases {
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
 
     /**
      * Test CreateTask use case.
@@ -24,12 +30,8 @@ public class TestTaskUseCases {
         CreateTaskOutputBoundary outputBoundary = new CreateTaskOutputBoundary() {
             @Override
             public CreateTaskOutputData prepareSuccessView(CreateTaskOutputData outputData) {
-                Calendar deadline = Calendar.getInstance();
-                deadline.set(2023, Calendar.JANUARY, 1);
                 assertEquals("example", outputData.getTaskName());
                 assertEquals(1, outputData.getTaskId());
-                assertEquals(deadline, outputData.getTaskDeadline());
-                // assertEquals(taskRepository.existsById(1))
                 return null;
             }
 
@@ -43,10 +45,7 @@ public class TestTaskUseCases {
 
         CreateTaskInputBoundary interactor = new CreateTask(outputBoundary, taskRepository, taskFactory);
 
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2023, Calendar.JANUARY, 1);
-        CreateTaskInputData inputData = new CreateTaskInputData("example", deadline);
-
+        CreateTaskInputData inputData = new CreateTaskInputData("example");
         interactor.create(inputData);
     }
 
@@ -56,9 +55,7 @@ public class TestTaskUseCases {
     @Test
     public void delete(){
         // Set example task object.
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2023, Calendar.JANUARY, 1);
-        Task example = new Task("example", deadline);
+        Task example = new Task("example");
         int id = example.getId();
 
         DeleteTaskDsGateway taskRepository = new DatabaseTask();
@@ -84,20 +81,15 @@ public class TestTaskUseCases {
     @Test
     public void edit(){
         // Set example task object.
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2023, Calendar.JANUARY, 1);
-        Task example = new Task("example", deadline);
+        Task example = new Task("example");
         int id = example.getId();
 
-        Calendar afterDeadline = Calendar.getInstance();
-        afterDeadline.set(2023, Calendar.JANUARY, 2);
 
         EditTaskDsGateway taskRepository = new DatabaseTask();
         EditTaskOutputBoundary outputBoundary = new EditTaskOutputBoundary() {
             @Override
             public EditTaskOutputData prepareSuccessView(EditTaskOutputData outputData) {
                 assertEquals("after", outputData.getTaskName());
-                assertEquals(afterDeadline, outputData.getTaskDeadline());
                 assertEquals(1, outputData.getTaskId());
                 return null;
             }
@@ -111,7 +103,7 @@ public class TestTaskUseCases {
         TaskFactory taskFactory = new TaskFactory();
 
         EditTaskInputBoundary editInteractor = new EditTask(outputBoundary, taskRepository,taskFactory);
-        EditTaskInputData inputData = new EditTaskInputData(id, "after", afterDeadline);
+        EditTaskInputData inputData = new EditTaskInputData(id, "after");
         editInteractor.edit(inputData);
 
     }
@@ -122,9 +114,7 @@ public class TestTaskUseCases {
     @Test
     public void markCompletionToTrue(){
         // Set example task object.
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2023, Calendar.JANUARY, 1);
-        Task example = new Task("example", deadline);
+        Task example = new Task("example");
         int id = example.getId();
 
         MarkCompletionDsGateway taskRepository = new DatabaseTask();
@@ -134,7 +124,6 @@ public class TestTaskUseCases {
                 assertTrue(outputData.isCompletionStatus());
                 assertEquals("example", outputData.getName());
                 assertEquals(id, outputData.getTaskId());
-                assertEquals(deadline, outputData.getTaskDeadline());
                 return null;
             }
         };
@@ -152,9 +141,7 @@ public class TestTaskUseCases {
     @Test
     public void markCompletionToFalse(){
         // Set example task object.
-        Calendar deadline = Calendar.getInstance();
-        deadline.set(2023, Calendar.JANUARY, 1);
-        Task example = new Task("example", deadline);
+        Task example = new Task("example");
         example.markAsComplete();
         int id = example.getId();
 
@@ -165,7 +152,6 @@ public class TestTaskUseCases {
                 assertFalse(outputData.isCompletionStatus());
                 assertEquals("example", outputData.getName());
                 assertEquals(id, outputData.getTaskId());
-                assertEquals(deadline, outputData.getTaskDeadline());
                 return null;
             }
         };

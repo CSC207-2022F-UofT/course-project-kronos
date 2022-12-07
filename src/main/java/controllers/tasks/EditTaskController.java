@@ -23,12 +23,11 @@ public class EditTaskController {
      * Calls edit() method in the use case Interactor.
      * @param taskId - the id of the chosen task.
      * @param inputName - the input name.
-     * @param category - the input category.
-     * @param deadline - the input deadline.
+
      * @return corresponding OutputData object.
      */
-    public EditTaskOutputData edit(int taskId, String inputName, String category, Calendar deadline){
-        EditTaskInputData inputData = new EditTaskInputData(taskId, inputName, deadline);
+    public EditTaskOutputData edit(int taskId, String inputName){
+        EditTaskInputData inputData = new EditTaskInputData(taskId, inputName);
         return userInput.edit(inputData);
 
     }
