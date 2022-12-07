@@ -15,8 +15,12 @@ public class DatabaseCategory implements CreateCategoryDsGateway, DeleteCategory
 
     protected HashMap<Integer, Category> collection;
 
+    /**
+     * Constructor
+     * @param database - DatabaseUser object
+     */
     public DatabaseCategory(DatabaseUser database){
-        this.collection = database.getCategories().categories;
+        this.collection = database.getCategories();
     }
 
     /**
