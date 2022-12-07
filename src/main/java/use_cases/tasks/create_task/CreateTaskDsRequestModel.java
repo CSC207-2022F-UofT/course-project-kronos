@@ -13,20 +13,19 @@ import static java.lang.Boolean.TRUE;
 
 public class CreateTaskDsRequestModel {
     private final String name;
-    private final boolean completeStatus = FALSE;
-    private final Calendar deadline;
+    private final boolean completeStatus;
     private final int id;
 
     /**
      * Constructor
      * @param id - the id of the created task.
      * @param name - the name of the created task.
-     * @param deadline - the deadline of the created task.
+     * @param completeStatus - the deadline of the created task.
      */
-    public CreateTaskDsRequestModel(int id, String name, Calendar deadline) {
+    public CreateTaskDsRequestModel(int id, String name, boolean completeStatus) {
         this.name = name;
-        this.deadline = deadline;
         this.id = id;
+        this.completeStatus = FALSE;
     }
 
     /**
@@ -37,10 +36,10 @@ public class CreateTaskDsRequestModel {
     }
 
     /**
-     * @return the deadline of the created task.
+     * @return the completion status of the created task.
      */
-    public Calendar getDeadline() {
-        return deadline;
+    public boolean isCompleteStatus() {
+        return completeStatus;
     }
 
     /**

@@ -9,20 +9,17 @@ import java.util.Calendar;
 public class MarkCompletionOutputData {
     int taskId;
     String name;
-    Calendar taskDeadline;
     boolean completionStatus;
 
     /**
      *
      * @param taskId - the id of the task.
      * @param taskName - the name of the task.
-     * @param taskDeadline - the deadline of the task
      * @param completionStatus - the completion status of the task ofter marked.
      */
-    public MarkCompletionOutputData(int taskId, String taskName, Calendar taskDeadline, boolean completionStatus) {
+    public MarkCompletionOutputData(int taskId, String taskName, boolean completionStatus) {
         this.taskId = taskId;
         this.name = taskName;
-        this.taskDeadline = taskDeadline;
         this.completionStatus = completionStatus;
     }
 
@@ -34,13 +31,6 @@ public class MarkCompletionOutputData {
     }
 
     /**
-     * @return the deadline of the task marked.
-     */
-    public Calendar getTaskDeadline() {
-        return taskDeadline;
-    }
-
-    /**
      * @return the name of the task marked.
      */
     public String getName() {
@@ -48,7 +38,7 @@ public class MarkCompletionOutputData {
     }
 
     /**
-     * @return whether the task marked is visible.
+     * @return whether the task marked is completed.
      */
     public boolean isCompletionStatus() {
         return completionStatus;

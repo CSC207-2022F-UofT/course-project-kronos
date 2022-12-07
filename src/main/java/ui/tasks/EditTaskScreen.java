@@ -20,6 +20,7 @@ public class EditTaskScreen extends JPanel implements ActionListener {
      * The category of the task
      */
     JTextField category = new JTextField(30);
+
     /**
      * The deadline of the task
      */
