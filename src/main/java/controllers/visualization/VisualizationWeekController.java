@@ -5,6 +5,7 @@ import use_cases.visualization.visualization_week.VisualizationWeekInputBoundary
 import use_cases.visualization.visualization_week.VisualizationWeekRequestModel;
 import use_cases.visualization.visualization_week.VisualizationWeekResponseModel;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class VisualizationWeekController {
@@ -16,7 +17,7 @@ public class VisualizationWeekController {
     }
 
 
-    VisualizationWeekResponseModel showVisual(String habitName, Date startDate){
+    VisualizationWeekResponseModel showVisual(String habitName, Calendar startDate){
         VisualizationWeekRequestModel requestModel = new VisualizationWeekRequestModel(habitName, startDate, "./");
 
         return visualizationInput.showVisual(requestModel);

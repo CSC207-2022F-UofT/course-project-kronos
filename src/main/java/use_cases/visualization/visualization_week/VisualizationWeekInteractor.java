@@ -18,10 +18,10 @@ public class VisualizationWeekInteractor implements VisualizationWeekInputBounda
         } else if (!visualizationWeekDsGateway.checkRecordsExist(requestModel.getHabitName())){
             return visualizationWeekPresenter.prepareFailureView("Habit doesn't have enough records");
         }
-        VisualizationWeekDsRequestModel dsRequestModel = new VisualizationWeekDsRequestModel(requestModel.getHabitName(), requestModel.getStartDate(), "./src/main/java/database/weekVisual.jpeg");
+        VisualizationWeekDsRequestModel dsRequestModel = new VisualizationWeekDsRequestModel(requestModel.getHabitName(), requestModel.getStartDate(), "weekVisual.jpeg");
         visualizationWeekDsGateway.createChart(dsRequestModel);
 
-        VisualizationWeekResponseModel visualResponseModel = new VisualizationWeekResponseModel(requestModel.getHabitName(), requestModel.getStartDate(), "./src/main/java/database/weekVisual.jpeg");
+        VisualizationWeekResponseModel visualResponseModel = new VisualizationWeekResponseModel(requestModel.getHabitName(), requestModel.getStartDate(), "weekVisual.jpeg");
         return visualizationWeekPresenter.prepareSuccessView(visualResponseModel);
     }
 }
