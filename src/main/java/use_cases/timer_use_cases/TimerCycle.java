@@ -22,20 +22,20 @@ public class TimerCycle {
 
     public static void runMainTimer()
     {
-        //System.out.println("Start Main " + String.format("%d", roundsCompleted));
+
         if(roundsCompleted == TimeCycle)
         {
-            //System.out.println("Stop Long " + roundsCompleted);
+
             SetTimer.workTimer.stop();
             roundsCompleted = 0; // Timer is Reset.
         }
 
         else if(roundsCompleted > 0 && roundsCompleted % 2 == 0)
         {
-            //System.out.println("Stop Short " + roundsCompleted);
+
             SetTimer.restTimer.stop();
         }
-        // else
+        else
         {
             System.out.println("Don't Stop Main " + roundsCompleted);
         }
@@ -45,9 +45,7 @@ public class TimerCycle {
             {
                 if(minutesRemaining == 0)
                 {
-                    //startPauseBT.setText("Begin");
-                    //startPauseBT.setActionCommand("Start");
-                    //mainCompleted = false;
+
                     roundsCompleted++;
 
                     // Selection of which break timer to run.
@@ -64,8 +62,7 @@ public class TimerCycle {
                 {
                     minutesRemaining -= 1;
                     secondsRemaining = 59;
-                    //minuteLabel.setText(String.format("%02d", minutesRemaining));
-                    //secondLabel.setText(String.format("%02d", secondsRemaining));
+
                 }
             }
             else
@@ -73,7 +70,6 @@ public class TimerCycle {
                 if(secondsRemaining > SetTimer.getWorkTimerSeconds())
                 {
                     secondsRemaining -= 1;
-                    //secondLabel.setText(String.format("%02d", secondsRemaining));
                 }
             }
         });
