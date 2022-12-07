@@ -1,4 +1,4 @@
-package controllers;
+package controllers.timer;
 
 import use_cases.timer_use_cases.TimerOutputBoundary;
 
