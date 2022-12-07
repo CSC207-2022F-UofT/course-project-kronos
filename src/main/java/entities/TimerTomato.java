@@ -7,8 +7,8 @@ public class TimerTomato {
     private static int restTime;
     private static int workTime;
     public static int timerCycle;
-    private int workTimeLeft;
-    private int restTimeLeft;
+    private static int workTimeLeft;
+    private static int restTimeLeft;
     private Timer workTimer;
     private Timer restTimer;
 
@@ -18,6 +18,8 @@ public class TimerTomato {
         TimerTomato.workTime = workTime;
         TimerTomato.restTime = restTime;
         TimerTomato.timerCycle = timerCycle;
+        TimerTomato.workTimeLeft = workTime;
+        TimerTomato.restTimeLeft = restTime;
 
     }
 
@@ -32,7 +34,7 @@ public class TimerTomato {
      * @param workTime - The minutes needs for the work timer.
      */
 
-    public static void setWorkTime(int workTime) {
+    public void setWorkTime(int workTime) {
         TimerTomato.workTime = workTime;
     }
 
@@ -41,7 +43,7 @@ public class TimerTomato {
      * @param restTime - The minutes needs for the rest timer.
      */
 
-    public static void setRestTime(int restTime) {
+    public void setRestTime(int restTime) {
         TimerTomato.restTime = restTime;
     }
 
@@ -66,11 +68,11 @@ public class TimerTomato {
         return timerCycle;
     }
 
-    public int getWorkTimeLeft() {
+    public static int getWorkTimeLeft() {
         return workTimeLeft;
     }
 
-    public int getRestTimeLeft() {
+    public static int getRestTimeLeft() {
         return restTimeLeft;
     }
 
