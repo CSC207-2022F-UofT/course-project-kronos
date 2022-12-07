@@ -1,8 +1,8 @@
 package ui.category;
 
 import controllers.category.*;
-import database.Database;
 import database.DatabaseCategory;
+import database.DatabaseUser;
 import entities.*;
 import use_cases.categories.create_category.*;
 import use_cases.categories.delete_category.DeleteCategory;
@@ -38,7 +38,7 @@ public class Main {
         categories.addItem(category1);
         categories.addItem(category2);
 
-        Database database = new Database("./myFileName"); // fake file path
+        DatabaseUser database = new DatabaseUser("./myFileName"); // fake file path
 
         // Create Category Use Case
         CreateCategoryOutputBoundary createCategoryPresenter = new CreateCategoryPresenter();
