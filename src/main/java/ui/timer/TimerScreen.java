@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class TimerScreen extends JFrame
 {
-    private JPanel topPanel;
+    private final JPanel topPanel;
     String number1;
     String number2;
     // Custom Components
@@ -41,8 +41,8 @@ public class TimerScreen extends JFrame
     private static final int ORIGINAL_COUNTDOWN_SECONDS = 0;
 
     //change to zero.
-    private int[] workTimeMin = {-1};
-    private int[] restTimeMin = {-1};
+    private final int[] workTimeMin = {-1};
+    private final int[] restTimeMin = {-1};
 
     private static final int ORIGINAL_SHORTBREAK_MINUTES = 5;
     private static final int ORIGINAL_SHORTBREAK_SECONDS = 0;
