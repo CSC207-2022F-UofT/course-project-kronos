@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Timer;
+
 /**
  *
  * Creates User account if the user's account does not exist.
@@ -15,7 +17,7 @@ public class CommonUser implements User{
     private HabitFactory habitCollection;
     private TaskFactory taskCollection;
     private CategoryCollection categoryCollection;
-    private Timer tomato;
+    private TimerTomato tomato;
 
 
     /**
@@ -36,7 +38,7 @@ public class CommonUser implements User{
         this.habitCollection = new HabitFactory();
         this.taskCollection = new TaskFactory();
         this.categoryCollection = new CategoryCollection();
-        this.tomato = new Timer();
+        this.tomato = new TimerTomato();
     }
 
     public CommonUser(){}
@@ -109,8 +111,13 @@ public class CommonUser implements User{
      * @return the user's timer object
      */
     @Override
-    public Timer getTomato() {
+    public TimerTomato getTomato() {
         return this.tomato;
+    }
+
+    @Override
+    public void setTomato(TimerTomato tomato) {
+        this.tomato = tomato;
     }
 
     // SETTER METHODS
