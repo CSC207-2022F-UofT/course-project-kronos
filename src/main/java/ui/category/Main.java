@@ -25,9 +25,9 @@ public class Main {
     public static Calendar deadline1 = Calendar.getInstance();
     public static Calendar deadline2 = Calendar.getInstance();
     public static Task task1 = new Task("task 1", deadline1);
-    public static Task task2 = new Task("task 1", deadline2);
-    public static Category category1 = new Category("Category 1", "Red");
-    public static Category category2 = new Category("Category 2", "Blue");
+    public static Task task2 = new Task("task 2", deadline2);
+    public static Category category1 = new Category("Category 1", "green");
+    public static Category category2 = new Category("Category 2", "blue");
     public static TimerTomato timer = new TimerTomato();
 
     public static void main(String[] args){
@@ -38,7 +38,7 @@ public class Main {
         categories.addItem(category1);
         categories.addItem(category2);
 
-        DatabaseUser database = new DatabaseUser("./myFileName"); // fake file path
+        DatabaseUser database = new DatabaseUser("C:/Users/emily/OneDrive/Documents/UofT/2022 - 2023/CSC207/Project/databaseCategory.txt");
 
         // Create Category Use Case
         CreateCategoryOutputBoundary createCategoryPresenter = new CreateCategoryPresenter();
@@ -57,5 +57,6 @@ public class Main {
         DeleteCategoryController deleteCategoryController = new DeleteCategoryController(deleteCategory);
 
         new ToDoScreen(categories, createCategoryController, editCategoryPresenter, editDsGateway, deleteCategoryController);
+        // new CreateCategoryScreen(createCategoryController);
     }
 }
