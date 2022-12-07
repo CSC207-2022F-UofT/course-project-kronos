@@ -6,11 +6,11 @@ public class CreateWorkTimer  {
 
     /**
     Create a new work timer.
-    * @param m - the minutes of the work timer.
+    * @param minute - the minutes of the work timer.
      */
 
-    public static void createWorkTimer(int m) {
-        TimerTomato t = new TimerTomato(m);
+    public static void createWorkTimer(int minute) {
+        TimerTomato t = new TimerTomato(minute);
     }
 
 }
