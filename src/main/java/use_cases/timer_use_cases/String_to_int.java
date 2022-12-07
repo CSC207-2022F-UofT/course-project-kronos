@@ -1,6 +1,7 @@
-package use_cases.timer_needed_use_cases;
+package use_cases.timer_use_cases;
 
 import java.util.Scanner;
+
 public class String_to_int {
     public static void main(String[] args) {
         String input;

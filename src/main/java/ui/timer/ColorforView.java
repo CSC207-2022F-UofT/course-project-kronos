@@ -1,4 +1,4 @@
-package ui;
+package ui.timer;
 
 import java.awt.*;
 

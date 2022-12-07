@@ -1,4 +1,4 @@
-package use_cases.timer_needed_use_cases;
+package use_cases.timer_use_cases;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
-public class Normal_Timer {
+public class CountdownTimer {
 
     JFrame window;
     JLabel counterLabel;
@@ -22,10 +22,10 @@ public class Normal_Timer {
 
     public static void main(String[] args){
 
-        new Normal_Timer();
+        new CountdownTimer();
     }
 
-    public Normal_Timer() {
+    public CountdownTimer() {
 
         window = new JFrame();
         window.setSize(800, 600);
@@ -39,39 +39,43 @@ public class Normal_Timer {
         window.add(counterLabel);
         window.setVisible(true);
 
-        counterLabel.setText("00:00");
+        // Normal Timer
+        counterLabel.setText("03:00");
         second = 0;
-        minute = 0;
-        normalTimer();
+        minute = 3;
+        countdownTimer();
         timer.start();
     }
 
-    public void normalTimer() {
+
+    public void countdownTimer() {
 
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 // What happen set the timer
 
-                second++;
+                second--;
                 ddSecond = dFormat.format(second);
                 ddMinute = dFormat.format(minute);
 
                 counterLabel.setText(ddMinute+ ":" + ddSecond);
 
-                if(second==60){
-                    second = 0;
-                    minute++;
+                if(second == -1){
+                    second = 59;
+                    minute = - minute++;
 
                     ddSecond = dFormat.format(second);
                     ddMinute = dFormat.format(minute);
                     counterLabel.setText(ddMinute + ":" + ddSecond);
+                }
+
+                if(minute == 0 && second == 0){
+                    timer.stop();
                 }
             }
         });
 
 
     }
-
-    }
+}

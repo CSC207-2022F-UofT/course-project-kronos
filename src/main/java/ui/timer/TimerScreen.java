@@ -1,4 +1,5 @@
-package use_cases.timer_needed_use_cases;
+
+package ui.timer;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -8,8 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
+
 @SuppressWarnings("serial")
-public class TimerView extends JFrame
+public class TimerScreen extends JFrame
 {
     private JPanel topPanel;
     String number1;
@@ -36,6 +40,7 @@ public class TimerView extends JFrame
     private static final int ORIGINAL_COUNTDOWN_MINUTES = 25;
     private static final int ORIGINAL_COUNTDOWN_SECONDS = 0;
 
+    //change to zero.
     private int[] workTimeMin = {-1};
     private int[] restTimeMin = {-1};
 
@@ -53,38 +58,32 @@ public class TimerView extends JFrame
     private JLabel secondLabel;
     private JLabel delayRemainingLabel;
 
+    JLabel WorkTimerSet;
+
+    JLabel RestTimerSet;
+
+    public void createLabel(String labelText, int boundX, int boundY, int boundWidth, int boundHeight,
+                            JPanel panel){
+        JLabel Label = new JLabel(labelText);
+        Label.setBounds(boundX, boundY, boundWidth, boundHeight);
+        panel.add(Label);
+    }
+
     private JButton startPauseBT;
     private JButton stopBT;
     private JButton continueBT;
 
-    private Icon startIcon;
-    private Icon pauseIcon;
-    private Icon stopIcon;
-    private Icon skipIcon;
-
     private Timer countDown;
     private Timer workTimer;
     private Timer restTimer;
-    private Timer delayTimer;
 
     private int secondsRemaining;
     private int minutesRemaining;
     private int delayRemaining;
     private int roundsCompleted; // No. of Pomodoro rounds completed.
 
-    //private static final String workTime = Timertomato.getWorkTime();
-    //static String[] work = workTime.split("\\:");
 
-    //private static final int workTime_minutes = Integer.parseInt(work[0]);
-    //private static final int workTime_seconds = Integer.parseInt(work[1]);
-
-    //private static final String restTime = Timertomato.getRestTime();
-    //static String[] rest = getRestTime().split("\\:");
-    //private static final int restTimer_minutes = Integer.parseInt(rest[0]);
-    //private static final int restTimer_seconds = Integer.parseInt(rest[1]);
-
-
-    public TimerView()
+    public TimerScreen()
     {
         setTitle("Tomato Timer");
 
@@ -143,8 +142,6 @@ public class TimerView extends JFrame
         secondLabel.setFont(timerStyle);
         timerPanel.add(secondLabel, "alignx center, height 145!, wrap");
 
-        // startIcon = new ImageIcon("src/Play.gif");
-        // pauseIcon = new ImageIcon("src/Pause.png");
         startPauseBT = new JButton("Start");
         startPauseBT.setContentAreaFilled(true);
         startPauseBT.setBackground(Green);
@@ -153,26 +150,20 @@ public class TimerView extends JFrame
         startPauseBT.setFont(formBTStyles);
         timerPanel.add(startPauseBT, "gaptop 5, alignx center, split 3, spanx, pushx");
 
-        //skipIcon = new ImageIcon("src/Skip.png");
-        //continueBT = new JButton("Skip", skipIcon);
         continueBT = new JButton("Skip");
         continueBT.setBackground(Red);
         continueBT.setContentAreaFilled(true);
         continueBT.setForeground(Color.white);
         continueBT.setFont(formBTStyles);
         continueBT.setVisible(false);
-        //timerPanel.add(continueBT, "alignx center, hidemode 0, gapleft 30, gapright 30");
         timerPanel.add(continueBT);
 
-        //stopIcon = new ImageIcon("src/Stop.png");
-        //stopBT = new JButton("Stop", stopIcon);
         stopBT = new JButton("Stop");
         stopBT.setContentAreaFilled(true);
         stopBT.setBackground(Red);
         stopBT.setActionCommand("Stop");
         stopBT.setForeground(Color.white);
         stopBT.setFont(formBTStyles);
-        //timerPanel.add(stopBT, "gaptop 5, alignx center, split 3, spanx, pushx");
         timerPanel.add(stopBT);
 
         delayRemainingLabel = new JLabel("Resumes in " + TOTAL_DELAY_TIME + " seconds");
@@ -181,9 +172,24 @@ public class TimerView extends JFrame
         delayRemainingLabel.setFont(delayLabelStyles);
         timerPanel.add(delayRemainingLabel, "alignx center");
 
+        // Label not shown.
+        WorkTimerSet = new JLabel("Work Time");
+        WorkTimerSet.setForeground(Color.white);
+        WorkTimerSet.setVisible(true);
+        WorkTimerSet.setFont(formBTStyles);
+        timerPanel.add(WorkTimerSet);
+
         JTextField workText = new JTextField(100);
         workText.setPreferredSize(new Dimension(1,50));
         timerPanel.add(workText, "alignx center, split 3");
+
+        //Label not shown.
+        RestTimerSet = new JLabel("Rest Time");
+        RestTimerSet.setForeground(Color.white);
+        RestTimerSet.setVisible(true);
+        RestTimerSet.setFont(formBTStyles);
+        timerPanel.add(RestTimerSet);
+
         JTextField restText = new JTextField(100);
         restText.setPreferredSize(new Dimension(1,50));
         timerPanel.add(restText, "alignx center, split 3");
@@ -260,14 +266,11 @@ public class TimerView extends JFrame
         stopBT.addActionListener((ActionEvent event) -> {
             countDown.stop();
             secondsRemaining = ORIGINAL_COUNTDOWN_SECONDS;
-            // minutesRemaining = ORIGINAL_COUNTDOWN_MINUTES;
             minutesRemaining = workTimeMin[0];
-            // minuteLabel.setText(String.format("%02d", ORIGINAL_COUNTDOWN_MINUTES));
             minuteLabel.setText(String.format("%02d", workTimeMin[0]));
             secondLabel.setText(String.format("%02d", ORIGINAL_COUNTDOWN_SECONDS));
             stopBT.setEnabled(false);
             roundsCompleted = 0; // Timer is Reset.
-            //startPauseBT.setIcon(startIcon);
             SettingButton.setVisible(true);
             startPauseBT.setText("Start");
             startPauseBT.setActionCommand("Start");
@@ -281,24 +284,22 @@ public class TimerView extends JFrame
     private void runMainTimer()
     {
         //System.out.println("Start Main " + String.format("%d", roundsCompleted));
-        // minutesRemaining = ORIGINAL_COUNTDOWN_MINUTES;
         minutesRemaining = workTimeMin[0];
         secondsRemaining = ORIGINAL_COUNTDOWN_SECONDS;
 
-        // minuteLabel.setText(String.format("%02d", ORIGINAL_COUNTDOWN_MINUTES));
         minuteLabel.setText(String.format("%02d", workTimeMin[0]));
         secondLabel.setText(String.format("%02d", ORIGINAL_COUNTDOWN_SECONDS));
 
         if(roundsCompleted == ONE_POMODORO_CYCLE)
         {
-            //System.out.println("Stop Long " + roundsCompleted);
+            //System.out.println("Stop Work " + roundsCompleted);
             workTimer.stop();
             roundsCompleted = 0; // Timer is Reset.
         }
 
         else if(roundsCompleted > 0 && roundsCompleted % 2 == 0)
         {
-            //System.out.println("Stop Short " + roundsCompleted);
+            //System.out.println("Stop Rest " + roundsCompleted);
             restTimer.stop();
         }
         // else
@@ -311,20 +312,7 @@ public class TimerView extends JFrame
             {
                 if(minutesRemaining == 0)
                 {
-                    //startPauseBT.setText("Begin");
-                    //startPauseBT.setActionCommand("Start");
-                    //mainCompleted = false;
-                    //roundsCompleted++;
-
-                    // Selection of which break timer to run.
-                    //if(roundsCompleted == ONE_POMODORO_CYCLE)
-                    //{
-                       // runWorkTimer();
-                    //}
-                    //else if(roundsCompleted > 0 && roundsCompleted % 2 == 0)
-                    //{
-                        runRestTimer();
-                    //}
+                    runRestTimer();
                 }
                 else
                 {
@@ -336,7 +324,6 @@ public class TimerView extends JFrame
             }
             else
             {
-                //if(secondsRemaining > ORIGINAL_COUNTDOWN_SECONDS)
                 if(secondsRemaining > 0)
                 {
                     secondsRemaining -= 1;
@@ -350,8 +337,7 @@ public class TimerView extends JFrame
 
     private void runRestTimer()
     {
-        //System.out.println("Start Short " + String.format("%d", roundsCompleted));
-        //minutesRemaining = ORIGINAL_SHORTBREAK_MINUTES;
+        //System.out.println("Start Rest " + String.format("%d", roundsCompleted));
         minutesRemaining = restTimeMin[0];
         secondsRemaining = ORIGINAL_SHORTBREAK_SECONDS;
         stopBT.setVisible(true);
@@ -360,7 +346,6 @@ public class TimerView extends JFrame
         continueBT.setActionCommand("SkipShortTimer");
         countDown.stop();
 
-        //minuteLabel.setText(String.format("%02d", ORIGINAL_SHORTBREAK_MINUTES));
         minuteLabel.setText(String.format("%02d", restTimeMin[0]));
         secondLabel.setText(String.format("%02d", ORIGINAL_SHORTBREAK_SECONDS));
 
@@ -438,38 +423,12 @@ public class TimerView extends JFrame
 
     private void countDownPaused()
     {
-//        delayRemaining = TOTAL_DELAY_TIME;
-//        delayRemainingLabel.setVisible(true);
-//        startPauseBT.setVisible(false);
-//        stopBT.setVisible(false);
         countDown.stop();
-
-//        delayTimer = new Timer(INTERVAL, (ActionEvent event) -> {
-//            if(delayRemaining > 0)
-//            {
-//                delayRemainingLabel.setText("Resumes in " + delayRemaining + " seconds");
-//                delayRemaining--;
-//            }
-//            else
-//            {
-//                delayTimer.stop();
-//                delayRemainingLabel.setVisible(false);
-//                //startPauseBT.setIcon(pauseIcon);
-//                delayRemainingLabel.setText("Resumes in " + TOTAL_DELAY_TIME + " seconds");
-//                countDown.start();
-//                stopBT.setVisible(true);
-//                startPauseBT.setVisible(true);
-//                startPauseBT.requestFocusInWindow();
-//            }
-//        });
-//
-//
-//        delayTimer.start();
     }
 
     private static void runGUI()
     {
-        TimerView mainFrame = new TimerView();
+        TimerScreen mainFrame = new TimerScreen();
         mainFrame.pack();
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
@@ -479,12 +438,6 @@ public class TimerView extends JFrame
 
     public static void main(String[] args)
     {
-        SwingUtilities.invokeLater(TimerView::runGUI);
+        SwingUtilities.invokeLater(TimerScreen::runGUI);
     }
-
-
-
-
-
-
 }
