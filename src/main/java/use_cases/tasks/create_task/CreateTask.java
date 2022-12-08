@@ -35,16 +35,16 @@ public class CreateTask implements CreateTaskInputBoundary {
     @Override
     public CreateTaskOutputData create(CreateTaskInputData inputData) {
         // If the input name is empty or containing only white spaces
-        if (inputData.getName().isBlank() | inputData.getDeadline().isLenient()){
+        if (inputData.getName().isBlank()){
             String error = "Task Creation Failed. Please enter valid information";
             return outputBoundary.prepareFailView(error);
         }
 
-        Task task = new Task(inputData.getName(), inputData.getDeadline());
+        Task task = new Task(inputData.getName());
         // The new Task object above is not assigned to any category.
         // So we do not need to update the Category/CategoryFactory.
         taskFactory.addItem(task);
-        CreateTaskOutputData outputData = new CreateTaskOutputData(task.getId(), task.getName(), task.getDeadline());
+        CreateTaskOutputData outputData = new CreateTaskOutputData(task.getId(), task.getName());
         return outputBoundary.prepareSuccessView(outputData);
     }
     /**

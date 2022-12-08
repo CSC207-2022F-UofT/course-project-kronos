@@ -9,16 +9,13 @@ import java.util.Calendar;
  */
 public class CreateTaskInputData{
     private final String name;
-    private final Calendar deadline;
 
     /**
      * Constructor for a CreateTaskInputData object.
      * @param name - the input name
-     * @param deadline - the input deadline
      */
-    public CreateTaskInputData(String name, Calendar deadline) {
+    public CreateTaskInputData(String name) {
         this.name = name;
-        this.deadline = deadline;
     }
 
     /**
@@ -28,11 +25,5 @@ public class CreateTaskInputData{
         return name;
     }
 
-    /**
-     * @return the deadline attribute of a CreateTaskInputData object.
-     */
-    public Calendar getDeadline() {
-        return deadline;
-    }
 
 }

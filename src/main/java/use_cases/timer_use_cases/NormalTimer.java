@@ -1,4 +1,4 @@
-package use_cases.timer_needed_use_cases;
+package use_cases.timer_use_cases;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
-public class Timer_countdown {
+public class NormalTimer {
 
     JFrame window;
     JLabel counterLabel;
@@ -22,10 +22,10 @@ public class Timer_countdown {
 
     public static void main(String[] args){
 
-        new Timer_countdown();
+        new NormalTimer();
     }
 
-    public Timer_countdown() {
+    public NormalTimer() {
 
         window = new JFrame();
         window.setSize(800, 600);
@@ -39,62 +39,40 @@ public class Timer_countdown {
         window.add(counterLabel);
         window.setVisible(true);
 
-//        second = 0;
-//        simpleTimer();
-//        timer.start();
-
-        // Normal Timer
-        counterLabel.setText("03:00");
+        counterLabel.setText("00:00");
         second = 0;
-        minute = 3;
-        countdownTimer();
+        minute = 0;
+        normalTimer();
         timer.start();
     }
 
-//    public void simpleTimer(){
-//
-//        timer = new Timer(1000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-                // What happen set the timer
-
-//                second++;
-
-//                counterLabel.setText(""+ second);
-//            }
-//        });
-
-//    }
-
-
-    public void countdownTimer() {
+    public void normalTimer() {
 
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 // What happen set the timer
 
-                second--;
+                second++;
                 ddSecond = dFormat.format(second);
                 ddMinute = dFormat.format(minute);
 
                 counterLabel.setText(ddMinute+ ":" + ddSecond);
 
-                if(second == -1){
-                    second = 59;
-                    minute = - minute++;
+                if(second==60){
+                    second = 0;
+                    minute++;
 
                     ddSecond = dFormat.format(second);
                     ddMinute = dFormat.format(minute);
                     counterLabel.setText(ddMinute + ":" + ddSecond);
-                }
-
-                if(minute == 0 && second == 0){
-                    timer.stop();
                 }
             }
         });
 
 
     }
+
 }
+

@@ -1,21 +1,23 @@
 package entities;
 
+import java.io.Serializable;
+import java.util.Timer;
+
 /**
  *
  * Creates User account if the user's account does not exist.
  * If it does, then it logs the user in and the page directs to the main page.
  *
  */
-public class CommonUser implements User{
+public class CommonUser implements User, Serializable{
 
     private String firstName;
     private String lastName;
     private String emailAddress;
     private String password;
     private HabitFactory habitCollection;
-    private TaskFactory taskCollection;
     private CategoryCollection categoryCollection;
-    private Timer tomato;
+    private TimerTomato tomato;
 
 
     /**
@@ -34,9 +36,8 @@ public class CommonUser implements User{
         this.firstName = first_name;
         this.lastName = last_name;
         this.habitCollection = new HabitFactory();
-        this.taskCollection = new TaskFactory();
         this.categoryCollection = new CategoryCollection();
-        this.tomato = new Timer();
+        this.tomato = new TimerTomato();
     }
 
     public CommonUser(){}
@@ -98,19 +99,16 @@ public class CommonUser implements User{
     }
 
     /**
-     * @return the user's collection of tasks
-     */
-    @Override
-    public TaskFactory getTaskCollection() {
-        return this.taskCollection;
-    }
-
-    /**
      * @return the user's timer object
      */
     @Override
-    public Timer getTomato() {
+    public TimerTomato getTomato() {
         return this.tomato;
+    }
+
+    @Override
+    public void setTomato(TimerTomato tomato) {
+        this.tomato = tomato;
     }
 
     // SETTER METHODS

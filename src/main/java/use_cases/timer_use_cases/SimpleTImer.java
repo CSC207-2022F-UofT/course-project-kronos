@@ -1,16 +1,16 @@
-package use_cases.timer_needed_use_cases;
+package use_cases.timer_use_cases;
 
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Scanner;
 
-public class Timer_1 {
+public class SimpleTImer {
     static int interval;
     static Timer timer;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // System.out.print("Input time => : ");
+        System.out.print("Input time => : ");
         String secs = sc.nextLine();
         int delay = 1000;
         int period = 1000;
@@ -33,3 +33,4 @@ public class Timer_1 {
     }
 
 }
+
