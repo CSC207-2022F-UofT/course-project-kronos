@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Timer;
-
 public interface User {
     String getEmailAddress();
     String getPassword();
@@ -11,11 +9,13 @@ public interface User {
 
     CategoryCollection getCategoryCollection();
 
+    TaskFactory getTaskCollection();
+
     TimerTomato getTomato();
 
-    void setTomato(TimerTomato tomato);
-
+    void setTomato(TimerTomato timerTomato);
     boolean passwordStrength();
+
 
 
 }

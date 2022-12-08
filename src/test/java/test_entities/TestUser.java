@@ -22,10 +22,6 @@ public class TestUser {
         assertEquals(lastname, example.getLastName());
         assertEquals(email, example.getEmailAddress());
         assertEquals(password, example.getPassword());
-        assertEquals(new HabitFactory(), example.getHabitCollection());
-        assertEquals(new CategoryFactory(), example.getCategoryCollection());
-        assertEquals(new TaskFactory(), example.getTaskCollection());
-        assertEquals(new Timer(), example.getTomato());
 
     }
 
