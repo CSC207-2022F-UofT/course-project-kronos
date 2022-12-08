@@ -1,7 +1,5 @@
 package entities;
 
-import java.util.Timer;
-
 public interface User {
     String getEmailAddress();
     String getPassword();
