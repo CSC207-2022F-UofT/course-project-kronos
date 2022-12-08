@@ -45,8 +45,7 @@ public class MarkCompletion implements MarkCompletionInputBound {
         }else{//complete is FALSE
             task.markAsComplete(); // the completionStatus of the task is marked as complete (TRUE)
         }
-        MarkCompletionOutputData outputData = new MarkCompletionOutputData(id, task.getName(),
-                task.getDeadline(),task.isCompleteStatus());
+        MarkCompletionOutputData outputData = new MarkCompletionOutputData(id, task.getName(),task.isCompleteStatus());
         return outputBound.prepareSuccessView(outputData);
     }
 

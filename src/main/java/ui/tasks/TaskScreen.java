@@ -84,7 +84,6 @@ public class TaskScreen extends JPanel implements ActionListener {
             editTaskController.edit(
                     // id
                     name.getText(),
-                    category.getText(),
                     //deadline.getText();
             );
         } catch (Exception ex) {

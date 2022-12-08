@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Timer;
 
 /**
@@ -8,14 +9,13 @@ import java.util.Timer;
  * If it does, then it logs the user in and the page directs to the main page.
  *
  */
-public class CommonUser implements User{
+public class CommonUser implements User, Serializable{
 
     private String firstName;
     private String lastName;
     private String emailAddress;
     private String password;
     private HabitFactory habitCollection;
-    private TaskFactory taskCollection;
     private CategoryCollection categoryCollection;
     private TimerTomato tomato;
 
@@ -36,7 +36,6 @@ public class CommonUser implements User{
         this.firstName = first_name;
         this.lastName = last_name;
         this.habitCollection = new HabitFactory();
-        this.taskCollection = new TaskFactory();
         this.categoryCollection = new CategoryCollection();
         this.tomato = new TimerTomato();
     }
@@ -97,14 +96,6 @@ public class CommonUser implements User{
     @Override
     public CategoryCollection getCategoryCollection() {
         return this.categoryCollection;
-    }
-
-    /**
-     * @return the user's collection of tasks
-     */
-    @Override
-    public TaskFactory getTaskCollection() {
-        return this.taskCollection;
     }
 
     /**
