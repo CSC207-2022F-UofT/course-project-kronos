@@ -76,6 +76,10 @@ As students, we have to balance and keep track of various things at the same tim
 
 ![]()
 
+## 5. Feature: Timer
+
+### Timer Screen
+
 ## 6. Feature: Data Visualization
 
 ### a. Visualization Main Screen

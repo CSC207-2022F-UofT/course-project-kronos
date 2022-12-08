@@ -20,7 +20,7 @@ public class TimerScreen extends JFrame
     String number2;
     // Custom Components
     // RGB Codes for Blue. Used as Background.
-    private final Color Blue = new Color(0, 50, 200);
+    private final Color Blue = new Color(0, 50, 150);
 
     // Used for displaying the timer values.
     private final Font timerStyle = new Font("Good", Font.BOLD, 140);
@@ -41,7 +41,7 @@ public class TimerScreen extends JFrame
     private static final int ORIGINAL_COUNTDOWN_SECONDS = 0;
 
     //change to zero.
-    private final int[] workTimeMin = {-1};
+    private final int[] workTimeMin = {0};
     private final int[] restTimeMin = {-1};
 
     private static final int ORIGINAL_SHORTBREAK_MINUTES = 5;
