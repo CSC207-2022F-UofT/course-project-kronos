@@ -1,12 +1,14 @@
 package entities;
 
+import java.io.Serializable;
+
 /**
  *
  * Creates User account if the user's account does not exist.
  * If it does, then it logs the user in and the page directs to the main page.
  *
  */
-public class CommonUser implements User{
+public class CommonUser implements User, Serializable {
 
     private String firstName;
     private String lastName;

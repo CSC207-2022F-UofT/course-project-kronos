@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import static java.lang.Boolean.FALSE;
@@ -9,7 +10,7 @@ import static java.lang.Boolean.TRUE;
  * Represents a single task.
  */
 
-public class Task{
+public class Task implements Serializable {
 
     private String name;
     private boolean completeStatus;

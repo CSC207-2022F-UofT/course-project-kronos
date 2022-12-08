@@ -1,12 +1,13 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Factory class for habit entity.
  */
-public class HabitFactory extends Factory<Habit>{
+public class HabitFactory extends Factory<Habit> implements Serializable {
 
     public HashMap<String, Habit> habitCollection;
 
