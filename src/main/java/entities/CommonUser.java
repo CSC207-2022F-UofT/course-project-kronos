@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Timer;
 
 /**
  *
