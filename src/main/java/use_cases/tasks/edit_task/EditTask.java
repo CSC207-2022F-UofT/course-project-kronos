@@ -33,18 +33,16 @@ public class EditTask implements EditTaskInputBoundary {
     @Override
     public EditTaskOutputData edit(EditTaskInputData inputData) {
         // If the input name is empty or containing only white spaces
-        if (inputData.getInputName().isBlank() || inputData.getInputDeadline().isLenient()){
+        if (inputData.getInputName().isBlank()){
             String error = "Changes not saved. Please fill all required fields.";
             return outputBoundary.prepareFailView(error);
         }
         int id = inputData.getTaskId();
         Task taskBeEdited = taskFactory.getTasks().get(id);
         taskBeEdited.setName(inputData.getInputName());
-        taskBeEdited.setDeadline(inputData.getInputDeadline());
         EditTaskOutputData outputData = new EditTaskOutputData(
                 id,
-                taskBeEdited.getName(),
-                taskBeEdited.getDeadline());
+                taskBeEdited.getName(), taskBeEdited.isCompleteStatus());
          return outputBoundary.prepareSuccessView(outputData);
 
     }

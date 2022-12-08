@@ -18,7 +18,7 @@ public class TimerOutputBoundary {
     }
 
     /**
-     * @return - Returns whether habit was created successfully.
+     * @return - Returns whether timer was created successfully.
      */
     public Boolean getSuccess() {
         return this.success;

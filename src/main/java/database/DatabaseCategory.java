@@ -1,5 +1,6 @@
 package database;
 
+import entities.Category;
 import entities.CategoryCollection;
 import use_cases.categories.create_category.CreateCategoryDsGateway;
 import use_cases.categories.create_category.CreateCategoryDsRequestModel;
@@ -8,26 +9,47 @@ import use_cases.categories.delete_category.DeleteCategoryDsRequestModel;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryDsRequestModel;
 
-public class DatabaseCategory {
-    protected CategoryCollection collection;
+import java.util.HashMap;
 
-    public DatabaseCategory(Database database){
-        this.collection = null;
-                //database.currUser.getCategoryCollection();
+public class DatabaseCategory implements CreateCategoryDsGateway, DeleteCategoryDsGateway, EditCategoryDsGateway {
+
+    protected HashMap<Integer, Category> collection;
+
+    /**
+     * Constructor
+     * @param database - DatabaseUser object
+     */
+    public DatabaseCategory(DatabaseUser database){
+        this.collection = database.getCategories();
     }
 
-    //@Override
-    public void save(CreateCategoryDsRequestModel requestModel) {
-        this.collection.categories.put(requestModel.getId(), requestModel.getCategory());
+    /**
+     * Saves the data about the task after creation to the database.
+     *
+     * @param requestModel - a data structure that contains data about the new category
+     */
+    @Override
+    public void saveCategory(CreateCategoryDsRequestModel requestModel) {
+        this.collection.put(requestModel.getId(), requestModel.getCategory());
     }
 
-    //@Override
-    public void save(DeleteCategoryDsRequestModel requestModel) {
-        this.collection.categories.remove(requestModel.getCategory().getId());
+    /**
+     * Deletes that category that matches the data in the request model from the database.
+     *
+     * @param requestModel - a data structure that contains data about the category to be deleted
+     */
+    @Override
+    public void deleteCategory(DeleteCategoryDsRequestModel requestModel) {
+        this.collection.remove(requestModel.getCategory().getId());
     }
 
-    //@Override
-    public void save(EditCategoryDsRequestModel requestModel) {
-        this.collection.categories.replace(requestModel.getCategory().getId(), requestModel.getCategory());
+    /**
+     * Saves the data about the category after edition to the database.
+     *
+     * @param requestModel - a data structure that contains data about the category after editing
+     */
+    @Override
+    public void editCategory(EditCategoryDsRequestModel requestModel) {
+        this.collection.replace(requestModel.getCategory().getId(), requestModel.getCategory());
     }
 }

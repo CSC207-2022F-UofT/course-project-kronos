@@ -1,53 +1,51 @@
 package use_cases.tasks.create_task;
 
-import java.util.Calendar;
-
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
+import entities.Task;
 
 /**
  * -- Application Business Layer --
  * A data structure that stores data about the new task that should be saved by the database. It passes data to the
  * gateway.
  */
-
 public class CreateTaskDsRequestModel {
-    private final String name;
-    private final boolean completeStatus = FALSE;
-    private final Calendar deadline;
-    private final int id;
 
-    /**
-     * Constructor
-     * @param id - the id of the created task.
-     * @param name - the name of the created task.
-     * @param deadline - the deadline of the created task.
-     */
-    public CreateTaskDsRequestModel(int id, String name, Calendar deadline) {
-        this.name = name;
-        this.deadline = deadline;
+    private Integer id;
+    private Task task;
+
+    public CreateTaskDsRequestModel(Integer id, Task task) {
         this.id = id;
+        this.task = task;
     }
 
     /**
-     * @return the name of the created task.
+     * @return Task object to be created
      */
-    public String getName() {
-        return name;
+    public Task getTask() {
+        return this.task;
     }
 
     /**
-     * @return the deadline of the created task.
-     */
-    public Calendar getDeadline() {
-        return deadline;
-    }
-
-    /**
-     * @return the id of the created task.
+     * @return id of the task
      */
     public int getId() {
-        return id;
+        return this.id;
+        }
+
+     * @return the completion status of the created task.
+     */
+    public boolean isCompleteStatus() {
+        return completeStatus;
     }
 
+    /**
+     * @param task - Task object to be created
+     */
+    public void setTask(Task task){this.task = task;}
+
+    /**
+     * @param id - id of task object to be created
+     */
+    public void setId(Integer id){this.id = id;}
+
 }
+

@@ -1,4 +1,4 @@
-![Kronos symbol](https://user-images.githubusercontent.com/113299553/205387220-89076fcb-f2e9-4b1e-bfbc-89b7260a6481.png)
+![Kronos symbol](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/Kronos%20symbol.png)
 
 # KRONOS
 
@@ -22,37 +22,37 @@ As students, we have to balance and keep track of various things at the same tim
 
 ## Graphical User Interface
 
-## Kronos App Landing Page 
-
-![home page](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/a796d8576f0059ed114cc3e7f7665319248451c0/home%20page.png)
-
 ## 1. Feature: User
 
 ### a. User Login Screen
 
-![front page](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/aef88c06d14816a872dbdf8115f568220f87cd5c/front%20page.png)
+![front page](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/front%20page.png)
 
 ### b. User SignUp Screen
 
-![sign up](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/4dab5c4a5f873ccc4e49e8c64c95c2a8c2b09b11/sign%20up.png)
+![sign up](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/sign%20up.png)
+
+### c. Menu Page 
+
+![home page](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/home%20page.png)
 
 ## 2. Feature: Habit 
 
 ### a. Habit Profile Screen
 
-![habit profile](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/9bfa1f76a60aa929214e77ed701c0d3edc13f1e9/habit%20profile.png)
+![habit profile](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/habit%20profile.png)
 
 ### b. Habit Creation Screen
 
-![habit creation](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/4dab5c4a5f873ccc4e49e8c64c95c2a8c2b09b11/habit%20creation.png)
+![habit creation](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/habit%20creation.png)
 
 ### c. Habit Edit Screen
 
-![habit edit](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/4dab5c4a5f873ccc4e49e8c64c95c2a8c2b09b11/habit%20edit.png)
+![habit edit](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/habit%20edit.png)
 
 ### d. Habit Track Screen
 
-![]()
+![habit track](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/habit%20track.png)
 
 ## 3. & 4. Features: Task and Category
 

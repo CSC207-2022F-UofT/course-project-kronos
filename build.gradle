@@ -11,6 +11,8 @@ dependencies {
     implementation("com.googlecode.json-simple:json-simple:1.1.1")
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.0')
     implementation("org.jfree:jfreechart:1.0.19")
+    // https://mvnrepository.com/artifact/com.miglayout/miglayout
+    implementation group: 'com.miglayout', name: 'miglayout', version: '3.5.5'
 }
 
 test {

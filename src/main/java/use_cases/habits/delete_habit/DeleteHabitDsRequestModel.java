@@ -7,7 +7,7 @@ package use_cases.habits.delete_habit;
  */
 public class DeleteHabitDsRequestModel {
 
-    private final String habitName;
+    private String habitName;
 
 
     /**
@@ -19,10 +19,14 @@ public class DeleteHabitDsRequestModel {
     }
 
     /**
-     *
-     * @return habit
+     * @return habit to be deleted
      */
     public String getHabitName() {
         return this.habitName;
     }
+
+    /**
+     * @param habitName - name of habit
+     */
+    public void setHabitName(String habitName){this.habitName = habitName;}
 }

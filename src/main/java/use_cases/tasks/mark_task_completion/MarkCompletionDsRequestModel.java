@@ -6,8 +6,8 @@ package use_cases.tasks.mark_task_completion;
  * data gateway.
  */
 public class MarkCompletionDsRequestModel {
-    private final int id;
-    private final boolean completeStatus;
+    private int id;
+    private boolean completeStatus;
 
     /**
      * Constructor
@@ -32,4 +32,14 @@ public class MarkCompletionDsRequestModel {
     public boolean isCompleteStatus() {
         return completeStatus;
     }
+
+    /**
+     * @param taskId - id of the task to be marked complete/incomplete
+     */
+    public void setId(Integer taskId){this.id = taskId;}
+
+    /**
+     * @param completeStatus the completion status of task
+     */
+    public void setCompleteStatus(boolean completeStatus){this.completeStatus = completeStatus;}
 }
