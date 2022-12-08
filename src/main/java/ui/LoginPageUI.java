@@ -101,7 +101,7 @@ public class LoginPageUI extends JFrame implements ActionListener{
                 new LoginUserInputData(emailAddressField.getText(), String.valueOf(passwordField.getPassword())));
         // case when the user is successfully logged into the account
         if(loginUserOutputData.getIsLoginSuccessful()){
-            JOptionPane.showMessageDialog(mainframe, "Welcome!");
+            JOptionPane.showMessageDialog(mainframe, "Successfully logged in!");
             mainframe.dispose();
             CommonUser user = gateway.getUserByEmail(emailAddressField.getText());
 

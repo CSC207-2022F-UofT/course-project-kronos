@@ -8,7 +8,6 @@ import use_cases.user.login_user.LoginUserInputBoundary;
 import use_cases.user.login_user.LoginUserInteractor;
 
 import javax.swing.*;
-import java.io.IOException;
 
 /**
  * Main program
@@ -17,7 +16,7 @@ public class Main extends JFrame{
 
     public Main(){
 
-        String fileName = "./test.ser";
+        String fileName = "./data.ser";
 
         DatabaseUser databaseUser;
         databaseUser = new DatabaseUser(fileName);
