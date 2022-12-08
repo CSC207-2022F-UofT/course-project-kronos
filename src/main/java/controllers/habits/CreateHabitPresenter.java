@@ -1,6 +1,5 @@
 package controllers.habits;
 
-import controllers.habits.HabitCreationFailed;
 import use_cases.habits.create_habit.CreateHabitOutputBoundary;
 import use_cases.habits.create_habit.CreateHabitOutputData;
 

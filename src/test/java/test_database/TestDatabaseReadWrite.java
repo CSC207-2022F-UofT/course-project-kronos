@@ -15,7 +15,7 @@ public class TestDatabaseReadWrite {
     @Test
     public void TestReadWriteLoginUser(){
 
-        HabitFactory testHabit = new HabitFactory();
+        HabitCollection testHabit = new HabitCollection();
         TaskFactory testTask = new TaskFactory();
         CategoryFactory testCat = new CategoryFactory();
         Timer testTimer = new Timer();

@@ -1,13 +1,13 @@
 package database;
 
 import entities.User;
-import use_cases.user.UserDataAccessInterface;
+//import use_cases.user.UserDataAccessInterface;
 
 import java.io.*;
 
 import java.util.HashMap;
 
-public class Database implements UserDataAccessInterface {
+public class Database {
 
     protected HashMap<String, User> userCollection;
     public String filePath;
@@ -47,12 +47,12 @@ public class Database implements UserDataAccessInterface {
         }
     }
 
-    @Override
+    //@Override
     public boolean CheckUserExists(String emailAddress) {
         return this.userCollection.containsKey(emailAddress);
     }
 
-    @Override
+    //@Override
     public User LoginUser(String emailAddress, String password) {
         if (emailAddress.equals(userCollection.get(emailAddress).getEmailAddress())){
             this.currUser = userCollection.get(emailAddress);
@@ -61,23 +61,23 @@ public class Database implements UserDataAccessInterface {
         return null;
     }
 
-    @Override
+    //@Override
     public User GetUser() {
         return this.currUser;
     }
 
-    @Override
+    //@Override
     public void UpdateUser(User user) {
         this.userCollection.replace(user.getEmailAddress(), user);
 
     }
 
-    @Override
+    //@Override
     public void DeleteUser(String emailAddress) {
         this.userCollection.remove(emailAddress);
     }
 
-    @Override
+    //@Override
     public void AddUser(User user) {
         this.userCollection.put(user.getEmailAddress(), user);
     }

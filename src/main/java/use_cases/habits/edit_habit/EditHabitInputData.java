@@ -9,6 +9,8 @@ public class EditHabitInputData {
     private final String inputName;
     private final String inputType;
 
+    private final String oldName;
+
 
     /**
      * Constructor for a EditHabitInputData object.
@@ -16,7 +18,8 @@ public class EditHabitInputData {
      * @param inputName - the name of the habit after editing.
      * @param type  - the type of the habit after editing.
      */
-    public EditHabitInputData(String inputName, String type) {
+    public EditHabitInputData(String oldName, String inputName, String type) {
+        this.oldName = oldName;
         this.inputName = inputName;
         this.inputType = type;
     }

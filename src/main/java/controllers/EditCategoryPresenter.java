@@ -2,7 +2,7 @@ package controllers;
 
 import use_cases.categories.edit_category.EditCategoryOutputBoundary;
 import use_cases.categories.edit_category.EditCategoryOutputData;
-
+/*
 public class EditCategoryPresenter implements EditCategoryOutputBoundary {
     @Override
     public EditCategoryOutputData prepareSuccessView(EditCategoryOutputData outputData) {
@@ -13,4 +13,4 @@ public class EditCategoryPresenter implements EditCategoryOutputBoundary {
     public EditCategoryOutputData prepareFailView(EditCategoryOutputData outputData) {
         return outputData;
     }
-}
+}*/

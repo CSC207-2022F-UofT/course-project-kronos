@@ -1,14 +1,15 @@
 package test_use_cases;
-import entities.*;
+import database.DatabaseHabit;
+import entities.Habit;
+import entities.HabitCollection;
+import use_cases.habits.create_habit.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.HashSet;
-import java.util.Set;
-import static use_cases.habits.create_habit.CreateHabit.createHabit;
-import static use_cases.habits.delete_habit.DeleteHabit.deleteHabit;
-import static use_cases.habits.edit_habit.EditHabit.*;
-import static use_cases.habits.track_habit.TrackHabit.increaseHabitFrequency;
+import use_cases.habits.delete_habit.*;
+import use_cases.habits.edit_habit.*;
+import use_cases.habits.track_habit.*;
+
 import static org.junit.Assert.*;
 
 public class TestHabitUseCases {
@@ -21,102 +22,120 @@ public class TestHabitUseCases {
     public void tearDown() {
     }
 
-    @Test(timeout = 500)
-    public void testCreateHabit() {
+    /**
+     * Test CreateTask use case.
+     */
+    @Test
+    public void create() {
 
-        String hTitle = "Sleep at 10 pm daily";
-        String hType = "weekly";
-        HabitFactory hFactory = new HabitFactory();
-        TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
-        Timer t = new Timer();
-        CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
-                hFactory, tFactory, cFactory, t);
-        createHabit(u, hTitle, hType, true);
-        Set<String> s = new HashSet<>();
-        s.add("Sleep at 10 pm daily");
-        assertEquals( u.getHabitCollection().habitCollection.keySet(), s);
+        CreateHabitDsGateway habitRepository = new DatabaseHabit();
+        CreateHabitOutputBoundary outputBoundary = new CreateHabitOutputBoundary() {
+            @Override
+            public CreateHabitOutputData prepareSuccessView(CreateHabitOutputData outputData) {
+                assertEquals("Read a Book", outputData.getHabit().getName());
+                assertEquals("Daily", outputData.getHabit().getType());
+                assertEquals(0, outputData.getHabit().getFrequency());
+                return null;
+            }
+
+            @Override
+            public CreateHabitOutputData prepareFailView(String error) {
+                fail("Habit Creation Failed. Please enter valid information.");
+                return null;
+            }
+        };
+        HabitCollection habitFactory = new HabitCollection();
+
+        CreateHabitInputBoundary createInteractor = new CreateHabit(outputBoundary, habitFactory);
+
+        CreateHabitInputData inputData = new CreateHabitInputData("Read a Book", "Daily");
+
+        createInteractor.create(inputData);
     }
 
-    @Test(timeout = 500)
-    public void testDeleteHabit() {
+    /**
+     * Test DeleteHabit use case.
+     */
+    @Test
+    public void delete(){
+        // Set example habit object.
+        Habit example = new Habit("Read a Book", "Daily");
+        String id = example.getName();
 
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        Habit h2 = new Habit("Read a book", "daily", true);
-        Habit h3 = new Habit("Drink Water", "daily", false);
-
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-        hFactory.addItem(h2);
-        hFactory.addItem(h3);
-        TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
-        Timer t = new Timer();
-        CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
-                hFactory, tFactory, cFactory, t);
-
-        Boolean v = deleteHabit(u, "Read a book");
-        assertEquals("The habit is deleted from the Factory", false, v);
+        DeleteHabitDsGateway habitRepository = new DatabaseHabit();
+        DeleteHabitOutputBoundary outputBoundary = new DeleteHabitOutputBoundary() {
+            @Override
+            public DeleteHabitOutputData prepareSuccessView(DeleteHabitOutputData outputData) {
+                assertEquals("Habit example is successfully deleted.", outputData.getMessage());
+                return null;
+            }
+        };
+        HabitCollection habitFactory = new HabitCollection();
+        //DeleteHabitInputBoundary deleteInteractor = new DeleteHabit(outputBoundary, habitRepository, habitFactory);
+        DeleteHabitInputData inputData = new DeleteHabitInputData(id);
+        //deleteInteractor.delete(inputData);
     }
 
-    @Test(timeout = 500)
-    public void testEditHabitName() {
+    /**
+     * Test EditTask use case.
+     */
+    @Test
+    public void edit(){
+        // Set example habit object.
+        Habit example = new Habit("Read a Book", "Daily");
+        String id = example.getName();
 
+        String newName = "Read a Philosophy Book";
 
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-        TaskFactory tFactory = new TaskFactory();
-        CategoryFactory cFactory = new CategoryFactory();
-        Timer t = new Timer();
-        CommonUser u = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
-                hFactory, tFactory, cFactory, t);
+        EditHabitDsGateway habitRepository = new DatabaseHabit();
+        EditHabitOutputBoundary outputBoundary = new EditHabitOutputBoundary() {
+            @Override
+            public EditHabitOutputData prepareSuccessView(EditHabitOutputData outputData) {
+                assertEquals("Read a Philosophy Book", outputData.getHabitName());
+                assertEquals("Daily", outputData.getHabitType());
+                return null;
+            }
 
-        String newName = "Run 8 Kms";
-        editName(u, h1, newName);
+            @Override
+            public EditHabitOutputData prepareFailView(EditHabitOutputData outputData) {
+                assertEquals("Changes not saved. Please fill all required fields.", outputData.getHabitName(),
+                        "Read a book");
+                return null;
+            }
+        };
+        HabitCollection habitFactory = new HabitCollection();
 
-        assertEquals("The name was changed", h1.getName(), "Run 8 Kms");
+        EditHabitInputBoundary editInteractor = new EditHabit(outputBoundary, habitRepository,habitFactory);
+        EditHabitInputData inputData = new EditHabitInputData("Read a Book", newName, "Daily");
+        editInteractor.edit(inputData);
+
     }
 
-    @Test(timeout = 500)
-    public void testEditHabitType() {
+    @Test
+    public void track(){
+        // Set example habit object.
+        Habit example = new Habit("Read a Book", "Daily");
+        String id = example.getName();
 
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-        String newType = "daily";
+        TrackHabitDsGateway habitRepository = new DatabaseHabit();
+        TrackHabitOutputBoundary outputBoundary = new TrackHabitOutputBoundary() {
+            @Override
+            public TrackHabitOutputData prepareSuccessView(TrackHabitOutputData outputData) {
+                assertEquals("The frequency has been increased.", outputData.getHabitFrequency(), 1);
+                return null;
+            }
 
-        editType(h1,newType);
+            @Override
+            public TrackHabitOutputData prepareFailView(TrackHabitOutputData outputData) {
+                assertEquals("The frequency was not increased.",outputData.getHabitFrequency(), 0);
+                return null;
+            }
+        };
+        HabitCollection habitFactory = new HabitCollection();
 
-        assertEquals("The type was changed", h1.getType(), "daily");
+        TrackHabitInputBoundary trackInteractor = new TrackHabit(outputBoundary, habitRepository, habitFactory);
+        TrackHabitInputData inputData = new TrackHabitInputData("Read a Book");
+        trackInteractor.track(inputData);
+
     }
-
-    @Test(timeout = 500)
-    public void testEditHabitReminder() {
-
-
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-
-        Boolean newState = false;
-
-        editReminder(h1,newState);
-
-        assertFalse("The Reminder state was changed", h1.getReminder());
-    }
-
-    @Test(timeout = 500)
-    public void testTrackHabit() {
-
-        Habit h1 = new Habit("Run 5 Kms", "weekly", true);
-        HabitFactory hFactory = new HabitFactory();
-        hFactory.addItem(h1);
-        increaseHabitFrequency(h1);
-        increaseHabitFrequency(h1);
-        increaseHabitFrequency(h1);
-        increaseHabitFrequency(h1);
-        assertEquals("The frequency was marked", h1.getFrequency(), 4);
-    }
-
 }

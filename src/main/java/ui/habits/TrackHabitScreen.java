@@ -22,10 +22,10 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
      */
     public void addHabitsToPane(JPanel pane) {
 
-        //for(String i : DatabaseHabit.getHabitCollection()){
+        for(String i : ExampleHabit.send().getCollection().keySet()){
 
             // Label: Habit name
-            JLabel l = new JLabel( 1 + "  " , JLabel.CENTER);
+            JLabel l = new JLabel( i + "  " , JLabel.CENTER);
             l.setPreferredSize(new Dimension(100, 30));
             l.setBorder(new LineBorder(Color.GRAY, 1));
             l.setLayout(new BorderLayout());
@@ -33,22 +33,22 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
             // Button 1: increase frequency
             JButton button1 = new JButton("+");
             button1.setAlignmentX(Component.RIGHT_ALIGNMENT);
-           // button1.addActionListener(e -> TrackHabitController.TrackHabitC(sendUser(), i));
+            button1.addActionListener(e -> ExampleHabit.send().getCollection().get(i).markFrequency());
             button1.setPreferredSize(new Dimension(50, 30));
 
             // Button 2: Show frequency
             JButton button2 = new JButton("Frequency");
             button2.setAlignmentX(Component.LEFT_ALIGNMENT);
-            //button2.addActionListener(e ->
-                    //button2.setText(sendUser().getHabitCollection().habitCollection.get(i).getFrequencyString()));
+            button2.addActionListener(e ->
+                    button2.setText(ExampleHabit.send().getCollection().get(i).getFrequencyString()));
             button2.setPreferredSize(new Dimension(100, 30));
 
             // Button 3: Show frequency
-            JButton button3 = new JButton("Visualize");
-            button3.setAlignmentX(Component.LEFT_ALIGNMENT);
+            //JButton button3 = new JButton("Visualize");
+            //button3.setAlignmentX(Component.LEFT_ALIGNMENT);
             //button3.addActionListener(e ->
-            //button3.setText(sendUser().getHabitCollection().habitCollection.get(i).getFrequencyString()));
-            button3.setPreferredSize(new Dimension(100, 30));
+            //button3.setText(ExampleHabit.send().getCollection().get(i).getFrequencyString()));
+            //button3.setPreferredSize(new Dimension(100, 30));
 
 
 
@@ -58,7 +58,7 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
             pane.add(l);
 
         }
-    //}
+    }
 
     /**
      * Produces a UI to show a list of all existing Habits in the User's collection.
@@ -104,7 +104,6 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {System.out.println("Click" + e.getActionCommand());
 
         try{
-            tHabit.track("s");
             JOptionPane.showMessageDialog(this, "%s tracked.");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());

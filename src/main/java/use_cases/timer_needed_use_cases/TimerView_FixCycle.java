@@ -1,7 +1,7 @@
 package use_cases.timer_needed_use_cases;
 
-import entities.TimerTomato;
-import net.miginfocom.swing.MigLayout;
+//import entities.TimerTomato;
+//import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -69,8 +69,8 @@ public class TimerView_FixCycle extends JFrame
     private int delayRemaining;
     private int roundsCompleted; // No. of Pomodoro rounds completed.
 
-    private static final String workTime = TimerTomato.getWorkTime();
-    private static final String restTime = TimerTomato.getRestTime();
+  //  private static final String workTime = TimerTomato.getWorkTime();
+    //private static final String restTime = TimerTomato.getRestTime();
     private static int workTime_minutes;
     private static int workTime_seconds;
     private static int restTimer_minutes;
@@ -122,7 +122,7 @@ public class TimerView_FixCycle extends JFrame
     {
         timerPanel = new JPanel();
         timerPanel.setBackground(skyBlue);
-        timerPanel.setLayout(new MigLayout("insets 115 0 0 0", "", "[][]0[]"));
+      //  timerPanel.setLayout(new MigLayout("insets 115 0 0 0", "", "[][]0[]"));
 
         minuteLabel = new JLabel(String.format("%02d", ORIGINAL_COUNTDOWN_MINUTES));
         minuteLabel.setForeground(Color.white);

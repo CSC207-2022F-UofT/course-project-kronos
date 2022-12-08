@@ -1,8 +1,7 @@
 package use_cases.habits.track_habit;
 
 import entities.Habit;
-import entities.HabitFactory;
-import use_cases.habits.edit_habit.*;
+import entities.HabitCollection;
 
 /**
  * Use case class for tracking a habit.
@@ -10,7 +9,7 @@ import use_cases.habits.edit_habit.*;
 public class TrackHabit implements TrackHabitInputBoundary {
     private final TrackHabitOutputBoundary outputBoundary;
     private final TrackHabitDsGateway dsGateway;
-    private final HabitFactory habitFactory;
+    private final HabitCollection habitFactory;
 
     /**
      * Constructor for this class.
@@ -18,7 +17,7 @@ public class TrackHabit implements TrackHabitInputBoundary {
      * @param dsGateway -
      * @param hFactory -
      */
-    public TrackHabit(TrackHabitOutputBoundary outputBoundary, TrackHabitDsGateway dsGateway, HabitFactory hFactory) {
+    public TrackHabit(TrackHabitOutputBoundary outputBoundary, TrackHabitDsGateway dsGateway, HabitCollection hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
         this.habitFactory = hFactory;
@@ -63,7 +62,7 @@ public class TrackHabit implements TrackHabitInputBoundary {
     /**
      * @return habit factory
      */
-    public HabitFactory getHabitFactory() {
+    public HabitCollection getHabitFactory() {
         return habitFactory;
     }
 }

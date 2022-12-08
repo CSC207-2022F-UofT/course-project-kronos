@@ -1,11 +1,13 @@
 package use_cases.user.login_user;
 
-import database.DatabaseUser;
+
+//import database.DatabaseUser;
 
 /**
  * The Interactor that is responsible for logging a user into its account.
  * @author happynasit
  */
+/*
 public class LoginUserInteractor implements LoginUserInputBoundary{
     private final LoginUserOutputBoundary outputBoundary;
     private final LoginUserDsGateway gateway;
@@ -17,6 +19,7 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
      * @param databaseUser of the user
      * @param gateway of the login user database
      */
+/*
     public LoginUserInteractor(LoginUserOutputBoundary outputBoundary, DatabaseUser databaseUser, LoginUserDsGateway gateway) {
         this.outputBoundary = outputBoundary;
         this.databaseUser = databaseUser;
@@ -28,6 +31,7 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
      * @param inputData  - the input data which contain a user object that will be checked to log in.
      * @return the output data after logging in.
      */
+    /*
     @Override
     public LoginUserOutputData login(LoginUserInputData inputData){
         if (gateway.userExistsByEmail(inputData.getEmailAddress())){
@@ -55,4 +59,4 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
     }
 
     public LoginUserDsGateway getGateway(){return gateway;}
-}
+}*/

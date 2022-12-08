@@ -12,9 +12,9 @@ public class CreateHabitController {
      * @param t - The type of the habit
      * @param b - The reminder state of the habit
      */
-    public static boolean createHabitC(CommonUser u, String s, String t, String b){
+    /*public static boolean createHabitC(CommonUser u, String s, String t, String b){
         boolean r = b.equals("ON");
         CreateHabitInputBoundary habitInput = new CreateHabitInputBoundary(u, s, t, r);
         return habitInput.getSuccess();
-    }
+    }*/
 }

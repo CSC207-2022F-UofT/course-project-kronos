@@ -1,6 +1,6 @@
 package use_cases.habits.create_habit;
 import entities.Habit;
-import entities.HabitFactory;
+import entities.HabitCollection;
 
 /**
  * Use case class for creating a habit.
@@ -8,14 +8,14 @@ import entities.HabitFactory;
 public class CreateHabit implements CreateHabitInputBoundary{
 
     private final CreateHabitOutputBoundary outputBoundary;
-    private final HabitFactory habitFactory;
+    private final HabitCollection habitFactory;
 
     /**
      * Constructor for this class.
      * @param outputBoundary - The output data
      * @param h - The habit factory of the user.
      */
-    public CreateHabit(CreateHabitOutputBoundary outputBoundary, HabitFactory h) {
+    public CreateHabit(CreateHabitOutputBoundary outputBoundary, HabitCollection h) {
         this.outputBoundary = outputBoundary;
         this.habitFactory = h;
     }
@@ -54,7 +54,7 @@ public class CreateHabit implements CreateHabitInputBoundary{
     /**
      * @return returns the habit factory after creation of new habit.
      */
-    public HabitFactory getHabitFactory() {
+    public HabitCollection getHabitFactory() {
         return habitFactory;
     }
 

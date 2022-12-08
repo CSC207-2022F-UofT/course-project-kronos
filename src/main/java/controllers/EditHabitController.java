@@ -12,11 +12,12 @@ public class EditHabitController {
      * @param t - The type of the habit
      * @param b - The reminder state of the habit
      */
+    /*
     public static void editHabitC(CommonUser u, String s, String a, String t, String b){
 
         boolean r = b.equals("ON");
 
         EditHabitInputBoundary.editHabitInputBoundary(u, s, a, t, r);
 
-    }
+    }*/
 }

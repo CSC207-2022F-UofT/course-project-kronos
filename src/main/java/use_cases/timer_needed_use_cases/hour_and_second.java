@@ -1,6 +1,6 @@
 package use_cases.timer_needed_use_cases;
 
-import entities.TimerTomato;
+//import entities.TimerTomato;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +26,7 @@ public class hour_and_second {
 
     public static void main(String[] args){
 
-        new hour_and_second(TimerTomato.getWorkTime());
+    //    new hour_and_second(TimerTomato.getWorkTime());
     }
 
     public hour_and_second(String timer) {

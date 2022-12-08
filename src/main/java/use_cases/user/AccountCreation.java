@@ -13,14 +13,13 @@ public class AccountCreation {
         if (users.Users.containsKey(email_id)){
             System.out.println("Email address already exists. Not able to create a new one");
         }else{
-            StrengthPassword strength = new StrengthPassword();
-            if(strength.passwordStrength(password) && first_name != null && last_name != null) {
+            //StrengthPassword strength = new StrengthPassword();
+            //if(strength.passwordStrength(password) && first_name != null && last_name != null) {
                 //User user = new User(first_name, last_name, email_id, password);
 
-                System.out.println("Account Successfully Created");
+              //  System.out.println("Account Successfully Created");
             }
         }
     }
 
-
-}
+//}

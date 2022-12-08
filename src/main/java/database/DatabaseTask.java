@@ -8,10 +8,10 @@ import use_cases.tasks.edit_task.EditTaskDsGateway;
 import use_cases.tasks.edit_task.EditTaskDsRequestModel;
 import use_cases.tasks.mark_task_completion.MarkCompletionDsGateway;
 import use_cases.tasks.mark_task_completion.MarkCompletionDsRequestModel;
-import use_cases.tasks.mark_task_visibility.MarkVisibilityDsGateway;
-import use_cases.tasks.mark_task_visibility.MarkVisibilityDsRequestModel;
+//import use_cases.tasks.mark_task_visibility.MarkVisibilityDsGateway;
+//import use_cases.tasks.mark_task_visibility.MarkVisibilityDsRequestModel;
 
-public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, EditTaskDsGateway, MarkVisibilityDsGateway, MarkCompletionDsGateway {
+//public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, EditTaskDsGateway, MarkVisibilityDsGateway, MarkCompletionDsGateway {
 
 
     /**
@@ -19,28 +19,28 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, E
      *
      * @param requestModel - a data structure that contains data about the new task that should be saved in the database.
      */
-    @Override
-    public void saveTask(CreateTaskDsRequestModel requestModel) {
+   // @Override
+    //public void saveTask(CreateTaskDsRequestModel requestModel) {
 
-    }
+    //}
 
-    @Override
-    public void deleteTask(DeleteTaskDsRequestModel requestModel) {
+    //@Override
+    //public void deleteTask(DeleteTaskDsRequestModel requestModel) {
 
-    }
+    //}
 
-    @Override
-    public void saveTask(EditTaskDsRequestModel requestModel) {
+    //@Override
+    //public void saveTask(EditTaskDsRequestModel requestModel) {
 
-    }
+    //}
 
-    @Override
-    public void saveTask(MarkCompletionDsRequestModel requestModel) {
+    //@Override
+    //public void saveTask(MarkCompletionDsRequestModel requestModel) {
 
-    }
+    //}
 
-    @Override
-    public void saveTask(MarkVisibilityDsRequestModel requestModel) {
+    //@Override
+    //public void saveTask(MarkVisibilityDsRequestModel requestModel) {
 
-    }
-}
+    //}
+//}

@@ -33,11 +33,14 @@ public class CreateTaskScreen extends JFrame implements ActionListener {
 
     /**
      * A window with a title and a JButton.
-     * @param controller - the controller.
-     */
-    public CreateTaskScreen (CreateTaskController controller){
 
-        this.createTaskController = controller;
+     */
+    public CreateTaskScreen (){
+
+        //this.createTaskController = controller;
+
+        JFrame frame = new JFrame("Hello");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel title = new JLabel("Editing Task");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -53,14 +56,16 @@ public class CreateTaskScreen extends JFrame implements ActionListener {
         buttons.add(cancel);
 
         create.addActionListener(this);
-        cancel.addActionListener(this);
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        this.add(title);
-        this.add(taskNameInfo);
+        frame.add(title);
+        frame.add(taskNameInfo);
         // this.add(deadlineInfo);
-        this.add(buttons);
+        frame.add(buttons);
+
+        frame.pack();
+        frame.setVisible(true);
 
     }
 
@@ -71,12 +76,8 @@ public class CreateTaskScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Click" + e.getActionCommand());
-
         try{
-            createTaskController.create(
-                    name.getText(),
-                    //deadline.getText();
-            );
+            JOptionPane.showMessageDialog(this, name.getText() + "%s created.");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }

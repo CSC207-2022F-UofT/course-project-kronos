@@ -1,30 +1,35 @@
 package example_user;
 
 import entities.*;
+import ui.habits.CreateHabitScreen;
+import ui.tasks.CreateTaskScreen;
+import use_cases.habits.create_habit.CreateHabitInputData;
 
 public class UserExample {
 
-    public static HabitFactory hFactory = new HabitFactory();
+    public static HabitCollection hFactory = new HabitCollection();
 
     static TaskFactory tFactory = new TaskFactory();
 
-    static CategoryFactory cFactory =  new CategoryFactory();
+    static CategoryCollection cFactory =  new CategoryCollection();
 
-    static Timer t = new Timer();
+    //static Timer t = new Timer();
 
-    static CommonUser person = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
-            hFactory, tFactory, cFactory, t);
+    //static CommonUser person = new CommonUser("hello123@gmail.com", "12345678", "Harry", "Potter",
+            //hFactory, tFactory, cFactory, t);
 
-    public static CommonUser sendUser(){
-        return person;
+    public static void sendUser(){
+        // System.out.println(t.title);
+        //System.out.println("Click" + evt.getActionCommand());
+        CreateHabitScreen cr = new CreateHabitScreen();
     }
 
-    public static void send(){
-        System.out.println(person.getHabitCollection().habitCollection.toString());
-    }
+    //public static void send(){
+       // System.out.println(person.getHabitCollection().habitCollection.toString());
+    //}
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(UserExample::send);
+        javax.swing.SwingUtilities.invokeLater(UserExample::sendUser);
     }
 
 }

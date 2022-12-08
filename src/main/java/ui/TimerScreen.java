@@ -1,7 +1,7 @@
 
 package ui;
 
-import net.miginfocom.swing.MigLayout;
+//import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -122,7 +122,7 @@ public class TimerScreen extends JFrame
     {
         timerPanel = new JPanel();
         timerPanel.setBackground(Blue);
-        timerPanel.setLayout(new MigLayout("insets 115 0 0 0", "", "[][]0[]"));
+        //timerPanel.setLayout(new MigLayout("insets 115 0 0 0", "", "[][]0[]"));
 
         minuteLabel = new JLabel(String.format("%02d", ORIGINAL_COUNTDOWN_MINUTES));
         minuteLabel.setForeground(Color.white);

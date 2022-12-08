@@ -50,7 +50,7 @@ public class EditTaskScreen extends JPanel implements ActionListener {
         save.addActionListener(this);
         cancel.addActionListener(this);
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(title);
         this.add(taskNameInfo);
@@ -69,16 +69,16 @@ public class EditTaskScreen extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("Click" + e.getActionCommand());
 
-        try{
-            editTaskController.edit(
+        //try{
+          //  editTaskController.edit(
                     // id
-                    name.getText(),
-                    category.getText(),
+                   // name.getText(),
+                    //category.getText(),
                     //deadline.getText();
-            );
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
+            //);
+        //} catch (Exception ex) {
+          //  JOptionPane.showMessageDialog(this, ex.getMessage());
+        //}
 
     }
 }

@@ -27,53 +27,53 @@ public class CreateHabitScreen extends JFrame implements ActionListener {
         mainPanel.setLayout(new GridLayout(5, 0));
 
         // Panel 1
-        JPanel p1 = new JPanel();
-        p1.setSize(new Dimension(250, 50));
+        JPanel panelCreate = new JPanel();
+        panelCreate.setSize(new Dimension(250, 50));
         //Label 1
-        JLabel l1 = new JLabel( "CREATE A NEW HABIT", JLabel.CENTER);
+        JLabel labelCreate = new JLabel( "CREATE A NEW HABIT", JLabel.CENTER);
 
         // Panel 2
-        JPanel p2 = new JPanel();
-        p2.setSize(new Dimension(250, 50));
+        JPanel panelEdit = new JPanel();
+        panelEdit.setSize(new Dimension(250, 50));
         // Label 2
-        JLabel l2 = new JLabel( "Habit Title", JLabel.CENTER);
-        l2.setPreferredSize(new Dimension(100, 30));
-        l2.setLayout(new BorderLayout());
+        JLabel labelEdit = new JLabel( "Habit Title", JLabel.CENTER);
+        labelEdit.setPreferredSize(new Dimension(100, 30));
+        labelEdit.setLayout(new BorderLayout());
 
 
         // Panel 3
-        JPanel p3 = new JPanel();
-        p3.setSize(new Dimension(250, 50));
+        JPanel panelTrack = new JPanel();
+        panelTrack.setSize(new Dimension(250, 50));
         // Label 3
-        JLabel l3 = new JLabel( "Habit Type", JLabel.CENTER);
-        l3.setPreferredSize(new Dimension(100, 30));
-        l3.setLayout(new BorderLayout());
+        JLabel labelTrack = new JLabel( "Habit Type", JLabel.CENTER);
+        labelTrack.setPreferredSize(new Dimension(100, 30));
+        labelTrack.setLayout(new BorderLayout());
 
         // Panel 5
-        JPanel p5 = new JPanel();
-        p5.setSize(new Dimension(250, 50));
+        JPanel panelSubmit = new JPanel();
+        panelSubmit.setSize(new Dimension(250, 50));
 
 
         //Button 1 : Submit button
-        JButton b1 = new JButton("SUBMIT");
-        b1.addActionListener(this);
+        JButton buttonSubmit = new JButton("SUBMIT");
+        buttonSubmit.addActionListener(this);
 
         frame.add(mainPanel);
 
-        mainPanel.add(p1);
-        mainPanel.add(p2);
-        mainPanel.add(p3);
-        mainPanel.add(p5);
+        mainPanel.add(panelCreate);
+        mainPanel.add(panelEdit);
+        mainPanel.add(panelTrack);
+        mainPanel.add(panelSubmit);
 
-        p1.add(l1);
+        panelCreate.add(labelCreate);
 
-        p2.add(l2);
-        p2.add(this.title);
+        panelEdit.add(labelEdit);
+        panelEdit.add(this.title);
 
-        p3.add(l3);
-        p3.add(this.type);
+        panelTrack.add(labelTrack);
+        panelTrack.add(this.type);
 
-        p5.add(b1);
+        panelSubmit.add(buttonSubmit);
 
         frame.pack();
         frame.setVisible(true);
