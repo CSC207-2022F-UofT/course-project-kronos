@@ -22,7 +22,7 @@ As students, we have to balance and keep track of various things at the same tim
 
 The user needs to have an account on the system to be able to access the features. In case the user has an account, they can log in. 
 
-Logging in leads to the Menu page which has options for the features: Habits, Tasks, Categories, Data Visualization and Timer. The user can then choose any of them and they will be lead to the corresponding page. 
+Logging in leads to the Menu page which has options for the features: Habits, Tasks, Categories, Data Visualization and Timer. The user can then choose any of them and they will be led to the corresponding page. 
 
 ## Graphical User Interface
 
