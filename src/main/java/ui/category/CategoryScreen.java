@@ -40,7 +40,7 @@ public class CategoryScreen implements ActionListener {
         EditCategoryFrame.setLocation(800, 200);
         EditCategoryFrame.setTitle("Edit Category");
         EditCategoryFrame.setVisible(true);
-        EditCategoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        EditCategoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // layout
         GridBagLayout layout = new GridBagLayout(); // need rows to adapt to number of tasks in that category
@@ -97,6 +97,9 @@ public class CategoryScreen implements ActionListener {
         save.setFont(new Font("Serif", Font.BOLD, 15));
         save.setBackground(Color.white);
         EditCategoryFrame.add(save, constraints);
+        String categoryNameText = categoryNameInput.getText();
+        String colourText = (String) colourInput.getSelectedItem();
+        save.addActionListener(this);
     }
 
     public static void loadScreen(EditCategoryController editController, DeleteCategoryController deleteController,

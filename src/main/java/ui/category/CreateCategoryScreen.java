@@ -28,7 +28,7 @@ public class CreateCategoryScreen {
         createCategoryFrame.setLocation(800, 200);
         createCategoryFrame.setTitle("Create Category");
         createCategoryFrame.setVisible(true);
-        createCategoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        createCategoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // layout
         GridBagLayout layout = new GridBagLayout(); // need rows to adapt to number of tasks in that category

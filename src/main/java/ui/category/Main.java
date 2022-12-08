@@ -71,10 +71,6 @@ public class Main {
 
         //new CreateCategoryScreen(createCategoryController);
         // testing the CategoryScreen
-        Category editCat = new Category("edit this", "orange");
-        categories.addItem(editCat);
-        String newName = "new name";
-        String newColour = "grey";
         EditCategoryInputBoundary inputBound = new EditCategory(editCategoryPresenter, editDsGateway, categories, category4.getId());
         EditCategoryController editController = new EditCategoryController(inputBound);
         //new CategoryScreen(editController,deleteCategoryController, category4.getId(), category4.getName(), category4.getColour());
