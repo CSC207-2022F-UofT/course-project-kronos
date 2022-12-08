@@ -3,13 +3,13 @@
 //package test_use_cases;
 //
 //import entities.Category;
-//import entities.CategoryFactory;
+//import entities.CategoryCollection;
 //import use_cases.categories.create_category.*;
 //
 //import static org.junit.Assert.*;
 //
 //public class TestCategory {
-//     CategoryFactory factory = new CategoryFactory();
+//     CategoryCollection factory = new CategoryCollection();
 //     String name = "Chores";
 //     String colour = "RED";
 //     CreateCategoryOutputBound outputBound = new CreateCategoryOutputBound() {

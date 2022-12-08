@@ -6,7 +6,7 @@
 // * -- Application Business Layer --
 // * The use case Interactor that is responsible for creating a new category.
 // */
-//public class CreateCategory implements CreateCategoryInputBoundary {
+//public class CreateCategory implements CreateCategoryInputBound {
 //    private final CreateCategoryOutputBoundary outputBound;
 //    private final CategoryCollection categories;
 //    private CreateCategoryDsGateway dsGateway;

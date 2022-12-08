@@ -4,7 +4,7 @@
 // * -- Application Business Layer --
 // * This is an interface that passes the inputData to the interactor of category creation.
 // */
-//public interface CreateCategoryInputBoundary {
+//public interface CreateCategoryInputBound {
 //    /**
 //     * Create a category based on input data.
 //     * @param inputData - input data including the id, name, and colour of the category to be created
