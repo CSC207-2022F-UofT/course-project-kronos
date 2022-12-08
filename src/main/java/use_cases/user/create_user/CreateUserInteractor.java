@@ -29,7 +29,11 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
 
     @Override
     public CreateUserOutputData create(CreateUserInputData inputData) {
-        if (gateway.userExistsByEmail(inputData.getEmailAddress())){
+        if (inputData.getEmailAddress().equals("") || inputData.getFirstName().equals("") || inputData.getLastName().equals("")
+        || inputData.getPassword().equals("") || inputData.getRepeatPassword().equals("")){
+            CreateUserOutputData outputData = new CreateUserOutputData("Invalid parameters");
+            return outputBoundary.prepareFailView(outputData);
+        }else if (gateway.userExistsByEmail(inputData.getEmailAddress())){
             CreateUserOutputData outputData = new CreateUserOutputData("User email already exists. " +
                     "Please enter a new email address.");
             return outputBoundary.prepareFailView(outputData);
