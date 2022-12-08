@@ -1,3 +1,4 @@
+/*
 package testentities;
 
 import entities.*;
@@ -68,3 +69,4 @@ public class TestUser {
 
 
 }
+*/

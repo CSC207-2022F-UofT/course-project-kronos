@@ -7,6 +7,7 @@ import entities.Category;
 import entities.CategoryCollection;
 import entities.Task;
 import ui.ColourPalette;
+import ui.user.MenuPage;
 import use_cases.categories.edit_category.EditCategory;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryInputBoundary;
@@ -54,7 +55,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         toDoFrame = new JFrame("To Do List");
         toDoFrame.setLocation(350, 80);
         toDoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        toDoFrame.setSize(1000, 800);
+        toDoFrame.setSize(800, 600);
         toDoFrame.setLayout(new BorderLayout());
         toDoFrame.setVisible(true);
 
@@ -122,14 +123,14 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.gridy = 2;
         header.add(taskName, c);
 
-        JLabel deadline = new JLabel("  Deadline");
+        /*JLabel deadline = new JLabel("  Deadline");
         deadline.setFont(new Font("Serif", Font.BOLD, 20));
         deadline.setHorizontalAlignment(SwingConstants.CENTER);
         c.ipady = 2;
         c.weightx = 0.3;
         c.gridx = 1;
         c.gridy = 2;
-        header.add(deadline, c);
+        header.add(deadline, c);*/
 
         JLabel completion = new JLabel("Completion");
         completion.setFont(new Font("Serif", Font.BOLD, 20));
@@ -150,7 +151,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         // for each category, loop through the task collection
         // update the body panel so that the name of the category (column 0) and add a button to the right most column for newTask button
 
-        int y = 4;
+        int y = 1;
         for (Integer id: categories.categories.keySet()) {
             Category cat = categories.getItem(id);
             // new constraints for gridlayout
@@ -181,10 +182,10 @@ public class ToDoScreen extends JFrame implements ActionListener {
                 c.gridy = y;
                 JLabel taskName = new JLabel(task.getName());
                 taskName.setFont(new Font("Serif", Font.PLAIN, 16));
-                taskName.setHorizontalAlignment(SwingConstants.CENTER);
+                taskName.setHorizontalAlignment(SwingConstants.RIGHT);
                 this.body.add(taskName, c);
 
-                c.gridx = 1;
+                /*c.gridx = 1;
                 c.weightx = 0.3;
                 c.gridy = y;
                 SimpleDateFormat formatter=new SimpleDateFormat("DD-MMM-yyyy");
@@ -192,13 +193,14 @@ public class ToDoScreen extends JFrame implements ActionListener {
                 JLabel deadline = new JLabel(date);
                 deadline.setFont(new Font("Serif", Font.PLAIN, 16));
                 deadline.setHorizontalAlignment(SwingConstants.CENTER);
-                this.body.add(deadline, c);
+                this.body.add(deadline, c);*/
 
                 c.gridx = 2;
                 c.weightx = 0.3;
                 c.gridy = y;
-                JCheckBox checkbox = new JCheckBox(new CheckTask());
-                checkbox.setHorizontalAlignment(SwingConstants.CENTER);
+                CheckTask checkTask = new CheckTask();
+                JCheckBox checkbox = new JCheckBox(checkTask);
+                checkbox.setHorizontalAlignment(SwingConstants.LEFT);
                 this.body.add(checkbox, c);
                 y++;
             }
@@ -207,7 +209,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
             c.gridx = 1;
             c.gridy = y;
             newTask = new JButton(cat.getId() + ": New Task");
-            newTask.setSize(8, 8);
             newTask.setBackground(Color.white);
             this.body.add(newTask, c);
             y++;
@@ -216,27 +217,22 @@ public class ToDoScreen extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newCategory){
-            System.out.println("yes");
-            CreateCategoryScreen newCategory = new CreateCategoryScreen(createController);
+            new CreateCategoryScreen(createController);
         }
         if (e.getSource() == menu){
-            // new Menu(); leads to menu page, still needs to be implemented
+            new MenuPage();
         }
         if (e.getSource() == newTask){ // will this track the right button since we create it multiple times?
             int id = Integer.parseInt(newTask.getText().split(":")[0]);
             Category cat = categories.getItem(id);
-            // how to update the task collection in this Category? --> need to update the database
-            // new CreateTask(cat.getTasks());
+            // pass the category to the new Task screen
         }
-
-        // what if someone clicks the edit button
         if (e.getSource() == edit){
-            // how to get the specific category that button belongs to? how to associate these two objects?
             int id = Integer.parseInt(edit.getText().split(":")[0]);
             Category cat = categories.getItem(id);
             EditCategoryInputBoundary editCategory = new EditCategory(editCategoryPresenter, editDsGateway, categories, id);
             EditCategoryController editController = new EditCategoryController(editCategory);
-            CategoryScreen categoryDetails = new CategoryScreen(editController, deleteController, id, cat.getName(), cat.getColour()); // how does this lead to next window
+            new CategoryScreen(editController, deleteController, id, cat.getName(), cat.getColour()); // how does this lead to next window
         }
 
     }

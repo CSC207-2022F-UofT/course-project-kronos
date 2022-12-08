@@ -1,3 +1,4 @@
+/*
 package test_use_cases;
 import entities.*;
 import org.junit.After;
@@ -120,3 +121,4 @@ public class TestHabitUseCases {
     }
 
 }
+*/

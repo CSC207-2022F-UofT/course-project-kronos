@@ -1,3 +1,4 @@
+/*
 package test_visualization;
 
 import entities.Habit;
@@ -32,10 +33,15 @@ public class TestCreateChart {
                 chart.getDataset(), PlotOrientation.VERTICAL,
                 true,true,false);
 
-        int width = 640;    /* Width of the image */
-        int height = 480;   /* Height of the image */
+        int width = 640;    */
+/* Width of the image *//*
+
+        int height = 480;   */
+/* Height of the image *//*
+
         File lineChart = new File( "LineChart.jpeg" );
         ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, width ,height);
 
     }
 }
+*/

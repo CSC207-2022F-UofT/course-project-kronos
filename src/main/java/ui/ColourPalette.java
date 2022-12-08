@@ -29,6 +29,8 @@ public class ColourPalette {
             return purple;
         } else if (colour == "orange") {
             return orange;
+        } else if (colour == "grey") {
+            return grey;
         }
         return null;
     }

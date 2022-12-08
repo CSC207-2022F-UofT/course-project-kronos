@@ -11,10 +11,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 
-import static java.awt.Component.CENTER_ALIGNMENT;
+import static java.awt.Component.*;
 
 public class CategoryScreen {
-    public static String COLOURS[] = { "pink", "red", "white", "blue", "yellow", "green", "orange", "purple"};
+    public static String COLOURS[] = {"pink", "red", "white", "blue", "yellow", "green", "orange", "purple", "grey"};
     private JFrame EditCategoryFrame;
     private String name;
     private String colour;
@@ -47,23 +47,28 @@ public class CategoryScreen {
         EditCategoryFrame.setLayout(layout);
 
         // labels
+        constraints.insets = new Insets(0, 15, 5, 15);
         constraints.gridx = 0;
         constraints.gridy = 0;
         JLabel nameLabel = new JLabel("Edit the category name: ");
         nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        nameLabel.setFont(new Font("Serif", Font.BOLD, 15));
         EditCategoryFrame.add(nameLabel, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 1;
         JLabel colourLabel = new JLabel("Edit the colour: ");
         colourLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        colourLabel.setFont(new Font("Serif", Font.BOLD, 15));
         EditCategoryFrame.add(colourLabel, constraints);
 
         // input fields + button
         constraints.gridx = 1;
         constraints.gridy = 0;
         categoryNameInput = new JTextField(name);
+        categoryNameInput.setForeground(Color.gray);
         categoryNameInput.setAlignmentX(CENTER_ALIGNMENT);
+        categoryNameInput.setFont(new Font("Serif", Font.PLAIN, 15));
         EditCategoryFrame.add(categoryNameInput, constraints);
 
         constraints.gridx = 1;
@@ -71,13 +76,25 @@ public class CategoryScreen {
         colourInput = new JComboBox(COLOURS);
         colourInput.setSelectedItem(colour);
         colourInput.setAlignmentX(CENTER_ALIGNMENT);
+        colourInput.setFont(new Font("Serif", Font.PLAIN, 15));
         EditCategoryFrame.add(colourInput, constraints);
 
-        constraints.gridwidth = 2;
+        constraints.insets = new Insets(30, 0, 0, 0);
         constraints.gridx = 0;
         constraints.gridy = 3;
+        delete = new JButton("Delete");
+        delete.setAlignmentX(RIGHT_ALIGNMENT);
+        delete.setFont(new Font("Serif", Font.BOLD, 15));
+        delete.setBackground(Color.white);
+        EditCategoryFrame.add(delete, constraints);
+
+        constraints.insets = new Insets(30, 0, 0, 0);
+        constraints.gridx = 1;
+        constraints.gridy = 3;
         save = new JButton("Save");
-        save.setAlignmentX(CENTER_ALIGNMENT);
+        save.setAlignmentX(LEFT_ALIGNMENT);
+        save.setFont(new Font("Serif", Font.BOLD, 15));
+        save.setBackground(Color.white);
         EditCategoryFrame.add(save, constraints);
     }
 

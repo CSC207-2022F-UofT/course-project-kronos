@@ -13,7 +13,7 @@ import static java.awt.Component.CENTER_ALIGNMENT;
 import static java.awt.Component.LEFT_ALIGNMENT;
 
 public class CreateCategoryScreen {
-    public static String COLOURS[] = { "pink", "red", "blue", "yellow", "green", "orange", "purple"};
+    public static String COLOURS[] = { "pink", "red", "blue", "yellow", "green", "orange", "purple", "grey"};
     private JFrame createCategoryFrame;
     private JButton createCategoryButton;
     private JTextField categoryNameInput;
@@ -62,7 +62,7 @@ public class CreateCategoryScreen {
         constraints.gridx = 1;
         constraints.gridy = 1;
         colourInput = new JComboBox(COLOURS);
-        colourInput.setFont(new Font("Serif", Font.PLAIN, 12));
+        colourInput.setFont(new Font("Serif", Font.PLAIN, 15));
         createCategoryFrame.add(colourInput, constraints);
 
         constraints.insets = new Insets(30, 0, 0, 0);
