@@ -16,7 +16,7 @@ import static java.awt.Component.*;
 
 public class CategoryScreen implements ActionListener {
     public static String COLOURS[] = {"pink", "red", "white", "blue", "yellow", "green", "orange", "purple", "grey"};
-    private JFrame EditCategoryFrame;
+    private static JFrame EditCategoryFrame;
     private String name;
     private String colour;
     private int id;
@@ -99,6 +99,16 @@ public class CategoryScreen implements ActionListener {
         EditCategoryFrame.add(save, constraints);
     }
 
+    public static void loadScreen(EditCategoryController editController, DeleteCategoryController deleteController,
+                                  int id, String name, String colour) {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                CategoryScreen categoryScreen = new CategoryScreen(editController, deleteController, id, name, colour);
+                CategoryScreen.EditCategoryFrame.setVisible(true);
+            }
+        });
+    }
     public void actionPerformed(ActionEvent evt) {
         if (evt.getSource() == save){
             // save the changes

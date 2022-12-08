@@ -74,6 +74,20 @@ public class CreateCategoryScreen {
         createCategoryButton.setBackground(Color.white);
         createCategoryButton.setAlignmentX(CENTER_ALIGNMENT);
         createCategoryFrame.add(createCategoryButton, constraints);
+        createCategoryButton.addActionListener(e -> {
+            if (e.getSource() == createCategoryButton){
+                String categoryNameText = categoryNameInput.getText();
+                String colourText = (String) colourInput.getSelectedItem();
+
+                try {
+                    CreateCategoryOutputData createCategoryOutput = controller.create(categoryNameText, colourText);
+                    JOptionPane.showMessageDialog(this.createCategoryFrame, createCategoryOutput.getError()); // ? Null Pointer Exception thrown
+                    createCategoryFrame.dispatchEvent(new WindowEvent(createCategoryFrame, WindowEvent.WINDOW_CLOSING));
+                } catch (CategoryCreationFailed error){
+                    JOptionPane.showMessageDialog(this.createCategoryFrame, error.getMessage());
+                }
+            }
+        });
     }
 
     public static void loadScreen(CreateCategoryController createController) {
@@ -87,17 +101,6 @@ public class CreateCategoryScreen {
     }
 
     public void actionPerformed(ActionEvent evt) {
-        if (evt.getSource() == createCategoryButton){
-            String categoryNameText = categoryNameInput.getText();
-            String colourText = (String) colourInput.getSelectedItem();
 
-            try {
-                CreateCategoryOutputData createCategoryOutput = controller.create(categoryNameText, colourText);
-                JOptionPane.showMessageDialog(this.createCategoryFrame, createCategoryOutput.getError());
-                createCategoryFrame.dispatchEvent(new WindowEvent(createCategoryFrame, WindowEvent.WINDOW_CLOSING));
-            } catch (CategoryCreationFailed error){
-                JOptionPane.showMessageDialog(this.createCategoryFrame, error.getMessage());
-            }
-        }
     }
 }

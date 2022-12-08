@@ -1,7 +1,10 @@
 package ui.category;
 
 import controllers.category.*;
+import controllers.tasks.CreateTaskController;
+import controllers.tasks.CreateTaskPresenter;
 import database.DatabaseCategory;
+import database.DatabaseTask;
 import database.DatabaseUser;
 import entities.*;
 import use_cases.categories.create_category.*;
@@ -13,6 +16,7 @@ import use_cases.categories.edit_category.EditCategory;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryInputBoundary;
 import use_cases.categories.edit_category.EditCategoryOutputBoundary;
+import use_cases.tasks.create_task.*;
 
 import java.util.Calendar;
 
@@ -25,11 +29,9 @@ public class Main {
     public static CategoryCollection categories = new CategoryCollection();
     public static TaskFactory tasks1 = new TaskFactory();
     public static TaskFactory tasks2 = new TaskFactory();
-    public static Calendar deadline1 = Calendar.getInstance();
-    public static Calendar deadline2 = Calendar.getInstance();
-    public static Task task1 = new Task("task 1", deadline1);
-    public static Task task2 = new Task("task 2", deadline2);
-    public static Task task3 = new Task("task 3", deadline2);
+    public static Task task1 = new Task("task 1");
+    public static Task task2 = new Task("task 2");
+    public static Task task3 = new Task("task 3");
     public static Category category1 = new Category("Category 1", "green");
     public static Category category2 = new Category("Category 2", "blue");
     //public static Category category3 = new Category("new name", "red");
@@ -49,7 +51,7 @@ public class Main {
         categories.addItem(category3);
         //categories.addItem(category4);
 
-        DatabaseUser database = new DatabaseUser("C:/Users/emily/OneDrive/Documents/UofT/2022 - 2023/CSC207/Project/databaseCategory.txt");
+        DatabaseUser database = new DatabaseUser("C:/Users/emily/OneDrive/Documents/UofT/2022 - 2023/CSC207/Project/dataCopy.ser");
 
         // Create Category Use Case
         CreateCategoryOutputBoundary createCategoryPresenter = new CreateCategoryPresenter();
@@ -67,10 +69,7 @@ public class Main {
         DeleteCategoryInputBoundary deleteCategory = new DeleteCategory(deleteCategoryPresenter, deleteDsGateway, categories);
         DeleteCategoryController deleteCategoryController = new DeleteCategoryController(deleteCategory);
 
-        //new ToDoScreen(categories, createCategoryController, editCategoryPresenter, editDsGateway, deleteCategoryController);
-        new CreateCategoryScreen(createCategoryController);
-
-
+        //new CreateCategoryScreen(createCategoryController);
         // testing the CategoryScreen
         Category editCat = new Category("edit this", "orange");
         categories.addItem(editCat);
@@ -80,5 +79,12 @@ public class Main {
         EditCategoryController editController = new EditCategoryController(inputBound);
         //new CategoryScreen(editController,deleteCategoryController, category4.getId(), category4.getName(), category4.getColour());
         //new CategoryScreen(editController,deleteCategoryController, category3.getId(), category3.getName(), category3.getColour());
+
+        // Create Task Use Case
+        CreateTaskOutputBoundary outputBoundary = new CreateTaskPresenter();
+        CreateTaskDsGateway taskDsGateway = new DatabaseTask(database);
+
+        new ToDoScreen(categories, createCategoryController, editCategoryPresenter, editDsGateway,
+                deleteCategoryController, outputBoundary, taskDsGateway);
     }
 }

@@ -3,15 +3,21 @@ package ui.category;
 import controllers.category.CreateCategoryController;
 import controllers.category.DeleteCategoryController;
 import controllers.category.EditCategoryController;
+import controllers.tasks.CreateTaskController;
 import entities.Category;
 import entities.CategoryCollection;
 import entities.Task;
 import ui.ColourPalette;
+import ui.tasks.CreateTaskScreen;
 import ui.user.MenuPage;
 import use_cases.categories.edit_category.EditCategory;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryInputBoundary;
 import use_cases.categories.edit_category.EditCategoryOutputBoundary;
+import use_cases.tasks.create_task.CreateTask;
+import use_cases.tasks.create_task.CreateTaskDsGateway;
+import use_cases.tasks.create_task.CreateTaskInputBoundary;
+import use_cases.tasks.create_task.CreateTaskOutputBoundary;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,15 +48,21 @@ public class ToDoScreen extends JFrame implements ActionListener {
     private EditCategoryOutputBoundary editCategoryPresenter;
     private EditCategoryDsGateway editDsGateway;
     private DeleteCategoryController deleteController;
+    private CreateTaskDsGateway taskDsGateway;
+    private CreateTaskOutputBoundary outputBoundary;
+
 
     public ToDoScreen(CategoryCollection categories, CreateCategoryController createController,
                       EditCategoryOutputBoundary editCategoryPresenter, EditCategoryDsGateway editDsGateway,
-                      DeleteCategoryController deleteController) {
+                      DeleteCategoryController deleteController, CreateTaskOutputBoundary outputBoundary,
+                      CreateTaskDsGateway taskDsGateway) {
         this.createController = createController;
         this.editCategoryPresenter = editCategoryPresenter;
         this.editDsGateway = editDsGateway;
         this.deleteController = deleteController;
         this.categories = categories;
+        this.outputBoundary = outputBoundary;
+        this.taskDsGateway = taskDsGateway;
 
         toDoFrame = new JFrame("To Do List");
         toDoFrame.setLocation(650, 80);
@@ -100,6 +112,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.gridx = 2;
         c.gridy = 1;
         header.add(newCategory, c);
+        newCategory.addActionListener(e -> CreateCategoryScreen.loadScreen(createController));
 
         menu = new JButton("Menu");
         menu.setFont(new Font("Serif", Font.PLAIN, 15));
@@ -109,6 +122,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.gridx = 0;
         c.gridy = 1;
         header.add(menu, c);
+        menu.addActionListener(e -> MenuPage.createmenu()); // ? This doesn't work
 
         /**
          * Adding table headlining row for tasks
@@ -122,15 +136,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.gridx = 0;
         c.gridy = 2;
         header.add(taskName, c);
-
-        /*JLabel deadline = new JLabel("  Deadline");
-        deadline.setFont(new Font("Serif", Font.BOLD, 20));
-        deadline.setHorizontalAlignment(SwingConstants.CENTER);
-        c.ipady = 2;
-        c.weightx = 0.3;
-        c.gridx = 1;
-        c.gridy = 2;
-        header.add(deadline, c);*/
 
         JLabel completion = new JLabel("Completion");
         completion.setFont(new Font("Serif", Font.BOLD, 20));
@@ -147,10 +152,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
      * Updates the to do list to reflect the database's information
      */
     public void updateList() {
-        // loop through all the categories
-        // for each category, loop through the task collection
-        // update the body panel so that the name of the category (column 0) and add a button to the right most column for newTask button
-
         int y = 1;
         for (Integer id: categories.categories.keySet()) {
             Category cat = categories.getItem(id);
@@ -168,6 +169,11 @@ public class ToDoScreen extends JFrame implements ActionListener {
             edit.setForeground(Color.white);
             edit.setAlignmentX(Component.LEFT_ALIGNMENT);
             this.body.add(edit, c);
+            EditCategoryInputBoundary editCategory = new EditCategory(editCategoryPresenter, editDsGateway, categories, id);
+            EditCategoryController editController = new EditCategoryController(editCategory);
+            int tempId = Integer.parseInt(edit.getText().split(":")[0]);
+            Category tempCat = categories.getItem(tempId);
+            edit.addActionListener(e -> CategoryScreen.loadScreen(editController, deleteController, tempId, tempCat.getName(), tempCat.getColour()));
 
             // resetting for the tasks for loop
             y++;
@@ -184,16 +190,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
                 taskName.setFont(new Font("Serif", Font.PLAIN, 16));
                 taskName.setHorizontalAlignment(SwingConstants.RIGHT);
                 this.body.add(taskName, c);
-
-                /*c.gridx = 1;
-                c.weightx = 0.3;
-                c.gridy = y;
-                SimpleDateFormat formatter=new SimpleDateFormat("DD-MMM-yyyy");
-                String date = formatter.format(task.getDeadline().getTime());
-                JLabel deadline = new JLabel(date);
-                deadline.setFont(new Font("Serif", Font.PLAIN, 16));
-                deadline.setHorizontalAlignment(SwingConstants.CENTER);
-                this.body.add(deadline, c);*/
 
                 c.gridx = 2;
                 c.weightx = 0.3;
@@ -212,22 +208,22 @@ public class ToDoScreen extends JFrame implements ActionListener {
             newTask = new JButton(cat.getId() + ": New Task");
             newTask.setBackground(Color.white);
             this.body.add(newTask, c);
+
+            int taskCatId = Integer.parseInt(newTask.getText().split(":")[0]);
+            Category taskCat = categories.getItem(taskCatId);
+            CreateTaskInputBoundary taskGateway = new CreateTask(outputBoundary, taskDsGateway, taskCat.getTasks());
+            CreateTaskController taskController = new CreateTaskController(taskGateway);
+            newTask.addActionListener(e -> CreateTaskScreen.loadScreen(taskController, taskCatId));
+
             y++;
         }
     }
 
+    // probs delete this later
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == newCategory){
-            CreateCategoryScreen createCategoryScreen = new CreateCategoryScreen(createController);
-            createCategoryScreen.loadScreen(createController);
-        }
-        if (e.getSource() == menu){
-            new MenuPage();
-        }
         if (e.getSource() == newTask){ // will this track the right button since we create it multiple times?
-            int id = Integer.parseInt(newTask.getText().split(":")[0]);
-            Category cat = categories.getItem(id);
             // pass the category to the new Task screen
+
         }
         if (e.getSource() == edit){
             int id = Integer.parseInt(edit.getText().split(":")[0]);
