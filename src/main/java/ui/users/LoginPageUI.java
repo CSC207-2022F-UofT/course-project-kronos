@@ -1,8 +1,7 @@
-package ui;
+package ui.users;
 import controllers.users.CreateUserController;
 import controllers.users.LoginUserController;
 import entities.CommonUser;
-import use_cases.user.create_user.CreateUserDsGateway;
 import use_cases.user.login_user.LoginUserDsGateway;
 import use_cases.user.login_user.LoginUserInputData;
 import use_cases.user.login_user.LoginUserOutputData;

@@ -1,7 +1,7 @@
 import controllers.users.CreateUserController;
 import controllers.users.LoginUserController;
 import database.DatabaseUser;
-import ui.LoginPageUI;
+import ui.users.LoginPageUI;
 import use_cases.user.create_user.CreateUserInputBoundary;
 import use_cases.user.create_user.CreateUserInteractor;
 import use_cases.user.login_user.LoginUserInputBoundary;
