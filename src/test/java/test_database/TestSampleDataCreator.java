@@ -15,16 +15,12 @@ import java.util.Random;
 
 public class TestSampleDataCreator {
 
-    public String filePath;
-
-    public TestSampleDataCreator(String filepath){
-        this.filePath = filepath;
-    }
 
     @Test
     public void Test(){
         storeData("data.ser");
         DatabaseUser userInfo = new DatabaseUser("data.ser");
+        System.out.println(userInfo.filePath);
     }
 
     static HashMap<String, User> createSampleData(){
