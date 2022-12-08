@@ -1,31 +1,48 @@
-package database;
+package test_database;
 
+import database.DatabaseUser;
 import entities.*;
+import org.junit.Test;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 
-public class SampleDataCreator {
+public class TestSampleDataCreator {
 
     public String filePath;
 
-    public SampleDataCreator(String filepath){
+    public TestSampleDataCreator(String filepath){
         this.filePath = filepath;
     }
 
-    HashMap<String, User> createSampleData(){
+    @Test
+    public void Test(){
+        storeData("data.ser");
+        DatabaseUser userInfo = new DatabaseUser("data.ser");
+    }
+
+    static HashMap<String, User> createSampleData(){
         User user1 = new CommonUser("testEmail1@gmail.com", "password1", "firstName1", "lastName1");
         // creating habit 1
         Habit habit1 = new Habit("Running", "completion");
+
         Calendar calendar = Calendar.getInstance();
         calendar.set(122, 1, 1);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
         HashMap<String, Integer> habitMap = habit1.getFrequencyMap();
         Random rand = new Random();
         // create random data for completion of habit in 2022
         for (int i=0;i <= 365; i++){
-            habitMap.put(calendar.toString(), rand.nextInt(2));
+            Date date = calendar.getTime();
+            String date1 = sdf.format(date);
+            habitMap.put(date1, rand.nextInt(2));
             calendar.set(calendar.YEAR + 1, 01, 01);
         }
         // putting habit into habit collection
@@ -33,10 +50,13 @@ public class SampleDataCreator {
 
         Habit habit2 = new Habit("Reading", "completion");
         HashMap<String, Integer> habitMap2 = habit2.getFrequencyMap();
+
         calendar.set(122, 1, 1);
         // create random data for completion of habit in 2022
         for (int i=0;i <= 365; i++){
-            habitMap2.put(calendar.toString(), rand.nextInt(2));
+            Date date = calendar.getTime();
+            String date1 = sdf.format(date);
+            habitMap2.put(date1, rand.nextInt(2));
             calendar.set(calendar.YEAR + 1, 01, 01);
         }
         user1.getHabitCollection().habitCollection.put(habit2.getName(), habit2);
@@ -46,7 +66,9 @@ public class SampleDataCreator {
         HashMap<String, Integer> habitMap3 = habit3.getFrequencyMap();
         // create random data for completion of habit in 2022
         for (int i=0;i <= 365; i++){
-            habitMap3.put(calendar.toString(), rand.nextInt(2));
+            Date date = calendar.getTime();
+            String date1 = sdf.format(date);
+            habitMap3.put(date1, rand.nextInt(2));
             calendar.set(calendar.YEAR + 1, 01, 01);
         }
         user1.getHabitCollection().habitCollection.put(habit3.getName(), habit3);
@@ -94,5 +116,23 @@ public class SampleDataCreator {
 
         userMap.put(user1.getEmailAddress(), user1);
         return userMap;
+    }
+
+    static public void storeData(String filePath) {
+        try {
+            // Saving of object in a file
+            FileOutputStream file = new FileOutputStream
+                    (filePath);
+            ObjectOutputStream out = new ObjectOutputStream
+                    (file);
+
+            // Method for serialization of object
+            out.writeObject(TestSampleDataCreator.createSampleData());
+
+            out.close();
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
