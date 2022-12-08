@@ -16,7 +16,7 @@ public class Main extends JFrame{
 
     public Main(){
 
-        String fileName = "./data.ser";
+        String fileName = "data.ser";
 
         DatabaseUser databaseUser;
         databaseUser = new DatabaseUser(fileName);
