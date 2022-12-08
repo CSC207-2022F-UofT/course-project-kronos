@@ -20,48 +20,46 @@ public class CreateTaskScreen extends JFrame implements ActionListener {
     /**
      * The input name of the task
      */
-    JTextField name =  new JTextField(50);
-    /**
-     * The category of the task
-     */
-    JTextField category = new JTextField(30);
-    /**
-     * The deadline of the task
-     */
-    // How can I put deadline here?
-
+    JTextField name =  new JTextField(15);
 
     /**
      * A window with a title and a JButton.
-     * @param controller - the controller.
      */
-    public CreateTaskScreen (CreateTaskController controller){
+    public CreateTaskScreen (){
+        JFrame frame = new JFrame("Creating Task");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.createTaskController = controller;
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(5, 0));
 
-        JLabel title = new JLabel("Editing Task");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        LabelTextPanel taskNameInfo = new LabelTextPanel(
-                new JLabel("Task name"), name);
-        // LabelTextPanel deadlineInfo = new LabelTextPanel(new JLabel("Deadline"), deadline);
 
+        JPanel panel  = new JPanel();
+        panel.setSize(new Dimension(250, 50));
+
+        JLabel name = new JLabel("Task Name", JLabel.CENTER);
+        name.setPreferredSize(new Dimension(100, 30));
+        name.setLayout(new BorderLayout());
+
+
+        // Button 1: Create task
         JButton create = new JButton("Create");
+        create.addActionListener(this);
+
+        // Button 2: Cancel Creation
         JButton cancel = new JButton("Cancel");
+        cancel.addActionListener(this);
 
         JPanel buttons = new JPanel();
         buttons.add(create);
         buttons.add(cancel);
 
-        create.addActionListener(this);
-        cancel.addActionListener(this);
+        frame.add(mainPanel);
+        mainPanel.add(name);
+        mainPanel.add(buttons);
+        name.add(this.name);
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        this.add(title);
-        this.add(taskNameInfo);
-        // this.add(deadlineInfo);
-        this.add(buttons);
-
+        frame.pack();
+        frame.setVisible(true);
     }
 
     /**
@@ -71,15 +69,22 @@ public class CreateTaskScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Click" + e.getActionCommand());
-
         try{
-            createTaskController.create(
-                    name.getText(),
-                    //deadline.getText();
-            );
+            createTaskController.create(name.getText());
+            JOptionPane.showMessageDialog(this, name.getText() + "/%s created." );
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
 
+    }
+
+    public static void createScreen(){
+
+        new CreateTaskScreen();
+
+    }
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(CreateTaskScreen::createScreen);
     }
 }
