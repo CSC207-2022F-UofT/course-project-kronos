@@ -2,6 +2,11 @@ package controllers.users;
 import use_cases.user.login_user.LoginUserOutputBoundary;
 import use_cases.user.login_user.LoginUserOutputData;
 
+
+/**
+ * Use case layer for Login User
+ * @author happynasit
+ */
 public class LoginUserPresenter implements LoginUserOutputBoundary {
 
     /**
