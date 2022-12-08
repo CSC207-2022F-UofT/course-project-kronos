@@ -1,4 +1,4 @@
-package testentities;
+package test_entities;
 
 import entities.Task;
 import entities.TaskFactory;
