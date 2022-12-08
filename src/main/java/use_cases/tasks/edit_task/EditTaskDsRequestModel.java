@@ -1,6 +1,8 @@
 package use_cases.tasks.edit_task;
 
 
+import entities.Task;
+
 import java.util.Calendar;
 
 /**
@@ -10,37 +12,33 @@ import java.util.Calendar;
  */
 
 public class EditTaskDsRequestModel {
-    private final String name;
-    private final boolean completionStatus;
-    private final int id;
+    private Integer id;
+    private Task task;
 
-    /**
-     * Constructor
-     * @param id - the id of the task being edited.
-     * @param name - the name of the task after edition.
-     * @param completionStatus - the completionStatus of the task after edition.
-     */
-    public EditTaskDsRequestModel(int id, String name, boolean completionStatus){
-        this.name = name;
+    public EditTaskDsRequestModel(Integer id, Task task) {
         this.id = id;
-        this.completionStatus = completionStatus;
+        this.task = task;
     }
 
-    /**
-     * @return the name of the task after edition.
-     */
-    public String getName() {
-        return name;
-    }
+    public Task getTask(){return this.task;}
 
     /**
      * @return the id of the task after edition.
      */
-    public int getId() {
-        return id;
-    }
+    public int getId(){return this.id;}
+
 
     /**
+     * @param task - Edited task object to be stored
+     */
+    public void setTask(Task task){this.task = task;}
+
+    /**
+     * @param id - id of task object to be edited
+     */
+    public void setId(Integer id){this.id = id;}
+
+
      * @return the completion status of the task.
      */
     public boolean isCompletionStatus() {

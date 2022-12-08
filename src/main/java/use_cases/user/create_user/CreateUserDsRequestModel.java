@@ -1,6 +1,5 @@
 package use_cases.user.create_user;
 
-import entities.CommonUser;
 import entities.User;
 
 /**
@@ -11,16 +10,16 @@ import entities.User;
  */
 public class CreateUserDsRequestModel {
 
-    private final String emailAddress;
+    private String emailAddress;
 
-    private CommonUser user;
+    private User user;
 
     /**
      * Constructor method for User database request model
      * @param email - user's email address
      * @param user - user's user object
      */
-    public CreateUserDsRequestModel(String email, CommonUser user) {
+    public CreateUserDsRequestModel(String email, User user) {
         this.emailAddress = email;
         this.user = user;
 
@@ -35,6 +34,7 @@ public class CreateUserDsRequestModel {
 
     /**
      * @return the user's user object
+     *
      */
     public User getUser() {
         return this.user;
@@ -43,7 +43,14 @@ public class CreateUserDsRequestModel {
     /**
      * @param user -  the user's user object
      */
-    public void setPassword(CommonUser user) {
+    public void setUser(User user) {
         this.user = user;
     }
+
+    /**
+     *
+     * @param email - email during creation of user
+     */
+    public void setEmailAddress(String email){this.emailAddress = email;}
+
 }

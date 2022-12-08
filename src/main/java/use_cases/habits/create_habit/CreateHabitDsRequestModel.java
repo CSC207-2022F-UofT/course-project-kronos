@@ -26,6 +26,7 @@ public class CreateHabitDsRequestModel {
 
     /**
      * Sets the attribute habit for this class to the given habit.
-     * @param h -
+     * @param habit - Habit object to be created
      */
+    public void setHabit(Habit habit){this.habit = habit;}
 }
