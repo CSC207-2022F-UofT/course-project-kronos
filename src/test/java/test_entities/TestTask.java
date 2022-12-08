@@ -1,4 +1,4 @@
-package testentities;
+package test_entities;
 
 import java.util.Calendar;
 

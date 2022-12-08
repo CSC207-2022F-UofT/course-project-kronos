@@ -1,90 +1,86 @@
 package ui.tasks;
 
-import controllers.tasks.EditTaskController;
+import entities.Task;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.dnd.DragSourceAdapter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * -- Frameworks & Drivers Layer --
+ */
 public class TaskScreen extends JPanel implements ActionListener {
     /**
-     * The Controller
+     * The chosen task. This task is accessed from the database.
      */
-    EditTaskController editTaskController;
-    /**
-     * The input name of the task
-     */
-    JTextField name =  new JTextField(50);
-    /**
-     * The category of the task
-     */
-    JTextField category = new JTextField(30);
-    /**
-     * The deadline of the task
-     */
-    // How can I put deadline here?
+    Task task;
+
+    static final JFrame frame = new JFrame("Task");
 
     /**
-     * A window with a title and a JButton.
-     * @param controller - the controller.
+     * A window with a title and two JButton.
      */
-    public TaskScreen (EditTaskController controller){
+    public TaskScreen (Task task){
+        this.task = task;
 
-        JLabel title = new JLabel("Editing Task");
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        LabelTextPanel taskNameInfo = new LabelTextPanel(
-                new JLabel("Task name"), name);
-        LabelTextPanel categoryInfo = new LabelTextPanel(new JLabel("Category"), category);
-        // LabelTextPanel deadlineInfo = new LabelTextPanel(new JLabel("Deadline"), deadline);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JButton save = new JButton("Save");
-        JButton cancel = new JButton("Cancel");
+        JPanel mainPanel = new JPanel();
+        mainPanel.setPreferredSize(new Dimension(350,150));
+        mainPanel.setLayout(new GridLayout(2, 2));
 
-        JPanel radioButtons = new JPanel();
+        JLabel name = new JLabel(task.getName(), JLabel.CENTER);
+        name.setFont(new Font("Ariel", Font.PLAIN, 18));
 
+        // Button 1: Edit
+        JButton edit = new JButton("Edit");
+        edit.addActionListener(this);
+        edit.setPreferredSize(new Dimension(100, 40));
+        edit.setFont(new Font("Ariel", Font.BOLD, 13));
 
-        save.addActionListener(this);
-        cancel.addActionListener(this);
+        // Button 2: Delete
+        JButton delete = new JButton("Delete");
+        delete.addActionListener(this);
+        delete.setPreferredSize(new Dimension(100, 40));
+        delete.setFont(new Font("Ariel", Font.BOLD, 13));
 
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        JPanel buttons = new JPanel();
+        buttons.add(edit);
+        buttons.add(delete);
 
-        this.add(title);
-        this.add(taskNameInfo);
-        this.add(categoryInfo);
-        // this.add(deadlineInfo);
-        this.add(radioButtons);
-
+        frame.add(mainPanel);
+        mainPanel.add(name);
+        mainPanel.add(buttons);
+        frame.pack();
+        frame.setVisible(true);
 
     }
 
     /**
      * React to a button click that result in e.
-     * @param e the event to be processed
+     * @param evt the event to be processed
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("Click" + e.getActionCommand());
-
-        try{
-            editTaskController.edit(
-                    // id
-                    name.getText(),
-                    //deadline.getText();
-            );
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+    public void actionPerformed(ActionEvent evt) {
+        System.out.println("Click" + evt.getActionCommand());
+        if(evt.getActionCommand().equals("Edit")){
+            frame.dispose();
+            SwingUtilities.invokeLater(EditTaskScreen::createScreen);
+        } else if (evt.getActionCommand().equals("Delete")) {
+//            createTaskController.create(nameField.getText());
+            JOptionPane.showMessageDialog(this,"Task \"" + task.getName() + "\" is deleted." );
+            frame.dispose();
         }
-
     }
 
-
-
-
-
-
-
+    public static void createScreen(){
+        new TaskScreen(new Task("Review CSC207"));
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(TaskScreen::createScreen);
+    }
 
 
 

@@ -24,10 +24,9 @@ public class CreateTaskController {
     /**
      * Calls create() method in use case Interactor.
      * @param name - the input name of the task.
-     * @param deadline - the input deadline of the task.
      * @return corresponding OutputData object.
      */
-    public CreateTaskOutputData create(String name, Calendar deadline){
+    public CreateTaskOutputData create(String name){
         CreateTaskInputData inputData = new CreateTaskInputData(name);
         return userInput.create(inputData);
     }
