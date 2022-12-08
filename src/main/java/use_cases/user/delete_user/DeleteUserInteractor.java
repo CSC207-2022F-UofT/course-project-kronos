@@ -2,6 +2,7 @@ package use_cases.user.delete_user;
 
 /**
  * The Interactor that is responsible for deleting a user from the collections.
+ * @author happynasit
  */
 public class DeleteUserInteractor implements DeleteUserInputBoundary{
     private final DeleteUserOutputBoundary outputBoundary;
