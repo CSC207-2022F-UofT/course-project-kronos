@@ -109,11 +109,11 @@ The design patterns implemented in the project are:
 
 ## Solid Principles
 
-We ensured that all the project followed all the SOLID principles.
+We ensured that the project followed all the SOLID principles.
 
 ## MVP 
 
-The project follows the MVP model.
+The project mainly follows the MVP model. However, to ensure clean architecture, we implemented controllers and presenters separately. 
 
 ## GitHub Features
 
