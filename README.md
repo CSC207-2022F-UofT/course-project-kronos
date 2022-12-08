@@ -100,6 +100,34 @@ Logging in leads to the Menu page which has options for the features: Habits, Ta
 
 ![year](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/740abe32407bed3bce523c3c3f6c5bfae8baf3bb/images/year.png)
 
+## Design Pattern
+
+The design patterns implemented in the project are:
+
+- Facade 
+- Private Data Class 
+
+## Solid Principles
+
+We ensured that all the project followed all the SOLID principles.
+
+## MVP 
+
+The project follows the MVP model.
+
+## GitHub Features
+
+The GitHub features used in project are:
+
+- Issues
+- Pull Requests
+- Action
+- License
+
+## Test Coverage
+
+The test coverage is 80%. We have tested the entities, use cases, controllers and database.
+
 
 
 
