@@ -32,7 +32,9 @@ public class Main {
     public static Task task3 = new Task("task 3", deadline2);
     public static Category category1 = new Category("Category 1", "green");
     public static Category category2 = new Category("Category 2", "blue");
+    //public static Category category3 = new Category("new name", "red");
     public static Category category3 = new Category("Category 3", "pink");
+    public static Category category4 = new Category("Category 4", "orange");
     public static TimerTomato timer = new TimerTomato();
 
     public static void main(String[] args){
@@ -45,6 +47,7 @@ public class Main {
         categories.addItem(category1);
         categories.addItem(category2);
         categories.addItem(category3);
+        //categories.addItem(category4);
 
         DatabaseUser database = new DatabaseUser("C:/Users/emily/OneDrive/Documents/UofT/2022 - 2023/CSC207/Project/databaseCategory.txt");
 
@@ -64,8 +67,8 @@ public class Main {
         DeleteCategoryInputBoundary deleteCategory = new DeleteCategory(deleteCategoryPresenter, deleteDsGateway, categories);
         DeleteCategoryController deleteCategoryController = new DeleteCategoryController(deleteCategory);
 
-        // new ToDoScreen(categories, createCategoryController, editCategoryPresenter, editDsGateway, deleteCategoryController);
-        // new CreateCategoryScreen(createCategoryController);
+        //new ToDoScreen(categories, createCategoryController, editCategoryPresenter, editDsGateway, deleteCategoryController);
+        new CreateCategoryScreen(createCategoryController);
 
 
         // testing the CategoryScreen
@@ -73,8 +76,9 @@ public class Main {
         categories.addItem(editCat);
         String newName = "new name";
         String newColour = "grey";
-        EditCategoryInputBoundary inputBound = new EditCategory(editCategoryPresenter, editDsGateway, categories, editCat.getId());
+        EditCategoryInputBoundary inputBound = new EditCategory(editCategoryPresenter, editDsGateway, categories, category4.getId());
         EditCategoryController editController = new EditCategoryController(inputBound);
-        new CategoryScreen(editController,deleteCategoryController, editCat.getId(), editCat.getName(), editCat.getColour());
+        //new CategoryScreen(editController,deleteCategoryController, category4.getId(), category4.getName(), category4.getColour());
+        //new CategoryScreen(editController,deleteCategoryController, category3.getId(), category3.getName(), category3.getColour());
     }
 }

@@ -14,7 +14,7 @@ import static java.awt.Component.LEFT_ALIGNMENT;
 
 public class CreateCategoryScreen {
     public static String COLOURS[] = { "pink", "red", "blue", "yellow", "green", "orange", "purple", "grey"};
-    private JFrame createCategoryFrame;
+    public JFrame createCategoryFrame;
     private JButton createCategoryButton;
     private JTextField categoryNameInput;
     private JComboBox colourInput;
@@ -25,7 +25,7 @@ public class CreateCategoryScreen {
 
         createCategoryFrame = new JFrame("Create Category");
         createCategoryFrame.setSize(500, 300);
-        createCategoryFrame.setLocation(300, 200);
+        createCategoryFrame.setLocation(800, 200);
         createCategoryFrame.setTitle("Create Category");
         createCategoryFrame.setVisible(true);
         createCategoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,6 +74,16 @@ public class CreateCategoryScreen {
         createCategoryButton.setBackground(Color.white);
         createCategoryButton.setAlignmentX(CENTER_ALIGNMENT);
         createCategoryFrame.add(createCategoryButton, constraints);
+    }
+
+    public static void loadScreen(CreateCategoryController createController) {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                CreateCategoryScreen createCategoryScreen = new CreateCategoryScreen(createController);
+                createCategoryScreen.createCategoryFrame.setVisible(true);
+            }
+        });
     }
 
     public void actionPerformed(ActionEvent evt) {

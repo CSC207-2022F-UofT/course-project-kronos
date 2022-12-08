@@ -9,11 +9,12 @@ import use_cases.categories.edit_category.EditCategoryOutputData;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 import static java.awt.Component.*;
 
-public class CategoryScreen {
+public class CategoryScreen implements ActionListener {
     public static String COLOURS[] = {"pink", "red", "white", "blue", "yellow", "green", "orange", "purple", "grey"};
     private JFrame EditCategoryFrame;
     private String name;
@@ -36,7 +37,7 @@ public class CategoryScreen {
 
         EditCategoryFrame = new JFrame("Edit Category");
         EditCategoryFrame.setSize(500, 300);
-        EditCategoryFrame.setLocation(300, 200);
+        EditCategoryFrame.setLocation(800, 200);
         EditCategoryFrame.setTitle("Edit Category");
         EditCategoryFrame.setVisible(true);
         EditCategoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

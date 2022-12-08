@@ -53,9 +53,9 @@ public class ToDoScreen extends JFrame implements ActionListener {
         this.categories = categories;
 
         toDoFrame = new JFrame("To Do List");
-        toDoFrame.setLocation(350, 80);
+        toDoFrame.setLocation(650, 80);
         toDoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        toDoFrame.setSize(800, 600);
+        toDoFrame.setSize(800, 800);
         toDoFrame.setLayout(new BorderLayout());
         toDoFrame.setVisible(true);
 
@@ -92,16 +92,17 @@ public class ToDoScreen extends JFrame implements ActionListener {
          * Creating and setting the placement of the "create" button and menu button
          */
         newCategory = new JButton("New Category");
-        newCategory.setFont(new Font("Serif", Font.PLAIN, 20));
+        newCategory.setFont(new Font("Serif", Font.PLAIN, 15));
         newCategory.setBackground(Color.white);
         newCategory.setHorizontalAlignment(SwingConstants.CENTER);
         c.weightx = 0.3;
+        c.ipady = 0;
         c.gridx = 2;
         c.gridy = 1;
         header.add(newCategory, c);
 
         menu = new JButton("Menu");
-        menu.setFont(new Font("Serif", Font.PLAIN, 20));
+        menu.setFont(new Font("Serif", Font.PLAIN, 15));
         menu.setBackground(Color.white);
         menu.setHorizontalAlignment(SwingConstants.CENTER);
         c.weightx = 0.3;
@@ -114,11 +115,10 @@ public class ToDoScreen extends JFrame implements ActionListener {
          */
         JLabel taskName = new JLabel("Task Name");
         taskName.setFont(new Font("Serif", Font.BOLD, 20));
-        taskName.setHorizontalAlignment(SwingConstants.CENTER);
+        taskName.setHorizontalAlignment(SwingConstants.RIGHT);
         c.insets = new Insets(20, 0, 0, 0);
         c.ipady = 2;
         c.weightx = 0.3;
-        c.anchor = GridBagConstraints.CENTER;
         c.gridx = 0;
         c.gridy = 2;
         header.add(taskName, c);
@@ -134,7 +134,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
 
         JLabel completion = new JLabel("Completion");
         completion.setFont(new Font("Serif", Font.BOLD, 20));
-        completion.setHorizontalAlignment(SwingConstants.CENTER);
+        completion.setHorizontalAlignment(SwingConstants.LEFT);
         c.ipady = 2;
         c.weightx = 0.3;
         c.gridx = 2;
@@ -206,6 +206,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
             }
             // add the newTask button
             c.fill = GridBagConstraints.HORIZONTAL;
+            c.insets = new Insets(10, 10, 10, 10);
             c.gridx = 1;
             c.gridy = y;
             newTask = new JButton(cat.getId() + ": New Task");
@@ -217,7 +218,8 @@ public class ToDoScreen extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newCategory){
-            new CreateCategoryScreen(createController);
+            CreateCategoryScreen createCategoryScreen = new CreateCategoryScreen(createController);
+            createCategoryScreen.loadScreen(createController);
         }
         if (e.getSource() == menu){
             new MenuPage();
