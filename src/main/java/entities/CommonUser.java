@@ -1,5 +1,7 @@
 package entities;
 
+import database.DatabaseUser;
+
 import java.io.Serializable;
 
 /**
@@ -183,5 +185,13 @@ public class CommonUser implements User, Serializable{
             }
         }
         return b;
+    }
+
+    /**
+     *
+     * @return the task factory of a user
+     */
+    public TaskFactory getTaskCollection() {
+        return new TaskFactory();
     }
 }
