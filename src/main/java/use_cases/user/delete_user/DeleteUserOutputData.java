@@ -4,6 +4,7 @@ import entities.CommonUser;
 /**
  *  This class is a container for the output data related to deletion of user, it is created by the Interactor and sent
  *  to the Presenter.
+ * @author happynasit
  */
 public class DeleteUserOutputData {
     private final String message;
