@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * The Screen that pops up once the user is successfully logged in
+ * @author happynasit
+ */
 public class HomeScreenUI extends JFrame {
 
     final CommonUser user;
