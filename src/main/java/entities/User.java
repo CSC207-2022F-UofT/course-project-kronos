@@ -13,7 +13,9 @@ public interface User {
 
     TimerTomato getTomato();
 
+    void setTomato(TimerTomato timerTomato);
     boolean passwordStrength();
+
 
 
 }

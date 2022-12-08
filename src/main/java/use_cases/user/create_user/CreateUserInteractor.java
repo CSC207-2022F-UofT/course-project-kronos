@@ -25,6 +25,10 @@ public class CreateUserInteractor implements CreateUserInputBoundary{
 
     @Override
     public CreateUserOutputData create(CreateUserInputData inputData) {
+        if (inputData.getEmailAddress().equals("") || inputData.getPassword().equals("")
+                || inputData.getRepeatPassword().equals("") || inputData.getFirstName().equals("") || inputData.getLastName().equals("")){
+            return new CreateUserOutputData(false, "Empty parameters. Try again!");
+        }
         if (gateway.userExistsByEmail(inputData.getEmailAddress())){
             return new CreateUserOutputData(false, "Username already exists!");
         }

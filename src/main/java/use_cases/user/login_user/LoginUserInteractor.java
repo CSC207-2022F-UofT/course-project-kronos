@@ -29,7 +29,9 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
      */
     @Override
     public LoginUserOutputData login(LoginUserInputData inputData){
-
+        if(inputData.getEmailAddress().equals("")){
+            return new LoginUserOutputData(false, "Invalid Email Address");
+        }
         if (!gateway.userExistsByEmail(inputData.getEmailAddress())){
             // case when the email does not exist in the collection
             return new LoginUserOutputData(false, "Email Address does not exist");
@@ -44,7 +46,7 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
         if(gateway.userExistsByEmail(inputData.getEmailAddress())){
             if (databaseUser.checkPasswordsMatch(inputData.getEmailAddress(), inputData.getPassword())){
 
-                CommonUser loggedInUser = gateway.getCurrUser(inputData.getEmailAddress());
+                CommonUser loggedInUser = gateway.getUserByEmail(inputData.getEmailAddress());
                 return new LoginUserOutputData(true, inputData.getEmailAddress(), loggedInUser);
             }
         }

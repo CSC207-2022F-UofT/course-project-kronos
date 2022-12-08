@@ -103,7 +103,7 @@ public class LoginPageUI extends JFrame implements ActionListener{
         if(loginUserOutputData.getIsLoginSuccessful()){
             JOptionPane.showMessageDialog(mainframe, "Welcome!");
             mainframe.dispose();
-            CommonUser user = gateway.getCurrUser(emailAddressField.getText());
+            CommonUser user = gateway.getUserByEmail(emailAddressField.getText());
 
             HomeScreenUI homeScreenUI = new HomeScreenUI(user);
             homeScreenUI.main();

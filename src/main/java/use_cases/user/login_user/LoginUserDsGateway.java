@@ -10,7 +10,10 @@ public interface LoginUserDsGateway {
     void loginUser(LoginUserDsRequestModel requestModel);
     boolean userExistsByEmail(String email);
     CommonUser getUser();
-    CommonUser getCurrUser(String email);
+
+    CommonUser getLoggedInUser();
 
     boolean checkPasswordsMatch(String email, String password);
+
+    CommonUser getUserByEmail(String email);
 }

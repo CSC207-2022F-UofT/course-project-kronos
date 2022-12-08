@@ -113,6 +113,11 @@ public class CommonUser implements User{
         return this.tomato;
     }
 
+    @Override
+    public void setTomato(TimerTomato timerTomato) {
+        this.tomato = timerTomato;
+    }
+
     // SETTER METHODS
 
     /**

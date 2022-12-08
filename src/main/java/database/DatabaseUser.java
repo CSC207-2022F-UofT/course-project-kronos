@@ -79,6 +79,11 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
         return userCollection.containsKey(email);
     }
 
+    @Override
+    public CommonUser getUser() {
+        return this.currUser;
+    }
+
     /**
      * Used to save the created user to the database
      * @param requestModel - contains user information
@@ -99,33 +104,37 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
 
     /**
      * Used to login User, and obtain information
-     * @param requestModel
+     * @param requestModel - Ds Request Model used ot provide information to database for login use case
      */
     @Override
     public void loginUser(LoginUserDsRequestModel requestModel) {
         if (userCollection.get(requestModel.getEmailAddress()).getPassword().equals(requestModel.getPassword())){
             this.currUser = userCollection.get(requestModel.getEmailAddress());
-            this.habitCollection = this.currUser.getHabitCollection().habitCollection;
+            this.habitCollection = this.currUser.getHabitCollection().getCollection();
             this.taskCollection = this.currUser.getTaskCollection().getTasks();
             this.categoryCollection = this.currUser.getCategoryCollection().categories;
         }
     }
 
+    /**
+     * @return current user. If not logged in, return null
+     */
     @Override
-    public CommonUser getUser() {
-        return this.currUser;
+    public CommonUser getLoggedInUser() {
+        return (CommonUser) this.currUser;
     }
 
-    @Override
-    public CommonUser getCurrUser(String email){
-        return userCollection.get(email);
-    }
-
+    /**
+     * @param email - email of registered user
+     * @param password - password of registered user
+     * @return if password matches for given email and password
+     */
     @Override
     public boolean checkPasswordsMatch(String email, String password) {
         return userCollection.get(email).getPassword().equals(password);
     }
 
+    // getter methods for Category, Task, and Habit Collections.
     public HashMap<Integer, Category> getCategories() {
         return categoryCollection;
     }
@@ -136,6 +145,11 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
 
     public HashMap<String, Habit> getHabits() {
         return habitCollection;
+    }
+
+    @Override
+    public CommonUser getUserByEmail(String email){
+        return this.userCollection.get(email);
     }
 }
 

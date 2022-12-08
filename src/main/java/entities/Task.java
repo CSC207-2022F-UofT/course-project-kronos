@@ -13,22 +13,18 @@ public class Task{
 
     private String name;
     private boolean completeStatus;
-    private Calendar deadline;
     private final int id;
     private static int numberOfTasks = 0;
 
     /**
      * Constructor for a Task object.
      * @param name - The name of the task.
-     * @param deadline -  The deadline of the task.
     */
-    public Task(String name, Calendar deadline){
-
+    public Task(String name){
         this.id = numberOfTasks;
         numberOfTasks += 1;
 
         this.name = name;
-        this.deadline = deadline;
     }
 
     /**
@@ -55,13 +51,6 @@ public class Task{
     }
 
     /**
-     * Set the deadline of the task to the given deadline.
-     * @param deadline - The deadline that the users wants the task to have.
-     */
-    public void setDeadline(Calendar deadline) {
-        this.deadline = deadline;
-    }
-    /**
      * @return the id (a private attribute) of the task.
      */
     public int getId(){return this.id;}
@@ -71,13 +60,6 @@ public class Task{
      */
     public String getName(){
         return this.name;
-    }
-
-    /**
-     * @return the deadline of the task.
-     */
-    public Calendar getDeadline() {
-        return deadline;
     }
 
     /**

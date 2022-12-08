@@ -82,7 +82,8 @@ public class CreateAccountUI extends JFrame implements ActionListener {
         // buttons for the page
         JButton backButton = new JButton("Back to Login Page");
         backButton.setBounds(140, 200, 300, 35);
-        backButton.addActionListener(e -> new LoginPageUI(this.loginUserController, this.loginUserGateway, this.createUserController).main());
+        LoginPageUI loginPageUI = new LoginPageUI(this.loginUserController, this.loginUserGateway, this.createUserController);
+        backButton.addActionListener(e -> loginPageUI.main());
 
 
         JButton createAccountButton = new JButton("Create Account!");
@@ -125,7 +126,7 @@ public class CreateAccountUI extends JFrame implements ActionListener {
         if(outputData.getIsSuccessful()){
             JOptionPane.showMessageDialog(mainframe, "Account Created!");
             mainframe.dispose();
-            CommonUser user = loginUserGateway.getCurrUser(emailAddressField.getText());
+            CommonUser user = loginUserGateway.getUserByEmail(emailAddressField.getText());
             HomeScreenUI homeScreenUI = new HomeScreenUI(user);
             homeScreenUI.main();
         }else{
