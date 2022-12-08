@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controllers.habits.CreateHabitController;
+import ui.tasks.CreateTaskScreen;
 
 public class CreateHabitScreen extends JFrame implements ActionListener {
 
@@ -20,7 +21,7 @@ public class CreateHabitScreen extends JFrame implements ActionListener {
 
         // The frame of the screen titled "HABIT CREATION PAGE"
         JFrame frame = new JFrame("HABIT CREATION PAGE");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         // The main panel of the screen which contains all other panels.
         JPanel mainPanel = new JPanel();
@@ -58,12 +59,14 @@ public class CreateHabitScreen extends JFrame implements ActionListener {
         JButton buttonSubmit = new JButton("SUBMIT");
         buttonSubmit.addActionListener(this);
 
+
         frame.add(mainPanel);
 
         mainPanel.add(panelCreate);
         mainPanel.add(panelEdit);
         mainPanel.add(panelTrack);
         mainPanel.add(panelSubmit);
+
 
         panelCreate.add(labelCreate);
 
@@ -85,12 +88,21 @@ public class CreateHabitScreen extends JFrame implements ActionListener {
         System.out.println("Click" + evt.getActionCommand());
         try {
             userHabit.create(title.getText(), type.getText());
-            JOptionPane.showMessageDialog(this, title.getText() + "%s created.");
+            JOptionPane.showMessageDialog(this, title.getText() + " created.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
 
 
+    }
+
+    public static void createScreen(){
+
+        new CreateHabitScreen();
+
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(CreateHabitScreen::createScreen);
     }
 
 }

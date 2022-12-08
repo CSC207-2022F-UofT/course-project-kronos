@@ -1,5 +1,4 @@
 package test_use_cases;
-import database.DatabaseHabit;
 import entities.Habit;
 import entities.HabitCollection;
 import use_cases.habits.create_habit.*;
@@ -28,13 +27,16 @@ public class TestHabitUseCases {
     @Test
     public void create() {
 
-        CreateHabitDsGateway habitRepository = new DatabaseHabit();
+        CreateHabitDsGateway habitRepository = new CreateHabitDsGateway() {
+            @Override
+            public void save(CreateHabitDsRequestModel requestModel) {
+
+            }
+        };
         CreateHabitOutputBoundary outputBoundary = new CreateHabitOutputBoundary() {
             @Override
             public CreateHabitOutputData prepareSuccessView(CreateHabitOutputData outputData) {
-                assertEquals("Read a Book", outputData.getHabit().getName());
-                assertEquals("Daily", outputData.getHabit().getType());
-                assertEquals(0, outputData.getHabit().getFrequency());
+                assertEquals("Read a Book", outputData.getName());
                 return null;
             }
 
@@ -46,7 +48,7 @@ public class TestHabitUseCases {
         };
         HabitCollection habitFactory = new HabitCollection();
 
-        CreateHabitInputBoundary createInteractor = new CreateHabit(outputBoundary, habitFactory);
+        CreateHabitInputBoundary createInteractor = new CreateHabit(outputBoundary, habitRepository, habitFactory);
 
         CreateHabitInputData inputData = new CreateHabitInputData("Read a Book", "Daily");
 
@@ -62,7 +64,12 @@ public class TestHabitUseCases {
         Habit example = new Habit("Read a Book", "Daily");
         String id = example.getName();
 
-        DeleteHabitDsGateway habitRepository = new DatabaseHabit();
+        DeleteHabitDsGateway habitRepository = new DeleteHabitDsGateway() {
+            @Override
+            public void deleteHabit(DeleteHabitDsRequestModel requestModel) {
+
+            }
+        };
         DeleteHabitOutputBoundary outputBoundary = new DeleteHabitOutputBoundary() {
             @Override
             public DeleteHabitOutputData prepareSuccessView(DeleteHabitOutputData outputData) {
@@ -87,7 +94,12 @@ public class TestHabitUseCases {
 
         String newName = "Read a Philosophy Book";
 
-        EditHabitDsGateway habitRepository = new DatabaseHabit();
+        EditHabitDsGateway habitRepository = new EditHabitDsGateway() {
+            @Override
+            public void save(EditHabitDsRequestModel requestModel) {
+
+            }
+        };
         EditHabitOutputBoundary outputBoundary = new EditHabitOutputBoundary() {
             @Override
             public EditHabitOutputData prepareSuccessView(EditHabitOutputData outputData) {
@@ -97,11 +109,10 @@ public class TestHabitUseCases {
             }
 
             @Override
-            public EditHabitOutputData prepareFailView(EditHabitOutputData outputData) {
-                assertEquals("Changes not saved. Please fill all required fields.", outputData.getHabitName(),
-                        "Read a book");
+            public EditHabitOutputData prepareFailView(String error) {
                 return null;
             }
+            
         };
         HabitCollection habitFactory = new HabitCollection();
 
@@ -117,7 +128,12 @@ public class TestHabitUseCases {
         Habit example = new Habit("Read a Book", "Daily");
         String id = example.getName();
 
-        TrackHabitDsGateway habitRepository = new DatabaseHabit();
+        TrackHabitDsGateway habitRepository = new TrackHabitDsGateway() {
+            @Override
+            public void save(TrackHabitDsRequestModel requestModel) {
+
+            }
+        };
         TrackHabitOutputBoundary outputBoundary = new TrackHabitOutputBoundary() {
             @Override
             public TrackHabitOutputData prepareSuccessView(TrackHabitOutputData outputData) {
@@ -126,9 +142,9 @@ public class TestHabitUseCases {
             }
 
             @Override
-            public TrackHabitOutputData prepareFailView(TrackHabitOutputData outputData) {
-                assertEquals("The frequency was not increased.",outputData.getHabitFrequency(), 0);
+            public TrackHabitOutputData prepareFailView(String error) {
                 return null;
+
             }
         };
         HabitCollection habitFactory = new HabitCollection();

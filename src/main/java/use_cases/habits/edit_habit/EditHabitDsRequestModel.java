@@ -9,12 +9,16 @@ public class EditHabitDsRequestModel {
 
     private Habit habit;
 
+    private String id;
+
     /**
      * Constructor for this class.
      * @param h - Habit to be edited.
      */
-    public EditHabitDsRequestModel(Habit h){
-        this.habit = h;
+    public EditHabitDsRequestModel(Habit habit){
+
+        this.habit = habit;
+        this.id = habit.getName();
     }
 
     /**
@@ -26,10 +30,26 @@ public class EditHabitDsRequestModel {
     }
 
     /**
+     *
+     * @return id.
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
      * Sets the attribute habit of this class to the given habit.
      * @param habit - given habit
      */
     public void setHabit(Habit habit) {
         this.habit = habit;
+    }
+
+    /**
+     * Sets the attribute habit of this class to the given habit.
+     * @param id - given id
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }

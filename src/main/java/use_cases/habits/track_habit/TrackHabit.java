@@ -13,9 +13,9 @@ public class TrackHabit implements TrackHabitInputBoundary {
 
     /**
      * Constructor for this class.
-     * @param outputBoundary -
-     * @param dsGateway -
-     * @param hFactory -
+     * @param outputBoundary - the output boundary interface.
+     * @param dsGateway - the database gateway interface.
+     * @param hFactory - factory of the habit to be tracked.
      */
     public TrackHabit(TrackHabitOutputBoundary outputBoundary, TrackHabitDsGateway dsGateway, HabitCollection hFactory) {
         this.outputBoundary = outputBoundary;
@@ -31,17 +31,16 @@ public class TrackHabit implements TrackHabitInputBoundary {
     @Override
     public TrackHabitOutputData track(TrackHabitInputData inputData) {
         if (inputData.getInputName().isBlank()){
-            TrackHabitOutputData outputData = new TrackHabitOutputData("Changes not saved. " +
-                    "Please fill all required fields.");
-            return outputBoundary.prepareFailView(outputData);
+            String error = "Changes not saved. Please fill all required fields.";
+            return outputBoundary.prepareFailView(error);
         }
 
         String id = inputData.getInputName();
         Habit habitBeTracked = habitFactory.getCollection().get(id);
         habitBeTracked.markFrequency();
 
-        TrackHabitOutputData outputData = new TrackHabitOutputData(
-                "Changes have been saved.", habitBeTracked.getName(), habitBeTracked.getFrequency());
+        TrackHabitOutputData outputData = new TrackHabitOutputData(habitBeTracked.getName(),
+                habitBeTracked.getFrequency());
         return outputBoundary.prepareSuccessView(outputData);
     }
 

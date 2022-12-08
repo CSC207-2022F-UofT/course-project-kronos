@@ -14,7 +14,7 @@ public class DeleteHabit {
     /**
      * Constructor for this class.
      * @param outputBoundary - The output data
-     * @param dsGateway -
+     * @param dsGateway - the database gateway interface.
      * @param hFactory - the factory of the habit to be deleted.
      */
     public DeleteHabit(DeleteHabitOutputBoundary outputBoundary, DeleteHabitDsGateway dsGateway, HabitCollection hFactory) {

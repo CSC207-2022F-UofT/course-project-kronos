@@ -12,8 +12,8 @@ public class EditHabit implements EditHabitInputBoundary {
 
     /**
      * Constructor for this class.
-     * @param outputBoundary -
-     * @param dsGateway -
+     * @param outputBoundary - the output boundary interface.
+     * @param dsGateway - the database gateway interface.
      * @param hFactory - factory of the habit to be edited.
      */
     public EditHabit(EditHabitOutputBoundary outputBoundary, EditHabitDsGateway dsGateway, HabitCollection hFactory) {
@@ -31,17 +31,15 @@ public class EditHabit implements EditHabitInputBoundary {
     @Override
     public EditHabitOutputData edit(EditHabitInputData inputData) {
         if (inputData.getInputName().isBlank()){
-            EditHabitOutputData outputData = new EditHabitOutputData("Changes not saved. " +
-                    "Please fill all required fields.");
-            return outputBoundary.prepareFailView(outputData);
+            String error = "Changes not saved. Please fill all required fields.";
+            return outputBoundary.prepareFailView(error);
         }
 
         String id = inputData.getInputName();
         Habit habitBeEdited = habitFactory.getCollection().get(id);
         habitBeEdited.setName(inputData.getInputName());
         habitBeEdited.setType(inputData.getInputType());
-        EditHabitOutputData outputData = new EditHabitOutputData(
-                "Changes have been saved.", habitBeEdited.getName(), habitBeEdited.getType());
+        EditHabitOutputData outputData = new EditHabitOutputData(habitBeEdited.getName(), habitBeEdited.getType());
         return outputBoundary.prepareSuccessView(outputData);
 
     }

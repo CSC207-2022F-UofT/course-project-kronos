@@ -32,6 +32,13 @@ public class EditHabitInputData {
     }
 
     /**
+     * @return the name for the habit.
+     */
+    public String getOldName() {
+        return oldName;
+    }
+
+    /**
      * @return the type of habit.
      */
     public String getInputType() {

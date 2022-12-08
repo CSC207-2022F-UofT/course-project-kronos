@@ -1,4 +1,4 @@
-package testentities;
+package test_entities;
 import entities.Habit;
 import entities.HabitCollection;
 import org.junit.After;

@@ -12,7 +12,8 @@ public interface TrackHabitOutputBoundary {
     TrackHabitOutputData prepareSuccessView(TrackHabitOutputData outputData);
 
     /**
-     * @param outputData - Output to be displayed on unsuccessful tracking of a habit.
+     * @param error - the error message showed.
+     *      * @return output data.
      */
-    TrackHabitOutputData prepareFailView(TrackHabitOutputData outputData);
+    TrackHabitOutputData prepareFailView(String error);
 }

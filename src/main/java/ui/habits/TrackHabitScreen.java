@@ -1,12 +1,16 @@
 package ui.habits;
 
 import controllers.habits.TrackHabitController;
+import database.DatabaseHabit;
+import entities.Habit;
+import ui.tasks.CreateTaskScreen;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
@@ -22,7 +26,7 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
      */
     public void addHabitsToPane(JPanel pane) {
 
-        for(String i : ExampleHabit.send().getCollection().keySet()){
+        for(String i : .getHabitCollection().keySet()){
 
             // Label: Habit name
             JLabel l = new JLabel( i + "  " , JLabel.CENTER);
@@ -43,14 +47,6 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
                     button2.setText(ExampleHabit.send().getCollection().get(i).getFrequencyString()));
             button2.setPreferredSize(new Dimension(100, 30));
 
-            // Button 3: Show frequency
-            //JButton button3 = new JButton("Visualize");
-            //button3.setAlignmentX(Component.LEFT_ALIGNMENT);
-            //button3.addActionListener(e ->
-            //button3.setText(ExampleHabit.send().getCollection().get(i).getFrequencyString()));
-            //button3.setPreferredSize(new Dimension(100, 30));
-
-
 
             l.add( button1, BorderLayout.AFTER_LINE_ENDS);
             l.add( button2, BorderLayout.BEFORE_LINE_BEGINS);
@@ -67,7 +63,7 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
 
         // The frame of the screen titled "HABIT TRACKER"
         JFrame frame = new JFrame("HABIT TRACKER");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         // The main panel of the screen which contains all other panels.
         JPanel mainPanel = new JPanel();
@@ -78,6 +74,8 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
         p1.setSize(new Dimension(250, 5));
         // Label 1
         JLabel l1 = new JLabel("HABITS", JLabel.CENTER);
+
+        HashMap<String, Habit> collection = new DatabaseHabit().getHabitCollection();
 
         // Panel 2
         JPanel p2 = new JPanel();
@@ -104,12 +102,21 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {System.out.println("Click" + e.getActionCommand());
 
         try{
-            JOptionPane.showMessageDialog(this, "%s tracked.");
+            JOptionPane.showMessageDialog(this, " tracked.");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
 
 
+    }
+
+    public static void trackScreen(){
+
+        new TrackHabitScreen();
+
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(TrackHabitScreen::trackScreen);
     }
 }
 
