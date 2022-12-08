@@ -39,7 +39,6 @@ public class SetTimer {
 
     public static void runWorkTimer(int workTime)
     {
-        //System.out.println("Start Long " + String.format("%d", roundsCompleted));
 
         minutesRemaining = workTimerMinutes;
         secondsRemaining = workTimerSeconds;
@@ -49,24 +48,18 @@ public class SetTimer {
             {
                 if(minutesRemaining == 0)
                 {
-                    //continueBT.setVisible(false);
-                    //stopBT.setVisible(true);
-                    //startPauseBT.setVisible(true);
-                    //roundsCompleted++;
+
                     TimerCycle.runMainTimer();
                 }
                 else
                 {
                     minutesRemaining -= 1;
                     secondsRemaining = 59;
-                    //minuteLabel.setText(String.format("%02d", minutesRemaining));
-                    //secondLabel.setText(String.format("%02d", secondsRemaining));
                 }
             }
             else
             {
                 secondsRemaining -= 1;
-                //secondLabel.setText(String.format("%02d", secondsRemaining));
             }
         });
 
@@ -75,36 +68,26 @@ public class SetTimer {
 
     public static void runRestTimer()
     {
-        //System.out.println("Start Short " + String.format("%d", roundsCompleted));
         minutesRemaining = restTimerMinutes;
         secondsRemaining = restTimerSeconds;
 
-        //minuteLabel.setText(String.format("%02d", ORIGINAL_SHORTBREAK_MINUTES));
-        //secondLabel.setText(String.format("%02d", ORIGINAL_SHORTBREAK_SECONDS));
 
         restTimer = new Timer(1000, (ActionEvent event) -> {
             if(secondsRemaining == restTimerSeconds)
             {
                 if(minutesRemaining == 0)
                 {
-                    //continueBT.setVisible(false);
-                    // stopBT.setVisible(true);
-                    //startPauseBT.setVisible(true);
-                    //roundsCompleted++;
                     TimerCycle.runMainTimer();
                 }
                 else
                 {
                     minutesRemaining -= 1;
                     secondsRemaining = 59;
-                    //minuteLabel.setText(String.format("%02d", minutesRemaining));
-                    //secondLabel.setText(String.format("%02d", secondsRemaining));
                 }
             }
             else
             {
                 secondsRemaining -= 1;
-                //secondLabel.setText(String.format("%02d", secondsRemaining));
             }
         });
 

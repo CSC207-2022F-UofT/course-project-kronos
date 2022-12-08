@@ -38,4 +38,10 @@ public class EditTaskDsRequestModel {
      */
     public void setId(Integer id){this.id = id;}
 
+
+     * @return the completion status of the task.
+     */
+    public boolean isCompletionStatus() {
+        return completionStatus;
+    }
 }
