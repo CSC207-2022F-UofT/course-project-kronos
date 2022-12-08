@@ -111,7 +111,6 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
         if (userCollection.get(requestModel.getEmailAddress()).getPassword().equals(requestModel.getPassword())){
             this.currUser = userCollection.get(requestModel.getEmailAddress());
             this.habitCollection = this.currUser.getHabitCollection().getCollection();
-            this.taskCollection = this.currUser.getTaskCollection().getTasks();
             this.categoryCollection = this.currUser.getCategoryCollection().categories;
         }
     }
