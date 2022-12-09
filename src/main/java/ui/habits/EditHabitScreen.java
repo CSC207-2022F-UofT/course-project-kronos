@@ -30,47 +30,32 @@ public class EditHabitScreen extends JFrame implements ActionListener {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(6, 0));
 
-        // Panel 1
         JPanel panelEdit = new JPanel();
         panelEdit.setSize(new Dimension(250, 50));
-        // Label 1
         JLabel labelEdit = new JLabel( "EDIT A HABIT", JLabel.CENTER);
 
-        // Panel 2
         JPanel panelOldName = new JPanel();
         panelOldName.setSize(new Dimension(250, 50));
-        //Label 2
         JLabel labelOldName = new JLabel( "Old Habit Name", JLabel.CENTER);
         labelOldName.setPreferredSize(new Dimension(100, 30));
         labelOldName.setLayout(new BorderLayout());
-        //JTextField textField3 = new JTextField(15);
 
-        // Panel 3
         JPanel panelNewName = new JPanel();
         panelNewName.setSize(new Dimension(250, 50));
-        // Label 3
         JLabel labelNewName = new JLabel( "New Habit Name", JLabel.CENTER);
         labelNewName.setPreferredSize(new Dimension(100, 30));
         labelNewName.setLayout(new BorderLayout());
-        //Text field 1 : Gets new Habit name from the User
-        //JTextField textField1 = new JTextField(15);
 
-        // Panel 4
         JPanel panelNewType = new JPanel();
         panelNewType.setSize(new Dimension(250, 50));
-        // Label 4
         JLabel labelNewType = new JLabel( "New Habit Type", JLabel.CENTER);
         labelNewType.setPreferredSize(new Dimension(100, 30));
         labelNewType.setLayout(new BorderLayout());
-        //Text field 2 : Gets new Habit type from the User
-        //JTextField textField2 = new JTextField(15);    //set length of the text
 
-        // Panel 5
         JPanel panelButton = new JPanel();
         panelButton.setSize(new Dimension(250, 50));
-        // Label 5
 
-        //Button 1: EDIT
+        //Button: EDIT
         JButton button = new JButton("EDIT"); //set label to button
         button.addActionListener(this);
 
