@@ -4,9 +4,8 @@ package use_cases.user.login_user;
  * Use case layer that stores the user's login detail
  */
 public class LoginUserDsRequestModel {
-
-    private String emailAddress;
-    private String password;
+    private final String emailAddress;
+    private final String password;
 
     /**
      * Constructor method for LoginUserDsRequestModel
@@ -27,18 +26,6 @@ public class LoginUserDsRequestModel {
      * @return the user's password that was entered
      */
     public String getPassword(){return password;}
-
-    /**
-     *
-     * @param emailAddress - email address during login
-     */
-    public void setEmailAddress(String emailAddress){this.emailAddress = emailAddress;}
-
-    /**
-     *
-     * @param password - password during login
-     */
-    public void setPassword(String password){this.password = password;}
 
 
 }

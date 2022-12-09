@@ -7,15 +7,11 @@ import entities.TaskFactory;
 
 import org.junit.After;
 import org.junit.Before;
-
+import org.junit.Test;
 import use_cases.tasks.create_task.*;
 import use_cases.tasks.delete_task.*;
 import use_cases.tasks.edit_task.*;
 import use_cases.tasks.mark_task_completion.*;
-
-import org.junit.Test;
-
-import java.util.Calendar;
 
 import static java.lang.Boolean.FALSE;
 import static org.junit.jupiter.api.Assertions.*;

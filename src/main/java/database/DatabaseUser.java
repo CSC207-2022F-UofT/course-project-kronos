@@ -14,14 +14,14 @@ import java.util.HashMap;
 
 public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, LoginUserDsGateway {
 
-    private HashMap<String, User> userCollection;
+    private HashMap<String, CommonUser> userCollection;
     private HashMap<Integer, Task> taskCollection;
     private HashMap<Integer, Category> categoryCollection;
     private HashMap<String, Habit> habitCollection;
     public String filePath;
 
 
-    public User currUser;
+    public CommonUser currUser;
 
     /**
      * Constructor for DatabaseUser
@@ -41,7 +41,7 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
             FileInputStream file = new FileInputStream(filepath);
             ObjectInputStream ois = new ObjectInputStream(file);
 
-            this.userCollection = (HashMap<String, User>) ois.readObject();
+            this.userCollection = (HashMap<String, CommonUser>) ois.readObject();
         } catch(IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -79,13 +79,18 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
         return userCollection.containsKey(email);
     }
 
+    @Override
+    public CommonUser getUser() {
+        return this.currUser;
+    }
+
     /**
      * Used to save the created user to the database
      * @param requestModel - contains user information
      */
     @Override
     public void save(CreateUserDsRequestModel requestModel) {
-        this.userCollection.put(requestModel.getEmailAddress(), requestModel.getUser());
+        this.userCollection.put(requestModel.getEmailAddress(), (CommonUser) requestModel.getUser());
     }
 
     /**
@@ -106,6 +111,7 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
         if (userCollection.get(requestModel.getEmailAddress()).getPassword().equals(requestModel.getPassword())){
             this.currUser = userCollection.get(requestModel.getEmailAddress());
             this.habitCollection = this.currUser.getHabitCollection().getCollection();
+            this.taskCollection = this.currUser.getTaskCollection().getTasks();
             this.categoryCollection = this.currUser.getCategoryCollection().categories;
         }
     }
@@ -114,8 +120,8 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
      * @return current user. If not logged in, return null
      */
     @Override
-    public User getLoggedInUser() {
-        return this.currUser;
+    public CommonUser getLoggedInUser() {
+        return (CommonUser) this.currUser;
     }
 
     /**
@@ -142,7 +148,7 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
     }
 
     @Override
-    public User getUserByEmail(String email){
+    public CommonUser getUserByEmail(String email){
         return this.userCollection.get(email);
     }
 }

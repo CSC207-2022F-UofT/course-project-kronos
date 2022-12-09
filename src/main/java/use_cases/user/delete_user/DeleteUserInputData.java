@@ -5,6 +5,7 @@ import entities.CommonUser;
 /**
  * This class is a container for the input data related to deletion of a user, it is created by the controller and sent
  * to the delete user use case.
+ * @author happynasit
  */
 public class DeleteUserInputData {
     private final CommonUser user;

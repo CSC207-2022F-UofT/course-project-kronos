@@ -7,7 +7,7 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.junit.Test;
-import use_cases.visualization.CreateChart;
+import database.CreateChart;
 
 import java.io.File;
 import java.io.IOException;

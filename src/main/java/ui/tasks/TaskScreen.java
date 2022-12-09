@@ -55,6 +55,7 @@ public class TaskScreen extends JPanel implements ActionListener {
         mainPanel.add(buttons);
         frame.pack();
         frame.setVisible(true);
+
     }
 
     /**
