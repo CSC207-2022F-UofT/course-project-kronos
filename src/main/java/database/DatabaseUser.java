@@ -152,4 +152,3 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
         return this.userCollection.get(email);
     }
 }
-

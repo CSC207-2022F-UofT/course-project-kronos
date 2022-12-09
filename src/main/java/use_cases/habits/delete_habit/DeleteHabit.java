@@ -1,6 +1,6 @@
 package use_cases.habits.delete_habit;
 import entities.Habit;
-import entities.HabitFactory;
+import entities.HabitCollection;
 
 /**
  * Use case class for deleting a habit.
@@ -9,15 +9,15 @@ public class DeleteHabit {
 
     private final DeleteHabitOutputBoundary outputBoundary;
     private final DeleteHabitDsGateway dsGateway;
-    private final HabitFactory habitFactory;
+    private final HabitCollection habitFactory;
 
     /**
      * Constructor for this class.
      * @param outputBoundary - The output data
-     * @param dsGateway -
+     * @param dsGateway - the database gateway interface.
      * @param hFactory - the factory of the habit to be deleted.
      */
-    public DeleteHabit(DeleteHabitOutputBoundary outputBoundary, DeleteHabitDsGateway dsGateway, HabitFactory hFactory) {
+    public DeleteHabit(DeleteHabitOutputBoundary outputBoundary, DeleteHabitDsGateway dsGateway, HabitCollection hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
         this.habitFactory = hFactory;
@@ -49,7 +49,7 @@ public class DeleteHabit {
     /**
      * @return the habit factory
      */
-    public HabitFactory getHabitFactory() {
+    public HabitCollection getHabitFactory() {
         return habitFactory;
     }
 
