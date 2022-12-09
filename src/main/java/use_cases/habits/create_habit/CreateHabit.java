@@ -10,7 +10,7 @@ public class CreateHabit implements CreateHabitInputBoundary{
     private final CreateHabitOutputBoundary outputBoundary;
 
     private final CreateHabitDsGateway dsGateway;
-    private final HabitCollection habitFactory;
+    private final HabitCollection habitCollection;
 
     /**
      * Constructor for this class.
@@ -21,7 +21,7 @@ public class CreateHabit implements CreateHabitInputBoundary{
                        HabitCollection collection) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
-        this.habitFactory = collection;
+        this.habitCollection = collection;
     }
 
     /**
@@ -38,7 +38,7 @@ public class CreateHabit implements CreateHabitInputBoundary{
         }
 
         Habit habit = new Habit(inputData.getName(), inputData.getType());
-        habitFactory.addItem(habit);
+        habitCollection.addItem(habit);
         CreateHabitOutputData outputData = new CreateHabitOutputData(habit.getName());
         return outputBoundary.prepareSuccessView(outputData);
     }
@@ -54,7 +54,7 @@ public class CreateHabit implements CreateHabitInputBoundary{
      * @return returns the habit factory after creation of new habit.
      */
     public HabitCollection getHabitFactory() {
-        return habitFactory;
+        return habitCollection;
     }
 
 }

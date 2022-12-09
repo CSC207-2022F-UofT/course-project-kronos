@@ -8,7 +8,7 @@ public class Category implements Serializable {
 
     public String categoryName;
     private String colour; // can we make all of these public without losing marks
-    private final TaskFactory tasks = new TaskFactory(); // new since Category was just created
+    private final TaskCollection tasks = new TaskCollection(); // new since Category was just created
     private boolean visibility;
     private final int id;
 
@@ -81,7 +81,7 @@ public class Category implements Serializable {
      * The getter for tasks.
      * @return - the tasks of the category
      */
-    public TaskFactory getTasks() {
+    public TaskCollection getTasks() {
         return this.tasks;
     }
 
