@@ -15,6 +15,9 @@ public class TestHabitControllerAndPresenter {
     static EditHabitPresenter eHPresenter;
 
 
+    /**
+     * Tests the create habit controller and presenter.
+     */
     @Test
     public void create() {
 
@@ -23,6 +26,9 @@ public class TestHabitControllerAndPresenter {
         assertEquals( output,cHPresenter.prepareSuccessView(output));
     }
 
+    /**
+     * Tests the edit habit controller and presenter.
+     */
     @Test
     public void edit() {
 
