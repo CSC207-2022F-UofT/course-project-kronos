@@ -1,3 +1,4 @@
+/*
 package ui;
 
 import controllers.users.CreateUserController;
@@ -11,16 +12,20 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+*/
 /**
  * UI for the Create Account Page. By the actions of the buttons, the page will either be directed to the
  * Login user
  * @author happynasit
- */
+ *//*
+
 public class CreateAccountUI extends JFrame implements ActionListener {
-    /**
+    */
+/**
      * Constructor for the CreateAccountUI class
      * sets the labels, buttons and the text field to enter the user information.
-     */
+     *//*
+
 
     static JTextField firstNameField = new JTextField();
     static JTextField lastNameField = new JTextField();
@@ -34,12 +39,14 @@ public class CreateAccountUI extends JFrame implements ActionListener {
 
     CreateUserController createUserController;
 
-    /**
+    */
+/**
      * Constructor method for creating the UI
      * @param controller - of the create account use case
      * @param loginUserGateway - it is the gateway of the login user case
      * @param loginUserController - it is the controller of the login user use case
-     */
+     *//*
+
     public CreateAccountUI(CreateUserController controller,
                            LoginUserDsGateway loginUserGateway, LoginUserController loginUserController){
         this.loginUserGateway = loginUserGateway;
@@ -134,3 +141,4 @@ public class CreateAccountUI extends JFrame implements ActionListener {
         }
     }
 }
+*/

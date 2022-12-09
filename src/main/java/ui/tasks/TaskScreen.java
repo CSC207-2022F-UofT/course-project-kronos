@@ -25,7 +25,7 @@ public class TaskScreen extends JPanel implements ActionListener {
         this.task = task;
 
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(350,150));

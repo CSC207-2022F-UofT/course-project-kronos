@@ -4,16 +4,13 @@ import controllers.category.CreateCategoryController;
 import controllers.category.DeleteCategoryController;
 import controllers.category.EditCategoryController;
 import controllers.tasks.CreateTaskController;
-import controllers.tasks.MarkCompletionController;
 import entities.Category;
 import entities.CategoryCollection;
 import entities.Task;
 import entities.TaskFactory;
 import ui.ColourPalette;
 import ui.tasks.CreateTaskScreen;
-import ui.tasks.EditTaskScreen;
 import ui.tasks.TaskScreen;
-import ui.user.MenuPage;
 import use_cases.categories.edit_category.EditCategory;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryInputBoundary;
@@ -23,18 +20,13 @@ import use_cases.tasks.create_task.CreateTaskDsGateway;
 import use_cases.tasks.create_task.CreateTaskInputBoundary;
 import use_cases.tasks.create_task.CreateTaskOutputBoundary;
 import use_cases.tasks.mark_task_completion.MarkCompletionDsGateway;
-import use_cases.tasks.mark_task_completion.MarkCompletionInputBound;
 import use_cases.tasks.mark_task_completion.MarkCompletionOutputBound;
-import use_cases.tasks.mark_task_completion.MarkCompletionOutputData;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-// have to use mark_task_completion
 
 /**
  * -- User Interface Layer --
@@ -48,7 +40,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
     private JPanel body;
     private static JLabel title;
     private CategoryCollection categories;
-    private CreateCategoryController createController;
     private EditCategoryOutputBoundary editCategoryPresenter;
     private EditCategoryDsGateway editDsGateway;
     private DeleteCategoryController deleteController;
@@ -64,7 +55,6 @@ public class ToDoScreen extends JFrame implements ActionListener {
                       MarkCompletionOutputBound markOutputBound) {
         // long parameter code smell, unable to resolve
 
-        this.createController = createController;
         this.editCategoryPresenter = editCategoryPresenter;
         this.editDsGateway = editDsGateway;
         this.deleteController = deleteController;
@@ -127,7 +117,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.gridx = 0;
         c.gridy = 1;
         header.add(menu, c);
-        menu.addActionListener(e -> MenuPage.createmenu()); // ? This doesn't work
+        // menu.addActionListener(e -> HomeScreenUI.main()); // ? This doesn't work
 
         /**
          * Adding table headlining row for tasks

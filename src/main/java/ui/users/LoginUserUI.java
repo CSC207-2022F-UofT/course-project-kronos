@@ -1,3 +1,4 @@
+/*
 package ui;
 import controllers.users.CreateUserController;
 import controllers.users.LoginUserController;
@@ -11,11 +12,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+*/
 /**
  * UI for the Login Page. By the actions of the buttons, the page will either be directed to the CreateAccountUI or the
  * Menu Page of the User.
  * @author happynasit
- */
+ *//*
+
 public class LoginPageUI extends JFrame implements ActionListener{
     static final JFrame mainframe = new JFrame();
     final LoginUserController loginUserController;
@@ -26,12 +29,14 @@ public class LoginPageUI extends JFrame implements ActionListener{
     static JTextField emailAddressField = new JTextField();
     static JPasswordField passwordField = new JPasswordField();
 
-    /**
+    */
+/**
      * Constructor for the LoginPageUI class
      * sets the labels, buttons and the text field to enter the user information.
      * @param loginUserController - the controller that we will be using for the program
      * @param gateway - login of user gateway
-     */
+     *//*
+
     public LoginPageUI(LoginUserController loginUserController, LoginUserDsGateway gateway,
                        CreateUserController createUserController){
         this.gateway = gateway;
@@ -114,3 +119,4 @@ public class LoginPageUI extends JFrame implements ActionListener{
         }
     }
 }
+*/

@@ -13,24 +13,35 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 import static java.awt.Component.*;
-
+/**
+ * -- UI --
+ * The screen for editing a Category
+ */
 public class CategoryScreen implements ActionListener {
-    public static String COLOURS[] = {"pink", "red", "white", "blue", "yellow", "green", "orange", "purple", "grey"};
+    /**
+     * The possible colours for the Category
+     */
+    public static String[] COLOURS = {"pink", "red", "white", "blue", "yellow", "green", "orange", "purple", "grey"};
+
+    /**
+     * The Controllers
+     */
+    private final EditCategoryController editController;
+    private final DeleteCategoryController deleteController;
+
+    /**
+     * Frame components and input information
+     */
     private static JFrame EditCategoryFrame;
-    private String name;
-    private String colour;
-    private int id;
-    private JButton save;
-    private JButton delete;
-    private JTextField categoryNameInput;
-    private JComboBox colourInput;
-    private EditCategoryController editController;
-    private DeleteCategoryController deleteController;
+    private final int id;
+    private final JButton save;
+    private final JButton delete;
+    private final JTextField categoryNameInput;
+    protected final JComboBox colourInput;
+
 
     public CategoryScreen(EditCategoryController editController, DeleteCategoryController deleteController,
                           int id, String name, String colour) {
-        this.colour = colour;
-        this.name = name;
         this.id = id;
         this.editController = editController;
         this.deleteController = deleteController;
@@ -97,19 +108,14 @@ public class CategoryScreen implements ActionListener {
         save.setFont(new Font("Serif", Font.BOLD, 15));
         save.setBackground(Color.white);
         EditCategoryFrame.add(save, constraints);
-        String categoryNameText = categoryNameInput.getText();
-        String colourText = (String) colourInput.getSelectedItem();
         save.addActionListener(this);
     }
 
     public static void loadScreen(EditCategoryController editController, DeleteCategoryController deleteController,
                                   int id, String name, String colour) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                CategoryScreen categoryScreen = new CategoryScreen(editController, deleteController, id, name, colour);
-                CategoryScreen.EditCategoryFrame.setVisible(true);
-            }
+        EventQueue.invokeLater(() -> {
+            // CategoryScreen categoryScreen = new CategoryScreen(editController, deleteController, id, name, colour);
+            EditCategoryFrame.setVisible(true);
         });
     }
     public void actionPerformed(ActionEvent evt) {
@@ -119,20 +125,20 @@ public class CategoryScreen implements ActionListener {
             String colourText = (String) colourInput.getSelectedItem();
             try {
                 EditCategoryOutputData editCategoryOutput = editController.create(id, categoryNameText, colourText, true);
-                JOptionPane.showMessageDialog(this.EditCategoryFrame, editCategoryOutput.getError());
+                JOptionPane.showMessageDialog(EditCategoryFrame, editCategoryOutput.getError());
                 EditCategoryFrame.dispatchEvent(new WindowEvent(EditCategoryFrame, WindowEvent.WINDOW_CLOSING));
             } catch (CategoryEditFailed error){
-                JOptionPane.showMessageDialog(this.EditCategoryFrame, error.getMessage());
+                JOptionPane.showMessageDialog(EditCategoryFrame, error.getMessage());
             }
 
         }
         if (evt.getSource() == delete){
             try {
                 DeleteCategoryOutputData deleteCategoryOutput = deleteController.delete(id);
-                JOptionPane.showMessageDialog(this.EditCategoryFrame, deleteCategoryOutput.getMessage());
+                JOptionPane.showMessageDialog(EditCategoryFrame, deleteCategoryOutput.getMessage());
                 EditCategoryFrame.dispatchEvent(new WindowEvent(EditCategoryFrame, WindowEvent.WINDOW_CLOSING));
             } catch (CategoryEditFailed error){ // CategoryDeletionFailed ?
-                JOptionPane.showMessageDialog(this.EditCategoryFrame, error.getMessage());
+                JOptionPane.showMessageDialog(EditCategoryFrame, error.getMessage());
             }
         }
     }
