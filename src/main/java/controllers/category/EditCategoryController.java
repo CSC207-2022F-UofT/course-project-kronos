@@ -1,6 +1,6 @@
 package controllers.category;
 
-import use_cases.categories.edit_category.EditCategoryInputBound;
+import use_cases.categories.edit_category.EditCategoryInputBoundary;
 import use_cases.categories.edit_category.EditCategoryInputData;
 import use_cases.categories.edit_category.EditCategoryOutputData;
 
@@ -9,13 +9,13 @@ import use_cases.categories.edit_category.EditCategoryOutputData;
  * The Controller that passes input data from the UI to the use case that edits a category.
  */
 public class EditCategoryController {
-    final EditCategoryInputBound inputBound;
+    final EditCategoryInputBoundary inputBound;
 
     /**
      * Constructor
      * @param categoryGateway - Input Boundary Interface
      */
-    public EditCategoryController(EditCategoryInputBound categoryGateway) {
+    public EditCategoryController(EditCategoryInputBoundary categoryGateway) {
         this.inputBound = categoryGateway;
     }
 

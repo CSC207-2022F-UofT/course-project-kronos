@@ -1,3 +1,4 @@
+/*
 package test_use_cases;
 
 import database.DatabaseTask;
@@ -23,9 +24,11 @@ public class TestTaskUseCases {
     public void tearDown() {
     }
 
-    /**
+    */
+/**
      * Test CreateTask use case.
-     */
+     *//*
+
     @Test
     public void create() {
         CreateTaskDsGateway taskRepository = new DatabaseTask();
@@ -51,9 +54,11 @@ public class TestTaskUseCases {
         interactor.create(inputData);
     }
 
-    /**
+    */
+/**
      * Test DeleteTask use case.
-     */
+     *//*
+
     @Test
     public void delete(){
         // Set example task object.
@@ -77,9 +82,11 @@ public class TestTaskUseCases {
         deleteInteractor.delete(inputData);
     }
 
-    /**
+    */
+/**
      * Test EditTask use case.
-      */
+      *//*
+
     @Test
     public void edit(){
         // Set example task object.
@@ -110,9 +117,11 @@ public class TestTaskUseCases {
 
     }
 
-    /**
+    */
+/**
      * Test MarkCompletion use case when the completion status of the task is FALSE before marking.
-     */
+     *//*
+
     @Test
     public void markCompletionToTrue(){
         // Set example task object.
@@ -137,9 +146,11 @@ public class TestTaskUseCases {
         markCompletionInteractor.mark(inputData);
     }
 
-    /**
+    */
+/**
      * Test MarkCompletion use case when the completion status of the task is TRUE before marking.
-     */
+     *//*
+
     @Test
     public void markCompletionToFalse(){
         // Set example task object.
@@ -167,3 +178,4 @@ public class TestTaskUseCases {
 
 
 }
+*/

@@ -12,7 +12,7 @@ public class TimerOutputBoundary {
      */
     public TimerOutputBoundary(String w, String r){
         if(!(w.equals("") && r.equals(""))){
-            //CreateTimer.createHabit(w, r, i);
+            //CreateWorkTimer.createHabit(w, r, i);
             this.success = true;
         }
     }

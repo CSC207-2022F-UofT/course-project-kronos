@@ -1,16 +1,13 @@
 package use_cases.categories.create_category;
 import entities.Category;
 import entities.CategoryCollection;
-import entities.User;
-
-import java.util.HashMap;
 
 /**
  * -- Application Business Layer --
  * The use case Interactor that is responsible for creating a new category.
  */
-public class CreateCategory implements CreateCategoryInputBound {
-    private final CreateCategoryOutputBound outputBound;
+public class CreateCategory implements CreateCategoryInputBoundary {
+    private final CreateCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
     private CreateCategoryDsGateway dsGateway;
 
@@ -20,7 +17,7 @@ public class CreateCategory implements CreateCategoryInputBound {
      * @param dsGateway - the database gateway interface
      * @param categories    - the category collection of a specific user
      */
-    public CreateCategory(CreateCategoryOutputBound outputBound, CreateCategoryDsGateway dsGateway, CategoryCollection categories) {
+    public CreateCategory(CreateCategoryOutputBoundary outputBound, CreateCategoryDsGateway dsGateway, CategoryCollection categories) {
         this.outputBound = outputBound;
         this.categories = categories;
         this.dsGateway = dsGateway;
@@ -52,7 +49,7 @@ public class CreateCategory implements CreateCategoryInputBound {
      * outputBound getter
      * @return the outputBound object
      */
-    public CreateCategoryOutputBound getOutputBound() {
+    public CreateCategoryOutputBoundary getOutputBound() {
         return this.outputBound;
     }
 

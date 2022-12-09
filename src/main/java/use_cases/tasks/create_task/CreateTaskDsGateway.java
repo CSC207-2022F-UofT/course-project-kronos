@@ -11,4 +11,3 @@ public interface CreateTaskDsGateway {
      */
     void saveTask(CreateTaskDsRequestModel requestModel);
 }
-

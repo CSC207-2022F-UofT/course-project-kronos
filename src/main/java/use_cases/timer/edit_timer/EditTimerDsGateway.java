@@ -14,4 +14,3 @@ public interface EditTimerDsGateway {
 
     void saveTimer(EditTimerDsRequestModel requestModel);
 }
-

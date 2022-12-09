@@ -1,13 +1,13 @@
 package controllers.category;
 
-import use_cases.categories.create_category.CreateCategoryOutputBound;
+import use_cases.categories.create_category.CreateCategoryOutputBoundary;
 import use_cases.categories.create_category.CreateCategoryOutputData;
 
 /**
  * -- Interface Adaptor Layer --
  * The Presenter that passes output data from the use case of CreateCategory to the UI.
  */
-public class CreateCategoryPresenter implements CreateCategoryOutputBound {
+public class CreateCategoryPresenter implements CreateCategoryOutputBoundary {
 
     /**
      * This method is called when the creation of new category is unsuccessful, it prepares the view.

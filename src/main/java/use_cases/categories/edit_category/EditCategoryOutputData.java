@@ -2,6 +2,8 @@ package use_cases.categories.edit_category;
 
 import entities.Category;
 
+import java.awt.*;
+
 /**
  * -- Application Business Layer --
  *  This class is a container for the output data related to edition/modification of a category, it is created by the

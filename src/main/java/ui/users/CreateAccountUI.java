@@ -1,4 +1,4 @@
-package ui;
+package ui.users;
 
 import controllers.users.CreateUserController;
 import controllers.users.LoginUserController;
@@ -82,7 +82,7 @@ public class CreateAccountUI extends JFrame implements ActionListener {
         // buttons for the page
         JButton backButton = new JButton("Back to Login Page");
         backButton.setBounds(140, 200, 300, 35);
-        LoginPageUI loginPageUI = new LoginPageUI(this.loginUserController, this.loginUserGateway, this.createUserController);
+        LoginUserUI loginPageUI = new LoginUserUI(this.loginUserController, this.loginUserGateway, this.createUserController);
         backButton.addActionListener(e -> loginPageUI.main());
 
 

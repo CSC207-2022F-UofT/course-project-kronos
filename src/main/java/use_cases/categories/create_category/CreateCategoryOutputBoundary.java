@@ -4,7 +4,7 @@ package use_cases.categories.create_category;
  * -- Application Business Layer --
  * This is an interface that passes the output to the Presenter of category creation
  */
-public interface CreateCategoryOutputBound {
+public interface CreateCategoryOutputBoundary {
     /**
      * This method passes output data from the Interactor to the Presenter if category creation failed.
      * @param error - the error message showed.

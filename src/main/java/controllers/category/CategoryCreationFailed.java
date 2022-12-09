@@ -6,7 +6,7 @@ public class CategoryCreationFailed extends RuntimeException {
 
     /**
      * Exception Constructor.
-     * @param error - the error message.
+     * @param error - the error message
      */
     public CategoryCreationFailed(String error) {
         super(error);

@@ -23,4 +23,3 @@ public class EditTimerOutputData {
         return timer;
     }
 }
-

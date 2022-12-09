@@ -1,7 +1,8 @@
-package ui;
+package ui.users;
 import controllers.users.CreateUserController;
 import controllers.users.LoginUserController;
 import entities.CommonUser;
+import ui.users.HomeScreenUI;
 import use_cases.user.create_user.CreateUserDsGateway;
 import use_cases.user.login_user.LoginUserDsGateway;
 import use_cases.user.login_user.LoginUserInputData;
@@ -16,7 +17,7 @@ import java.awt.event.ActionListener;
  * Menu Page of the User.
  * @author happynasit
  */
-public class LoginPageUI extends JFrame implements ActionListener{
+public class LoginUserUI extends JFrame implements ActionListener{
     static final JFrame mainframe = new JFrame();
     final LoginUserController loginUserController;
     final LoginUserDsGateway gateway;
@@ -32,7 +33,7 @@ public class LoginPageUI extends JFrame implements ActionListener{
      * @param loginUserController - the controller that we will be using for the program
      * @param gateway - login of user gateway
      */
-    public LoginPageUI(LoginUserController loginUserController, LoginUserDsGateway gateway,
+    public LoginUserUI(LoginUserController loginUserController, LoginUserDsGateway gateway,
                        CreateUserController createUserController){
         this.gateway = gateway;
         this.createUserController = createUserController;
@@ -62,7 +63,7 @@ public class LoginPageUI extends JFrame implements ActionListener{
         JButton createAccountButton = new JButton("Create Account!");
         createAccountButton.setBounds(140, 130, 300, 35);
 
-        ui.CreateAccountUI createAccountUI = new ui.CreateAccountUI(this.createUserController, this.gateway, this.loginUserController);
+        CreateAccountUI createAccountUI = new CreateAccountUI(this.createUserController, this.gateway, this.loginUserController);
         createAccountButton.addActionListener(e -> createAccountUI.main());
 
 
