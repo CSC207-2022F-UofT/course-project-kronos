@@ -1,7 +1,7 @@
 package test_entities;
 
 import entities.Task;
-import entities.TaskFactory;
+import entities.TaskCollection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +25,10 @@ public class TestTaskCollection {
      */
     @Test(timeout = 500)
     public void testAddItem(){
-        TaskFactory collection = new TaskFactory();
+        TaskCollection collection = new TaskCollection();
         Task exampleTask = new Task("example");
         collection.addItem(exampleTask);
-        TaskFactory expected = new TaskFactory();
+        TaskCollection expected = new TaskCollection();
         expected.getTasks().put(exampleTask.getId(), exampleTask);
         assertEquals(expected, collection);
     }
@@ -38,9 +38,9 @@ public class TestTaskCollection {
      */
     @Test(timeout = 500)
     public void testRemoveItem(){
-        TaskFactory expected = new TaskFactory();
+        TaskCollection expected = new TaskCollection();
         Task exampleTask = new Task("example");
-        TaskFactory collection = new TaskFactory();
+        TaskCollection collection = new TaskCollection();
         collection.removeItem(exampleTask);
         assertEquals(expected, collection);
     }
@@ -50,7 +50,7 @@ public class TestTaskCollection {
      */
     @Test(timeout = 500)
     public void testGetTasks(){
-        TaskFactory collection = new TaskFactory();
+        TaskCollection collection = new TaskCollection();
         Task taskA = new Task("CSC207 Project");
         Task taskB = new Task("CSC207 Presentation");
         collection.addItem(taskA);
@@ -71,7 +71,7 @@ public class TestTaskCollection {
         HashMap<Integer, Task> hashMap = new HashMap<>();
         hashMap.put(taskA.getId(), taskA);
         hashMap.put(taskB.getId(), taskB);
-        TaskFactory collection = new TaskFactory();
+        TaskCollection collection = new TaskCollection();
         collection.setTasks(hashMap);
         assertEquals(hashMap, collection.getTasks());
     }
@@ -81,7 +81,7 @@ public class TestTaskCollection {
      */
     @Test(timeout = 500)
     public void testConvertToArray(){
-        TaskFactory collection = new TaskFactory();
+        TaskCollection collection = new TaskCollection();
         Task taskA = new Task("CSC207 Project");
         Task taskB = new Task("CSC207 Presentation");
         ArrayList<Task> array = new ArrayList<>();
@@ -97,7 +97,7 @@ public class TestTaskCollection {
     public void testExistByIdTrue(){
         Task taskA = new Task("CSC207 Project");
         Task taskB = new Task("CSC207 Presentation");
-        TaskFactory collection = new TaskFactory();
+        TaskCollection collection = new TaskCollection();
         collection.addItem(taskA);
         collection.addItem(taskB);
         int id = taskA.getId();
@@ -111,7 +111,7 @@ public class TestTaskCollection {
     public void testExistByIdFalse(){
         Task taskA = new Task("CSC207 Project");
         Task taskB = new Task("CSC207 Presentation");
-        TaskFactory collection = new TaskFactory();
+        TaskCollection collection = new TaskCollection();
         collection.addItem(taskA);
         collection.addItem(taskB);
         int id = taskA.getId() + taskB.getId();

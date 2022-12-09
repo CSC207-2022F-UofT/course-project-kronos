@@ -9,7 +9,7 @@ public interface User {
 
     CategoryCollection getCategoryCollection();
 
-    TaskFactory getTaskCollection();
+    TaskCollection getTaskCollection();
 
     TimerTomato getTomato();
 

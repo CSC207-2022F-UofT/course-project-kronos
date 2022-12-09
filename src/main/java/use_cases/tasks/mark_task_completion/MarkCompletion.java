@@ -1,9 +1,7 @@
 package use_cases.tasks.mark_task_completion;
 
 import entities.Task;
-import entities.TaskFactory;
-
-import static java.lang.Boolean.FALSE;
+import entities.TaskCollection;
 
 /**
  * -- Application Business Layer --
@@ -12,19 +10,19 @@ import static java.lang.Boolean.FALSE;
 public class MarkCompletion implements MarkCompletionInputBound {
     private final MarkCompletionOutputBound outputBound;
     private final MarkCompletionDsGateway dsGateway;
-    private final TaskFactory taskFactory;
+    private final TaskCollection taskCollection;
 
     /**
      * Constructor
      * @param outputBound - the output boundary interface.
      * @param dsGateway - the database gateway interface.
-     * @param taskFactory - the task factory of a specific user.
+     * @param taskCollection - the task factory of a specific user.
      */
     public MarkCompletion(MarkCompletionOutputBound outputBound, MarkCompletionDsGateway dsGateway,
-                          TaskFactory taskFactory) {
+                          TaskCollection taskCollection) {
         this.outputBound = outputBound;
         this.dsGateway = dsGateway;
-        this.taskFactory = taskFactory;
+        this.taskCollection = taskCollection;
     }
 
     /**
@@ -37,7 +35,7 @@ public class MarkCompletion implements MarkCompletionInputBound {
     @Override
     public MarkCompletionOutputData mark(MarkCompletionInputData inputData) {
         int id = inputData.getTaskId();
-        Task task = taskFactory.getTasks().get(id);
+        Task task = taskCollection.getTasks().get(id);
         boolean complete = task.isCompleteStatus();
         // if complete is TRUE
         if (complete){
@@ -59,8 +57,8 @@ public class MarkCompletion implements MarkCompletionInputBound {
     /**
      * @return the taskFactory of the use case. (A specific user's task factory)
      */
-    public TaskFactory getTaskFactory() {
-        return taskFactory;
+    public TaskCollection getTaskFactory() {
+        return taskCollection;
     }
 
     /**

@@ -8,7 +8,7 @@ import entities.HabitCollection;
 public class EditHabit implements EditHabitInputBoundary {
     private final EditHabitOutputBoundary outputBoundary;
     private final EditHabitDsGateway dsGateway;
-    private final HabitCollection habitFactory;
+    private final HabitCollection habitCollection;
 
     /**
      * Constructor for this class.
@@ -19,7 +19,7 @@ public class EditHabit implements EditHabitInputBoundary {
     public EditHabit(EditHabitOutputBoundary outputBoundary, EditHabitDsGateway dsGateway, HabitCollection hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
-        this.habitFactory = hFactory;
+        this.habitCollection = hFactory;
     }
 
     /**
@@ -36,7 +36,7 @@ public class EditHabit implements EditHabitInputBoundary {
         }
 
         String id = inputData.getInputName();
-        Habit habitBeEdited = habitFactory.getCollection().get(id);
+        Habit habitBeEdited = habitCollection.getCollection().get(id);
         habitBeEdited.setName(inputData.getInputName());
         habitBeEdited.setType(inputData.getInputType());
         EditHabitOutputData outputData = new EditHabitOutputData(habitBeEdited.getName(), habitBeEdited.getType());
@@ -62,7 +62,7 @@ public class EditHabit implements EditHabitInputBoundary {
      * @return the habit factory
      */
     public HabitCollection getHabitFactory() {
-        return habitFactory;
+        return habitCollection;
     }
 
 }

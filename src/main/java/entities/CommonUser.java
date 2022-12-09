@@ -12,8 +12,8 @@ public class CommonUser implements User{
     private String lastName;
     private String emailAddress;
     private String password;
-    private HabitFactory habitCollection;
-    private TaskFactory taskCollection;
+    private HabitCollection habitCollection;
+    private TaskCollection taskCollection;
     private CategoryCollection categoryCollection;
     private TimerTomato tomato;
 
@@ -33,8 +33,8 @@ public class CommonUser implements User{
         this.password = password;
         this.firstName = first_name;
         this.lastName = last_name;
-        this.habitCollection = new HabitFactory();
-        this.taskCollection = new TaskFactory();
+        this.habitCollection = new HabitCollection();
+        this.taskCollection = new TaskCollection();
         this.categoryCollection = new CategoryCollection();
         this.tomato = new TimerTomato();
     }
@@ -84,7 +84,7 @@ public class CommonUser implements User{
      * @return the user's collection of habits
      */
     @Override
-    public HabitFactory getHabitCollection(){
+    public HabitCollection getHabitCollection(){
         // returns the user's habit collection
         return this.habitCollection;
     }
@@ -101,7 +101,7 @@ public class CommonUser implements User{
      * @return the user's collection of tasks
      */
     @Override
-    public TaskFactory getTaskCollection() {
+    public TaskCollection getTaskCollection() {
         return this.taskCollection;
     }
 
