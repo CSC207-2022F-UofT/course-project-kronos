@@ -1,6 +1,7 @@
 package test_use_cases;
 
 import database.DatabaseTimer;
+import database.DatabaseUser;
 import org.junit.Test;
 import use_cases.timer.create_single_timer.CreateWorkTimerDsGateway;
 import use_cases.timer.create_single_timer.CreateWorkTimerInputData;
@@ -53,7 +54,8 @@ public class TestTimerUseCases {
             }
 
         };
-        CreateWorkTimerDsGateway databaseTimer = new DatabaseTimer();
+        DatabaseUser databaseUser = new DatabaseUser("test.json");
+        CreateWorkTimerDsGateway databaseTimer = new DatabaseTimer(databaseUser);
 
         CreateWorkTimerInputData inputBoundary = new CreateWorkTimerInteractor(databaseTimer);
 
@@ -95,9 +97,10 @@ public class TestTimerUseCases {
                 return null;
             }
         };
+        DatabaseUser databaseUser = new DatabaseUser("test.json");
 
-        EditTimerDsGateway databaseTimer = new DatabaseTimer();
-        DatabaseTimer databaseTimer1 = new DatabaseTimer();
+        EditTimerDsGateway databaseTimer = new DatabaseTimer(databaseUser);
+        DatabaseTimer databaseTimer1 = new DatabaseTimer(databaseUser);
 
         EditTimerInputBoundary inputBoundary = new EditTimerInteractor(databaseTimer1, databaseTimer);
         EditTimerInputData inputData = new EditTimerInputData(25,5);
