@@ -22,7 +22,7 @@ public class TestHabitUseCases {
     }
 
     /**
-     * Test CreateTask use case.
+     * Test CreateHabit use case.
      */
     @Test
     public void create() {
@@ -78,13 +78,18 @@ public class TestHabitUseCases {
             }
         };
         HabitCollection habitFactory = new HabitCollection();
-        //DeleteHabitInputBoundary deleteInteractor = new DeleteHabit(outputBoundary, habitRepository, habitFactory);
+        DeleteHabitInputBoundary deleteInteractor = new DeleteHabitInputBoundary() {
+            @Override
+            public DeleteHabitOutputData delete(DeleteHabitInputData inputData) {
+                return null;
+            }
+        };
         DeleteHabitInputData inputData = new DeleteHabitInputData(id);
-        //deleteInteractor.delete(inputData);
+        deleteInteractor.delete(inputData);
     }
 
     /**
-     * Test EditTask use case.
+     * Test EditHabit use case.
      */
     @Test
     public void edit(){
@@ -121,6 +126,10 @@ public class TestHabitUseCases {
         editInteractor.edit(inputData);
 
     }
+
+    /**
+     * Tests TrackHabit use case.
+     */
 
     @Test
     public void track(){
