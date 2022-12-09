@@ -4,7 +4,7 @@
 
 ## Description
 
-Named after the Titan of Time, ‘Kronos’ is a great tool for planning and managing your schedule. You can efficiently organize tasks and track habits. It also comes with a Pomodoro Timer.
+Named after the Titan of Time, ‘Kronos’ is a great tool for planning and managing your schedule. You can efficiently organize tasks and track habits. It also comes with a Pomodoro Timer. 
 
 ## Motivation
 
@@ -12,7 +12,7 @@ As students, we have to balance and keep track of various things at the same tim
 
 ## Features
 
-* Account Creation and Login
+* Account Creation and Login 
 * Habit Creation and Tracking
 * Task and Category Creation
 * Pomodoro Timer
@@ -20,14 +20,9 @@ As students, we have to balance and keep track of various things at the same tim
 
 ## How to Use
 
-The user needs to have an account on the system to be able to access the features. In case the user has an account, they can log in.
-
-Logging in leads to the Menu page which has options for the features: Habits, Tasks, Categories, Data Visualization and Timer. The user can then choose any of them and they will be led to the corresponding page.
-
 The user needs to have an account on the system to be able to access the features. In case the user has an account, they can log in. 
 
 Logging in leads to the Menu page which has options for the features: Habits, Tasks, Categories, Data Visualization and Timer. The user can then choose any of them and they will be led to the corresponding page. 
-
 
 ## Graphical User Interface
 
@@ -41,11 +36,11 @@ Logging in leads to the Menu page which has options for the features: Habits, Ta
 
 ![sign up](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/sign%20up.png)
 
-### c. Menu Page
+### c. Menu Page 
 
 ![home page](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/f6298bc3154f68ab34dcfc386d1396e628936400/images/home%20page.png)
 
-## 2. Feature: Habit
+## 2. Feature: Habit 
 
 ### a. Habit Profile Screen
 
@@ -87,30 +82,9 @@ Logging in leads to the Menu page which has options for the features: Habits, Ta
 
 ## 5. Feature: Tomato Timer
 
-### a. Timer Start Screen
+### a. Timer Screen
 
 ![timer](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/a13b4e3986e803484789f8d7ad0dbd99072cf8ae/images/timer.jpeg)
-
-### b. Set Timer
-
-![](images/Set Timer.png)
-
-### c. Start Timer
-
-![](images/Start Timer.png)
-
-### d. Pause Timer
-
-![](images/Pause Timer.png)
-
-### e. Stop Timer
-
-![](images/Stop Timer.png)
-
-### f. Rest Timer Run Screen
-
-![](images/Rest Timer Running.png)
-
 
 ## 6. Feature: Data Visualization
 
@@ -130,35 +104,24 @@ Logging in leads to the Menu page which has options for the features: Habits, Ta
 
 The design patterns implemented in the project are:
 
+### Façade 
+- The use cases are implemented using the Façade design pattern. 
 
-- Facade
-- Private Data Class
+### Private Data Class
+- The entities are implementing using the Private Data Class design pattern. This is to reduce coupling and limit user access to the core of the system.
 
-## Solid Principles
+## SOLID Principles
 
-We ensured that the project followed all the SOLID principles.
+We ensured that the project followed all the SOLID principles. 
 
-## MVP
+### Single Responsibility Principle (SRP) 
+ - Each use case is specifically responsible for one function, ensuring the Single Responsibility Principle. We are 
 
-The project mainly follows the MVP model. However, to ensure clean architecture, we implemented controllers and presenters separately.
+### Open - Closed Principle 
+  - We used interfaces in the use cases which are open to extension but not modification. 
 
-## GitHub Features
-
-The GitHub features used in project are:
-
-- Issues
-- Pull Requests
-- Action
-- License
-
-## Test Coverage
-
-- Facade 
-- Private Data Class 
-
-## Solid Principles
-
-We ensured that the project followed all the SOLID principles.
+### Interface Segregation Principle
+ - We ensured that no classes were forced to implement or use interfaces they did not need.
 
 ## MVP 
 
@@ -175,10 +138,11 @@ The GitHub features used in project are:
 
 ## Test Coverage
 
-The test coverage is 80%. We have tested the entities, use cases, controllers and database.
+- The test coverage is 80%. 
+- We have tested the entities, use cases, controllers and database.
+- We did not test UIs because we though the way to ensure its correctness is to check if it runs correctly and fulfils its function.
+- We partially tested controllers and presenters.
 
-
-The test coverage is 80%. We have tested the entities, use cases, controllers and database.
 
 
 
