@@ -1,7 +1,7 @@
 package use_cases.tasks.edit_task;
 
 import entities.Task;
-import entities.TaskFactory;
+import entities.TaskCollection;
 
 /**
  * -- Application Business Layer --
@@ -10,18 +10,18 @@ import entities.TaskFactory;
 public class EditTask implements EditTaskInputBoundary {
     private final EditTaskOutputBoundary outputBoundary;
     private final EditTaskDsGateway dsGateway;
-    private final TaskFactory taskFactory;
+    private final TaskCollection taskCollection;
 
     /**
      * Constructor
      * @param outputBoundary - the output boundary interface.
      * @param dsGateway - the database gateway interface.
-     * @param taskFactory - the task factory of a specific user.
+     * @param taskCollection - the task factory of a specific user.
      */
-    public EditTask(EditTaskOutputBoundary outputBoundary, EditTaskDsGateway dsGateway, TaskFactory taskFactory) {
+    public EditTask(EditTaskOutputBoundary outputBoundary, EditTaskDsGateway dsGateway, TaskCollection taskCollection) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
-        this.taskFactory = taskFactory;
+        this.taskCollection = taskCollection;
     }
 
     /**
@@ -38,7 +38,7 @@ public class EditTask implements EditTaskInputBoundary {
             return outputBoundary.prepareFailView(error);
         }
         int id = inputData.getTaskId();
-        Task taskBeEdited = taskFactory.getTasks().get(id);
+        Task taskBeEdited = taskCollection.getTasks().get(id);
         taskBeEdited.setName(inputData.getInputName());
         EditTaskOutputData outputData = new EditTaskOutputData(
                 id,
@@ -64,7 +64,7 @@ public class EditTask implements EditTaskInputBoundary {
     /**
      * @return the taskFactory of the use case. (A specific user's task factory)
      */
-    public TaskFactory getTaskFactory() {
-        return taskFactory;
+    public TaskCollection getTaskFactory() {
+        return taskCollection;
     }
 }

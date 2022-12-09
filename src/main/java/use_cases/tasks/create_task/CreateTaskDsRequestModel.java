@@ -31,12 +31,6 @@ public class CreateTaskDsRequestModel {
         return this.id;
         }
 
-     /**
-      *  @return the completion status of the created task.
-     */
-    public boolean isCompleteStatus() {
-        return task.isCompleteStatus();
-    }
 
     /**
      * @param task - Task object to be created

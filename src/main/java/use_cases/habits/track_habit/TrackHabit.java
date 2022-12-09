@@ -1,8 +1,7 @@
 package use_cases.habits.track_habit;
 
 import entities.Habit;
-import entities.HabitFactory;
-import use_cases.habits.edit_habit.*;
+import entities.HabitCollection;
 
 /**
  * Use case class for tracking a habit.
@@ -10,18 +9,18 @@ import use_cases.habits.edit_habit.*;
 public class TrackHabit implements TrackHabitInputBoundary {
     private final TrackHabitOutputBoundary outputBoundary;
     private final TrackHabitDsGateway dsGateway;
-    private final HabitFactory habitFactory;
+    private final HabitCollection habitCollection;
 
     /**
      * Constructor for this class.
-     * @param outputBoundary -
-     * @param dsGateway -
-     * @param hFactory -
+     * @param outputBoundary - the output boundary interface.
+     * @param dsGateway - the database gateway interface.
+     * @param hFactory - factory of the habit to be tracked.
      */
-    public TrackHabit(TrackHabitOutputBoundary outputBoundary, TrackHabitDsGateway dsGateway, HabitFactory hFactory) {
+    public TrackHabit(TrackHabitOutputBoundary outputBoundary, TrackHabitDsGateway dsGateway, HabitCollection hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
-        this.habitFactory = hFactory;
+        this.habitCollection = hFactory;
     }
 
     /**
@@ -32,17 +31,16 @@ public class TrackHabit implements TrackHabitInputBoundary {
     @Override
     public TrackHabitOutputData track(TrackHabitInputData inputData) {
         if (inputData.getInputName().isBlank()){
-            TrackHabitOutputData outputData = new TrackHabitOutputData("Changes not saved. " +
-                    "Please fill all required fields.");
-            return outputBoundary.prepareFailView(outputData);
+            String error = "Changes not saved. Please fill all required fields.";
+            return outputBoundary.prepareFailView(error);
         }
 
         String id = inputData.getInputName();
-        Habit habitBeTracked = habitFactory.getCollection().get(id);
+        Habit habitBeTracked = habitCollection.getCollection().get(id);
         habitBeTracked.markFrequency();
 
-        TrackHabitOutputData outputData = new TrackHabitOutputData(
-                "Changes have been saved.", habitBeTracked.getName(), habitBeTracked.getFrequency());
+        TrackHabitOutputData outputData = new TrackHabitOutputData(habitBeTracked.getName(),
+                habitBeTracked.getFrequency());
         return outputBoundary.prepareSuccessView(outputData);
     }
 
@@ -63,7 +61,7 @@ public class TrackHabit implements TrackHabitInputBoundary {
     /**
      * @return habit factory
      */
-    public HabitFactory getHabitFactory() {
-        return habitFactory;
+    public HabitCollection getHabitFactory() {
+        return habitCollection;
     }
 }

@@ -82,9 +82,22 @@ Logging in leads to the Menu page which has options for the features: Habits, Ta
 
 ## 5. Feature: Tomato Timer
 
-### a. Timer Screen
+### a. Timer Start Screen
 
 ![timer](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/a13b4e3986e803484789f8d7ad0dbd99072cf8ae/images/timer.jpeg)
+
+### b. Set Timer
+
+![Set Timer](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/8639dab8f29bd8c686a6fd0298d1a77ab95a3121/images/Set%20Timer.png)
+
+### c. Start Timer
+
+![Start Timer](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/8639dab8f29bd8c686a6fd0298d1a77ab95a3121/images/Start%20Timer.png)
+
+### d.Rest Timer Running Screen
+
+![Rest Timer Running](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/8639dab8f29bd8c686a6fd0298d1a77ab95a3121/images/Rest%20Timer%20Running.png)
+
 
 ## 6. Feature: Data Visualization
 
@@ -104,12 +117,24 @@ Logging in leads to the Menu page which has options for the features: Habits, Ta
 
 The design patterns implemented in the project are:
 
-- Facade 
-- Private Data Class 
+### Façade 
+- The use cases are implemented using the Façade design pattern. 
 
-## Solid Principles
+### Private Data Class
+- The entities are implementing using the Private Data Class design pattern. This is to reduce coupling and limit user access to the core of the system.
 
-We ensured that the project followed all the SOLID principles.
+## SOLID Principles
+
+We ensured that the project followed all the SOLID principles. 
+
+### Single Responsibility Principle (SRP) 
+ - Each use case is specifically responsible for one function, ensuring the Single Responsibility Principle. We are 
+
+### Open - Closed Principle 
+  - We used interfaces in the use cases which are open to extension but not modification. 
+
+### Interface Segregation Principle
+ - We ensured that no classes were forced to implement or use interfaces they did not need.
 
 ## MVP 
 
@@ -126,7 +151,10 @@ The GitHub features used in project are:
 
 ## Test Coverage
 
-The test coverage is 80%. We have tested the entities, use cases, controllers and database.
+- The test coverage is 80%. 
+- We have tested the entities, use cases, controllers and database.
+- We did not test UIs because we though the way to ensure its correctness is to check if it runs correctly and fulfils its function.
+- We partially tested controllers and presenters.
 
 
 

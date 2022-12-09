@@ -5,11 +5,11 @@ public interface User {
     String getPassword();
     String getFirstName();
     String getLastName();
-    HabitFactory getHabitCollection();
+    HabitCollection getHabitCollection();
 
     CategoryCollection getCategoryCollection();
 
-    TaskFactory getTaskCollection();
+    TaskCollection getTaskCollection();
 
     TimerTomato getTomato();
 

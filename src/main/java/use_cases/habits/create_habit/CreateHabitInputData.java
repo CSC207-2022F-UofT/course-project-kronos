@@ -15,11 +15,11 @@ public class CreateHabitInputData {
     /**
      * Constructor for this class.
      * @param name - the input name
-     * @param t - the input type
+     * @param type - the input type
      */
-    public CreateHabitInputData(String name, String t) {
+    public CreateHabitInputData(String name, String type) {
         this.name = name;
-        this.type = t;
+        this.type = type;
     }
 
     /**

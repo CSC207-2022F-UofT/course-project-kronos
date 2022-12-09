@@ -2,13 +2,10 @@ package database;
 
 import entities.TimerTomato;
 import entities.User;
-import use_cases.timer_use_cases.create_single_timer.CreateWorkTimerDsGateway;
-import use_cases.timer_use_cases.create_single_timer.CreateWorkTimerDsRequestModel;
-import use_cases.timer_use_cases.edit_timer.EditTimerDsGateway;
-import use_cases.timer_use_cases.edit_timer.EditTimerDsRequestModel;
-
-import javax.xml.crypto.Data;
-import java.util.Timer;
+import use_cases.timer.create_single_timer.CreateWorkTimerDsRequestModel;
+import use_cases.timer.edit_timer.EditTimerDsRequestModel;
+import use_cases.timer.create_single_timer.CreateWorkTimerDsGateway;
+import use_cases.timer.edit_timer.EditTimerDsGateway;
 
 public class DatabaseTimer implements CreateWorkTimerDsGateway, EditTimerDsGateway {
 

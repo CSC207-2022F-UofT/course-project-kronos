@@ -1,7 +1,7 @@
 package use_cases.tasks.delete_task;
 
 import entities.Task;
-import entities.TaskFactory;
+import entities.TaskCollection;
 
 /**
  * -- Application Business Layer --
@@ -10,18 +10,18 @@ import entities.TaskFactory;
 public class DeleteTask implements DeleteTaskInputBoundary{
     private final DeleteTaskOutputBoundary outputBoundary;
     private final DeleteTaskDsGateway dsGateway;
-    private final TaskFactory taskFactory;
+    private final TaskCollection taskCollection;
 
     /**
      * Constructor
      * @param outputBoundary - the output boundary interface.
      * @param dsGateway - the database gateway interface.
-     * @param taskFactory - the task factory of a specific user.
+     * @param taskCollection - the task factory of a specific user.
      */
-    public DeleteTask(DeleteTaskOutputBoundary outputBoundary, DeleteTaskDsGateway dsGateway, TaskFactory taskFactory) {
+    public DeleteTask(DeleteTaskOutputBoundary outputBoundary, DeleteTaskDsGateway dsGateway, TaskCollection taskCollection) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
-        this.taskFactory = taskFactory;
+        this.taskCollection = taskCollection;
     }
 
     /**
@@ -32,8 +32,8 @@ public class DeleteTask implements DeleteTaskInputBoundary{
     @Override
     public DeleteTaskOutputData delete(DeleteTaskInputData inputData) {
         int id = inputData.getTaskId();
-        Task taskToDelete = taskFactory.getTasks().get(id);
-        taskFactory.removeItem(taskToDelete);
+        Task taskToDelete = taskCollection.getTasks().get(id);
+        taskCollection.removeItem(taskToDelete);
         String name = taskToDelete.getName();
         DeleteTaskOutputData outputData = new DeleteTaskOutputData(
                 "Task \"" + name + "\" is successfully deleted.");
@@ -53,8 +53,8 @@ public class DeleteTask implements DeleteTaskInputBoundary{
     /**
      * @return the taskFactory of the use case. (A specific user's task factory)
      */
-    public TaskFactory getTaskFactory() {
-        return taskFactory;
+    public TaskCollection getTaskFactory() {
+        return taskCollection;
     }
 
     /**

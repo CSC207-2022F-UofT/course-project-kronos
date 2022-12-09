@@ -17,11 +17,11 @@ public class TrackHabitPresenter implements TrackHabitOutputBoundary {
     }
 
     /**
-     * @param output - The output to be presented on the screen when habit was not tracked successfully
-     * @return returns the output data
+     * @param error - the error message showed.
+     * @return habitTrackFailed Exception.
      */
     @Override
-    public TrackHabitOutputData prepareFailView(TrackHabitOutputData output) {
-        return output;
+    public TrackHabitOutputData prepareFailView(String error) {
+        throw new HabitTrackFailed(error);
     }
 }

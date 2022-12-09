@@ -19,6 +19,10 @@ public class TestHabit {
     public void tearDown() {
     }
 
+    /**
+     * Tests the constructor for the habit entity.
+     */
+
     @Test(timeout = 500)
     public void testHabitConstructor() {
         Habit h = new Habit("Read a book", "daily");
@@ -29,6 +33,10 @@ public class TestHabit {
 
     }
 
+    /**
+     * Tests the setter setName for the habit entity.
+     */
+
     @Test(timeout = 500)
     public void testHabitSetName() {
         Habit h = new Habit("Run 5 Kms", "weekly");
@@ -38,6 +46,10 @@ public class TestHabit {
                 h.getName());
     }
 
+    /**
+     * Tests the setter setType for the habit entity.
+     */
+
     @Test(timeout = 500)
     public void testHabitSetType() {
         Habit h = new Habit("Run 5 Kms", "weekly");
@@ -46,6 +58,10 @@ public class TestHabit {
         assertEquals("The type of the habit should be 'daily' after the change", "daily",
                 h.getType());
     }
+
+    /**
+     * Tests the getter getFrequencyMap for the habit entity.
+     */
 
     @Test(timeout = 500)
     public void testHabitGetFrequencyMap() {
@@ -58,6 +74,10 @@ public class TestHabit {
         assertEquals("The Frequency Map of the Habit is " + LocalDate.now() +"3", testMap,
                 h.getFrequencyMap());
     }
+
+    /**
+     * Tests the method markFrequency for the habit entity.
+     */
 
     @Test(timeout = 500)
     public void testHabitMarkFrequency() {
