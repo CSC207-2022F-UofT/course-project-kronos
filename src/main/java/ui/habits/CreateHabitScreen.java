@@ -27,30 +27,22 @@ public class CreateHabitScreen extends JFrame implements ActionListener {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(5, 0));
 
-        // Panel 1
         JPanel panelCreate = new JPanel();
         panelCreate.setSize(new Dimension(250, 50));
-        //Label 1
         JLabel labelCreate = new JLabel( "CREATE A NEW HABIT", JLabel.CENTER);
 
-        // Panel 2
         JPanel panelEdit = new JPanel();
         panelEdit.setSize(new Dimension(250, 50));
-        // Label 2
         JLabel labelEdit = new JLabel( "Habit Title", JLabel.CENTER);
         labelEdit.setPreferredSize(new Dimension(100, 30));
         labelEdit.setLayout(new BorderLayout());
 
-
-        // Panel 3
         JPanel panelTrack = new JPanel();
         panelTrack.setSize(new Dimension(250, 50));
-        // Label 3
         JLabel labelTrack = new JLabel( "Habit Type", JLabel.CENTER);
         labelTrack.setPreferredSize(new Dimension(100, 30));
         labelTrack.setLayout(new BorderLayout());
 
-        // Panel 5
         JPanel panelSubmit = new JPanel();
         panelSubmit.setSize(new Dimension(250, 50));
 
