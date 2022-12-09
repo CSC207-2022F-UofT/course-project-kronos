@@ -1,9 +1,7 @@
 package entities;
 
 import javax.swing.Timer;
-import java.io.Serializable;
-
-public class TimerTomato implements Serializable {
+public class TimerTomato {
 
 
     private static int restTime;
@@ -11,8 +9,6 @@ public class TimerTomato implements Serializable {
     public static int timerCycle;
     private static int workTimeLeft;
     private static int restTimeLeft;
-    private TimerTomato workTimer;
-    private TimerTomato restTimer;
 
     public TimerTomato(){}
 
