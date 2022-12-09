@@ -11,7 +11,8 @@ public interface EditHabitOutputBoundary {
     EditHabitOutputData prepareSuccessView(EditHabitOutputData outputData);
 
     /**
-     * @param outputData - Output to be displayed on failure of editing of a habit.
+     * @param error - the error message showed.
+     * @return output data.
      */
-    EditHabitOutputData prepareFailView(EditHabitOutputData outputData);
+    EditHabitOutputData prepareFailView(String error);
 }

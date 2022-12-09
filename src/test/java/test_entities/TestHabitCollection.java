@@ -1,6 +1,6 @@
 package test_entities;
 import entities.Habit;
-import entities.HabitFactory;
+import entities.HabitCollection;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import static org.junit.Assert.*;
 
-public class TestHabitFactory {
+public class TestHabitCollection {
 
     @Before
     public void setUp() {
@@ -23,7 +23,7 @@ public class TestHabitFactory {
         Habit h = new Habit("Run 5 Kms", "weekly");
         HashMap<String, Habit> testFactory = new HashMap<>();
         testFactory.put(h.getName(), h);
-        HabitFactory hFactory = new HabitFactory();
+        HabitCollection hFactory = new HabitCollection();
         hFactory.addItem(h);
         assertEquals("The habit is recorded in the Factory", testFactory, hFactory.getCollection() );
     }
@@ -36,7 +36,7 @@ public class TestHabitFactory {
         HashMap<String, Habit> testFactory = new HashMap<>();
         testFactory.put(h1.getName(), h1);
         testFactory.put(h3.getName(), h3);
-        HabitFactory hFactory = new HabitFactory();
+        HabitCollection hFactory = new HabitCollection();
         hFactory.addItem(h1);
         hFactory.addItem(h2);
         hFactory.addItem(h3);
@@ -47,7 +47,7 @@ public class TestHabitFactory {
     @Test(timeout = 500)
     public void testHabitRemoveItemEmpty() {
         Habit h1 = new Habit("Run 5 Kms", "weekly");
-        HabitFactory hFactory = new HabitFactory();
+        HabitCollection hFactory = new HabitCollection();
         hFactory.addItem(h1);
         hFactory.removeItem(h1);
         assertTrue("The Factory is empty", hFactory.getCollection().isEmpty());
@@ -58,7 +58,7 @@ public class TestHabitFactory {
         Habit h1 = new Habit("Run 5 Kms", "weekly");
         Habit h2 = new Habit("Read a book", "daily");
         Habit h3 = new Habit("Drink Water", "daily");
-        HabitFactory hFactory = new HabitFactory();
+        HabitCollection hFactory = new HabitCollection();
         hFactory.addItem(h1);
         hFactory.addItem(h2);
         hFactory.addItem(h3);
@@ -78,7 +78,7 @@ public class TestHabitFactory {
         Habit h1 = new Habit("Run 5 Kms", "weekly");
         Habit h2 = new Habit("Read a book", "daily");
         Habit h3 = new Habit("Drink Water", "daily");
-        HabitFactory hFactory = new HabitFactory();
+        HabitCollection hFactory = new HabitCollection();
         hFactory.addItem(h1);
         hFactory.addItem(h2);
         hFactory.addItem(h3);
@@ -91,7 +91,7 @@ public class TestHabitFactory {
         Habit h1 = new Habit("Run 5 Kms", "weekly");
         Habit h2 = new Habit("Read a book", "daily");
         Habit h3 = new Habit("Drink Water", "daily");
-        HabitFactory hFactory = new HabitFactory();
+        HabitCollection hFactory = new HabitCollection();
         hFactory.addItem(h1);
         hFactory.addItem(h2);
         hFactory.addItem(h3);

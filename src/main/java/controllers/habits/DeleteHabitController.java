@@ -23,7 +23,7 @@ public class DeleteHabitController {
      * @param habitID - The name (ID) of the habit to be deleted.
      * @return returns the output data after deletion.
      */
-    DeleteHabitOutputData delete(String habitID){
+    public DeleteHabitOutputData delete(String habitID){
         DeleteHabitInputData inputData = new DeleteHabitInputData(habitID);
         return userInput.delete(inputData);
     }
