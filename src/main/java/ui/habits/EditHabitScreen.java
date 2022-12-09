@@ -1,6 +1,5 @@
 package ui.habits;
 import controllers.habits.EditHabitController;
-import ui.tasks.CreateTaskScreen;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,12 +1,13 @@
 package entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 
 /**
  * Entity class for Habit feature.
  */
-public class Habit {
+public class Habit implements Serializable {
 
     private String name;
     private String type;

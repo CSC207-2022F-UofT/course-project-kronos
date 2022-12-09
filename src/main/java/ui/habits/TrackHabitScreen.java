@@ -1,16 +1,15 @@
 package ui.habits;
 
 import controllers.habits.TrackHabitController;
-import database.DatabaseHabit;
-import entities.Habit;
-import ui.tasks.CreateTaskScreen;
+import database.DatabaseUser;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
@@ -25,8 +24,9 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
      * @param pane - Panel to which buttons are to be added.
      */
     public void addHabitsToPane(JPanel pane) {
+        DatabaseUser databaseUser = new DatabaseUser("data.ser");
 
-        for(String i : .getHabitCollection().keySet()){
+        for(String i : databaseUser.getHabits().keySet()){
 
             // Label: Habit name
             JLabel l = new JLabel( i + "  " , JLabel.CENTER);
@@ -37,14 +37,14 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
             // Button 1: increase frequency
             JButton button1 = new JButton("+");
             button1.setAlignmentX(Component.RIGHT_ALIGNMENT);
-            button1.addActionListener(e -> ExampleHabit.send().getCollection().get(i).markFrequency());
+            button1.addActionListener(e -> tHabit.track(i));
             button1.setPreferredSize(new Dimension(50, 30));
 
             // Button 2: Show frequency
             JButton button2 = new JButton("Frequency");
             button2.setAlignmentX(Component.LEFT_ALIGNMENT);
             button2.addActionListener(e ->
-                    button2.setText(ExampleHabit.send().getCollection().get(i).getFrequencyString()));
+                    button2.setText(databaseUser.getHabits().get(i).getFrequencyString()));
             button2.setPreferredSize(new Dimension(100, 30));
 
 
@@ -75,7 +75,6 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
         // Label 1
         JLabel l1 = new JLabel("HABITS", JLabel.CENTER);
 
-        HashMap<String, Habit> collection = new DatabaseHabit().getHabitCollection();
 
         // Panel 2
         JPanel p2 = new JPanel();
