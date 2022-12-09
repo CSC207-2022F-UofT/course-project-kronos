@@ -164,9 +164,18 @@ The GitHub features used in project are:
 
 ## Future Plans
 
-- Provide more functionalities
-- Improve test coverage
-- Improve and add more accessibility features
+### Provide more functionalities:
+- Our initial plan for this project was too ambitious as we only had a limited time. We didn't realize this until we implemented it. During the implementation, we removed some features mentioned in our plan because implementing these features can be very complicated, and we don't know how to make things work for some of them.
+
+### Improve test coverage:
+- We would use Mockito or a property-based testing library to add more unit tests to improve the test coverage of our project.
+
+### Improve UI:
+-Currently, text, frame sizes, and colors are fixed in our UI. Users with more limited sensory abilities may have different preferences that aren't accounted for.
+Also, the UI is very limited and undynamic. We need to make it more interactive and user-friendly.
+
+### Improve and add more accessibility features : 
+- Currently, our program is inaccessible to some groups of people. For example, our program does not accommodate blind people as we did not have functions such as automatic reading and cursor navigation. We can add these to our program to make it more accessible to blind people.
 
 
 
