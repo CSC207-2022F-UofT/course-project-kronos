@@ -162,6 +162,11 @@ The GitHub features used in project are:
 - We did not test UIs because we though the way to ensure its correctness is to check if it runs correctly and fulfils its function.
 - We partially tested controllers and presenters.
 
+## Future Plans
+
+- Provide more functionalities
+- Improve test coverage
+- Improve and add more accessibility features
 
 
 
