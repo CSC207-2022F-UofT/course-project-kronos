@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * Output data related to the creation of timer.
  */
-public class CreateWorkTimerOutputData {
+public abstract class CreateWorkTimerOutputData {
 
     private final Timer workTimer;
 
@@ -23,4 +23,6 @@ public class CreateWorkTimerOutputData {
     public Timer getWorkTimer(){
         return workTimer;
     }
+
+    public abstract CreateWorkTimerOutputData prepareSuccessView(CreateWorkTimerOutputData outputData);
 }

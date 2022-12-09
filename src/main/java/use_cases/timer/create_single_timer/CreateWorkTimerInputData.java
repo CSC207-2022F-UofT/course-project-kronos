@@ -5,17 +5,21 @@ package use_cases.timer.create_single_timer;
  */
 public class CreateWorkTimerInputData {
 
-    private final int workTimerMinutes;
+    private final CreateWorkTimerDsGateway workTimerMinutes;
 
     /**
      * Constructor of the CreateWorkTimerInputData object.
      * @param workTimerMinutes - the input work timer minutes.
      */
-    public CreateWorkTimerInputData(int workTimerMinutes) {
+    public CreateWorkTimerInputData(CreateWorkTimerDsGateway workTimerMinutes) {
         this.workTimerMinutes = workTimerMinutes;
     }
 
-    public int getWorkTimerMinutes(){
+    public CreateWorkTimerDsGateway getWorkTimerMinutes(){
         return workTimerMinutes;
+    }
+
+    public CreateWorkTimerOutputData create(CreateWorkTimerInputData inputData) {
+        return null;
     }
 }
