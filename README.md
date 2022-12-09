@@ -24,6 +24,13 @@ The user needs to have an account on the system to be able to access the feature
 
 Logging in leads to the Menu page which has options for the features: Habits, Tasks, Categories, Data Visualization and Timer. The user can then choose any of them and they will be led to the corresponding page. 
 
+NOTICE: The UI for the features are not currently connected properly to the main UI, so the user needs to run the following files for each feature: 
+- MainUI : User feature 
+- HabitProfileScreen : Habit Feature
+- ToDoListMain : Category and Tasks Features (has makeshift user data)
+- TimerScreen : Tomato Timer Feature
+- Database Visualization Feature has no UI, database is mostly backend
+
 ## Graphical User Interface
 
 ## 1. Feature: User
