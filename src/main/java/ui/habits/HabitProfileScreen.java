@@ -21,33 +21,25 @@ public class HabitProfileScreen extends JFrame{
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(4, 0));
 
-        // Panel 1
         JPanel panelTitle = new JPanel();
         panelTitle.setSize(new Dimension(250, 50));
-        // Label 1
         JLabel labelTitle = new JLabel( "HABIT PROFILE", JLabel.CENTER);
 
-        // Panel 2
         JPanel panelCreate = new JPanel();
         panelCreate.setSize(new Dimension(250, 50));
-        // Label 2
         JLabel labelCreate = new JLabel( "CREATE A HABIT", JLabel.CENTER);
         labelCreate.setPreferredSize(new Dimension(100, 30));
         labelCreate.setLayout(new BorderLayout());
 
-        // Panel 3
         JPanel panelEdit = new JPanel();
         panelEdit.setSize(new Dimension(250, 50));
 
-        // Label 3
         JLabel labelEdit = new JLabel( "EDIT A HABIT", JLabel.CENTER);
         labelEdit.setPreferredSize(new Dimension(100, 30));
         labelEdit.setLayout(new BorderLayout());
 
-        // Panel 4
         JPanel panelView = new JPanel();
         panelView.setSize(new Dimension(250, 50));
-        // Label 4
         JLabel labelView = new JLabel( "VIEW HABITS", JLabel.CENTER);
         labelView.setPreferredSize(new Dimension(100, 30));
         labelView.setLayout(new BorderLayout());
