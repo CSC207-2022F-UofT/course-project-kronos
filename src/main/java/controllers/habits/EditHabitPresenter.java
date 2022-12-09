@@ -20,12 +20,13 @@ public class EditHabitPresenter implements EditHabitOutputBoundary {
     }
 
     /**
-     * @param output - The output to be presented on the screen for not successfully editing a habit
-     * @return returns the output data
+     * @param error - the error message showed.
+     * @return habitEditFailed Exception.
      */
-    @Override
-    public EditHabitOutputData prepareFailView(EditHabitOutputData output) {
 
-        return output;
+    @Override
+    public EditHabitOutputData prepareFailView(String error) {
+
+        throw new HabitEditFailed(error);
     }
 }

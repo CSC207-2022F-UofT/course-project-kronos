@@ -11,8 +11,6 @@ public class TimerTomato implements Serializable {
     public static int timerCycle;
     private static int workTimeLeft;
     private static int restTimeLeft;
-    private Timer workTimer;
-    private Timer restTimer;
 
     public TimerTomato(){}
 

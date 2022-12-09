@@ -9,24 +9,32 @@ public class CreateHabitDsRequestModel {
 
     private Habit habit;
 
+    private String id;
+
+
+
     /**
      * Constructor for this class.
-     * @param habit -
+     * @param habit - The habit to be created.
      */
     public CreateHabitDsRequestModel(Habit habit) {
+
         this.habit = habit;
+        this.id = habit.getName();
     }
 
     /**
      * @return returns the habit
      */
     public Habit getHabit() {
-        return habit;
+        return this.habit;
     }
 
     /**
-     * Sets the attribute habit for this class to the given habit.
-     * @param habit - Habit object to be created
+     * @return returns the habit id
      */
-    public void setHabit(Habit habit){this.habit = habit;}
+    public String getHabitId() {
+        return this.id;
+    }
+
 }

@@ -1,7 +1,6 @@
 package use_cases.habits.edit_habit;
 import entities.Habit;
-import entities.HabitFactory;
-import entities.User;
+import entities.HabitCollection;
 
 /**
  * Use case class for editing a habit.
@@ -9,15 +8,15 @@ import entities.User;
 public class EditHabit implements EditHabitInputBoundary {
     private final EditHabitOutputBoundary outputBoundary;
     private final EditHabitDsGateway dsGateway;
-    private final HabitFactory habitFactory;
+    private final HabitCollection habitFactory;
 
     /**
      * Constructor for this class.
-     * @param outputBoundary -
-     * @param dsGateway -
+     * @param outputBoundary - the output boundary interface.
+     * @param dsGateway - the database gateway interface.
      * @param hFactory - factory of the habit to be edited.
      */
-    public EditHabit(EditHabitOutputBoundary outputBoundary, EditHabitDsGateway dsGateway, HabitFactory hFactory) {
+    public EditHabit(EditHabitOutputBoundary outputBoundary, EditHabitDsGateway dsGateway, HabitCollection hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
         this.habitFactory = hFactory;
@@ -32,17 +31,15 @@ public class EditHabit implements EditHabitInputBoundary {
     @Override
     public EditHabitOutputData edit(EditHabitInputData inputData) {
         if (inputData.getInputName().isBlank()){
-            EditHabitOutputData outputData = new EditHabitOutputData("Changes not saved. " +
-                    "Please fill all required fields.");
-            return outputBoundary.prepareFailView(outputData);
+            String error = "Changes not saved. Please fill all required fields.";
+            return outputBoundary.prepareFailView(error);
         }
 
         String id = inputData.getInputName();
         Habit habitBeEdited = habitFactory.getCollection().get(id);
         habitBeEdited.setName(inputData.getInputName());
         habitBeEdited.setType(inputData.getInputType());
-        EditHabitOutputData outputData = new EditHabitOutputData(
-                "Changes have been saved.", habitBeEdited.getName(), habitBeEdited.getType());
+        EditHabitOutputData outputData = new EditHabitOutputData(habitBeEdited.getName(), habitBeEdited.getType());
         return outputBoundary.prepareSuccessView(outputData);
 
     }
@@ -64,7 +61,7 @@ public class EditHabit implements EditHabitInputBoundary {
     /**
      * @return the habit factory
      */
-    public HabitFactory getHabitFactory() {
+    public HabitCollection getHabitFactory() {
         return habitFactory;
     }
 

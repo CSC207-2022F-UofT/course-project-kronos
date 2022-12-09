@@ -10,7 +10,7 @@ import static java.lang.Boolean.TRUE;
  * Represents a single task.
  */
 
-public class Task implements Serializable {
+public class Task implements Serializable{
 
     private String name;
     private boolean completeStatus;

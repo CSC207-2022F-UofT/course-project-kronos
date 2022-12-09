@@ -12,9 +12,6 @@ public class CreateTaskDsRequestModel {
     private Integer id;
     private Task task;
 
-    // What I added to run the UI:
-    private Boolean completeStatus = true;
-
     public CreateTaskDsRequestModel(Integer id, Task task) {
         this.id = id;
         this.task = task;
@@ -32,14 +29,8 @@ public class CreateTaskDsRequestModel {
      */
     public int getId() {
         return this.id;
-    }
+        }
 
-    /**
-     * @return the completion status of the created task.
-     */
-    public boolean isCompleteStatus() {
-        return completeStatus;
-    }
 
     /**
      * @param task - Task object to be created
@@ -52,3 +43,4 @@ public class CreateTaskDsRequestModel {
     public void setId(Integer id){this.id = id;}
 
 }
+

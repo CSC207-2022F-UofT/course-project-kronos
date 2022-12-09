@@ -27,76 +27,61 @@ public class EditHabitScreen extends JFrame implements ActionListener {
 
         // The frame of the screen titled "HABIT EDIT PAGE"
         JFrame frame = new JFrame("HABIT EDIT PAGE");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         // The main panel of the screen which contains all other panels.
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(6, 0));
 
-        // Panel 1
-        JPanel p1 = new JPanel();
-        p1.setSize(new Dimension(250, 50));
-        // Label 1
-        JLabel l1 = new JLabel( "EDIT A HABIT", JLabel.CENTER);
+        JPanel panelEdit = new JPanel();
+        panelEdit.setSize(new Dimension(250, 50));
+        JLabel labelEdit = new JLabel( "EDIT A HABIT", JLabel.CENTER);
 
-        // Panel 2
-        JPanel p2 = new JPanel();
-        p2.setSize(new Dimension(250, 50));
-        //Label 2
-        JLabel l2 = new JLabel( "Old Habit Name", JLabel.CENTER);
-        l2.setPreferredSize(new Dimension(100, 30));
-        l2.setLayout(new BorderLayout());
-        //JTextField textField3 = new JTextField(15);
+        JPanel panelOldName = new JPanel();
+        panelOldName.setSize(new Dimension(250, 50));
+        JLabel labelOldName = new JLabel( "Old Habit Name", JLabel.CENTER);
+        labelOldName.setPreferredSize(new Dimension(100, 30));
+        labelOldName.setLayout(new BorderLayout());
 
-        // Panel 3
-        JPanel p3 = new JPanel();
-        p3.setSize(new Dimension(250, 50));
-        // Label 3
-        JLabel l3 = new JLabel( "New Habit Name", JLabel.CENTER);
-        l3.setPreferredSize(new Dimension(100, 30));
-        l3.setLayout(new BorderLayout());
-        //Text field 1 : Gets new Habit name from the User
-        //JTextField textField1 = new JTextField(15);
+        JPanel panelNewName = new JPanel();
+        panelNewName.setSize(new Dimension(250, 50));
+        JLabel labelNewName = new JLabel( "New Habit Name", JLabel.CENTER);
+        labelNewName.setPreferredSize(new Dimension(100, 30));
+        labelNewName.setLayout(new BorderLayout());
 
-        // Panel 4
-        JPanel p4 = new JPanel();
-        p4.setSize(new Dimension(250, 50));
-        // Label 4
-        JLabel l4 = new JLabel( "New Habit Type", JLabel.CENTER);
-        l4.setPreferredSize(new Dimension(100, 30));
-        l4.setLayout(new BorderLayout());
-        //Text field 2 : Gets new Habit type from the User
-        //JTextField textField2 = new JTextField(15);    //set length of the text
+        JPanel panelNewType = new JPanel();
+        panelNewType.setSize(new Dimension(250, 50));
+        JLabel labelNewType = new JLabel( "New Habit Type", JLabel.CENTER);
+        labelNewType.setPreferredSize(new Dimension(100, 30));
+        labelNewType.setLayout(new BorderLayout());
 
-        // Panel 5
-        JPanel p5 = new JPanel();
-        p5.setSize(new Dimension(250, 50));
-        // Label 5
+        JPanel panelButton = new JPanel();
+        panelButton.setSize(new Dimension(250, 50));
 
-        //Button 1: EDIT
-        JButton b1 = new JButton("EDIT"); //set label to button
-        b1.addActionListener(this);
+        //Button: EDIT
+        JButton button = new JButton("EDIT"); //set label to button
+        button.addActionListener(this);
 
         frame.add(mainPanel);
 
-        mainPanel.add(p1);
-        mainPanel.add(p2);
-        mainPanel.add(p3);
-        mainPanel.add(p4);
-        mainPanel.add(p5);
+        mainPanel.add(panelEdit);
+        mainPanel.add(panelOldName);
+        mainPanel.add(panelNewName);
+        mainPanel.add(panelNewType);
+        mainPanel.add(panelButton);
 
-        p1.add(l1);
+        panelEdit.add(labelEdit);
 
-        p2.add(l2);
-        p2.add(this.oldName);
+        panelOldName.add(labelOldName);
+        panelOldName.add(this.oldName);
 
-        p3.add(l3);
-        p3.add(this.newName);
+        panelNewName.add(labelNewName);
+        panelNewName.add(this.newName);
 
-        p4.add(l4);
-        p4.add(this.newType);
+        panelNewType.add(labelNewType);
+        panelNewType.add(this.newType);
 
-        p5.add(b1);
+        panelButton.add(button);
 
         frame.pack();
         frame.setVisible(true);
@@ -113,10 +98,19 @@ public class EditHabitScreen extends JFrame implements ActionListener {
 
         try{
             eHabit.edit(oldName.getText(), newName.getText(), newType.getText());
-            JOptionPane.showMessageDialog(this, oldName.getText() + "%s edited.");
+            JOptionPane.showMessageDialog(this, oldName.getText() + " edited.");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+    }
+
+    public static void editScreen(){
+
+        new EditHabitScreen();
+
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(EditHabitScreen::editScreen);
     }
     }
 
