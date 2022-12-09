@@ -9,7 +9,6 @@ import entities.CategoryCollection;
 public class CreateCategory implements CreateCategoryInputBoundary {
     private final CreateCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
-    private CreateCategoryDsGateway dsGateway;
 
     /**
      * Constructor
@@ -20,7 +19,6 @@ public class CreateCategory implements CreateCategoryInputBoundary {
     public CreateCategory(CreateCategoryOutputBoundary outputBound, CreateCategoryDsGateway dsGateway, CategoryCollection categories) {
         this.outputBound = outputBound;
         this.categories = categories;
-        this.dsGateway = dsGateway;
     }
 
     /**
@@ -43,14 +41,6 @@ public class CreateCategory implements CreateCategoryInputBoundary {
         categories.addItem(category);
         CreateCategoryOutputData outputData = new CreateCategoryOutputData(category);
         return outputBound.prepareSuccessView(outputData);
-    }
-
-    /**
-     * outputBound getter
-     * @return the outputBound object
-     */
-    public CreateCategoryOutputBoundary getOutputBound() {
-        return this.outputBound;
     }
 
     /**

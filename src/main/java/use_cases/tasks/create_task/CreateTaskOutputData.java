@@ -1,7 +1,5 @@
 package use_cases.tasks.create_task;
 
-import java.util.Calendar;
-
 /**
  * -- Application Business Layer --
  *  This class is a container for the output data related to creation of task, it is created by the Interactor and sent

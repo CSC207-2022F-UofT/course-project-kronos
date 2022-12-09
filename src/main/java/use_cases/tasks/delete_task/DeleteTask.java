@@ -37,10 +37,7 @@ public class DeleteTask implements DeleteTaskInputBoundary{
         String name = taskToDelete.getName();
         DeleteTaskOutputData outputData = new DeleteTaskOutputData(
                 "Task \"" + name + "\" is successfully deleted.");
-        // How can we know which successView should be prepared? To-do or Calendar?
         return outputBoundary.prepareSuccessView(outputData);
-        // The above 2 lines will be refactored by extracting method and pulling up field after the above question is
-        // solved.
     }
 
     /**
@@ -50,12 +47,6 @@ public class DeleteTask implements DeleteTaskInputBoundary{
         return outputBoundary;
     }
 
-    /**
-     * @return the taskFactory of the use case. (A specific user's task factory)
-     */
-    public TaskCollection getTaskFactory() {
-        return taskCollection;
-    }
 
     /**
      * @return the data gateway of the use case.

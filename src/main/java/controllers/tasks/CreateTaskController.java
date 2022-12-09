@@ -4,8 +4,6 @@ import use_cases.tasks.create_task.CreateTaskInputBoundary;
 import use_cases.tasks.create_task.CreateTaskInputData;
 import use_cases.tasks.create_task.CreateTaskOutputData;
 
-import java.util.Calendar;
-
 /**
  * -- Interface Adaptor Layer --
  * The Controller that passes input data from the UI to the use case that creates new task.

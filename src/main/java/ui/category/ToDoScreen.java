@@ -1,6 +1,5 @@
 package ui.category;
 
-import ui.users.HomeScreenUI;
 import controllers.category.CreateCategoryController;
 import controllers.category.DeleteCategoryController;
 import controllers.category.EditCategoryController;
@@ -45,10 +44,10 @@ public class ToDoScreen extends JFrame implements ActionListener {
     private final CreateTaskDsGateway taskDsGateway;
     private final CreateTaskOutputBoundary taskOutputBoundary;
     private HashMap<TaskCollection, Integer> completedTasks;
-    private final HashMap<JCheckBox, ArrayList<Integer>> allCheckBoxes = new HashMap<JCheckBox, ArrayList<Integer>>(); // id of cat @ index 0, id of task @ index 1
+    private final HashMap<JCheckBox, ArrayList<Integer>> allCheckBoxes = new HashMap<>(); // id of cat @ index 0, id of task @ index 1
 
     /**
-     * Contsructor for ToDoScreen
+     * Constructor for ToDoScreen
      * @param categories - existing categories of the user
      * @param createController - controller for CreateCategory
      * @param editCategoryPresenter - presenter for EditCategory

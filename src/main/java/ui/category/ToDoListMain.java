@@ -70,11 +70,8 @@ public class ToDoListMain {
         DeleteCategoryInputBoundary deleteCategory = new DeleteCategory(deleteCategoryPresenter, deleteDsGateway, categories);
         DeleteCategoryController deleteCategoryController = new DeleteCategoryController(deleteCategory);
 
-        //new CreateCategoryScreen(createCategoryController);
         // testing the CategoryScreen
         EditCategoryInputBoundary inputBound = new EditCategory(editCategoryPresenter, editDsGateway, categories, category3.getId());
-        // EditCategoryController editController = new EditCategoryController(inputBound);
-        //new CategoryScreen(editController,deleteCategoryController, category3.getId(), category3.getName(), category3.getColour());
 
         /*
          * Create Task Use Case

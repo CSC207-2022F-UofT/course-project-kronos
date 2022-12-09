@@ -31,8 +31,6 @@ public class TestTimerUseCases {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                // What happen set the timer
-
                 second[0]++;
 
                 if(second[0] ==60){

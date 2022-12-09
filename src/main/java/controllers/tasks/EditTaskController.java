@@ -4,8 +4,6 @@ import use_cases.tasks.edit_task.EditTaskInputBoundary;
 import use_cases.tasks.edit_task.EditTaskInputData;
 import use_cases.tasks.edit_task.EditTaskOutputData;
 
-import java.util.Calendar;
-
 /**
  * -- Interface Adaptor Layer --
  * The Controller that passes input data from the UI to the use case that edits properties of a task.

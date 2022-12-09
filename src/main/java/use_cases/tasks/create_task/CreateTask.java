@@ -11,7 +11,6 @@ public class CreateTask implements CreateTaskInputBoundary {
 
     private final CreateTaskOutputBoundary outputBoundary;
 
-    private final CreateTaskDsGateway dsGateway;
     private final TaskCollection taskCollection;
 
     /**
@@ -23,7 +22,6 @@ public class CreateTask implements CreateTaskInputBoundary {
      */
     public CreateTask(CreateTaskOutputBoundary outputBoundary, CreateTaskDsGateway dsGateway, TaskCollection taskCollection) {
         this.outputBoundary = outputBoundary;
-        this.dsGateway = dsGateway;
         this.taskCollection = taskCollection;
     }
 
@@ -52,12 +50,5 @@ public class CreateTask implements CreateTaskInputBoundary {
      */
     public CreateTaskOutputBoundary getOutputBoundary() {
         return outputBoundary;
-    }
-
-    /**
-     * @return the taskFactory of the use case. (A specific user's task factory)
-     */
-    public TaskCollection getTaskFactory() {
-        return taskCollection;
     }
 }

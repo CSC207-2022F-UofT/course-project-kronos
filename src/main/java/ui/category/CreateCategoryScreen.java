@@ -17,7 +17,7 @@ public class CreateCategoryScreen {
     public JFrame createCategoryFrame;
     private final JButton createCategoryButton;
     private final JTextField categoryNameInput;
-    private final JComboBox colourInput;
+    private final JComboBox<String> colourInput;
 
     /**
      * Constructor
@@ -68,7 +68,7 @@ public class CreateCategoryScreen {
 
         constraints.gridx = 1;
         constraints.gridy = 1;
-        colourInput = new JComboBox(COLOURS);
+        colourInput = new JComboBox<>(COLOURS);
         colourInput.setFont(new Font("Serif", Font.PLAIN, 15));
         createCategoryFrame.add(colourInput, constraints);
 

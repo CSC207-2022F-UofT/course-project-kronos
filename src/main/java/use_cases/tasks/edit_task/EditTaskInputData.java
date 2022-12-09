@@ -1,7 +1,5 @@
 package use_cases.tasks.edit_task;
 
-import java.util.Calendar;
-
 /**
  * -- Application Business Layer --
  *  This class is a container for the input data related to edition/modification of task, it is created by the controller and sent

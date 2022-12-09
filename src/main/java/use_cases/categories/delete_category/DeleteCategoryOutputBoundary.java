@@ -6,7 +6,7 @@ package use_cases.categories.delete_category;
  */
 public interface DeleteCategoryOutputBoundary {
     /**
-     * This method passes output data from the Interactor to the Presenter if the deletion of catgory is successful.
+     * This method passes output data from the Interactor to the Presenter if the deletion of category is successful.
      * @param outputData - the output data.
      * @return output data.
      */

@@ -13,7 +13,6 @@ public class EditCategory implements EditCategoryInputBoundary {
     private final EditCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
     private final Integer ID;
-    private EditCategoryDsGateway dsGateway;
 
     /**
      * Constructor for EditCategory
@@ -26,7 +25,6 @@ public class EditCategory implements EditCategoryInputBoundary {
         this.outputBound = outputBound;
         this.categories = categories;
         this.ID = ID;
-        this.dsGateway = dsGateway;
     }
 
     /**
@@ -35,20 +33,9 @@ public class EditCategory implements EditCategoryInputBoundary {
      * @param colour - the new colour of category
      * @return true if the colour has been updated, return false otherwise.
      */
-    public static Boolean editCategoryColour(Category category, String colour) { // how to make the colour reference ColourPalaatte?
+    public static Boolean editCategoryColour(Category category, String colour) {
         category.setColour(colour);
         return Objects.equals(category.getColour(), colour);
-    }
-
-    /**
-     * Edits the visibility of an already existing category.
-     * @param category - the Category object to be edited
-     * @param state - the new visibility state of the category
-     * @return true if the visibility state has been updated, return false otherwise.
-     */
-    public static Boolean editCategoryVisibility(Category category, Boolean state) {
-        category.setVisibility(state);
-        return category.getVisibility() == state;
     }
 
     /**
@@ -61,10 +48,10 @@ public class EditCategory implements EditCategoryInputBoundary {
         Category currentCategory = categories.getItem(inputData.getId());
         if (inputData.getName().isBlank()) {
             String error = "Changes not saved. Please fill out all fields.";
-            EditCategoryOutputData outputData = new EditCategoryOutputData(error);
+            new EditCategoryOutputData(error);
             return outputBound.prepareFailView(error);
         }else if(this.categories.contains(inputData.getName(), false) &&
-                inputData.getName() != currentCategory.getName()){
+                !Objects.equals(inputData.getName(), currentCategory.getName())){
             String error ="Error: This category name already exists. Please enter a new category name.";
             return outputBound.prepareFailView(error);
         }
@@ -75,14 +62,6 @@ public class EditCategory implements EditCategoryInputBoundary {
         category.setVisibility(inputData.getVisibility());
         EditCategoryOutputData outputData = new EditCategoryOutputData("Changes have been saved.", category);
         return outputBound.prepareSuccessView(outputData);
-    }
-
-    /**
-     * outputBound getter
-     * @return the outputBound object
-     */
-    public EditCategoryOutputBoundary getOutputBound() {
-        return this.outputBound;
     }
 
 }

@@ -10,19 +10,16 @@ import entities.CategoryCollection;
 public class DeleteCategory implements DeleteCategoryInputBoundary {
     private final DeleteCategoryOutputBoundary outputBound;
     private final CategoryCollection categories;
-    private DeleteCategoryDsGateway dsGateway;
 
     /**
      * The constructor of DeleteCategory.
      * @param outputBound - the outputData that would be displayed
      * @param dsGateway - the database gateway interface
      * @param categories - the categories of the User that's logged in
-     * @return true if the CategoryCollection no longer contains category, returns false otherwise.
      */
     public DeleteCategory(DeleteCategoryOutputBoundary outputBound, DeleteCategoryDsGateway dsGateway, CategoryCollection categories) {
         this.outputBound = outputBound;
         this.categories = categories;
-        this.dsGateway = dsGateway;
     }
 
     /**
@@ -39,14 +36,6 @@ public class DeleteCategory implements DeleteCategoryInputBoundary {
         DeleteCategoryOutputData outputData = new DeleteCategoryOutputData(name + " has been successfully " +
                 "deleted.", category);
         return outputBound.prepareSuccessView(outputData);
-    }
-
-    /**
-     * outputBound getter
-     * @return the outputBound object
-     */
-    public DeleteCategoryOutputBoundary getOutputBound() {
-        return this.outputBound;
     }
 
     /**

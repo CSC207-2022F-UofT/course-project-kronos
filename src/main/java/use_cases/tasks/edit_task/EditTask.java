@@ -42,7 +42,7 @@ public class EditTask implements EditTaskInputBoundary {
         taskBeEdited.setName(inputData.getInputName());
         EditTaskOutputData outputData = new EditTaskOutputData(
                 id,
-                taskBeEdited.getName(), taskBeEdited.isCompleteStatus());
+                taskBeEdited.getName());
          return outputBoundary.prepareSuccessView(outputData);
 
     }
@@ -61,10 +61,4 @@ public class EditTask implements EditTaskInputBoundary {
         return dsGateway;
     }
 
-    /**
-     * @return the taskFactory of the use case. (A specific user's task factory)
-     */
-    public TaskCollection getTaskFactory() {
-        return taskCollection;
-    }
 }

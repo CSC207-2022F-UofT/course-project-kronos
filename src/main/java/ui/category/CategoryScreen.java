@@ -37,7 +37,7 @@ public class CategoryScreen implements ActionListener {
     private final JButton save;
     private final JButton delete;
     private final JTextField categoryNameInput;
-    protected final JComboBox colourInput;
+    protected final JComboBox<String> colourInput;
 
 
     /**
@@ -99,7 +99,7 @@ public class CategoryScreen implements ActionListener {
 
         constraints.gridx = 1;
         constraints.gridy = 1;
-        colourInput = new JComboBox(COLOURS);
+        colourInput = new JComboBox<>(COLOURS);
         colourInput.setSelectedItem(colour);
         colourInput.setAlignmentX(CENTER_ALIGNMENT);
         colourInput.setFont(new Font("Serif", Font.PLAIN, 15));

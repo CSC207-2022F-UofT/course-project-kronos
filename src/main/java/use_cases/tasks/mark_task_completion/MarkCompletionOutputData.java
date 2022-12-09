@@ -1,7 +1,5 @@
 package use_cases.tasks.mark_task_completion;
 
-import java.util.Calendar;
-
 /**
  * -- Application Business Layer --
  *  This class is a container for the output data, it is created by the Interactor and sent to the Presenter.

@@ -48,20 +48,6 @@ public class MarkCompletion implements MarkCompletionInputBound {
     }
 
     /**
-     * @return the output boundary of the use case.
-     */
-    public MarkCompletionOutputBound getOutputBound() {
-        return outputBound;
-    }
-
-    /**
-     * @return the taskFactory of the use case. (A specific user's task factory)
-     */
-    public TaskCollection getTaskFactory() {
-        return taskCollection;
-    }
-
-    /**
      * @return the data gateway of the use case.
      */
     public MarkCompletionDsGateway getDsGateway() {

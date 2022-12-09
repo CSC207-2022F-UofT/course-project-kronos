@@ -1,7 +1,8 @@
-/*
+
 package test_use_cases;
 
 import database.DatabaseTask;
+import database.DatabaseUser;
 import entities.Task;
 import entities.TaskCollection;
 
@@ -24,19 +25,18 @@ public class TestTaskUseCases {
     public void tearDown() {
     }
 
-    */
-/**
+    /**
      * Test CreateTask use case.
-     *//*
+     */
 
     @Test
     public void create() {
-        CreateTaskDsGateway taskRepository = new DatabaseTask();
+        CreateTaskDsGateway taskRepository = new DatabaseTask(new DatabaseUser("src/test.json"));
         CreateTaskOutputBoundary outputBoundary = new CreateTaskOutputBoundary() {
             @Override
             public CreateTaskOutputData prepareSuccessView(CreateTaskOutputData outputData) {
                 assertEquals("example", outputData.getTaskName());
-                assertEquals(1, outputData.getTaskId());
+                assertEquals(0, outputData.getTaskId());
                 return null;
             }
 
@@ -54,24 +54,20 @@ public class TestTaskUseCases {
         interactor.create(inputData);
     }
 
-    */
-/**
+    /**
      * Test DeleteTask use case.
-     *//*
+     */
 
     @Test
     public void delete(){
-        // Set example task object.
         Task example = new Task("example");
         int id = example.getId();
 
-        DeleteTaskDsGateway taskRepository = new DatabaseTask();
+        DeleteTaskDsGateway taskRepository = new DatabaseTask(new DatabaseUser("src/test.json"));
         DeleteTaskOutputBoundary outputBoundary = new DeleteTaskOutputBoundary() {
             @Override
             public DeleteTaskOutputData prepareSuccessView(DeleteTaskOutputData outputData) {
-                assertEquals(0, outputData.getTaskId());
                 assertEquals("Task example is successfully deleted.", outputData.getMessage());
-                // assertFalse(taskFactory.existById(id));
                 return null;
             }
         };
@@ -79,22 +75,21 @@ public class TestTaskUseCases {
 
         DeleteTaskInputBoundary deleteInteractor = new DeleteTask(outputBoundary,taskRepository, taskCollection);
         DeleteTaskInputData inputData = new DeleteTaskInputData(id);
-        deleteInteractor.delete(inputData);
+        DeleteTaskOutputData outputData = deleteInteractor.delete(inputData);
+        outputBoundary.prepareSuccessView(outputData);
     }
 
-    */
-/**
+    /**
      * Test EditTask use case.
-      *//*
+     */
 
     @Test
     public void edit(){
-        // Set example task object.
         Task example = new Task("example");
         int id = example.getId();
 
 
-        EditTaskDsGateway taskRepository = new DatabaseTask();
+        EditTaskDsGateway taskRepository = new DatabaseTask(new DatabaseUser("src/test.json"));
         EditTaskOutputBoundary outputBoundary = new EditTaskOutputBoundary() {
             @Override
             public EditTaskOutputData prepareSuccessView(EditTaskOutputData outputData) {
@@ -117,18 +112,16 @@ public class TestTaskUseCases {
 
     }
 
-    */
-/**
+    /**
      * Test MarkCompletion use case when the completion status of the task is FALSE before marking.
-     *//*
+     */
 
     @Test
     public void markCompletionToTrue(){
-        // Set example task object.
         Task example = new Task("example");
         int id = example.getId();
 
-        MarkCompletionDsGateway taskRepository = new DatabaseTask();
+        MarkCompletionDsGateway taskRepository = new DatabaseTask(new DatabaseUser("src/test.json"));
         MarkCompletionOutputBound outputBound = new MarkCompletionOutputBound() {
             @Override
             public MarkCompletionOutputData prepareSuccessView(MarkCompletionOutputData outputData) {
@@ -138,18 +131,17 @@ public class TestTaskUseCases {
                 return null;
             }
         };
-        TaskCollection taskfactory = new TaskCollection();
-        MarkCompletionInputBound markCompletionInteractor = new MarkCompletion(outputBound, taskRepository, taskfactory);
+        TaskCollection taskFactory = new TaskCollection();
+        MarkCompletionInputBound markCompletionInteractor = new MarkCompletion(outputBound, taskRepository, taskFactory);
 
         MarkCompletionInputData inputData = new MarkCompletionInputData(id);
 
         markCompletionInteractor.mark(inputData);
     }
 
-    */
-/**
+    /**
      * Test MarkCompletion use case when the completion status of the task is TRUE before marking.
-     *//*
+     */
 
     @Test
     public void markCompletionToFalse(){
@@ -158,7 +150,7 @@ public class TestTaskUseCases {
         example.markAsComplete();
         int id = example.getId();
 
-        MarkCompletionDsGateway taskRepository = new DatabaseTask();
+        MarkCompletionDsGateway taskRepository = new DatabaseTask(new DatabaseUser("src/test.json"));
         MarkCompletionOutputBound outputBound = new MarkCompletionOutputBound() {
             @Override
             public MarkCompletionOutputData prepareSuccessView(MarkCompletionOutputData outputData) {
@@ -168,14 +160,12 @@ public class TestTaskUseCases {
                 return null;
             }
         };
-        TaskCollection taskfactory = new TaskCollection();
-        MarkCompletionInputBound markCompletionInteractor = new MarkCompletion(outputBound, taskRepository, taskfactory);
+        TaskCollection taskFactory = new TaskCollection();
+        MarkCompletionInputBound markCompletionInteractor = new MarkCompletion(outputBound, taskRepository, taskFactory);
 
         MarkCompletionInputData inputData = new MarkCompletionInputData(id);
 
         markCompletionInteractor.mark(inputData);
     }
 
-
 }
-*/

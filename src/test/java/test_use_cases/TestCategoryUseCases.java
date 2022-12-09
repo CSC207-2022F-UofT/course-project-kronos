@@ -27,7 +27,6 @@ public class TestCategoryUseCases {
                 assertEquals("example", outputData.getCategoryName());
                 assertEquals(0, outputData.getCategoryId());
                 assertEquals(true, outputData.getCategory().getVisibility());
-                // assertTrue(categoryRepository.existsById(0));
                 return null;
             }
 
@@ -60,8 +59,6 @@ public class TestCategoryUseCases {
             public DeleteCategoryOutputData prepareSuccessView(DeleteCategoryOutputData outputData) {
                 assertEquals(0, outputData.getCategoryId());
                 assertEquals("example has been successfully deleted.", outputData.getMessage());
-                // assertFalse(categories.existById(id));
-                // shouldnt the above line be after defining the collection?
                 return null;
             }
         };

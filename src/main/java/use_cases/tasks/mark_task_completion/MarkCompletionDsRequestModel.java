@@ -38,8 +38,4 @@ public class MarkCompletionDsRequestModel {
      */
     public void setId(Integer taskId){this.id = taskId;}
 
-    /**
-     * @param completeStatus the completion status of task
-     */
-    public void setCompleteStatus(boolean completeStatus){this.completeStatus = completeStatus;}
 }

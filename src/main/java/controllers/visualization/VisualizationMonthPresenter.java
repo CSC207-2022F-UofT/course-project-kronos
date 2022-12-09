@@ -7,8 +7,6 @@ public class VisualizationMonthPresenter implements VisualizationMonthOutputBoun
     /**
      * return response model for successful use case execution
      *
-     * @param visualizationMonthResponseModel
-     * @return
      */
     @Override
     public VisualizationMonthResponseModel prepareSuccessView(VisualizationMonthResponseModel visualizationMonthResponseModel) {
@@ -18,8 +16,6 @@ public class VisualizationMonthPresenter implements VisualizationMonthOutputBoun
     /**
      * Return response model for unsuccessful use case execution
      *
-     * @param errorMessage
-     * @return
      */
     @Override
     public VisualizationMonthResponseModel prepareFailureView(String errorMessage) {

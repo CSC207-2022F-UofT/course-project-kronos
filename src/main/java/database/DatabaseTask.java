@@ -5,15 +5,14 @@ import use_cases.tasks.create_task.CreateTaskDsGateway;
 import use_cases.tasks.create_task.CreateTaskDsRequestModel;
 import use_cases.tasks.delete_task.DeleteTaskDsGateway;
 import use_cases.tasks.delete_task.DeleteTaskDsRequestModel;
-/*import use_cases.tasks.edit_task.EditTaskDsGateway;
-import use_cases.tasks.edit_task.EditTaskDsRequestModel;*/
+import use_cases.tasks.edit_task.EditTaskDsGateway;
+import use_cases.tasks.edit_task.EditTaskDsRequestModel;
 import use_cases.tasks.mark_task_completion.MarkCompletionDsGateway;
 import use_cases.tasks.mark_task_completion.MarkCompletionDsRequestModel;
 
 import java.util.HashMap;
 
-// public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, EditTaskDsGateway, MarkCompletionDsGateway {
-public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, MarkCompletionDsGateway {
+public class DatabaseTask implements CreateTaskDsGateway, EditTaskDsGateway, DeleteTaskDsGateway, MarkCompletionDsGateway {
 
     private final HashMap<Integer, Task> taskCollection;
 
@@ -49,10 +48,10 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, M
      * Save the edited task to database
      * @param requestModel - Ds request model for task edition
      */
-   /* @Override
+   @Override
     public void saveTask(EditTaskDsRequestModel requestModel) {
         this.taskCollection.replace(requestModel.getId(), requestModel.getTask());
-    }*/
+    }
 
     /**
      * Update the completion status of task to database
@@ -60,7 +59,7 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, M
      */
     @Override
     public void saveTask(MarkCompletionDsRequestModel requestModel) {
-        Task task = (Task) this.taskCollection.get(requestModel.getId());
+        Task task = this.taskCollection.get(requestModel.getId());
         if (requestModel.isCompleteStatus()){
             task.markAsComplete();
         } else {
@@ -68,13 +67,4 @@ public class DatabaseTask implements CreateTaskDsGateway, DeleteTaskDsGateway, M
         }
     }
 
-//    /**
-//     * Update the visibility of task to database
-//     * @param requestModel
-//     */
-//    @Override
-//    public void saveTask(MarkVisibilityDsRequestModel requestModel) {
-//        Task newTask = (Task) this.taskCollection.get(requestModel.getId());
-//        newTask.setVisibility(requestModel.getVisibility());
-//    }
 }

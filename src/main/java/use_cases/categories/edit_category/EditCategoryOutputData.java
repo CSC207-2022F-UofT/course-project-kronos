@@ -2,7 +2,6 @@ package use_cases.categories.edit_category;
 
 import entities.Category;
 
-import java.awt.*;
 
 /**
  * -- Application Business Layer --
@@ -48,24 +47,28 @@ public class EditCategoryOutputData {
      * @return the ID of the category
      */
     public int getCategoryId() {
+        assert this.category != null;
         return this.category.getId();
     }
     /**
      * @return the name of the category after editing
      */
     public String getCategoryName() {
+        assert this.category != null;
         return this.category.getName();
     }
     /**
      * @return the colour of the category after editing
      */
     public String getCategoryColour() {
+        assert this.category != null;
         return this.category.getColour();
     }
     /**
      * @return the visibility state of the category after editing
      */
     public Boolean getVisibility() {
+        assert this.category != null;
         return this.category.getVisibility();
     }
 

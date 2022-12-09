@@ -17,7 +17,7 @@ public class DeleteTaskDsRequestModel {
     }
 
     /**
-     * @return the id of the delected task.
+     * @return the id of the deleted task.
      */
     public Integer getId() {
         return taskId;
