@@ -20,12 +20,12 @@ import use_cases.tasks.create_task.*;
 import use_cases.tasks.mark_task_completion.MarkCompletionDsGateway;
 import use_cases.tasks.mark_task_completion.MarkCompletionOutputBound;
 
+/**
+ * -- UI --
+ * Responsible for creating all the controllers, input data, output data, presenters, and gateways for
+ * different use cases relating to Category and Task
+ */
 public class ToDoListMain {
-    public static String first = "Bob";
-    public static String last = "Smith";
-    public static String email = "example@gmail.com";
-    public static String password = "password";
-    public static HabitFactory habits = new HabitFactory();
     public static CategoryCollection categories = new CategoryCollection();
     public static TaskFactory tasks1 = new TaskFactory();
     public static TaskFactory tasks2 = new TaskFactory();
@@ -35,9 +35,6 @@ public class ToDoListMain {
     public static Category category1 = new Category("Category 1", "green");
     public static Category category2 = new Category("Category 2", "blue");
     public static Category category3 = new Category("Category 3", "pink");
-    public static Category category4 = new Category("Category 4", "orange");
-    public static TimerTomato timer = new TimerTomato();
-
     public static void main(String[] args){
         tasks1.addItem(task1);
         tasks1.addItem(task2);
@@ -48,21 +45,26 @@ public class ToDoListMain {
         categories.addItem(category1);
         categories.addItem(category2);
         categories.addItem(category3);
-        //categories.addItem(category4);
 
         DatabaseUser database = new DatabaseUser("C:/Users/emily/OneDrive/Documents/UofT/2022 - 2023/CSC207/Project/dataCopy.ser");
 
-        // Create Category Use Case
+        /*
+         * Create Category Use Case
+         */
         CreateCategoryOutputBoundary createCategoryPresenter = new CreateCategoryPresenter();
         CreateCategoryDsGateway dsGateway = new DatabaseCategory(database);
         CreateCategoryInputBoundary createCategory = new CreateCategory(createCategoryPresenter, dsGateway, categories);
         CreateCategoryController createCategoryController = new CreateCategoryController(createCategory);
 
-        // Edit Category Use Case
+        /*
+         * Edit Category Use Case
+         */
         EditCategoryOutputBoundary editCategoryPresenter = new EditCategoryPresenter();
         EditCategoryDsGateway editDsGateway = new DatabaseCategory(database);
 
-        // Delete Category Use Case
+        /*
+         * Delete Category Use Case
+         */
         DeleteCategoryOutputBoundary deleteCategoryPresenter = new DeleteCategoryPresenter();
         DeleteCategoryDsGateway deleteDsGateway = new DatabaseCategory(database);
         DeleteCategoryInputBoundary deleteCategory = new DeleteCategory(deleteCategoryPresenter, deleteDsGateway, categories);
@@ -70,21 +72,26 @@ public class ToDoListMain {
 
         //new CreateCategoryScreen(createCategoryController);
         // testing the CategoryScreen
-        EditCategoryInputBoundary inputBound = new EditCategory(editCategoryPresenter, editDsGateway, categories, category4.getId());
-        EditCategoryController editController = new EditCategoryController(inputBound);
-        //new CategoryScreen(editController,deleteCategoryController, category4.getId(), category4.getName(), category4.getColour());
+        EditCategoryInputBoundary inputBound = new EditCategory(editCategoryPresenter, editDsGateway, categories, category3.getId());
+        // EditCategoryController editController = new EditCategoryController(inputBound);
         //new CategoryScreen(editController,deleteCategoryController, category3.getId(), category3.getName(), category3.getColour());
 
-        // Create Task Use Case
+        /*
+         * Create Task Use Case
+         */
         CreateTaskOutputBoundary outputBoundary = new CreateTaskPresenter();
         CreateTaskDsGateway taskDsGateway = new DatabaseTask(database);
 
-        // Mark Completion Task Use Case
+        /*
+         * Mark Completion Task Use Case
+         */
         MarkCompletionDsGateway markTaskGateway = new DatabaseTask(database);
         MarkCompletionOutputBound markOutputBound = new MarkCompletionPresenter();
 
+        /*
+         * Calling the ToDoScreen and passing in necessary arguments
+         */
         new ToDoScreen(categories, createCategoryController, editCategoryPresenter, editDsGateway,
                 deleteCategoryController, outputBoundary, taskDsGateway, markTaskGateway, markOutputBound);
-
     }
 }

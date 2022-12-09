@@ -18,18 +18,18 @@ import static java.awt.Component.*;
  * The screen for editing a Category
  */
 public class CategoryScreen implements ActionListener {
-    /**
+    /*
      * The possible colours for the Category
      */
     public static String[] COLOURS = {"pink", "red", "white", "blue", "yellow", "green", "orange", "purple", "grey"};
 
-    /**
+    /*
      * The Controllers
      */
     private final EditCategoryController editController;
     private final DeleteCategoryController deleteController;
 
-    /**
+    /*
      * Frame components and input information
      */
     private static JFrame EditCategoryFrame;
@@ -40,6 +40,14 @@ public class CategoryScreen implements ActionListener {
     protected final JComboBox colourInput;
 
 
+    /**
+     * Constructor
+     * @param editController - the controller for EditCategory
+     * @param deleteController - the controller for DeleteCategory
+     * @param id - the id of the category currently being edited
+     * @param name - the name of the category currently being edited (to be displayed in the input field)
+     * @param colour - the colour of the category currently being edited (to be displayed in the input field)
+     */
     public CategoryScreen(EditCategoryController editController, DeleteCategoryController deleteController,
                           int id, String name, String colour) {
         this.id = id;
@@ -53,12 +61,16 @@ public class CategoryScreen implements ActionListener {
         EditCategoryFrame.setVisible(true);
         EditCategoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // layout
+        /*
+         * Layout
+         */
         GridBagLayout layout = new GridBagLayout(); // need rows to adapt to number of tasks in that category
         GridBagConstraints constraints = new GridBagConstraints();
         EditCategoryFrame.setLayout(layout);
 
-        // labels
+        /*
+         * Labels
+         */
         constraints.insets = new Insets(0, 15, 5, 15);
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -74,7 +86,9 @@ public class CategoryScreen implements ActionListener {
         colourLabel.setFont(new Font("Serif", Font.BOLD, 15));
         EditCategoryFrame.add(colourLabel, constraints);
 
-        // input fields + button
+        /*
+         * The input fields and buttons
+         */
         constraints.gridx = 1;
         constraints.gridy = 0;
         categoryNameInput = new JTextField(name);
@@ -111,13 +125,26 @@ public class CategoryScreen implements ActionListener {
         save.addActionListener(this);
     }
 
+    /**
+     * loads the screen when ToDoScreen calls this object
+     * @param editController - the controller for EditCategory
+     * @param deleteController - the controller for DeleteCategory
+     * @param id - the id of the category currently being edited
+     * @param name - the name of the category currently being edited (to be displayed in the input field)
+     * @param colour - the colour of the category currently being edited (to be displayed in the input field)
+     */
     public static void loadScreen(EditCategoryController editController, DeleteCategoryController deleteController,
                                   int id, String name, String colour) {
         EventQueue.invokeLater(() -> {
-            // CategoryScreen categoryScreen = new CategoryScreen(editController, deleteController, id, name, colour);
+            new CategoryScreen(editController, deleteController, id, name, colour);
             EditCategoryFrame.setVisible(true);
         });
     }
+
+    /**
+     * invoked when save or delete buttons are clicked (calls on appropriate controllers)
+     * @param evt - the event that has occurred
+     */
     public void actionPerformed(ActionEvent evt) {
         if (evt.getSource() == save){
             // save the changes
@@ -142,5 +169,4 @@ public class CategoryScreen implements ActionListener {
             }
         }
     }
-
 }

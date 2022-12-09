@@ -3,26 +3,27 @@ package ui.category;
 import controllers.category.CategoryCreationFailed;
 import controllers.category.CreateCategoryController;
 import use_cases.categories.create_category.CreateCategoryOutputData;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
-
 import static java.awt.Component.CENTER_ALIGNMENT;
-import static java.awt.Component.LEFT_ALIGNMENT;
 
+/**
+ * -- UI --
+ * The screen for creating a Category
+ */
 public class CreateCategoryScreen {
-    public static String COLOURS[] = { "pink", "red", "blue", "yellow", "green", "orange", "purple", "grey"};
+    public static String[] COLOURS = { "pink", "red", "blue", "yellow", "green", "orange", "purple", "grey"};
     public JFrame createCategoryFrame;
-    private JButton createCategoryButton;
-    private JTextField categoryNameInput;
-    private JComboBox colourInput;
-    private CreateCategoryController controller;
+    private final JButton createCategoryButton;
+    private final JTextField categoryNameInput;
+    private final JComboBox colourInput;
 
+    /**
+     * Constructor
+     * @param controller - the controller for CreateCategory
+     */
     public CreateCategoryScreen(CreateCategoryController controller) {
-        this.controller = controller;
-
         createCategoryFrame = new JFrame("Create Category");
         createCategoryFrame.setSize(500, 300);
         createCategoryFrame.setLocation(800, 200);
@@ -30,12 +31,16 @@ public class CreateCategoryScreen {
         createCategoryFrame.setVisible(true);
         createCategoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // layout
+        /*
+        Layout
+         */
         GridBagLayout layout = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
         createCategoryFrame.setLayout(layout);
 
-        // labels
+        /*
+        Labels
+         */
         constraints.insets = new Insets(0, 15, 5, 15);
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -51,7 +56,9 @@ public class CreateCategoryScreen {
         colour.setAlignmentX(Component.LEFT_ALIGNMENT);
         createCategoryFrame.add(colour, constraints);
 
-        // input fields + button
+        /*
+        Input fields and button
+         */
         constraints.gridx = 1;
         constraints.gridy = 0;
         categoryNameInput = new JTextField("Category Name");
@@ -90,13 +97,14 @@ public class CreateCategoryScreen {
         });
     }
 
+    /**
+     * allows ToDoScreen to open CreateCategoryScreen
+     * @param createController - the controller for CreateCategory
+     */
     public static void loadScreen(CreateCategoryController createController) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                CreateCategoryScreen createCategoryScreen = new CreateCategoryScreen(createController);
-                createCategoryScreen.createCategoryFrame.setVisible(true);
-            }
+        EventQueue.invokeLater(() -> {
+            CreateCategoryScreen createCategoryScreen = new CreateCategoryScreen(createController);
+            createCategoryScreen.createCategoryFrame.setVisible(true);
         });
     }
 

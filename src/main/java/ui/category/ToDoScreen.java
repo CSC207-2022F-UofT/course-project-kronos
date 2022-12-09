@@ -29,47 +29,58 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * -- User Interface Layer --
- * The To Do List view model to be loaded onto the screen when the user clicks "To Do" from the menu bar
+ * -- UI --
+ * The To Do List screen  to be loaded onto the screen when the user clicks "To Do" from the menu bar
+ * Shows all the tasks and categories.
  */
 
-// screen should have the menu button on top left to lead back to menu page
 public class ToDoScreen extends JFrame implements ActionListener {
-    private JFrame toDoFrame;
-    private JPanel header;
-    private JPanel body;
-    private static JLabel title;
-    private CategoryCollection categories;
-    private EditCategoryOutputBoundary editCategoryPresenter;
-    private EditCategoryDsGateway editDsGateway;
-    private DeleteCategoryController deleteController;
-    private CreateTaskDsGateway taskDsGateway;
-    private CreateTaskOutputBoundary outputBoundary;
+    private final JPanel body;
+    private final CategoryCollection categories;
+    private final EditCategoryOutputBoundary editCategoryPresenter;
+    private final EditCategoryDsGateway editDsGateway;
+    private final DeleteCategoryController deleteController;
+    private final CreateTaskDsGateway taskDsGateway;
+    private final CreateTaskOutputBoundary taskOutputBoundary;
     private HashMap<TaskFactory, Integer> completedTasks;
-    private HashMap<JCheckBox, ArrayList<Integer>> allCheckBoxes = new HashMap<JCheckBox, ArrayList<Integer>>(); // id of cat @ index 0, id of task @ index 1
+    private final HashMap<JCheckBox, ArrayList<Integer>> allCheckBoxes = new HashMap<JCheckBox, ArrayList<Integer>>(); // id of cat @ index 0, id of task @ index 1
 
+    /**
+     * Contsructor for ToDoScreen
+     * @param categories - existing categories of the user
+     * @param createController - controller for CreateCategory
+     * @param editCategoryPresenter - presenter for EditCategory
+     * @param editDsGateway - gateway for EditCategory
+     * @param deleteController - controller for DeleteCategory
+     * @param taskOutputBoundary - outputBoundary for CreateTask
+     * @param taskDsGateway - gateway for CreateTask
+     * @param markTaskGateway - gateway for MarkTaskComplete
+     * @param markOutputBound - output boundary for MarkTaskComplete
+     */
     public ToDoScreen(CategoryCollection categories, CreateCategoryController createController,
                       EditCategoryOutputBoundary editCategoryPresenter, EditCategoryDsGateway editDsGateway,
-                      DeleteCategoryController deleteController, CreateTaskOutputBoundary outputBoundary,
+                      DeleteCategoryController deleteController, CreateTaskOutputBoundary taskOutputBoundary,
                       CreateTaskDsGateway taskDsGateway, MarkCompletionDsGateway markTaskGateway,
                       MarkCompletionOutputBound markOutputBound) {
-        // long parameter code smell, unable to resolve
+        /*
+         long parameter code smell, unable to resolve
+         */
 
         this.editCategoryPresenter = editCategoryPresenter;
         this.editDsGateway = editDsGateway;
         this.deleteController = deleteController;
         this.categories = categories;
-        this.outputBoundary = outputBoundary;
+        this.taskOutputBoundary = taskOutputBoundary;
         this.taskDsGateway = taskDsGateway;
 
-        toDoFrame = new JFrame("To Do List");
+        JFrame toDoFrame = new JFrame("To Do List");
         toDoFrame.setLocation(550, 100);
         toDoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         toDoFrame.setSize(600, 800);
         toDoFrame.setLayout(new BorderLayout());
         toDoFrame.setVisible(true);
 
-        header = new JPanel();
+        JPanel header = new JPanel();
         header.setLayout(new GridBagLayout());
         header.setVisible(true);
 
@@ -83,10 +94,10 @@ public class ToDoScreen extends JFrame implements ActionListener {
 
         GridBagConstraints c = new GridBagConstraints();
 
-        /**
+        /*
          * Creating and setting the placement of the title
          */
-        title = new JLabel("To Do List");
+        JLabel title = new JLabel("To Do List");
         title.setFont(new Font("Serif", Font.BOLD, 35));
         title.setHorizontalAlignment(SwingConstants.CENTER);
         c.ipady = 20;
@@ -95,7 +106,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.fill = GridBagConstraints.HORIZONTAL;
         header.add(title, c);
 
-        /**
+        /*
          * Creating and setting the placement of the "create" button and menu button
          */
         JButton newCategory = new JButton("New Category");
@@ -119,7 +130,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         header.add(menu, c);
         // menu.addActionListener(e -> HomeScreenUI.main()); // ? This doesn't work
 
-        /**
+        /*
          * Adding table headlining row for tasks
          */
         JLabel taskName = new JLabel("Task Name");
@@ -142,13 +153,13 @@ public class ToDoScreen extends JFrame implements ActionListener {
         header.add(completion, c);
         updateList();
 
-        /**
+        /*
          * If window closes, need to check which tasks are checked off
          */
         toDoFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                completedTasks = new HashMap<TaskFactory, Integer>();
+                completedTasks = new HashMap<>();
                 // store all the tasks that are marked as completed when the window closes
                 for (JCheckBox check: allCheckBoxes.keySet()) {
                     if (check.isSelected()) {
@@ -232,8 +243,8 @@ public class ToDoScreen extends JFrame implements ActionListener {
 
             int taskCatId = Integer.parseInt(newTask.getText().split(":")[0]);
             Category taskCat = categories.getItem(taskCatId);
-            CreateTaskInputBoundary taskGateway = new CreateTask(outputBoundary, taskDsGateway, taskCat.getTasks());
-            CreateTaskController taskController = new CreateTaskController(taskGateway);
+            CreateTaskInputBoundary taskGateway = new CreateTask(taskOutputBoundary, taskDsGateway, taskCat.getTasks());
+            new CreateTaskController(taskGateway);
             newTask.addActionListener(e -> CreateTaskScreen.createScreen());
 
             y++;
