@@ -1,4 +1,3 @@
-/*
 package ui.habits;
 import controllers.habits.EditHabitController;
 
@@ -9,11 +8,9 @@ import java.awt.event.ActionListener;
 
 public class EditHabitScreen extends JFrame implements ActionListener {
 
-    */
-/**
+    /**
      * Produces a UI to edit existing Habits in the User's collection.
-     *//*
-
+     */
 
     JTextField oldName = new JTextField(15);
 
@@ -86,12 +83,10 @@ public class EditHabitScreen extends JFrame implements ActionListener {
         frame.pack();
         frame.setVisible(true);
     }
-    */
-/**
+    /**
      * React to a button click that result in e.
      * @param e the event to be processed
-     *//*
-
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Click" + e.getActionCommand());
@@ -112,12 +107,4 @@ public class EditHabitScreen extends JFrame implements ActionListener {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(EditHabitScreen::editScreen);
     }
-    }
-
-
-
-
-
-
-
-*/
+}

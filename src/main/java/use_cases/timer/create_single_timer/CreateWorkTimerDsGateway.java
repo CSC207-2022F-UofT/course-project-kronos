@@ -1,6 +1,6 @@
 package use_cases.timer.create_single_timer;
 
-import use_cases.timer_use_cases.edit_timer.EditTimerDsRequestModel;
+import use_cases.timer.edit_timer.EditTimerDsRequestModel;
 
 /**
  * Create the database gateway for createWorkTimer.

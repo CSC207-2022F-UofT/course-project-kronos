@@ -1,5 +1,6 @@
 package ui.category;
 
+import ui.users.HomeScreenUI;
 import controllers.category.CreateCategoryController;
 import controllers.category.DeleteCategoryController;
 import controllers.category.EditCategoryController;
@@ -36,6 +37,7 @@ import java.util.HashMap;
 
 public class ToDoScreen extends JFrame implements ActionListener {
     private final JPanel body;
+    private final JButton menu;
     private final CategoryCollection categories;
     private final EditCategoryOutputBoundary editCategoryPresenter;
     private final EditCategoryDsGateway editDsGateway;
@@ -120,7 +122,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         header.add(newCategory, c);
         newCategory.addActionListener(e -> CreateCategoryScreen.loadScreen(createController));
 
-        JButton menu = new JButton("Menu");
+        this.menu = new JButton("Menu");
         menu.setFont(new Font("Serif", Font.PLAIN, 15));
         menu.setBackground(Color.white);
         menu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -128,7 +130,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         c.gridx = 0;
         c.gridy = 1;
         header.add(menu, c);
-        // menu.addActionListener(e -> HomeScreenUI.main()); // ? This doesn't work
+        menu.addActionListener(this);
 
         /*
          * Adding table headlining row for tasks
@@ -253,6 +255,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == menu) {
+        }
     }
 }
