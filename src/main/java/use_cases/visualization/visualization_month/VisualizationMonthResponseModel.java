@@ -17,7 +17,6 @@ public class VisualizationMonthResponseModel {
         this.startDate = startDate;
     }
 
-    // setter and getter methods
     String getHabitName(){return this.habitName;}
 
     Date getStartDate(){return this.startDate;}

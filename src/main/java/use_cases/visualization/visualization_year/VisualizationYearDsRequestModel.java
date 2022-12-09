@@ -14,9 +14,6 @@ public class VisualizationYearDsRequestModel {
     /**
      * Create a request model for visualization of Habit progression in the month, with habitName corresponding to that stored
      * in database, selected month's first day passed to startDate, and imagePath being the path of resulting chart being creted
-     * @param habitName
-     * @param startDate
-     * @param imagePath
      */
     public VisualizationYearDsRequestModel(String habitName, Date startDate, String imagePath){
         this.habitName = habitName;

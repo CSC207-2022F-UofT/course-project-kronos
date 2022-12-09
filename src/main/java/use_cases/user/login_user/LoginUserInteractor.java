@@ -41,7 +41,7 @@ public class LoginUserInteractor implements LoginUserInputBoundary{
             if (databaseUser.checkPasswordsMatch(inputData.getEmailAddress(), inputData.getPassword())){
 
                 CommonUser loggedInUser = gateway.getUserByEmail(inputData.getEmailAddress());
-                return new LoginUserOutputData(true, inputData.getEmailAddress(), loggedInUser);
+                return new LoginUserOutputData(true, loggedInUser);
             }
         }
         return null;

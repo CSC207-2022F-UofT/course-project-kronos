@@ -10,7 +10,7 @@ import entities.User;
  */
 public class CreateUserDsRequestModel {
 
-    private String emailAddress;
+    private final String emailAddress;
 
     private User user;
 
@@ -46,11 +46,5 @@ public class CreateUserDsRequestModel {
     public void setUser(User user) {
         this.user = user;
     }
-
-    /**
-     *
-     * @param email - email during creation of user
-     */
-    public void setEmailAddress(String email){this.emailAddress = email;}
 
 }

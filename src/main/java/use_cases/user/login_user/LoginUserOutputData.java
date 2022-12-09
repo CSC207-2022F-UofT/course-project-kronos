@@ -10,7 +10,6 @@ public class LoginUserOutputData {
     boolean isLoginSuccessful;
     private final String message;
     private final CommonUser user;
-    private final String emailAddress;
 
 
     /**
@@ -21,20 +20,17 @@ public class LoginUserOutputData {
     public LoginUserOutputData(boolean isLoginSuccessful, String message ) {
         this.isLoginSuccessful = isLoginSuccessful;
         this.message = message;
-        this.emailAddress = null;
         this.user = null;
     }
 
     /**
      * A constructor that is used when there is NO failure to log into the account.
      * @param isLoginSuccessful - the boolean value to show if the user is logged in or not
-     * @param emailAddress - the emailAddress of the user
      * @param user - the User object of the user.
      */
-    public LoginUserOutputData(boolean isLoginSuccessful, String emailAddress, CommonUser user) {
+    public LoginUserOutputData(boolean isLoginSuccessful, CommonUser user) {
         this.isLoginSuccessful = isLoginSuccessful;
         this.message = null;
-        this.emailAddress = emailAddress;
         this.user = user;
     }
 

@@ -1,7 +1,6 @@
 package use_cases.visualization.visualization_week;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class VisualizationWeekResponseModel {
     private String habitName;
@@ -20,12 +19,6 @@ public class VisualizationWeekResponseModel {
         this.startDate = startDate;
         this.imagePath = imagePath;
     }
-
-    // setter and getter methods
-
-    String getHabitName(){return this.habitName;}
-
-    Calendar getStartDate(){return this.startDate;}
 
     String getImagePath(){return this.imagePath;}
 

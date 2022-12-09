@@ -17,9 +17,6 @@ public class VisualizationYearInteractor implements VisualizationYearInputBounda
     /**
      * Interface used by the Controller, implemented by interactor. Used by controller to call interactor to show visual
      * habit progression in the Year
-     *
-     * @param requestModel
-     * @return
      */
     @Override
     public VisualizationWeekResponseModel showVisual(VisualizationWeekRequestModel requestModel) {

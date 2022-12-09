@@ -8,15 +8,11 @@ public interface VisualizationYearOutputBoundary {
 
     /**
      * return response model for successful use case execution
-     * @param visualizationYearResponseModel
-     * @return
      */
     VisualizationYearResponseModel prepareSuccessView(VisualizationYearResponseModel visualizationYearResponseModel);
 
     /**
      * Return response model for unsuccessful use case execution
-     * @param errorMessage
-     * @return
      */
     VisualizationYearResponseModel prepareFailureView(String errorMessage);
 }

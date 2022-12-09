@@ -14,8 +14,6 @@ public class VisualizationMonthInteractor implements VisualizationMonthInputBoun
      * Interface used by the Controller, implemented by interactor. Used by controller to call interactor to show visual
      * habit progression in the month
      *
-     * @param requestModel
-     * @return
      */
     @Override
     public VisualizationMonthResponseModel showVisual(VisualizationMonthRequestModel requestModel) {
