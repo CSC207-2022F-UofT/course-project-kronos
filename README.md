@@ -171,7 +171,7 @@ The GitHub features used in project are:
 - We would use Mockito or a property-based testing library to add more unit tests to improve the test coverage of our project.
 
 ### Improve UI:
--Currently, text, frame sizes, and colors are fixed in our UI. Users with more limited sensory abilities may have different preferences that aren't accounted for.
+- Currently, text, frame sizes, and colors are fixed in our UI. Users with more limited sensory abilities may have different preferences that aren't accounted for.
 Also, the UI is very limited and undynamic. We need to make it more interactive and user-friendly.
 
 ### Improve and add more accessibility features : 
