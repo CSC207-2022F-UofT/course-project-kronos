@@ -47,8 +47,8 @@ public class DatabaseVisualization implements VisualizationWeekDsGateway, Visual
                         throw new RuntimeException(e);
                     }
                     Calendar endDate = Calendar.getInstance();
-                    endDate.setTime();
-                    if (cal.compareTo(requestModel.getStartDate()) >= 0 && cal.compareTo(requestModel.getStartDate().))
+                    // endDate.setTime();
+                    // if (cal.compareTo(requestModel.getStartDate()) >= 0 && cal.compareTo(requestModel.getStartDate().))
 
 
         });
