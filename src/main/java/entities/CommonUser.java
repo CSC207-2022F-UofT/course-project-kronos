@@ -1,8 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * Creates User account if the user's account does not exist.
@@ -18,23 +15,18 @@ public class CommonUser implements User{
     private HabitFactory habitCollection;
     private TaskFactory taskCollection;
     private CategoryCollection categoryCollection;
-    private Timer tomato;
+    private TimerTomato tomato;
 
 
     /**
      *
      * Creates User account if the user's account does not exist.
      * If it does, then it logs the user in and the page directs to the main page.
-     *
-     *
      *  The parameters include:
-     *  - @param password (user password)
-     *  - @param emailAddress(user's email address)
- *      - @param the user's first and last name(both String type)
- *      - @param HabitFactory named habitCollection(a data that has all the habits in it)
- *      - @param TaskFactory named taskCollection(a data that has all the to-do tasks in it)
- *      - @param CategoryCollection named categoryCollection(the categories to categorize the tasks)
- *      - @param Timer named tomato
+     *  @param password - the user's password
+     *  @param email_id - of the user
+     *  @param first_name of the user
+     *  @param last_name of the user
      */
     public CommonUser(String email_id, String password, String first_name, String last_name){
         this.emailAddress = email_id;
@@ -44,77 +36,138 @@ public class CommonUser implements User{
         this.habitCollection = new HabitFactory();
         this.taskCollection = new TaskFactory();
         this.categoryCollection = new CategoryCollection();
-        this.tomato = new Timer();
+        this.tomato = new TimerTomato();
     }
 
     public CommonUser(){}
 
-    public CommonUser(String s, String s1, String harry, String potter, HabitFactory hFactory, TaskFactory tFactory, CategoryCollection cFactory, Timer t) {
-    }
-
 
     // GETTER METHODS
 
+    /**
+     * @return the user's password
+     */
     @Override
     public String getPassword(){
         // returns the password of the user
         return this.password;
     }
 
+    /**
+     * @return the user's email address
+     */
     @Override
     public String getEmailAddress(){
         // returns the user email address
         return this.emailAddress;
     }
 
+    /**
+     * @return the user's first name
+     */
     @Override
     public String getFirstName(){
         // returns the user's first name
         return this.firstName;
     }
 
+    /**
+     * @return the user's last name
+     */
     @Override
     public String getLastName(){
         // returns the user's first name
         return this.lastName;
     }
 
+    /**
+     * @return the user's collection of habits
+     */
     @Override
     public HabitFactory getHabitCollection(){
         // returns the user's habit collection
         return this.habitCollection;
     }
 
+    /**
+     * @return the user's collection of categories
+     */
+    @Override
+    public CategoryCollection getCategoryCollection() {
+        return this.categoryCollection;
+    }
+
+    /**
+     * @return the user's collection of tasks
+     */
+    @Override
+    public TaskFactory getTaskCollection() {
+        return this.taskCollection;
+    }
+
+    /**
+     * @return the user's timer object
+     */
+    @Override
+    public TimerTomato getTomato() {
+        return this.tomato;
+    }
+
+    @Override
+    public void setTomato(TimerTomato timerTomato) {
+        this.tomato = timerTomato;
+    }
+
     // SETTER METHODS
 
+    /**
+     * sets the password in the object
+     * @param password that the user wants to set
+     */
     public void setPassword(String password){
         // returns the password of the user
         this.password = password;
     }
 
+    /**
+     * sets the email address in the object
+     * @param emailAddress that the user wants to set
+     */
     public void setEmailAddress(String emailAddress){
         // returns the password of the user
         this.emailAddress = emailAddress;
     }
 
+    /**
+     * sets the password in the object
+     * @param firstName that the user wants to set
+     */
     public void setFirstName(String firstName){
         // returns the password of the user
         this.firstName = firstName;
     }
 
-    public void setLastName(String LastName){
-        // returns the password of the user
-        this.lastName = LastName;
+    /**
+     * setter method that sets the last name
+     * @param lastname of the user
+     */
+    public void setLastName(String lastname) {
+        this.lastName = lastname;
     }
 
+    /**
+     * A password is a strong password when it has at least one uppercase character, one digit and the password's
+     * length is more than or equal to 5
+     * @return the boolean value of whether the password is valid or not
+     */
     // Strength of the Password
     public boolean passwordStrength(){
-        if(password.length() >=8 && check_upper() && check_digits() && check_characters()){
-            return true;
-        }
-        return false;
+        return password.length() >= 5 && check_upper() && check_digits();
     }
 
+    /**
+     * @return if the password has at least one upper case
+     */
     public boolean check_upper(){
         // checks if there is at least one upper case letter
         boolean b = false;
@@ -126,6 +179,9 @@ public class CommonUser implements User{
         return b;
     }
 
+    /**
+     * @return if the password has at least one digit
+     */
     public boolean check_digits(){
         // checks if there is at least one digit
         boolean b = false;
@@ -136,21 +192,4 @@ public class CommonUser implements User{
         }
         return b;
     }
-
-    public boolean check_characters(){
-        // checks if there is at least one character from [ _ , @ , $ ]
-        List<Character> arr = new ArrayList<Character>();
-        arr.add('_');
-        arr.add('@');
-        arr.add('$');
-        boolean b = false;
-        for (int i = 0; i < password.length(); i++){
-            if (arr.contains(password.charAt(i))) {
-                b = true;
-                break;
-            }
-        }
-        return b;
-    }
-
 }

@@ -6,20 +6,25 @@ package use_cases.tasks.delete_task;
  * to the gateway.
  */
 public class DeleteTaskDsRequestModel {
-    private final int  taskId;
+    private Integer  taskId;
 
     /**
      * Constructor
      * @param taskId - the id of the task.
      */
-    public DeleteTaskDsRequestModel(int taskId) {
+    public DeleteTaskDsRequestModel(Integer taskId) {
         this.taskId = taskId;
     }
 
     /**
      * @return the id of the delected task.
      */
-    public int getTaskId() {
+    public Integer getId() {
         return taskId;
     }
+
+    /**
+     * @param taskId - id of task to be deleted
+     */
+    public void setTaskId(Integer taskId){this.taskId = taskId;}
 }

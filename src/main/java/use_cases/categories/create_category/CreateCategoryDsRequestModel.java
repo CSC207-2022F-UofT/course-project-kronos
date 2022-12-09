@@ -31,4 +31,8 @@ public class CreateCategoryDsRequestModel {
     public Integer getId() {
         return this.category.getId();
     }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
