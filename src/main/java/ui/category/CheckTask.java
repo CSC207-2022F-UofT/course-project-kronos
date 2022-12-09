@@ -2,7 +2,7 @@ package ui.category;
 
 import controllers.category.CategoryCreationFailed;
 import controllers.tasks.MarkCompletionController;
-import entities.TaskFactory;
+import entities.TaskCollection;
 import use_cases.tasks.mark_task_completion.*;
 
 import javax.swing.*;
@@ -21,12 +21,12 @@ public class CheckTask extends AbstractAction{
      * @param completedTasks - a HashMap where each key is the Task Collection that the completed task belongs to and
      *                       the value as the id of the completed task
     */
-    public CheckTask(MarkCompletionDsGateway markTaskGateway, MarkCompletionOutputBound markOutputBound, HashMap<TaskFactory, Integer> completedTasks) {
-        for (TaskFactory taskfactory: completedTasks.keySet()) {
+    public CheckTask(MarkCompletionDsGateway markTaskGateway, MarkCompletionOutputBound markOutputBound, HashMap<TaskCollection, Integer> completedTasks) {
+        for (TaskCollection taskCollection: completedTasks.keySet()) {
             // call on markCompletion controller for each task, need category reference to get TaskCollection
-            Integer taskId = completedTasks.get(taskfactory);
+            Integer taskId = completedTasks.get(taskCollection);
             try {
-                MarkCompletionInputBound markCompletionInputBound = new MarkCompletion(markOutputBound, markTaskGateway, taskfactory);
+                MarkCompletionInputBound markCompletionInputBound = new MarkCompletion(markOutputBound, markTaskGateway, taskCollection);
                 MarkCompletionController markCompletionController = new MarkCompletionController(markCompletionInputBound);
                 markCompletionController.mark(taskId);
             } catch (CategoryCreationFailed error){

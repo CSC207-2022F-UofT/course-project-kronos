@@ -8,7 +8,7 @@ import controllers.tasks.CreateTaskController;
 import entities.Category;
 import entities.CategoryCollection;
 import entities.Task;
-import entities.TaskFactory;
+import entities.TaskCollection;
 import ui.ColourPalette;
 import ui.tasks.CreateTaskScreen;
 import ui.tasks.TaskScreen;
@@ -44,7 +44,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
     private final DeleteCategoryController deleteController;
     private final CreateTaskDsGateway taskDsGateway;
     private final CreateTaskOutputBoundary taskOutputBoundary;
-    private HashMap<TaskFactory, Integer> completedTasks;
+    private HashMap<TaskCollection, Integer> completedTasks;
     private final HashMap<JCheckBox, ArrayList<Integer>> allCheckBoxes = new HashMap<JCheckBox, ArrayList<Integer>>(); // id of cat @ index 0, id of task @ index 1
 
     /**

@@ -27,8 +27,8 @@ import use_cases.tasks.mark_task_completion.MarkCompletionOutputBound;
  */
 public class ToDoListMain {
     public static CategoryCollection categories = new CategoryCollection();
-    public static TaskFactory tasks1 = new TaskFactory();
-    public static TaskFactory tasks2 = new TaskFactory();
+    public static TaskCollection tasks1 = new TaskCollection();
+    public static TaskCollection tasks2 = new TaskCollection();
     public static Task task1 = new Task("task 1");
     public static Task task2 = new Task("new task name");
     public static Task task3 = new Task("task 3");
