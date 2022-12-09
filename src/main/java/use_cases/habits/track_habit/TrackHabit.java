@@ -9,7 +9,7 @@ import entities.HabitCollection;
 public class TrackHabit implements TrackHabitInputBoundary {
     private final TrackHabitOutputBoundary outputBoundary;
     private final TrackHabitDsGateway dsGateway;
-    private final HabitCollection habitFactory;
+    private final HabitCollection habitCollection;
 
     /**
      * Constructor for this class.
@@ -20,7 +20,7 @@ public class TrackHabit implements TrackHabitInputBoundary {
     public TrackHabit(TrackHabitOutputBoundary outputBoundary, TrackHabitDsGateway dsGateway, HabitCollection hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
-        this.habitFactory = hFactory;
+        this.habitCollection = hFactory;
     }
 
     /**
@@ -36,7 +36,7 @@ public class TrackHabit implements TrackHabitInputBoundary {
         }
 
         String id = inputData.getInputName();
-        Habit habitBeTracked = habitFactory.getCollection().get(id);
+        Habit habitBeTracked = habitCollection.getCollection().get(id);
         habitBeTracked.markFrequency();
 
         TrackHabitOutputData outputData = new TrackHabitOutputData(habitBeTracked.getName(),
@@ -62,6 +62,6 @@ public class TrackHabit implements TrackHabitInputBoundary {
      * @return habit factory
      */
     public HabitCollection getHabitFactory() {
-        return habitFactory;
+        return habitCollection;
     }
 }

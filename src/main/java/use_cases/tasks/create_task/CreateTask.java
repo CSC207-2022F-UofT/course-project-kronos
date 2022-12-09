@@ -1,7 +1,7 @@
 package use_cases.tasks.create_task;
 
 import entities.Task;
-import entities.TaskFactory;
+import entities.TaskCollection;
 
 /**
  * -- Application Business Layer --
@@ -12,19 +12,19 @@ public class CreateTask implements CreateTaskInputBoundary {
     private final CreateTaskOutputBoundary outputBoundary;
 
     private final CreateTaskDsGateway dsGateway;
-    private final TaskFactory taskFactory;
+    private final TaskCollection taskCollection;
 
     /**
      * Constructor
      *
      * @param outputBoundary - the output boundary.
      * @param dsGateway - the database gateway interface.
-     * @param taskFactory    - the task factory of a specific user.
+     * @param taskCollection    - the task factory of a specific user.
      */
-    public CreateTask(CreateTaskOutputBoundary outputBoundary, CreateTaskDsGateway dsGateway, TaskFactory taskFactory) {
+    public CreateTask(CreateTaskOutputBoundary outputBoundary, CreateTaskDsGateway dsGateway, TaskCollection taskCollection) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
-        this.taskFactory = taskFactory;
+        this.taskCollection = taskCollection;
     }
 
     /**
@@ -43,7 +43,7 @@ public class CreateTask implements CreateTaskInputBoundary {
         Task task = new Task(inputData.getName());
         // The new Task object above is not assigned to any category.
         // So we do not need to update the Category/CategoryFactory.
-        taskFactory.addItem(task);
+        taskCollection.addItem(task);
         CreateTaskOutputData outputData = new CreateTaskOutputData(task.getId(), task.getName());
         return outputBoundary.prepareSuccessView(outputData);
     }
@@ -57,7 +57,7 @@ public class CreateTask implements CreateTaskInputBoundary {
     /**
      * @return the taskFactory of the use case. (A specific user's task factory)
      */
-    public TaskFactory getTaskFactory() {
-        return taskFactory;
+    public TaskCollection getTaskFactory() {
+        return taskCollection;
     }
 }

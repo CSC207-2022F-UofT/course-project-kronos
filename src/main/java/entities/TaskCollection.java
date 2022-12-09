@@ -8,10 +8,10 @@ import java.util.HashMap;
  * Represents a collection of tasks.
  */
 
-public class TaskFactory extends Factory<Task> implements Serializable{
+public class TaskCollection extends Factory<Task> implements Serializable{
     private HashMap<Integer, Task> tasks;
 
-    public TaskFactory(){
+    public TaskCollection(){
         super();
         this.tasks = new HashMap<>();
     }

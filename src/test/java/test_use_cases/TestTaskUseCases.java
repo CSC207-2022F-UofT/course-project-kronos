@@ -3,7 +3,7 @@ package test_use_cases;
 
 import database.DatabaseTask;
 import entities.Task;
-import entities.TaskFactory;
+import entities.TaskCollection;
 
 import org.junit.After;
 import org.junit.Before;
@@ -13,7 +13,6 @@ import use_cases.tasks.delete_task.*;
 import use_cases.tasks.edit_task.*;
 import use_cases.tasks.mark_task_completion.*;
 
-import static java.lang.Boolean.FALSE;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTaskUseCases {
@@ -47,9 +46,9 @@ public class TestTaskUseCases {
                 return null;
             }
         };
-        TaskFactory taskFactory = new TaskFactory();
+        TaskCollection taskCollection = new TaskCollection();
 
-        CreateTaskInputBoundary interactor = new CreateTask(outputBoundary, taskRepository, taskFactory);
+        CreateTaskInputBoundary interactor = new CreateTask(outputBoundary, taskRepository, taskCollection);
 
         CreateTaskInputData inputData = new CreateTaskInputData("example");
         interactor.create(inputData);
@@ -76,9 +75,9 @@ public class TestTaskUseCases {
                 return null;
             }
         };
-        TaskFactory taskFactory = new TaskFactory();
+        TaskCollection taskCollection = new TaskCollection();
 
-        DeleteTaskInputBoundary deleteInteractor = new DeleteTask(outputBoundary,taskRepository, taskFactory);
+        DeleteTaskInputBoundary deleteInteractor = new DeleteTask(outputBoundary,taskRepository, taskCollection);
         DeleteTaskInputData inputData = new DeleteTaskInputData(id);
         deleteInteractor.delete(inputData);
     }
@@ -110,9 +109,9 @@ public class TestTaskUseCases {
                 return null;
             }
         };
-        TaskFactory taskFactory = new TaskFactory();
+        TaskCollection taskCollection = new TaskCollection();
 
-        EditTaskInputBoundary editInteractor = new EditTask(outputBoundary, taskRepository,taskFactory);
+        EditTaskInputBoundary editInteractor = new EditTask(outputBoundary, taskRepository, taskCollection);
         EditTaskInputData inputData = new EditTaskInputData(id, "after");
         editInteractor.edit(inputData);
 
@@ -139,7 +138,7 @@ public class TestTaskUseCases {
                 return null;
             }
         };
-        TaskFactory taskfactory = new TaskFactory();
+        TaskCollection taskfactory = new TaskCollection();
         MarkCompletionInputBound markCompletionInteractor = new MarkCompletion(outputBound, taskRepository, taskfactory);
 
         MarkCompletionInputData inputData = new MarkCompletionInputData(id);
@@ -169,7 +168,7 @@ public class TestTaskUseCases {
                 return null;
             }
         };
-        TaskFactory taskfactory = new TaskFactory();
+        TaskCollection taskfactory = new TaskCollection();
         MarkCompletionInputBound markCompletionInteractor = new MarkCompletion(outputBound, taskRepository, taskfactory);
 
         MarkCompletionInputData inputData = new MarkCompletionInputData(id);

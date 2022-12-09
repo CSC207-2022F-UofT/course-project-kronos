@@ -82,9 +82,22 @@ Logging in leads to the Menu page which has options for the features: Habits, Ta
 
 ## 5. Feature: Tomato Timer
 
-### a. Timer Screen
+### a. Timer Start Screen
 
 ![timer](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/a13b4e3986e803484789f8d7ad0dbd99072cf8ae/images/timer.jpeg)
+
+### b. Set Timer
+
+![Set Timer](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/8639dab8f29bd8c686a6fd0298d1a77ab95a3121/images/Set%20Timer.png)
+
+### c. Start Timer
+
+![Start Timer](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/8639dab8f29bd8c686a6fd0298d1a77ab95a3121/images/Start%20Timer.png)
+
+### d.Rest Timer Running Screen
+
+![Rest Timer Running](https://github.com/CSC207-2022F-UofT/course-project-kronos/blob/8639dab8f29bd8c686a6fd0298d1a77ab95a3121/images/Rest%20Timer%20Running.png)
+
 
 ## 6. Feature: Data Visualization
 

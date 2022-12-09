@@ -9,7 +9,7 @@ public class DeleteHabit {
 
     private final DeleteHabitOutputBoundary outputBoundary;
     private final DeleteHabitDsGateway dsGateway;
-    private final HabitCollection habitFactory;
+    private final HabitCollection habitCollection;
 
     /**
      * Constructor for this class.
@@ -20,7 +20,7 @@ public class DeleteHabit {
     public DeleteHabit(DeleteHabitOutputBoundary outputBoundary, DeleteHabitDsGateway dsGateway, HabitCollection hFactory) {
         this.outputBoundary = outputBoundary;
         this.dsGateway = dsGateway;
-        this.habitFactory = hFactory;
+        this.habitCollection = hFactory;
     }
 
     /**
@@ -31,8 +31,8 @@ public class DeleteHabit {
     //@Override
     public DeleteHabitOutputData delete(DeleteHabitInputData inputData) {
         String id = inputData.getHabitId();
-        Habit habitToDelete = habitFactory.getCollection().get(id);
-        habitFactory.removeItem(habitToDelete);
+        Habit habitToDelete = habitCollection.getCollection().get(id);
+        habitCollection.removeItem(habitToDelete);
         DeleteHabitOutputData outputData = new DeleteHabitOutputData("Habit \"" + id + "\" is successfully deleted.");
 
         return outputBoundary.prepareSuccessView(outputData);
@@ -50,7 +50,7 @@ public class DeleteHabit {
      * @return the habit factory
      */
     public HabitCollection getHabitFactory() {
-        return habitFactory;
+        return habitCollection;
     }
 
     /**

@@ -46,9 +46,9 @@ public class TestHabitUseCases {
                 return null;
             }
         };
-        HabitCollection habitFactory = new HabitCollection();
+        HabitCollection habitCollection = new HabitCollection();
 
-        CreateHabitInputBoundary createInteractor = new CreateHabit(outputBoundary, habitRepository, habitFactory);
+        CreateHabitInputBoundary createInteractor = new CreateHabit(outputBoundary, habitRepository, habitCollection);
 
         CreateHabitInputData inputData = new CreateHabitInputData("Read a Book", "Daily");
 
@@ -77,7 +77,7 @@ public class TestHabitUseCases {
                 return null;
             }
         };
-        HabitCollection habitFactory = new HabitCollection();
+        HabitCollection habitCollection = new HabitCollection();
         DeleteHabitInputBoundary deleteInteractor = new DeleteHabitInputBoundary() {
             @Override
             public DeleteHabitOutputData delete(DeleteHabitInputData inputData) {
@@ -119,9 +119,9 @@ public class TestHabitUseCases {
             }
             
         };
-        HabitCollection habitFactory = new HabitCollection();
+        HabitCollection habitCollection = new HabitCollection();
 
-        EditHabitInputBoundary editInteractor = new EditHabit(outputBoundary, habitRepository,habitFactory);
+        EditHabitInputBoundary editInteractor = new EditHabit(outputBoundary, habitRepository, habitCollection);
         EditHabitInputData inputData = new EditHabitInputData("Read a Book", newName, "Daily");
         editInteractor.edit(inputData);
 
@@ -156,9 +156,9 @@ public class TestHabitUseCases {
 
             }
         };
-        HabitCollection habitFactory = new HabitCollection();
+        HabitCollection habitCollection = new HabitCollection();
 
-        TrackHabitInputBoundary trackInteractor = new TrackHabit(outputBoundary, habitRepository, habitFactory);
+        TrackHabitInputBoundary trackInteractor = new TrackHabit(outputBoundary, habitRepository, habitCollection);
         TrackHabitInputData inputData = new TrackHabitInputData("Read a Book");
         trackInteractor.track(inputData);
 
