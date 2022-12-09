@@ -132,9 +132,15 @@ We ensured that the project followed all the SOLID principles.
 
 ### Open - Closed Principle 
   - We used interfaces in the use cases which are open to extension but not modification. 
+  
+### Liskov Subsitution Principle
+ - We ensured that that the principle was not violated. Application behaviour does not depend on which subtypes it uses.
 
 ### Interface Segregation Principle
  - We ensured that no classes were forced to implement or use interfaces they did not need.
+ 
+### Dependency Inversion Principle
+ - It was implemented by the User use cases.
 
 ## MVP 
 
