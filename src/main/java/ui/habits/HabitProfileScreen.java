@@ -3,8 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class HabitProfileScreen {
-
-
     /**
      * Produces a UI to choose between Habit creation, editing and tracking and then links to the respective page.
      */
@@ -82,11 +80,6 @@ public class HabitProfileScreen {
         frame.pack();
         frame.setVisible(true);
 
-    }
-
-    public static void main(String[] args) {
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(HabitProfileScreen::HabitProfile);
     }
 }
 
