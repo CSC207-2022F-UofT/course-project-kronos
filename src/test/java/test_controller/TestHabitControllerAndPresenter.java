@@ -16,7 +16,7 @@ public class TestHabitControllerAndPresenter {
 
 
     /**
-     * Tests the create habit controller and presenter.
+     * Tests the CreateHabit controller and presenter.
      */
     @Test
     public void create() {
@@ -27,7 +27,7 @@ public class TestHabitControllerAndPresenter {
     }
 
     /**
-     * Tests the edit habit controller and presenter.
+     * Tests the EditHabit controller and presenter.
      */
     @Test
     public void edit() {
