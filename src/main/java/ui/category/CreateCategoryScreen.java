@@ -31,7 +31,7 @@ public class CreateCategoryScreen {
         createCategoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // layout
-        GridBagLayout layout = new GridBagLayout(); // need rows to adapt to number of tasks in that category
+        GridBagLayout layout = new GridBagLayout();
         GridBagConstraints constraints = new GridBagConstraints();
         createCategoryFrame.setLayout(layout);
 
@@ -100,7 +100,4 @@ public class CreateCategoryScreen {
         });
     }
 
-    public void actionPerformed(ActionEvent evt) {
-
-    }
 }

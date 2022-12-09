@@ -1,8 +1,9 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Timer;
 
-public interface User {
+public interface User{
     String getEmailAddress();
     String getPassword();
     String getFirstName();

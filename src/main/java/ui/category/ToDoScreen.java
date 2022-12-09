@@ -4,11 +4,15 @@ import controllers.category.CreateCategoryController;
 import controllers.category.DeleteCategoryController;
 import controllers.category.EditCategoryController;
 import controllers.tasks.CreateTaskController;
+import controllers.tasks.MarkCompletionController;
 import entities.Category;
 import entities.CategoryCollection;
 import entities.Task;
+import entities.TaskFactory;
 import ui.ColourPalette;
 import ui.tasks.CreateTaskScreen;
+import ui.tasks.EditTaskScreen;
+import ui.tasks.TaskScreen;
 import ui.user.MenuPage;
 import use_cases.categories.edit_category.EditCategory;
 import use_cases.categories.edit_category.EditCategoryDsGateway;
@@ -18,12 +22,17 @@ import use_cases.tasks.create_task.CreateTask;
 import use_cases.tasks.create_task.CreateTaskDsGateway;
 import use_cases.tasks.create_task.CreateTaskInputBoundary;
 import use_cases.tasks.create_task.CreateTaskOutputBoundary;
+import use_cases.tasks.mark_task_completion.MarkCompletionDsGateway;
+import use_cases.tasks.mark_task_completion.MarkCompletionInputBound;
+import use_cases.tasks.mark_task_completion.MarkCompletionOutputBound;
+import use_cases.tasks.mark_task_completion.MarkCompletionOutputData;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 // have to use mark_task_completion
 
@@ -36,13 +45,8 @@ import java.text.SimpleDateFormat;
 public class ToDoScreen extends JFrame implements ActionListener {
     private JFrame toDoFrame;
     private JPanel header;
-    private JScrollPane scrollable;
     private JPanel body;
     private static JLabel title;
-    private JButton newCategory;
-    private JButton menu;
-    private JButton edit;
-    private JButton newTask;
     private CategoryCollection categories;
     private CreateCategoryController createController;
     private EditCategoryOutputBoundary editCategoryPresenter;
@@ -50,12 +54,16 @@ public class ToDoScreen extends JFrame implements ActionListener {
     private DeleteCategoryController deleteController;
     private CreateTaskDsGateway taskDsGateway;
     private CreateTaskOutputBoundary outputBoundary;
-
+    private HashMap<TaskFactory, Integer> completedTasks;
+    private HashMap<JCheckBox, ArrayList<Integer>> allCheckBoxes = new HashMap<JCheckBox, ArrayList<Integer>>(); // id of cat @ index 0, id of task @ index 1
 
     public ToDoScreen(CategoryCollection categories, CreateCategoryController createController,
                       EditCategoryOutputBoundary editCategoryPresenter, EditCategoryDsGateway editDsGateway,
                       DeleteCategoryController deleteController, CreateTaskOutputBoundary outputBoundary,
-                      CreateTaskDsGateway taskDsGateway) {
+                      CreateTaskDsGateway taskDsGateway, MarkCompletionDsGateway markTaskGateway,
+                      MarkCompletionOutputBound markOutputBound) {
+        // long parameter code smell, unable to resolve
+
         this.createController = createController;
         this.editCategoryPresenter = editCategoryPresenter;
         this.editDsGateway = editDsGateway;
@@ -65,9 +73,9 @@ public class ToDoScreen extends JFrame implements ActionListener {
         this.taskDsGateway = taskDsGateway;
 
         toDoFrame = new JFrame("To Do List");
-        toDoFrame.setLocation(650, 80);
+        toDoFrame.setLocation(550, 100);
         toDoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        toDoFrame.setSize(800, 800);
+        toDoFrame.setSize(600, 800);
         toDoFrame.setLayout(new BorderLayout());
         toDoFrame.setVisible(true);
 
@@ -80,10 +88,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         body.setVisible(true);
 
         // adding panels to frame
-        scrollable = new JScrollPane();
-        // toDoFrame.add(scrollable, BorderLayout.CENTER);
         toDoFrame.add(body, BorderLayout.CENTER);
-        //scrollable.add(body);
         toDoFrame.add(header, BorderLayout.NORTH);
 
         GridBagConstraints c = new GridBagConstraints();
@@ -103,7 +108,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         /**
          * Creating and setting the placement of the "create" button and menu button
          */
-        newCategory = new JButton("New Category");
+        JButton newCategory = new JButton("New Category");
         newCategory.setFont(new Font("Serif", Font.PLAIN, 15));
         newCategory.setBackground(Color.white);
         newCategory.setHorizontalAlignment(SwingConstants.CENTER);
@@ -114,7 +119,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
         header.add(newCategory, c);
         newCategory.addActionListener(e -> CreateCategoryScreen.loadScreen(createController));
 
-        menu = new JButton("Menu");
+        JButton menu = new JButton("Menu");
         menu.setFont(new Font("Serif", Font.PLAIN, 15));
         menu.setBackground(Color.white);
         menu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -129,23 +134,42 @@ public class ToDoScreen extends JFrame implements ActionListener {
          */
         JLabel taskName = new JLabel("Task Name");
         taskName.setFont(new Font("Serif", Font.BOLD, 20));
-        taskName.setHorizontalAlignment(SwingConstants.RIGHT);
+        taskName.setHorizontalAlignment(SwingConstants.LEFT);
         c.insets = new Insets(20, 0, 0, 0);
         c.ipady = 2;
         c.weightx = 0.3;
-        c.gridx = 0;
+        c.gridx = 2;
         c.gridy = 2;
         header.add(taskName, c);
 
         JLabel completion = new JLabel("Completion");
         completion.setFont(new Font("Serif", Font.BOLD, 20));
-        completion.setHorizontalAlignment(SwingConstants.LEFT);
+        completion.setHorizontalAlignment(SwingConstants.RIGHT);
         c.ipady = 2;
         c.weightx = 0.3;
-        c.gridx = 2;
+        c.gridx = 0;
         c.gridy = 2;
         header.add(completion, c);
         updateList();
+
+        /**
+         * If window closes, need to check which tasks are checked off
+         */
+        toDoFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                completedTasks = new HashMap<TaskFactory, Integer>();
+                // store all the tasks that are marked as completed when the window closes
+                for (JCheckBox check: allCheckBoxes.keySet()) {
+                    if (check.isSelected()) {
+                        ArrayList<Integer> temp = allCheckBoxes.get(check);
+                        Category tempCat = categories.getItem(temp.get(0));
+                        completedTasks.put(tempCat.getTasks(), temp.get(1));
+                    }
+                }
+                new CheckTask(markTaskGateway, markOutputBound, completedTasks);
+            }
+        });
     }
 
     /**
@@ -163,7 +187,7 @@ public class ToDoScreen extends JFrame implements ActionListener {
             c.gridy = y;
             c.fill = GridBagConstraints.HORIZONTAL;
 
-            edit = new JButton(cat.getId() + ": " + cat.getName());
+            JButton edit = new JButton(cat.getId() + ": " + cat.getName());
             edit.setFont(new Font("Serif", Font.BOLD, 20));
             edit.setBackground(ColourPalette.getColour(cat.getColour()));
             edit.setForeground(Color.white);
@@ -184,28 +208,35 @@ public class ToDoScreen extends JFrame implements ActionListener {
             for (Task task: cat.getTasks().convertToArray()){
                 c.gridwidth = 1;
                 c.weightx = 0.3;
-                c.gridx = 0;
-                c.gridy = y;
-                JLabel taskName = new JLabel(task.getName());
-                taskName.setFont(new Font("Serif", Font.PLAIN, 16));
-                taskName.setHorizontalAlignment(SwingConstants.RIGHT);
-                this.body.add(taskName, c);
-
                 c.gridx = 2;
+                c.gridy = y;
+                JButton taskName = new JButton(task.getName());
+                taskName.setFont(new Font("Serif", Font.PLAIN, 16));
+                taskName.setBackground(Color.white);
+                taskName.setHorizontalAlignment(SwingConstants.LEFT);
+                this.body.add(taskName, c);
+                taskName.addActionListener(e -> TaskScreen.createScreen());
+
+                c.gridx = 0;
                 c.weightx = 0.3;
                 c.gridy = y;
-                CheckTask checkTask = new CheckTask();
-                JCheckBox checkbox = new JCheckBox(checkTask);
-                checkbox.setHorizontalAlignment(SwingConstants.LEFT);
+                JCheckBox checkbox = new JCheckBox();
+                checkbox.setHorizontalAlignment(SwingConstants.RIGHT);
                 this.body.add(checkbox, c);
                 y++;
+
+                ArrayList<Integer> ids = new ArrayList<>();
+                ids.add(cat.getId());
+                ids.add(task.getId());
+                allCheckBoxes.put(checkbox, ids);
             }
+
             // add the newTask button
             c.fill = GridBagConstraints.HORIZONTAL;
             c.insets = new Insets(10, 10, 10, 10);
             c.gridx = 1;
             c.gridy = y;
-            newTask = new JButton(cat.getId() + ": New Task");
+            JButton newTask = new JButton(cat.getId() + ": New Task");
             newTask.setBackground(Color.white);
             this.body.add(newTask, c);
 
@@ -213,26 +244,14 @@ public class ToDoScreen extends JFrame implements ActionListener {
             Category taskCat = categories.getItem(taskCatId);
             CreateTaskInputBoundary taskGateway = new CreateTask(outputBoundary, taskDsGateway, taskCat.getTasks());
             CreateTaskController taskController = new CreateTaskController(taskGateway);
-            newTask.addActionListener(e -> CreateTaskScreen.loadScreen(taskController, taskCatId));
+            newTask.addActionListener(e -> CreateTaskScreen.createScreen());
 
             y++;
         }
     }
 
-    // probs delete this later
+    @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == newTask){ // will this track the right button since we create it multiple times?
-            // pass the category to the new Task screen
-
-        }
-        if (e.getSource() == edit){
-            int id = Integer.parseInt(edit.getText().split(":")[0]);
-            Category cat = categories.getItem(id);
-            EditCategoryInputBoundary editCategory = new EditCategory(editCategoryPresenter, editDsGateway, categories, id);
-            EditCategoryController editController = new EditCategoryController(editCategory);
-            new CategoryScreen(editController, deleteController, id, cat.getName(), cat.getColour()); // how does this lead to next window
-        }
 
     }
-
 }

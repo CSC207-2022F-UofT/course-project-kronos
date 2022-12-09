@@ -1,8 +1,8 @@
 package ui.category;
 
 import controllers.category.*;
-import controllers.tasks.CreateTaskController;
 import controllers.tasks.CreateTaskPresenter;
+import controllers.tasks.MarkCompletionPresenter;
 import database.DatabaseCategory;
 import database.DatabaseTask;
 import database.DatabaseUser;
@@ -17,10 +17,10 @@ import use_cases.categories.edit_category.EditCategoryDsGateway;
 import use_cases.categories.edit_category.EditCategoryInputBoundary;
 import use_cases.categories.edit_category.EditCategoryOutputBoundary;
 import use_cases.tasks.create_task.*;
+import use_cases.tasks.mark_task_completion.MarkCompletionDsGateway;
+import use_cases.tasks.mark_task_completion.MarkCompletionOutputBound;
 
-import java.util.Calendar;
-
-public class Main {
+public class ToDoListMain {
     public static String first = "Bob";
     public static String last = "Smith";
     public static String email = "example@gmail.com";
@@ -30,11 +30,10 @@ public class Main {
     public static TaskFactory tasks1 = new TaskFactory();
     public static TaskFactory tasks2 = new TaskFactory();
     public static Task task1 = new Task("task 1");
-    public static Task task2 = new Task("task 2");
+    public static Task task2 = new Task("new task name");
     public static Task task3 = new Task("task 3");
     public static Category category1 = new Category("Category 1", "green");
     public static Category category2 = new Category("Category 2", "blue");
-    //public static Category category3 = new Category("new name", "red");
     public static Category category3 = new Category("Category 3", "pink");
     public static Category category4 = new Category("Category 4", "orange");
     public static TimerTomato timer = new TimerTomato();
@@ -80,7 +79,12 @@ public class Main {
         CreateTaskOutputBoundary outputBoundary = new CreateTaskPresenter();
         CreateTaskDsGateway taskDsGateway = new DatabaseTask(database);
 
+        // Mark Completion Task Use Case
+        MarkCompletionDsGateway markTaskGateway = new DatabaseTask(database);
+        MarkCompletionOutputBound markOutputBound = new MarkCompletionPresenter();
+
         new ToDoScreen(categories, createCategoryController, editCategoryPresenter, editDsGateway,
-                deleteCategoryController, outputBoundary, taskDsGateway);
+                deleteCategoryController, outputBoundary, taskDsGateway, markTaskGateway, markOutputBound);
+
     }
 }

@@ -283,7 +283,7 @@ public class TimerScreen extends JFrame
 
     private void runMainTimer()
     {
-        //System.out.println("Start Main " + String.format("%d", roundsCompleted));
+        //System.out.println("Start ToDoListMain " + String.format("%d", roundsCompleted));
         minutesRemaining = workTimeMin[0];
         secondsRemaining = ORIGINAL_COUNTDOWN_SECONDS;
 
@@ -304,7 +304,7 @@ public class TimerScreen extends JFrame
         }
         // else
         {
-            System.out.println("Don't Stop Main " + roundsCompleted);
+            System.out.println("Don't Stop ToDoListMain " + roundsCompleted);
         }
 
         countDown = new Timer(INTERVAL, (ActionEvent event) -> {
