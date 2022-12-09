@@ -1,14 +1,19 @@
 package use_cases.user.login_user;
 
 
-import entities.User;
+import entities.CommonUser;
 
+/**
+ * Use case layer of the login user
+ */
 public interface LoginUserDsGateway {
     void loginUser(LoginUserDsRequestModel requestModel);
     boolean userExistsByEmail(String email);
-    User getLoggedInUser();
+    CommonUser getUser();
+
+    CommonUser getLoggedInUser();
 
     boolean checkPasswordsMatch(String email, String password);
 
-    User getUserByEmail(String email);
+    CommonUser getUserByEmail(String email);
 }

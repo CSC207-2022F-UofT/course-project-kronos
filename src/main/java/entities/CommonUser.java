@@ -1,21 +1,19 @@
 package entities;
 
-import java.io.Serializable;
-import java.util.Timer;
-
 /**
  *
  * Creates User account if the user's account does not exist.
  * If it does, then it logs the user in and the page directs to the main page.
  *
  */
-public class CommonUser implements User, Serializable{
+public class CommonUser implements User{
 
     private String firstName;
     private String lastName;
     private String emailAddress;
     private String password;
-    private HabitCollection habitCollection;
+    private HabitFactory habitCollection;
+    private TaskFactory taskCollection;
     private CategoryCollection categoryCollection;
     private TimerTomato tomato;
 
@@ -35,7 +33,8 @@ public class CommonUser implements User, Serializable{
         this.password = password;
         this.firstName = first_name;
         this.lastName = last_name;
-        this.habitCollection = new HabitCollection();
+        this.habitCollection = new HabitFactory();
+        this.taskCollection = new TaskFactory();
         this.categoryCollection = new CategoryCollection();
         this.tomato = new TimerTomato();
     }
@@ -85,7 +84,7 @@ public class CommonUser implements User, Serializable{
      * @return the user's collection of habits
      */
     @Override
-    public HabitCollection getHabitCollection(){
+    public HabitFactory getHabitCollection(){
         // returns the user's habit collection
         return this.habitCollection;
     }
@@ -99,6 +98,14 @@ public class CommonUser implements User, Serializable{
     }
 
     /**
+     * @return the user's collection of tasks
+     */
+    @Override
+    public TaskFactory getTaskCollection() {
+        return this.taskCollection;
+    }
+
+    /**
      * @return the user's timer object
      */
     @Override
@@ -107,8 +114,8 @@ public class CommonUser implements User, Serializable{
     }
 
     @Override
-    public void setTomato(TimerTomato tomato) {
-        this.tomato = tomato;
+    public void setTomato(TimerTomato timerTomato) {
+        this.tomato = timerTomato;
     }
 
     // SETTER METHODS
