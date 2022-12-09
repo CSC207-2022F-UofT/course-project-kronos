@@ -58,10 +58,4 @@ public class TrackHabit implements TrackHabitInputBoundary {
         return dsGateway;
     }
 
-    /**
-     * @return habit factory
-     */
-    public HabitCollection getHabitFactory() {
-        return habitCollection;
-    }
 }

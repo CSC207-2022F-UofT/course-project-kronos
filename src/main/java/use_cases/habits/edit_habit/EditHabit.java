@@ -58,11 +58,4 @@ public class EditHabit implements EditHabitInputBoundary {
         return dsGateway;
     }
 
-    /**
-     * @return the habit factory
-     */
-    public HabitCollection getHabitFactory() {
-        return habitCollection;
-    }
-
 }

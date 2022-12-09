@@ -5,14 +5,11 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 
 public class CreateChart extends ApplicationFrame{
 
@@ -37,9 +34,7 @@ public class CreateChart extends ApplicationFrame{
     private DefaultCategoryDataset createDataset(ArrayList<Habit> habits){
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
         for (Habit habit: habits){
-            habit.getFrequencyMap().forEach((date, frequency) -> {
-                dataset.addValue(frequency, habit.getName(), date);
-            });
+            habit.getFrequencyMap().forEach((date, frequency) -> dataset.addValue(frequency, habit.getName(), date));
         }
         return dataset;
     }

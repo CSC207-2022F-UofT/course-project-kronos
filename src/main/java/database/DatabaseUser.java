@@ -32,7 +32,7 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
 
         this.filePath = filepath;
 
-        // by default all other parameters are set to null, they are only assigned values after reading stored data, and loggin in
+        // by default all other parameters are set to null, they are only assigned values after reading stored data, and login in
         this.taskCollection = null;
         this.categoryCollection = null;
         this.habitCollection = null;
@@ -43,29 +43,6 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
 
             this.userCollection = (HashMap<String, CommonUser>) ois.readObject();
         } catch(IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * - Used to store the data modified in all collections under Database object into the .ser file, at the filepath
-     * - Intended to be called at the end of one session with the app. All changes to user data will get updated to
-     * .ser file to ensure effective data persistence, and correct data on next use.
-     */
-    public void storeData() {
-        try {
-            // Saving of object in a file
-            FileOutputStream file = new FileOutputStream
-                    (this.filePath);
-            ObjectOutputStream out = new ObjectOutputStream
-                    (file);
-
-            // Method for serialization of object
-            out.writeObject(this.userCollection);
-
-            out.close();
-            file.close();
-        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -103,7 +80,7 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
     }
 
     /**
-     * Used to login User, and obtain information
+     * Used to log in User, and obtain information
      * @param requestModel - Ds Request Model used ot provide information to database for login use case
      */
     @Override
@@ -121,7 +98,7 @@ public class DatabaseUser implements CreateUserDsGateway, DeleteUserDsGateway, L
      */
     @Override
     public CommonUser getLoggedInUser() {
-        return (CommonUser) this.currUser;
+        return this.currUser;
     }
 
     /**

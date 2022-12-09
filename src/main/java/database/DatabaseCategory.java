@@ -1,7 +1,6 @@
 package database;
 
 import entities.Category;
-import entities.CategoryCollection;
 import use_cases.categories.create_category.CreateCategoryDsGateway;
 import use_cases.categories.create_category.CreateCategoryDsRequestModel;
 import use_cases.categories.delete_category.DeleteCategoryDsGateway;

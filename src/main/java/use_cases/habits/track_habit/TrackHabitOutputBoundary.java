@@ -1,7 +1,7 @@
 package use_cases.habits.track_habit;
 
 /**
- * This is an interface that passes the output to the Presenter of trackhabit.
+ * This is an interface that passes the output to the Presenter of track habit.
  */
 
 public interface TrackHabitOutputBoundary {

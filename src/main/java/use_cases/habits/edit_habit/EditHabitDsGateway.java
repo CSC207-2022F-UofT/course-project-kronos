@@ -1,6 +1,5 @@
 package use_cases.habits.edit_habit;
 
-import java.util.HashMap;
 
 /**
  * Gateway for editing a habit.

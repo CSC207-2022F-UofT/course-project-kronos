@@ -9,7 +9,7 @@ import use_cases.timer.edit_timer.EditTimerDsGateway;
 
 public class DatabaseTimer implements CreateWorkTimerDsGateway, EditTimerDsGateway {
 
-    private User currUser;
+    private final User currUser;
     public DatabaseTimer(DatabaseUser databaseUser){
         this.currUser = databaseUser.currUser;
     }

@@ -47,13 +47,6 @@ public class DeleteHabit {
     }
 
     /**
-     * @return the habit factory
-     */
-    public HabitCollection getHabitFactory() {
-        return habitCollection;
-    }
-
-    /**
      * @return the dsGateway
      */
     public DeleteHabitDsGateway getDsGateway() {

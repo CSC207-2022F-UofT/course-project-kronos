@@ -24,15 +24,7 @@ public class DatabaseHabit implements CreateHabitDsGateway, DeleteHabitDsGateway
     }
 
     /**
-     * @return hashmap of all habits stored for the user
-     */
-    public HashMap<String, Habit> getHabitCollection() {
-        return this.habitCollection;
-    }
-
-    /**
      * Delete the habit from database
-     * @param requestModel
      */
     @Override
     public void deleteHabit(DeleteHabitDsRequestModel requestModel) {
@@ -41,7 +33,6 @@ public class DatabaseHabit implements CreateHabitDsGateway, DeleteHabitDsGateway
 
     /**
      * Save the edited habit to database
-     * @param requestModel
      */
     @Override
     public void save(EditHabitDsRequestModel requestModel) {
@@ -50,7 +41,6 @@ public class DatabaseHabit implements CreateHabitDsGateway, DeleteHabitDsGateway
 
     /**
      * save the created habit to database
-     * @param requestModel
      */
     @Override
     public void save(CreateHabitDsRequestModel requestModel) {
@@ -59,7 +49,6 @@ public class DatabaseHabit implements CreateHabitDsGateway, DeleteHabitDsGateway
 
     /**
      * Update the habit once a new change for completion has been tracked
-     * @param requestModel
      */
     @Override
     public void save(TrackHabitDsRequestModel requestModel) {

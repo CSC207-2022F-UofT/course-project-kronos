@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class TimerScreen extends JFrame
 {
-    private final JPanel topPanel;
     String number1;
     String number2;
     // Custom Components
@@ -52,11 +51,8 @@ public class TimerScreen extends JFrame
     private static final int INTERVAL = 1000; // Iteration interval for the Timers.
     private static final int ONE_POMODORO_CYCLE = 8; // No of rounds in a single Pomodoro cycle.
 
-    private JPanel timerPanel;
     private JLabel minuteLabel;
-    private JLabel separator;
     private JLabel secondLabel;
-    private JLabel delayRemainingLabel;
 
     JLabel WorkTimerSet;
 
@@ -111,7 +107,7 @@ public class TimerScreen extends JFrame
             // If Cloud is not available, you can set the GUI to default look and feel.
         }
 
-        topPanel = new JPanel();
+        JPanel topPanel = new JPanel();
         topPanel.setPreferredSize(new Dimension(900, 600));
         topPanel.setLayout(new BorderLayout());
         getContentPane().add(topPanel, BorderLayout.CENTER);
@@ -123,7 +119,7 @@ public class TimerScreen extends JFrame
 
     private JPanel addMainTimer()
     {
-        timerPanel = new JPanel();
+        JPanel timerPanel = new JPanel();
         timerPanel.setBackground(Blue);
         //timerPanel.setLayout(new MigLayout("insets 115 0 0 0", "", "[][]0[]"));
 
@@ -132,7 +128,7 @@ public class TimerScreen extends JFrame
         minuteLabel.setFont(timerStyle);
         timerPanel.add(minuteLabel, "split 3, gapright 20, gaptop 20, pushx, spanx, alignx center, height 145!");
 
-        separator = new JLabel(":");
+        JLabel separator = new JLabel(":");
         separator.setForeground(Color.white);
         separator.setFont(timerStyle);
         timerPanel.add(separator, "alignx center, gapright 20, height 145!");
@@ -166,7 +162,7 @@ public class TimerScreen extends JFrame
         stopBT.setFont(formBTStyles);
         timerPanel.add(stopBT);
 
-        delayRemainingLabel = new JLabel("Resumes in " + TOTAL_DELAY_TIME + " seconds");
+        JLabel delayRemainingLabel = new JLabel("Resumes in " + TOTAL_DELAY_TIME + " seconds");
         delayRemainingLabel.setForeground(Color.white);
         delayRemainingLabel.setVisible(false);
         delayRemainingLabel.setFont(delayLabelStyles);
@@ -352,21 +348,7 @@ public class TimerScreen extends JFrame
         restTimer = new Timer(INTERVAL, (ActionEvent event) -> {
             if(secondsRemaining == ORIGINAL_SHORTBREAK_SECONDS)
             {
-                if(minutesRemaining == 0)
-                {
-                    continueBT.setVisible(false);
-                    stopBT.setVisible(true);
-                    startPauseBT.setVisible(true);
-                    //roundsCompleted++;
-                    runMainTimer();
-                }
-                else
-                {
-                    minutesRemaining -= 1;
-                    secondsRemaining = 59;
-                    minuteLabel.setText(String.format("%02d", minutesRemaining));
-                    secondLabel.setText(String.format("%02d", secondsRemaining));
-                }
+                extract();
             }
             else
             {
@@ -376,6 +358,24 @@ public class TimerScreen extends JFrame
         });
 
         restTimer.start();
+    }
+
+    private void extract() {
+        if(minutesRemaining == 0)
+        {
+            continueBT.setVisible(false);
+            stopBT.setVisible(true);
+            startPauseBT.setVisible(true);
+            //roundsCompleted++;
+            runMainTimer();
+        }
+        else
+        {
+            minutesRemaining -= 1;
+            secondsRemaining = 59;
+            minuteLabel.setText(String.format("%02d", minutesRemaining));
+            secondLabel.setText(String.format("%02d", secondsRemaining));
+        }
     }
 
     private void runWorkTimer()
@@ -395,21 +395,7 @@ public class TimerScreen extends JFrame
         workTimer = new Timer(INTERVAL, (ActionEvent event) -> {
             if(secondsRemaining == 0)
             {
-                if(minutesRemaining == 0)
-                {
-                    continueBT.setVisible(false);
-                    stopBT.setVisible(true);
-                    startPauseBT.setVisible(true);
-                    //roundsCompleted++;
-                    runMainTimer();
-                }
-                else
-                {
-                    minutesRemaining -= 1;
-                    secondsRemaining = 59;
-                    minuteLabel.setText(String.format("%02d", minutesRemaining));
-                    secondLabel.setText(String.format("%02d", secondsRemaining));
-                }
+                extract();
             }
             else
             {

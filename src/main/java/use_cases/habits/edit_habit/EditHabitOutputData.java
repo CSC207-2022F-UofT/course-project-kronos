@@ -7,8 +7,8 @@ package use_cases.habits.edit_habit;
  */
 public class EditHabitOutputData {
 
-    private String hName;
-    private String hType;
+    private final String hName;
+    private final String hType;
 
 
     /**

@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class DatabaseVisualization implements VisualizationWeekDsGateway, VisualizationMonthDsGateway, VisualizationYearDsGateway {
 
-    private HashMap<String, Habit> collection;
+    private final HashMap<String, Habit> collection;
 
     public DatabaseVisualization(DatabaseUser database){
         this.collection = database.currUser.getHabitCollection().getCollection();
@@ -35,27 +35,25 @@ public class DatabaseVisualization implements VisualizationWeekDsGateway, Visual
     @Override
     public void createChart(VisualizationWeekDsRequestModel requestModel) {
 
-        ArrayList<Habit> habitList = new ArrayList();
+        ArrayList<Habit> habitList = new ArrayList<>();
         HashMap<String, Integer> fullHabitData = this.collection.get(requestModel.getHabitName()).getFrequencyMap();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Calendar cal  = Calendar.getInstance();
-        HashMap<String, Integer> frequencyMap = new HashMap();
+        HashMap<String, Integer> frequencyMap = new HashMap<>();
         fullHabitData.forEach((date, frequency) -> {
                     try {
                         cal.setTime(sdf.parse(date));
                     } catch (ParseException e) {
                         throw new RuntimeException(e);
                     }
-                    Calendar endDate = Calendar.getInstance();
-                    // endDate.setTime();
-                    // if (cal.compareTo(requestModel.getStartDate()) >= 0 && cal.compareTo(requestModel.getStartDate().))
+            Calendar.getInstance();
+
 
 
         });
         Habit habit = new Habit(requestModel.getHabitName(), "");
         habit.getFrequencyMap().putAll(frequencyMap);
         habitList.add(habit);
-        ;
 
 
         CreateChart chart = new CreateChart("frequency of habits",
@@ -71,7 +69,7 @@ public class DatabaseVisualization implements VisualizationWeekDsGateway, Visual
             int height = 480;   /* Height of the image */
             File lineChart = new File(requestModel.getImagePath());
             ChartUtilities.saveChartAsJPEG(lineChart, lineChartObject, width, height);
-        } catch(IOException e){
+        } catch(IOException ignored){
 
         }
     }
@@ -106,8 +104,7 @@ public class DatabaseVisualization implements VisualizationWeekDsGateway, Visual
     }
 
     /**
-     * return whether at least one record exists in the speficied time period
-     * @param habitName
+     * return whether at least one record exists in the specified time period
      * @return whether any records exist for meaningful visualization
      */
     @Override

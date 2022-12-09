@@ -11,8 +11,6 @@ public interface User {
 
     TaskCollection getTaskCollection();
 
-    TimerTomato getTomato();
-
     void setTomato(TimerTomato timerTomato);
     boolean passwordStrength();
 

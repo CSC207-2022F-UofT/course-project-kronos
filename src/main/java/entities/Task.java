@@ -1,7 +1,6 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;

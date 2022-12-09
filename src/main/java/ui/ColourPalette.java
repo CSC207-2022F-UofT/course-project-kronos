@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.*;
+import java.util.Objects;
 
 public class ColourPalette {
 
@@ -15,22 +16,24 @@ public class ColourPalette {
     public static Color orange = new Color(255, 143, 46);
 
     public static Color getColour(String colour) {
-        if (colour == "pink") {
+        if (Objects.equals(colour, "pink")) {
             return pink;
-        } else if (colour == "green") {
+        } else if (Objects.equals(colour, "green")) {
             return green;
-        } else if (colour == "yellow") {
+        } else if (Objects.equals(colour, "yellow")) {
             return yellow;
-        } else if (colour == "red") {
+        } else if (Objects.equals(colour, "red")) {
             return red;
-        } else if (colour == "blue") {
+        } else if (Objects.equals(colour, "blue")) {
             return blue;
-        } else if (colour == "purple") {
+        } else if (Objects.equals(colour, "purple")) {
             return purple;
-        } else if (colour == "orange") {
+        } else if (Objects.equals(colour, "orange")) {
             return orange;
-        } else if (colour == "grey") {
+        } else if (Objects.equals(colour, "grey")) {
             return grey;
+        }else if (Objects.equals(colour, "black")) {
+            return black;
         }
         return null;
     }

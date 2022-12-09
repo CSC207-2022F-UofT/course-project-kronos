@@ -9,7 +9,6 @@ public class CreateHabit implements CreateHabitInputBoundary{
 
     private final CreateHabitOutputBoundary outputBoundary;
 
-    private final CreateHabitDsGateway dsGateway;
     private final HabitCollection habitCollection;
 
     /**
@@ -20,7 +19,6 @@ public class CreateHabit implements CreateHabitInputBoundary{
     public CreateHabit(CreateHabitOutputBoundary outputBoundary, CreateHabitDsGateway dsGateway,
                        HabitCollection collection) {
         this.outputBoundary = outputBoundary;
-        this.dsGateway = dsGateway;
         this.habitCollection = collection;
     }
 
@@ -48,13 +46,6 @@ public class CreateHabit implements CreateHabitInputBoundary{
      */
     public CreateHabitOutputBoundary getOutputBoundary() {
         return outputBoundary;
-    }
-
-    /**
-     * @return returns the habit factory after creation of new habit.
-     */
-    public HabitCollection getHabitFactory() {
-        return habitCollection;
     }
 
 }

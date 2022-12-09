@@ -1,5 +1,4 @@
 package use_cases.habits.create_habit;
-import entities.Habit;
 
 /**
  *  This class is a container for the output data related to creation of habit, it is created by the Interactor and sent

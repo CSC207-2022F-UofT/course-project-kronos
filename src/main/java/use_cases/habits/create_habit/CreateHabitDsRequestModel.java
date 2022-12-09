@@ -7,10 +7,7 @@ import entities.Habit;
  */
 public class CreateHabitDsRequestModel {
 
-    private Habit habit;
-
-    private String id;
-
+    private final Habit habit;
 
 
     /**
@@ -20,7 +17,6 @@ public class CreateHabitDsRequestModel {
     public CreateHabitDsRequestModel(Habit habit) {
 
         this.habit = habit;
-        this.id = habit.getName();
     }
 
     /**
@@ -28,13 +24,6 @@ public class CreateHabitDsRequestModel {
      */
     public Habit getHabit() {
         return this.habit;
-    }
-
-    /**
-     * @return returns the habit id
-     */
-    public String getHabitId() {
-        return this.id;
     }
 
 }

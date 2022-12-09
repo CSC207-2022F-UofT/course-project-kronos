@@ -13,7 +13,7 @@ public class EditHabitDsRequestModel {
 
     /**
      * Constructor for this class.
-     * @param h - Habit to be edited.
+     * @param habit - Habit to be edited.
      */
     public EditHabitDsRequestModel(Habit habit){
 

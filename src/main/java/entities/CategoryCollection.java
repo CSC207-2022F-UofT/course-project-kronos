@@ -54,7 +54,7 @@ public class CategoryCollection extends Factory<Category> implements Serializabl
         if (categories == null) {
 
             if (createNew) {
-                CategoryCollection factory = new CategoryCollection();
+                new CategoryCollection();
             }
             return false;
         }else {

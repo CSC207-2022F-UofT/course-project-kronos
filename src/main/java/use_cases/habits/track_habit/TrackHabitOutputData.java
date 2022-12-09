@@ -7,9 +7,9 @@ package use_cases.habits.track_habit;
  */
 public class TrackHabitOutputData {
 
-    private String hName;
+    private final String hName;
 
-    private int frequency;
+    private final int frequency;
 
 
     /**

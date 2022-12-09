@@ -7,7 +7,7 @@ import entities.Habit;
  */
 public class TrackHabitDsRequestModel {
 
-    private String habitName;
+    private final String habitName;
     private Habit habit;
 
     /**
