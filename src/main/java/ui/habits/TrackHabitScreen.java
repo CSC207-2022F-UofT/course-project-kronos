@@ -28,19 +28,16 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
 
         for(String i : databaseUser.getHabits().keySet()){
 
-            // Label: Habit name
-            JLabel l = new JLabel( i + "  " , JLabel.CENTER);
-            l.setPreferredSize(new Dimension(100, 30));
-            l.setBorder(new LineBorder(Color.GRAY, 1));
-            l.setLayout(new BorderLayout());
+            JLabel label = new JLabel( i + "  " , JLabel.CENTER);
+            label.setPreferredSize(new Dimension(100, 30));
+            label.setBorder(new LineBorder(Color.GRAY, 1));
+            label.setLayout(new BorderLayout());
 
-            // Button 1: increase frequency
             JButton button1 = new JButton("+");
             button1.setAlignmentX(Component.RIGHT_ALIGNMENT);
             button1.addActionListener(e -> tHabit.track(i));
             button1.setPreferredSize(new Dimension(50, 30));
 
-            // Button 2: Show frequency
             JButton button2 = new JButton("Frequency");
             button2.setAlignmentX(Component.LEFT_ALIGNMENT);
             button2.addActionListener(e ->
@@ -48,10 +45,10 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
             button2.setPreferredSize(new Dimension(100, 30));
 
 
-            l.add( button1, BorderLayout.AFTER_LINE_ENDS);
-            l.add( button2, BorderLayout.BEFORE_LINE_BEGINS);
+            label.add( button1, BorderLayout.AFTER_LINE_ENDS);
+            label.add( button2, BorderLayout.BEFORE_LINE_BEGINS);
 
-            pane.add(l);
+            pane.add(label);
 
         }
     }
@@ -69,14 +66,10 @@ public class TrackHabitScreen extends JFrame implements ActionListener {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(2, 0));
 
-        // Panel 1
         JPanel p1 = new JPanel();
         p1.setSize(new Dimension(250, 5));
-        // Label 1
         JLabel l1 = new JLabel("HABITS", JLabel.CENTER);
 
-
-        // Panel 2
         JPanel p2 = new JPanel();
         p2.setLayout(new GridLayout(10, 3));
         p2.setSize(200, 20);
